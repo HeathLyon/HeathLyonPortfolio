@@ -1,0 +1,456 @@
+/* =========================
+   GREEN PORTFOLIO THEME
+========================= */
+
+:root {
+    --green-dark: #0B2E1F;
+    --green-main: #1B7F4C;
+    --green-bright: #3DDC84;
+    --green-soft: #DFF5E8;
+    --green-muted: #A8D5BA;
+    --cream: #F6FFF8;
+    --white: #FFFFFF;
+    --text-dark: #17231C;
+    --text-muted: #5D6F64;
+    --shadow: 0 16px 40px rgba(11, 46, 31, 0.16);
+    --radius: 20px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--text-dark);
+    background: var(--cream);
+    line-height: 1.6;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+ul {
+    padding-left: 1.2rem;
+}
+
+/* =========================
+   HEADER / NAV
+========================= */
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(11, 46, 31, 0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(61, 220, 132, 0.25);
+}
+
+.navbar {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 1rem 1.25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: var(--white);
+    font-weight: 800;
+    font-size: 1.25rem;
+    letter-spacing: 0.04em;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 1.25rem;
+    padding-left: 0;
+}
+
+.nav-links a {
+    color: rgba(255, 255, 255, 0.86);
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+    color: var(--green-bright);
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    color: var(--white);
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+/* =========================
+   SECTIONS
+========================= */
+
+.section {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 5rem 1.25rem;
+}
+
+.section-heading {
+    max-width: 760px;
+    margin-bottom: 2.2rem;
+}
+
+.eyebrow {
+    color: var(--green-main);
+    text-transform: uppercase;
+    letter-spacing: 0.13em;
+    font-size: 0.8rem;
+    font-weight: 800;
+    margin-bottom: 0.55rem;
+}
+
+.eyebrow.light {
+    color: var(--green-bright);
+}
+
+h1,
+h2,
+h3 {
+    line-height: 1.12;
+}
+
+h1 {
+    font-size: clamp(2.5rem, 6vw, 5.4rem);
+    margin-bottom: 1rem;
+}
+
+h2 {
+    font-size: clamp(2rem, 4vw, 3.3rem);
+    margin-bottom: 0.75rem;
+}
+
+h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.7rem;
+}
+
+p {
+    color: inherit;
+}
+
+.green-section {
+    max-width: none;
+    background:
+        radial-gradient(circle at top right, rgba(61, 220, 132, 0.20), transparent 30%),
+        linear-gradient(135deg, var(--green-dark), #062217);
+    color: var(--white);
+}
+
+.green-section > * {
+    max-width: 1180px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.green-section p,
+.green-section li {
+    color: rgba(255, 255, 255, 0.82);
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 82vh;
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(300px, 0.9fr);
+    gap: 2rem;
+    align-items: center;
+}
+
+.hero-text {
+    max-width: 650px;
+    font-size: 1.12rem;
+    color: var(--text-muted);
+}
+
+.button-row {
+    margin-top: 1.6rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.9rem 1.2rem;
+    border-radius: 999px;
+    font-weight: 800;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+.primary-btn {
+    background: var(--green-main);
+    color: var(--white);
+}
+
+.primary-btn:hover {
+    background: var(--green-dark);
+}
+
+.secondary-btn {
+    background: var(--white);
+    color: var(--green-dark);
+    border: 1px solid var(--green-muted);
+}
+
+.hero-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(27, 127, 76, 0.16);
+}
+
+.hero-card img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    background: linear-gradient(135deg, var(--green-muted), var(--green-soft));
+}
+
+.hero-card-body {
+    padding: 1.2rem;
+}
+
+.hero-card-body p {
+    color: var(--text-muted);
+}
+
+/* =========================
+   VIDEO / HIGHLIGHTS
+========================= */
+
+.video-frame {
+    min-height: 340px;
+    border-radius: var(--radius);
+    background:
+        linear-gradient(rgba(11, 46, 31, 0.74), rgba(11, 46, 31, 0.74)),
+        url("../images/drone-reel-placeholder.jpg");
+    background-size: cover;
+    background-position: center;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    color: var(--white);
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+    border: 1px solid rgba(61, 220, 132, 0.25);
+}
+
+.video-title {
+    font-size: 1.6rem;
+    font-weight: 800;
+}
+
+.video-subtitle {
+    color: rgba(255, 255, 255, 0.78);
+}
+
+.highlight-grid,
+.project-grid,
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+}
+
+.highlight-card,
+.project-card,
+.skills-grid article,
+.contact-card,
+.timeline-item {
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.highlight-card {
+    background: var(--white);
+    padding: 1.15rem;
+    border: 1px solid rgba(27, 127, 76, 0.14);
+}
+
+.highlight-card img {
+    border-radius: 14px;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    background: linear-gradient(135deg, var(--green-muted), var(--green-soft));
+    margin-bottom: 1rem;
+}
+
+.highlight-card p {
+    color: var(--text-muted);
+}
+
+/* =========================
+   PROJECTS
+========================= */
+
+.project-grid {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.project-card {
+    padding: 1.35rem;
+    background: rgba(255, 255, 255, 0.09);
+    border: 1px solid rgba(61, 220, 132, 0.22);
+}
+
+.project-card ul {
+    margin-top: 0.85rem;
+}
+
+/* =========================
+   WORK HISTORY
+========================= */
+
+.timeline {
+    display: grid;
+    gap: 1rem;
+}
+
+.timeline-item {
+    background: var(--white);
+    padding: 1.35rem;
+    border-left: 7px solid var(--green-main);
+    border: 1px solid rgba(27, 127, 76, 0.14);
+}
+
+.timeline-meta {
+    color: var(--green-main);
+    font-weight: 800;
+    margin-bottom: 0.6rem;
+}
+
+/* =========================
+   SKILLS
+========================= */
+
+.skills-grid article {
+    background: rgba(255, 255, 255, 0.09);
+    border: 1px solid rgba(61, 220, 132, 0.22);
+    padding: 1.25rem;
+}
+
+/* =========================
+   CONTACT / FOOTER
+========================= */
+
+.contact-card {
+    background: var(--white);
+    max-width: 700px;
+    padding: 1.35rem;
+    border: 1px solid rgba(27, 127, 76, 0.14);
+}
+
+.contact-card p + p {
+    margin-top: 0.65rem;
+}
+
+.site-footer {
+    background: var(--green-dark);
+    color: var(--white);
+    text-align: center;
+    padding: 1.5rem 1rem;
+    border-top: 1px solid rgba(61, 220, 132, 0.25);
+}
+
+.site-footer p {
+    color: rgba(255, 255, 255, 0.86);
+}
+
+.last-updated {
+    margin-top: 0.35rem;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.68) !important;
+}
+
+/* =========================
+   SCROLL ANIMATION
+========================= */
+
+.hidden {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 850px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
+        background: var(--green-dark);
+        border-bottom: 1px solid rgba(61, 220, 132, 0.25);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+    }
+
+    .highlight-grid,
+    .project-grid,
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section {
+        padding: 3.75rem 1.25rem;
+    }
+}
