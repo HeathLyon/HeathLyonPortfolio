@@ -3,257 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Heath Lyon | Drone Pilot/title>
-    <meta name="description" content="Portfolio for Heath Lyon, FAA Part 107 drone pilot, FPV operator, and technical project builder.">
-    <link rel="stylesheet" href="styles.css">
+    <title>Heath Lyon | Home</title>
+    <link rel="preload" as="image" href="images/logo/ring-green.webp">
+    <link rel="preload" as="image" href="images/logo/ring-pink.webp">
+    <link rel="preload" as="image" href="images/logo/black-shadow.webp">
+    <link rel="preload" as="image" href="images/logo/heath-lyon.webp">
+    <link rel="preload" as="image" href="images/logo/fpv-tag.webp">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <header class="site-header">
-        <nav class="navbar">
-            <a href="#home" class="logo">Heath Lyon</a>
+    <div id="introScreen">
+        <div class="startup-logo">
+            <img src="images/logo/ring-green.webp" class="startup-layer startup-ring-green" alt="">
+            <img src="images/logo/ring-pink.webp" class="startup-layer startup-ring-pink" alt="">
+            <img src="images/logo/black-shadow.webp" class="startup-layer startup-shadow" alt="">
+            <img src="images/logo/heath-lyon.webp" class="startup-layer startup-name" alt="Heath Lyon">
+            <img src="images/logo/fpv-tag.webp" class="startup-layer startup-fpv" alt="FPV">
+        </div>
+    </div>
 
-            <button class="menu-toggle" id="menuToggle" aria-label="Open navigation menu">
-                ☰
-            </button>
+    <div id="siteHeader"></div>
+    <div id="siteHeader"></div>
 
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#drone-reel">Drone Reel</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#work-history">Work History</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main>
-        <!-- HERO -->
-        <section id="home" class="hero section">
-            <div class="hero-content">
-                <p class="eyebrow">FAA Part 107 Drone Pilot • FPV Cinematic Operator • Technical Builder</p>
-                <h1>Drone footage, custom builds, and hands-on technical projects.</h1>
-                <p class="hero-text">
-                    I build and fly custom FPV drone systems for cinematic work, inspections,
-                    and experimental technology projects.
+    <main class="page">
+        <section class="hero">
+            <div>
+                <p class="tagline">FAA Part 107 Drone Pilot • FPV Cinematic Operator</p>
+                <h1>Heath Lyon</h1>
+                <p>
+                    I build and fly custom FPV drone systems for cinematic work,
+                    inspections, and hands-on technical projects.
                 </p>
 
                 <div class="button-row">
-                    <a href="#drone-reel" class="btn primary-btn">Watch Drone Highlights</a>
-                    <a href="#projects" class="btn secondary-btn">View Projects</a>
+                    <a class="button" href="drone-reel.html">View Drone Reel</a>
+                    <a class="button secondary" href="projects.html">View Projects</a>
                 </div>
             </div>
 
-            <div class="hero-card">
-                <img src="images/drone-hero.jpg" alt="FPV drone flying through a cinematic outdoor scene">
-                <div class="hero-card-body">
-                    <h2>FPV Drone Portfolio</h2>
-                    <p>Replace this image with your strongest drone photo or frame grab.</p>
+            <div class="image-box">
+                <p>Put your main drone photo here</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Portfolio Focus</h2>
+
+            <div class="grid">
+                <div class="card">
+                    <h3>Drone Work</h3>
+                    <p>FPV highlights, client shoots, cinematic reels, and professional field experience.</p>
                 </div>
-            </div>
-        </section>
 
-        <!-- DRONE REEL -->
-        <section id="drone-reel" class="section">
-            <div class="section-heading">
-                <p class="eyebrow">Featured Footage</p>
-                <h2>Drone Highlights</h2>
-                <p>
-                    Put your strongest 60–90 second drone reel here. Start with your best shot,
-                    then show cinematic FPV, professional shoots, build testing, and behind-the-scenes clips.
-                </p>
-            </div>
-
-            <div class="video-frame">
-                <div>
-                    <p class="video-title">Embed Drone Reel Here</p>
-                    <p class="video-subtitle">Paste a YouTube or Vimeo iframe in this section.</p>
+                <div class="card">
+                    <h3>Technical Builds</h3>
+                    <p>Custom drones, cinelifters, Betaflight tuning, soldering, and troubleshooting.</p>
                 </div>
-            </div>
 
-            <div class="highlight-grid">
-                <article class="highlight-card">
-                    <img src="images/fpv-shot-1.jpg" alt="Cinematic FPV drone shot">
-                    <h3>Cinematic FPV</h3>
-                    <p>Smooth proximity flying, building dives, tracking shots, and landscape movement.</p>
-                </article>
-
-                <article class="highlight-card">
-                    <img src="images/client-shoot.jpg" alt="Professional drone production shoot">
-                    <h3>Professional Shoots</h3>
-                    <p>Client-facing drone work, safety briefings, production support, and field operations.</p>
-                </article>
-
-                <article class="highlight-card">
-                    <img src="images/cinelifter-build.jpg" alt="Custom cinelifter drone build">
-                    <h3>Custom Drone Builds</h3>
-                    <p>FPV systems, cinelifter setup, Betaflight tuning, troubleshooting, and repair.</p>
-                </article>
-            </div>
-        </section>
-
-        <!-- PROJECTS -->
-        <section id="projects" class="section green-section">
-            <div class="section-heading">
-                <p class="eyebrow light">Hands-On Work</p>
-                <h2>Featured Projects</h2>
-                <p>
-                    These projects show practical problem-solving across drones, software,
-                    embedded systems, computer vision, and web development.
-                </p>
-            </div>
-
-            <div class="project-grid">
-                <article class="project-card">
-                    <h3>Custom X8 Cinelifter Build</h3>
-                    <p>
-                        Heavy-lift FPV drone platform built for cinema payloads using an 8S power system,
-                        separate ESCs, DJI video, ELRS control, and Betaflight tuning.
-                    </p>
-                    <ul>
-                        <li>Motor signal testing</li>
-                        <li>Desync troubleshooting</li>
-                        <li>Flight controller setup</li>
-                        <li>Payload-focused tuning</li>
-                    </ul>
-                </article>
-
-                <article class="project-card">
-                    <h3>YOLO Fall Detection System</h3>
-                    <p>
-                        Python and OpenCV project using pose tracking to identify possible fall events
-                        and send alerts with image evidence.
-                    </p>
-                    <ul>
-                        <li>Python</li>
-                        <li>OpenCV</li>
-                        <li>YOLO pose detection</li>
-                        <li>Discord alert workflow</li>
-                    </ul>
-                </article>
-
-                <article class="project-card">
-                    <h3>ESP32 CSI Presence Detection</h3>
-                    <p>
-                        Wi-Fi sensing experiment using ESP32 CSI data, Python visualization,
-                        and human presence detection concepts.
-                    </p>
-                    <ul>
-                        <li>ESP32</li>
-                        <li>CSI data</li>
-                        <li>Tkinter visualizer</li>
-                        <li>Human presence detection</li>
-                    </ul>
-                </article>
-
-                <article class="project-card">
-                    <h3>3D Model Web Viewer</h3>
-                    <p>
-                        Web-based GLB model viewer for displaying 3D artifacts with metadata,
-                        sidebar information, and interactive controls.
-                    </p>
-                    <ul>
-                        <li>HTML/CSS/JS</li>
-                        <li>Three.js</li>
-                        <li>GLB models</li>
-                        <li>GitHub Pages</li>
-                    </ul>
-                </article>
-            </div>
-        </section>
-
-        <!-- WORK HISTORY -->
-        <section id="work-history" class="section">
-            <div class="section-heading">
-                <p class="eyebrow">Experience</p>
-                <h2>Work History</h2>
-            </div>
-
-            <div class="timeline">
-                <article class="timeline-item">
-                    <h3>Drone Pilot / Independent Contractor</h3>
-                    <p class="timeline-meta">Think Global Media Group — 2026–Present</p>
-                    <p>
-                        Fly FPV and Mavic-style drones for professional shoots, assist with safety briefings,
-                        maintain cinelifter-style drones, and support long production days on location.
-                    </p>
-                </article>
-
-                <article class="timeline-item">
-                    <h3>General Manager</h3>
-                    <p class="timeline-meta">Crumbl Cookies — Provo, UT — 2024–Present</p>
-                    <p>
-                        Manage daily store operations, train team members, handle inventory,
-                        support customer service, and maintain performance standards.
-                    </p>
-                </article>
-
-                <article class="timeline-item">
-                    <h3>Cabinet Builder / Farm Hand</h3>
-                    <p class="timeline-meta">Hale Craft Custom Cabinets / Hale Craft Farms — 2023–2024</p>
-                    <p>
-                        Built and installed custom systems, worked in harsh outdoor conditions,
-                        and developed hands-on fabrication and client communication experience.
-                    </p>
-                </article>
-            </div>
-        </section>
-
-        <!-- SKILLS -->
-        <section id="skills" class="section green-section">
-            <div class="section-heading">
-                <p class="eyebrow light">Capabilities</p>
-                <h2>Skills & Tools</h2>
-            </div>
-
-            <div class="skills-grid">
-                <article>
-                    <h3>Drone Skills</h3>
-                    <p>
-                        FPV manual flight, cinelifter builds, Betaflight tuning, ELRS setup,
-                        DJI O3/O4 systems, and pre-flight safety checks.
-                    </p>
-                </article>
-
-                <article>
-                    <h3>Technical Skills</h3>
-                    <p>
-                        Python, Tkinter, OpenCV, YOLO, ESP32, Raspberry Pi, HTML, CSS,
-                        JavaScript, and GitHub Pages.
-                    </p>
-                </article>
-
-                <article>
-                    <h3>Certifications</h3>
-                    <p>FAA Part 107 Commercial Drone Pilot.</p>
-                </article>
-            </div>
-        </section>
-
-        <!-- CONTACT -->
-        <section id="contact" class="section contact-section">
-            <div class="section-heading">
-                <p class="eyebrow">Get In Touch</p>
-                <h2>Contact</h2>
-                <p>
-                    Available for drone shoots, FPV cinematic work, build consulting,
-                    and experimental technical projects.
-                </p>
-            </div>
-
-            <div class="contact-card">
-                <p><strong>Email:</strong> your-email@example.com</p>
-                <p><strong>Location:</strong> Provo, Utah</p>
-                <p><strong>GitHub:</strong> github.com/yourusername</p>
-                <p><strong>YouTube / Instagram:</strong> Add your drone links here</p>
+                <div class="card">
+                    <h3>Software Projects</h3>
+                    <p>Python tools, YOLO fall detection, ESP32 projects, and web development.</p>
+                </div>
             </div>
         </section>
     </main>
 
-    <footer class="site-footer">
-        <p>&copy; <span id="currentYear"></span> Heath Lyon. All rights reserved.</p>
-        <p class="last-updated">Last updated: <span id="lastUpdated">Loading...</span></p>
-    </footer>
+    <div id="siteFooter"></div>
 
-    <script src="main.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
