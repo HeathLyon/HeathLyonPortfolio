@@ -1,32 +1,47 @@
+/* =========================
+   MODERN GREEN PORTFOLIO THEME
+   Replace your full css/styles.css with this file.
+========================= */
+
 :root {
-    /* Main site colors */
-    --dark-green: #0b2e1f;
-    --main-green: #1b7f4c;
+    --dark-green: #061b12;
+    --deep-green: #0b2e1f;
+    --main-green: #16834f;
     --bright-green: #3ddc84;
-    --light-green: #e7f8ee;
+    --soft-green: #dff7e8;
+    --pale-green: #f3fff7;
     --cream: #f8fff9;
     --white: #ffffff;
 
-    /* Text */
-    --text-dark: #17231c;
-    --text-muted: #5d6f64;
+    --text-dark: #102018;
+    --text-main: #1c3328;
+    --text-muted: #5d7065;
 
-    /* Softer cyberpunk intro colors */
-    --intro-bg-dark: #030806;
-    --intro-bg-soft: #07180f;
-    --intro-green: rgba(61, 220, 132, 0.48);
-    --intro-green-soft: rgba(27, 127, 76, 0.38);
-    --intro-purple: rgba(92, 64, 120, 0.42);
-    --intro-purple-soft: rgba(92, 64, 120, 0.25);
+    --border: rgba(22, 131, 79, 0.16);
+    --border-strong: rgba(61, 220, 132, 0.35);
 
-    /* UI */
-    --shadow: 0 12px 30px rgba(11, 46, 31, 0.15);
-    --shadow-hover: 0 16px 36px rgba(11, 46, 31, 0.22);
-    --radius: 16px;
-    --transition: 0.25s ease;
+    --shadow-soft: 0 10px 30px rgba(6, 27, 18, 0.10);
+    --shadow-card: 0 18px 45px rgba(6, 27, 18, 0.14);
+    --shadow-glow: 0 0 45px rgba(61, 220, 132, 0.22);
+
+    /* Intro animation colors - matched to site palette */
+    --intro-bg-dark: #020705;
+    --intro-bg-soft: #061b12;
+    --intro-green: rgba(61, 220, 132, 0.42);
+    --intro-green-soft: rgba(22, 131, 79, 0.32);
+    --intro-purple: rgba(88, 62, 112, 0.36);
+    --intro-purple-soft: rgba(88, 62, 112, 0.22);
+
+    --radius-sm: 12px;
+    --radius: 18px;
+    --radius-lg: 28px;
+
+    --max-width: 1120px;
 }
 
-/* Reset */
+/* =========================
+   RESET / BASE
+========================= */
 
 * {
     box-sizing: border-box;
@@ -39,15 +54,14 @@ html {
 }
 
 body {
+    min-height: 100vh;
     font-family: Arial, Helvetica, sans-serif;
-    background: var(--cream);
+    background:
+        radial-gradient(circle at top left, rgba(61, 220, 132, 0.20), transparent 24rem),
+        radial-gradient(circle at top right, rgba(22, 131, 79, 0.16), transparent 26rem),
+        linear-gradient(180deg, var(--pale-green), var(--cream));
     color: var(--text-dark);
-    line-height: 1.6;
-}
-
-img {
-    max-width: 100%;
-    display: block;
+    line-height: 1.65;
 }
 
 a {
@@ -55,263 +69,44 @@ a {
     color: inherit;
 }
 
-/* Header */
-
-.site-header {
-    background: var(--dark-green);
-    color: var(--white);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
-}
-
-.navbar {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo {
-    font-weight: 900;
-    font-size: 1.2rem;
-    letter-spacing: 0.03em;
-}
-
-.menu-button {
-    display: none;
-    background: none;
-    border: none;
-    color: var(--white);
-    font-size: 1.8rem;
-    cursor: pointer;
-}
-
-.nav-links {
-    display: flex;
-    gap: 1rem;
-    list-style: none;
-}
-
-.nav-links a {
-    color: rgba(255, 255, 255, 0.85);
-    font-weight: 700;
-    transition: color var(--transition);
-}
-
-.nav-links a:hover,
-.nav-links a.active {
-    color: var(--bright-green);
-}
-
-/* Main Layout */
-
-.page {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 2rem 1rem;
-}
-
-.hero {
-    min-height: 75vh;
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    align-items: center;
-    gap: 2rem;
-}
-
-.section {
-    padding: 3rem 0;
-}
-
-.tagline {
-    color: var(--main-green);
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    font-size: 0.85rem;
-    margin-bottom: 0.5rem;
-}
-
-h1 {
-    font-size: clamp(2.4rem, 6vw, 4.8rem);
-    line-height: 1.05;
-    margin-bottom: 1rem;
-}
-
-h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-}
-
-h3 {
-    margin-bottom: 0.5rem;
+img {
+    display: block;
+    max-width: 100%;
 }
 
 p {
     color: var(--text-muted);
 }
 
-/* Buttons */
-
-.button-row {
-    display: flex;
-    gap: 1rem;
-    margin-top: 1.5rem;
-    flex-wrap: wrap;
-}
-
-.button {
-    display: inline-block;
-    background: var(--main-green);
-    color: var(--white);
-    padding: 0.8rem 1.1rem;
-    border-radius: 999px;
-    font-weight: 900;
-    transition:
-        background var(--transition),
-        transform var(--transition),
-        box-shadow var(--transition);
-}
-
-.button:hover {
-    background: var(--dark-green);
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(11, 46, 31, 0.18);
-}
-
-.button.secondary {
-    background: var(--white);
+::selection {
+    background: var(--bright-green);
     color: var(--dark-green);
-    border: 1px solid var(--main-green);
 }
 
-.button.secondary:hover {
-    background: var(--light-green);
-}
+/* =========================
+   CINEMATIC STARTUP LOGO SCREEN
+   Requires this HTML inside #introScreen:
 
-/* Cards */
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-    margin-top: 1.5rem;
-}
-
-.grid.two {
-    grid-template-columns: repeat(2, 1fr);
-}
-
-.card,
-.timeline-item,
-.contact-box,
-.image-box,
-.video-box {
-    background: var(--white);
-    border-radius: var(--radius);
-    padding: 1.25rem;
-    box-shadow: var(--shadow);
-    border: 1px solid rgba(27, 127, 76, 0.15);
-}
-
-.card {
-    transition:
-        transform var(--transition),
-        box-shadow var(--transition);
-}
-
-.card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-hover);
-}
-
-.image-box {
-    min-height: 320px;
-    display: grid;
-    place-items: center;
-    background:
-        radial-gradient(circle at center, rgba(61, 220, 132, 0.2), transparent 45%),
-        linear-gradient(135deg, var(--light-green), #c8efd7);
-    text-align: center;
-}
-
-.video-box {
-    min-height: 320px;
-    display: grid;
-    place-items: center;
-    margin: 2rem 0;
-    background:
-        radial-gradient(circle at center, rgba(61, 220, 132, 0.16), transparent 45%),
-        linear-gradient(135deg, var(--dark-green), var(--main-green));
-    color: var(--white);
-    text-align: center;
-}
-
-.video-box p {
-    color: var(--white);
-    font-weight: 900;
-}
-
-.timeline {
-    display: grid;
-    gap: 1rem;
-    margin-top: 1.5rem;
-}
-
-.timeline-item {
-    border-left: 6px solid var(--main-green);
-}
-
-.meta {
-    color: var(--main-green);
-    font-weight: 900;
-    margin-bottom: 0.5rem;
-}
-
-.contact-box {
-    margin-top: 1.5rem;
-    max-width: 700px;
-}
-
-.contact-box p + p {
-    margin-top: 0.5rem;
-}
-
-/* Footer */
-
-.site-footer {
-    background: var(--dark-green);
-    color: var(--white);
-    text-align: center;
-    padding: 1.25rem;
-    margin-top: 2rem;
-}
-
-.site-footer p {
-    color: rgba(255, 255, 255, 0.8);
-}
-
-.last-updated {
-    font-size: 0.9rem;
-    margin-top: 0.25rem;
-}
-
-/* Startup Logo Screen */
+   <div class="startup-logo">
+       <img src="images/logo/ring-green.webp" class="startup-layer startup-ring-green" alt="">
+       <img src="images/logo/ring-pink.webp" class="startup-layer startup-ring-pink" alt="">
+       <img src="images/logo/black-shadow.webp" class="startup-layer startup-shadow" alt="">
+       <img src="images/logo/heath-lyon.webp" class="startup-layer startup-name" alt="Heath Lyon">
+       <img src="images/logo/fpv-tag.webp" class="startup-layer startup-fpv" alt="FPV">
+   </div>
+========================= */
 
 #introScreen {
     position: fixed;
     inset: 0;
     z-index: 9999;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
     background:
         radial-gradient(circle at center, var(--intro-green-soft), transparent 34%),
-        radial-gradient(circle at center, var(--intro-bg-soft) 0%, var(--intro-bg-dark) 64%, #000 100%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+        radial-gradient(circle at center, var(--intro-bg-soft) 0%, var(--intro-bg-dark) 66%, #000 100%);
+    color: var(--white);
     opacity: 1;
     visibility: visible;
     pointer-events: all;
@@ -322,6 +117,8 @@ p {
         visibility 1.15s ease;
 }
 
+/* Supports both .hide and .hide-intro so your current JS still works. */
+#introScreen.hide,
 #introScreen.hide-intro {
     opacity: 0;
     filter: blur(8px);
@@ -330,6 +127,7 @@ p {
     pointer-events: none;
 }
 
+/* Animated layer stack */
 .startup-logo {
     position: relative;
     width: min(78vw, 540px);
@@ -355,7 +153,7 @@ p {
     animation: spinRight 4.8s linear infinite;
     filter:
         drop-shadow(0 0 7px var(--intro-green))
-        drop-shadow(0 0 14px rgba(27, 127, 76, 0.2));
+        drop-shadow(0 0 14px rgba(22, 131, 79, 0.22));
     will-change: transform;
 }
 
@@ -383,7 +181,41 @@ p {
     animation: fpvPulse 1.35s ease-in-out infinite;
 }
 
-/* Startup Animations */
+/* Fallback support for your older HL intro markup */
+.intro-logo {
+    text-align: center;
+    animation: startupLogoEnter 0.85s ease forwards;
+}
+
+.logo-mark {
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 1rem;
+    border-radius: 26px;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(135deg, var(--main-green), var(--bright-green));
+    color: var(--dark-green);
+    font-size: 2.1rem;
+    font-weight: 900;
+    box-shadow: 0 0 38px var(--intro-green);
+}
+
+.intro-logo h1,
+#introScreen .intro-title {
+    font-size: clamp(1.8rem, 5vw, 3.2rem);
+    line-height: 1;
+    margin: 0.4rem 0;
+    color: var(--white);
+    font-weight: 900;
+}
+
+.intro-logo p {
+    color: rgba(255, 255, 255, 0.74);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-size: 0.78rem;
+}
 
 @keyframes startupLogoEnter {
     0% {
@@ -454,37 +286,470 @@ p {
     }
 }
 
-/* Mobile */
+/* =========================
+   HEADER / NAV
+========================= */
 
-@media (max-width: 800px) {
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(6, 27, 18, 0.82);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(61, 220, 132, 0.18);
+}
+
+.navbar {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0.9rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.logo {
+    color: var(--white);
+    font-weight: 900;
+    font-size: 1.15rem;
+    letter-spacing: 0.04em;
+}
+
+.logo::after {
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    margin-left: 8px;
+    border-radius: 999px;
+    background: var(--bright-green);
+    box-shadow: 0 0 16px rgba(61, 220, 132, 0.9);
+}
+
+.menu-button {
+    display: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 999px;
+    border: 1px solid rgba(61, 220, 132, 0.32);
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--white);
+    font-size: 1.45rem;
+    cursor: pointer;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    list-style: none;
+}
+
+.nav-links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+    padding: 0.55rem 0.85rem;
+    border-radius: 999px;
+    color: rgba(255, 255, 255, 0.78);
+    font-weight: 700;
+    font-size: 0.92rem;
+    transition:
+        color 0.2s ease,
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--white);
+    background: rgba(61, 220, 132, 0.16);
+}
+
+.nav-links a:hover {
+    transform: translateY(-1px);
+}
+
+/* =========================
+   MAIN LAYOUT
+========================= */
+
+.page {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 2.5rem 1rem;
+}
+
+.section {
+    padding: 4rem 0;
+}
+
+.hero {
+    min-height: calc(100vh - 90px);
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+    align-items: center;
+    gap: 2rem;
+    padding: 3rem 0;
+}
+
+.tagline {
+    display: inline-flex;
+    width: fit-content;
+    align-items: center;
+    gap: 0.45rem;
+    margin-bottom: 0.85rem;
+    padding: 0.35rem 0.7rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.74);
+    color: var(--main-green);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    font-size: 0.72rem;
+}
+
+.tagline::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: var(--bright-green);
+    box-shadow: 0 0 14px rgba(61, 220, 132, 0.8);
+}
+
+h1,
+h2,
+h3 {
+    color: var(--text-dark);
+    line-height: 1.08;
+}
+
+h1 {
+    max-width: 850px;
+    font-size: clamp(2.7rem, 7vw, 5.8rem);
+    letter-spacing: -0.06em;
+    margin-bottom: 1rem;
+}
+
+h2 {
+    font-size: clamp(2rem, 4vw, 3.1rem);
+    letter-spacing: -0.04em;
+    margin-bottom: 1rem;
+}
+
+h3 {
+    font-size: 1.22rem;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.55rem;
+}
+
+.hero p {
+    max-width: 690px;
+    font-size: 1.12rem;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.button-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 1.6rem;
+}
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    padding: 0.85rem 1.15rem;
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--main-green), #0e6d40);
+    color: var(--white);
+    font-weight: 900;
+    box-shadow: 0 12px 24px rgba(22, 131, 79, 0.26);
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+.button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 34px rgba(22, 131, 79, 0.34);
+}
+
+.button.secondary {
+    background: rgba(255, 255, 255, 0.78);
+    color: var(--deep-green);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-soft);
+}
+
+.button.secondary:hover {
+    background: var(--white);
+}
+
+/* =========================
+   CARDS / CONTENT BLOCKS
+========================= */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 1.6rem;
+}
+
+.grid.two {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.card,
+.timeline-item,
+.contact-box,
+.image-box,
+.video-box {
+    position: relative;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.78);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-card);
+}
+
+.card,
+.timeline-item,
+.contact-box {
+    padding: 1.35rem;
+}
+
+.card::before,
+.timeline-item::before,
+.contact-box::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--bright-green), transparent);
+    opacity: 0.85;
+}
+
+.card {
+    transition:
+        transform 0.22s ease,
+        box-shadow 0.22s ease,
+        border-color 0.22s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(61, 220, 132, 0.40);
+    box-shadow: 0 22px 55px rgba(6, 27, 18, 0.18);
+}
+
+.card p {
+    margin-top: 0.25rem;
+}
+
+.image-box {
+    min-height: 360px;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    padding: 1.5rem;
+    background:
+        linear-gradient(rgba(6, 27, 18, 0.18), rgba(6, 27, 18, 0.18)),
+        radial-gradient(circle at top right, rgba(61, 220, 132, 0.35), transparent 13rem),
+        linear-gradient(135deg, var(--soft-green), #c8efd7);
+    border-radius: var(--radius-lg);
+}
+
+.image-box p {
+    color: var(--deep-green);
+    font-weight: 900;
+    letter-spacing: 0.03em;
+}
+
+/* Use this if you replace image-box with an actual image later */
+.image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: inherit;
+}
+
+/* =========================
+   VIDEO BOX
+========================= */
+
+.video-box {
+    min-height: 360px;
+    margin: 2rem 0;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    padding: 1.5rem;
+    color: var(--white);
+    background:
+        linear-gradient(rgba(6, 27, 18, 0.72), rgba(6, 27, 18, 0.72)),
+        radial-gradient(circle at center, rgba(61, 220, 132, 0.25), transparent 17rem),
+        linear-gradient(135deg, var(--dark-green), var(--main-green));
+    border: 1px solid var(--border-strong);
+    box-shadow: var(--shadow-card), var(--shadow-glow);
+}
+
+.video-box p {
+    color: var(--white);
+    font-size: 1.15rem;
+    font-weight: 900;
+}
+
+/* =========================
+   TIMELINE / WORK HISTORY
+========================= */
+
+.timeline {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1.6rem;
+}
+
+.timeline-item {
+    border-left: 6px solid var(--main-green);
+}
+
+.timeline-item h3 {
+    margin-bottom: 0.25rem;
+}
+
+.meta {
+    color: var(--main-green);
+    font-weight: 900;
+    margin-bottom: 0.65rem;
+}
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact-box {
+    max-width: 720px;
+    margin-top: 1.6rem;
+}
+
+.contact-box p + p {
+    margin-top: 0.65rem;
+}
+
+.contact-box strong {
+    color: var(--text-dark);
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.site-footer {
+    margin-top: 2rem;
+    padding: 1.35rem 1rem;
+    text-align: center;
+    background:
+        radial-gradient(circle at top, rgba(61, 220, 132, 0.12), transparent 18rem),
+        var(--dark-green);
+    border-top: 1px solid rgba(61, 220, 132, 0.20);
+}
+
+.site-footer p {
+    color: rgba(255, 255, 255, 0.80);
+}
+
+.last-updated {
+    margin-top: 0.25rem;
+    font-size: 0.88rem;
+    color: rgba(255, 255, 255, 0.58) !important;
+}
+
+/* =========================
+   OPTIONAL SUBTLE ANIMATION
+========================= */
+
+.card,
+.timeline-item,
+.contact-box,
+.image-box,
+.video-box {
+    animation: fadeUp 0.65s ease both;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 900px) {
     .menu-button {
-        display: block;
+        display: grid;
+        place-items: center;
+    }
+
+    .navbar {
+        padding: 0.85rem 1rem;
     }
 
     .nav-links {
-        display: none;
         position: absolute;
-        left: 0;
-        right: 0;
-        top: 100%;
-        background: var(--dark-green);
+        top: calc(100% + 0.6rem);
+        left: 1rem;
+        right: 1rem;
+        display: none;
         flex-direction: column;
-        text-align: center;
-        padding: 1rem;
+        gap: 0.35rem;
+        padding: 0.7rem;
+        border-radius: var(--radius);
+        background: rgba(6, 27, 18, 0.96);
+        border: 1px solid rgba(61, 220, 132, 0.24);
+        box-shadow: var(--shadow-card);
     }
 
     .nav-links.show {
         display: flex;
     }
 
-    .navbar {
-        position: relative;
+    .nav-links a {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .page {
+        padding: 1.5rem 1rem;
     }
 
     .hero {
-        grid-template-columns: 1fr;
         min-height: auto;
-        padding-top: 2rem;
+        grid-template-columns: 1fr;
+        padding: 2.5rem 0 3rem;
+    }
+
+    .section {
+        padding: 3rem 0;
     }
 
     .grid,
@@ -492,12 +757,42 @@ p {
         grid-template-columns: 1fr;
     }
 
-    .startup-logo {
-        width: min(92vw, 430px);
+    .image-box,
+    .video-box {
+        min-height: 260px;
+    }
+
+    h1 {
+        letter-spacing: -0.045em;
     }
 }
 
-/* Reduced Motion */
+@media (max-width: 520px) {
+    .button-row {
+        flex-direction: column;
+    }
+
+    .button {
+        width: 100%;
+    }
+
+    .tagline {
+        font-size: 0.66rem;
+        letter-spacing: 0.06em;
+    }
+
+    .card,
+    .timeline-item,
+    .contact-box {
+        padding: 1.1rem;
+    }
+}
+
+
+
+/* =========================
+   ACCESSIBILITY / REDUCED MOTION
+========================= */
 
 @media (prefers-reduced-motion: reduce) {
     html {
@@ -511,4 +806,20 @@ p {
         animation-iteration-count: 1 !important;
         transition-duration: 0.001ms !important;
     }
+}
+
+@media (max-width: 900px) {
+    .startup-logo {
+        width: min(92vw, 430px);
+    }
+}
+
+.reel-video {
+    width: 100%;
+    max-width: 1000px;
+    display: block;
+    margin: 2rem auto;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-card);
+    background: #000;
 }
