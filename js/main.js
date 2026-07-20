@@ -222,7 +222,7 @@ function initializeCursorTrail() {
         context.clearRect(0, 0, window.innerWidth, window.innerHeight);
 
         for (const point of points) {
-            point.life -= 0.018;
+            point.life -= 0.05;
         }
 
         while (points.length && points[0].life <= 0) {
