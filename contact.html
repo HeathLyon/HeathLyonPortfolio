@@ -3,27 +3,134 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#020806">
+    <meta name="description" content="Contact Heath Lyon for FPV drone work, technical projects, and collaboration.">
     <title>Heath Lyon | Contact</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+    <canvas id="matrixCanvas" aria-hidden="true"></canvas>
+    <canvas id="cursorTrailCanvas" aria-hidden="true"></canvas>
+    <div class="cursor-field" aria-hidden="true"></div>
+    <div class="scanline-overlay" aria-hidden="true"></div>
+
     <div id="siteHeader"></div>
 
     <main class="page">
         <section class="section">
-            <p class="tagline">Get In Touch</p>
-            <h1>Contact</h1>
-            <p>
-                Available for drone shoots, FPV cinematic work, build consulting,
-                and technical projects.
-            </p>
+            <div class="section-heading">
+                <div>
+                    <p class="section-code">// SECURE_CONTACT_LINK</p>
+                    <h1 class="glitch-title" data-text="Contact">Contact</h1>
+                </div>
+                <p>
+                    Available for drone shoots, FPV cinematic work,
+                    technical builds, website projects, and collaborative development.
+                </p>
+            </div>
 
+            <dl class="system-stats" aria-label="Contact availability">
+                <div>
+                    <dt>LOCATION</dt>
+                    <dd>PROVO, UTAH</dd>
+                </div>
+                <div>
+                    <dt>WORK MODE</dt>
+                    <dd>LOCAL / TRAVEL</dd>
+                </div>
+                <div>
+                    <dt>STATUS</dt>
+                    <dd><span class="status-dot"></span> AVAILABLE</dd>
+                </div>
+            </dl>
+        </section>
+
+        <div class="trace-channel" aria-hidden="true">
+            <span>COMMUNICATION CHANNELS // REPLACE PLACEHOLDERS</span>
+        </div>
+
+        <section class="section">
             <div class="contact-box">
-                <p><strong>Email:</strong> your-email@example.com</p>
-                <p><strong>Location:</strong> Provo, Utah</p>
-                <p><strong>GitHub:</strong> github.com/yourusername</p>
-                <p><strong>YouTube:</strong> Add your drone reel link here</p>
-                <p><strong>Instagram:</strong> Add your drone page here</p>
+                <p class="section-code">// DIRECT_CHANNELS</p>
+                <h3>Contact Information</h3>
+
+                <div class="project-list">
+                    <article class="project-row">
+                        <span class="project-number">@</span>
+                        <div>
+                            <h3>Email</h3>
+                            <p>Replace with your professional email address.</p>
+                        </div>
+                        <span class="project-tag">PRIMARY</span>
+                    </article>
+
+                    <article class="project-row">
+                        <span class="project-number">GH</span>
+                        <div>
+                            <h3>GitHub</h3>
+                            <p>Replace with your GitHub profile or portfolio repository.</p>
+                        </div>
+                        <span class="project-tag purple">CODE</span>
+                    </article>
+
+                    <article class="project-row">
+                        <span class="project-number">YT</span>
+                        <div>
+                            <h3>YouTube / Drone Reel</h3>
+                            <p>Replace with your public reel, flight channel, or production portfolio.</p>
+                        </div>
+                        <span class="project-tag">VIDEO</span>
+                    </article>
+
+                    <article class="project-row">
+                        <span class="project-number">IG</span>
+                        <div>
+                            <h3>Instagram</h3>
+                            <p>Replace with your professional FPV or creative-work account.</p>
+                        </div>
+                        <span class="project-tag purple">SOCIAL</span>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <div class="trace-channel trace-channel-reverse" aria-hidden="true">
+            <span>PROJECT REQUESTS // AVAILABLE SERVICES</span>
+        </div>
+
+        <section class="section">
+            <div class="grid">
+                <article class="card">
+                    <p class="card-index">C01_FLIGHT</p>
+                    <h3>Drone Production</h3>
+                    <p>
+                        Cinematic FPV, aerial footage, production support,
+                        custom flight planning, and location-based drone work.
+                    </p>
+                </article>
+
+                <article class="card">
+                    <p class="card-index">C02_BUILD</p>
+                    <h3>Technical Builds</h3>
+                    <p>
+                        Custom drone systems, troubleshooting, electronics,
+                        embedded prototypes, sensing, and computer-vision projects.
+                    </p>
+                </article>
+
+                <article class="card">
+                    <p class="card-index">C03_WEB</p>
+                    <h3>Web & Interactive Projects</h3>
+                    <p>
+                        Portfolio sites, local-business websites,
+                        technical interfaces, and interactive 3D model viewers.
+                    </p>
+                </article>
             </div>
         </section>
     </main>

@@ -3,44 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#020806">
+    <meta name="description" content="Heath Lyon's drone, management, fabrication, and technical work history.">
     <title>Heath Lyon | Work History</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+    <canvas id="matrixCanvas" aria-hidden="true"></canvas>
+    <canvas id="cursorTrailCanvas" aria-hidden="true"></canvas>
+    <div class="cursor-field" aria-hidden="true"></div>
+    <div class="scanline-overlay" aria-hidden="true"></div>
+
     <div id="siteHeader"></div>
 
     <main class="page">
         <section class="section">
-            <p class="tagline">Experience</p>
-            <h1>Work History</h1>
+            <div class="section-heading">
+                <div>
+                    <p class="section-code">// CAREER_LOG</p>
+                    <h1 class="glitch-title" data-text="Work History">Work History</h1>
+                </div>
+                <p>
+                    Field experience across professional drone operations,
+                    team leadership, fabrication, installation, and hands-on problem solving.
+                </p>
+            </div>
 
+            <dl class="system-stats" aria-label="Work history summary">
+                <div>
+                    <dt>PRIMARY ROLE</dt>
+                    <dd>DRONE PILOT</dd>
+                </div>
+                <div>
+                    <dt>OPERATIONS</dt>
+                    <dd>FIELD / MANAGEMENT</dd>
+                </div>
+                <div>
+                    <dt>STATUS</dt>
+                    <dd><span class="status-dot"></span> ACTIVE</dd>
+                </div>
+            </dl>
+        </section>
+
+        <div class="trace-channel" aria-hidden="true">
+            <span>EMPLOYMENT RECORDS // VERIFIED EXPERIENCE</span>
+        </div>
+
+        <section class="section">
             <div class="timeline">
-                <div class="timeline-item">
+                <article class="timeline-item">
+                    <p class="section-code">// ROLE_01</p>
                     <h3>Drone Pilot / Independent Contractor</h3>
-                    <p class="meta">Think Global Media Group — 2026–Present</p>
+                    <p class="meta">Think Global Media Group — Salt Lake City, Utah — 2026–Present</p>
                     <p>
-                        Flew FPV and Mavic-style drones for professional shoots,
-                        helped with safety briefings, and maintained cinelifter-style drones.
+                        Fly FPV and Mavic-style drones for professional productions,
+                        participate in preflight safety briefings, maintain custom cinelifter systems,
+                        and support long field days at changing shoot locations.
                     </p>
-                </div>
+                </article>
 
-                <div class="timeline-item">
+                <article class="timeline-item">
+                    <p class="section-code">// ROLE_02</p>
                     <h3>General Manager</h3>
-                    <p class="meta">Crumbl Cookies — Provo, UT — 2024–Present</p>
+                    <p class="meta">Crumbl Cookies — Provo, Utah — 2024–Present</p>
                     <p>
-                        Managed daily operations, trained team members, handled inventory,
-                        and supported customer service.
+                        Manage day-to-day operations, train and onboard team members,
+                        coordinate inventory and labor, and move the store toward performance
+                        and profitability goals.
                     </p>
-                </div>
+                </article>
 
-                <div class="timeline-item">
+                <article class="timeline-item">
+                    <p class="section-code">// ROLE_03</p>
                     <h3>Cabinet Builder / Farm Hand</h3>
-                    <p class="meta">Hale Craft Custom Cabinets / Hale Craft Farms — 2023–2024</p>
+                    <p class="meta">Hale Craft Custom Cabinets / Hale Craft Farms — Wasilla, Alaska — 2023–2024</p>
                     <p>
-                        Built and installed custom systems, worked in harsh conditions,
-                        and developed hands-on mechanical experience.
+                        Built and installed custom cabinetry and systems, worked through harsh
+                        weather and demanding schedules, communicated with clients on location,
+                        and developed practical mechanical and construction experience.
                     </p>
-                </div>
+                </article>
+            </div>
+        </section>
+
+        <div class="trace-channel trace-channel-reverse" aria-hidden="true">
+            <span>TRANSFERABLE SYSTEMS // SAFETY / LEADERSHIP / FABRICATION</span>
+        </div>
+
+        <section class="section">
+            <div class="project-list">
+                <article class="project-row">
+                    <span class="project-number">W01</span>
+                    <div>
+                        <h3>Safety-Critical Operations</h3>
+                        <p>Preflight preparation, equipment checks, risk awareness, and calm decision-making in the field.</p>
+                    </div>
+                    <span class="project-tag">FLIGHT</span>
+                </article>
+
+                <article class="project-row">
+                    <span class="project-number">W02</span>
+                    <div>
+                        <h3>Team Leadership</h3>
+                        <p>Training, scheduling, operational accountability, and clear communication under pressure.</p>
+                    </div>
+                    <span class="project-tag">LEADERSHIP</span>
+                </article>
+
+                <article class="project-row">
+                    <span class="project-number">W03</span>
+                    <div>
+                        <h3>Hands-On Fabrication</h3>
+                        <p>Mechanical assembly, installation, troubleshooting, maintenance, and field adaptation.</p>
+                    </div>
+                    <span class="project-tag purple">BUILD</span>
+                </article>
             </div>
         </section>
     </main>

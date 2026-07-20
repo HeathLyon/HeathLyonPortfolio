@@ -3,32 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#020806">
+    <meta name="description" content="Heath Lyon's drone, software, electronics, fabrication, and technical skills.">
     <title>Heath Lyon | Skills</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+    <canvas id="matrixCanvas" aria-hidden="true"></canvas>
+    <canvas id="cursorTrailCanvas" aria-hidden="true"></canvas>
+    <div class="cursor-field" aria-hidden="true"></div>
+    <div class="scanline-overlay" aria-hidden="true"></div>
+
     <div id="siteHeader"></div>
 
     <main class="page">
         <section class="section">
-            <p class="tagline">Capabilities</p>
-            <h1>Skills</h1>
+            <div class="section-heading">
+                <div>
+                    <p class="section-code">// CAPABILITY_INDEX</p>
+                    <h1 class="glitch-title" data-text="Skills">Skills</h1>
+                </div>
+                <p>
+                    A combined technical stack spanning flight systems,
+                    embedded electronics, computer vision, fabrication, and web development.
+                </p>
+            </div>
 
+            <dl class="system-stats" aria-label="Skills summary">
+                <div>
+                    <dt>FLIGHT LINK</dt>
+                    <dd>FPV / GPS</dd>
+                </div>
+                <div>
+                    <dt>CODE STACK</dt>
+                    <dd>PYTHON / WEB</dd>
+                </div>
+                <div>
+                    <dt>CERTIFICATION</dt>
+                    <dd>FAA PART 107</dd>
+                </div>
+            </dl>
+        </section>
+
+        <div class="trace-channel" aria-hidden="true">
+            <span>LOADED MODULES // TECHNICAL CAPABILITIES</span>
+        </div>
+
+        <section class="section">
             <div class="grid">
-                <div class="card">
-                    <h3>Drone Skills</h3>
-                    <p>FPV flight, cinelifter builds, Betaflight tuning, ELRS, DJI O3/O4, and safety checks.</p>
-                </div>
+                <article class="card">
+                    <p class="card-index">01_DRONE_SYSTEMS</p>
+                    <h3>Flight Operations</h3>
+                    <p>
+                        FPV flight, cinematic proximity flying, Mavic operations,
+                        field planning, safety checks, client-facing production support,
+                        and FAA Part 107 procedures.
+                    </p>
+                </article>
 
-                <div class="card">
-                    <h3>Technical Skills</h3>
-                    <p>Python, Tkinter, OpenCV, YOLO, ESP32, Raspberry Pi, HTML, CSS, and JavaScript.</p>
-                </div>
+                <article class="card">
+                    <p class="card-index">02_BUILD_SYSTEMS</p>
+                    <h3>Drone Engineering</h3>
+                    <p>
+                        Cinelifter construction, Betaflight configuration, ELRS,
+                        DJI O3/O4 systems, soldering, ESC and motor troubleshooting,
+                        vibration control, and power-system integration.
+                    </p>
+                </article>
 
-                <div class="card">
-                    <h3>Certifications</h3>
-                    <p>FAA Part 107 Commercial Drone Pilot.</p>
-                </div>
+                <article class="card">
+                    <p class="card-index">03_SOFTWARE</p>
+                    <h3>Programming</h3>
+                    <p>
+                        Python, Tkinter, OpenCV, Ultralytics YOLO,
+                        HTML, CSS, JavaScript, data visualization,
+                        interface development, and automation prototypes.
+                    </p>
+                </article>
+
+                <article class="card">
+                    <p class="card-index">04_EMBEDDED</p>
+                    <h3>Electronics & Sensing</h3>
+                    <p>
+                        ESP32, Raspberry Pi, CSI sensing, cameras, IMUs,
+                        serial communication, hardware integration, and rapid prototyping.
+                    </p>
+                </article>
+
+                <article class="card">
+                    <p class="card-index">05_3D_DATA</p>
+                    <h3>Interactive 3D</h3>
+                    <p>
+                        Three.js, GLB/GLTF model viewers, digital archives,
+                        scan metadata organization, free-camera controls, and web deployment.
+                    </p>
+                </article>
+
+                <article class="card">
+                    <p class="card-index">06_FIELD_SKILLS</p>
+                    <h3>Fabrication & Leadership</h3>
+                    <p>
+                        Mechanical assembly, cabinet construction, installations,
+                        inventory management, staff training, operational planning,
+                        and practical field troubleshooting.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <div class="trace-channel trace-channel-reverse" aria-hidden="true">
+            <span>CERTIFICATION RECORD // ACTIVE CREDENTIALS</span>
+        </div>
+
+        <section class="section">
+            <div class="project-list">
+                <article class="project-row">
+                    <span class="project-number">C01</span>
+                    <div>
+                        <h3>FAA Part 107 Remote Pilot Certificate</h3>
+                        <p>Commercial small unmanned aircraft operations in the United States.</p>
+                    </div>
+                    <span class="project-tag">ACTIVE</span>
+                </article>
             </div>
         </section>
     </main>

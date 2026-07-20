@@ -3,41 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#020806">
+    <meta name="description" content="Heath Lyon's cinematic FPV drone reel and professional flight work.">
     <title>Heath Lyon | Drone Reel</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+    <canvas id="matrixCanvas" aria-hidden="true"></canvas>
+    <canvas id="cursorTrailCanvas" aria-hidden="true"></canvas>
+    <div class="cursor-field" aria-hidden="true"></div>
+    <div class="scanline-overlay" aria-hidden="true"></div>
+
     <div id="siteHeader"></div>
 
     <main class="page">
         <section class="section">
-            <p class="tagline">Featured Footage</p>
-            <h1>Drone Reel</h1>
-            <p>
-                Put your best drone footage here. Start with your strongest shot,
-                then show cinematic FPV, client work, and build testing.
-            </p>
+            <div class="section-heading">
+                <div>
+                    <p class="section-code">// FLIGHT_MEDIA_ARCHIVE</p>
+                    <h1 class="glitch-title" data-text="Drone Reel">Drone Reel</h1>
+                </div>
+                <p>
+                    Cinematic FPV, professional production work, build testing,
+                    and technical flight footage.
+                </p>
+            </div>
 
-            <video class="reel-video" controls preload="metadata" poster="images/reel-poster.webp">
+            <dl class="system-stats" aria-label="Drone reel summary">
+                <div>
+                    <dt>LICENSE</dt>
+                    <dd>FAA PART 107</dd>
+                </div>
+                <div>
+                    <dt>PLATFORMS</dt>
+                    <dd>FPV / MAVIC</dd>
+                </div>
+                <div>
+                    <dt>VIDEO LINK</dt>
+                    <dd><span class="status-dot"></span> READY</dd>
+                </div>
+            </dl>
+        </section>
+
+        <div class="trace-channel" aria-hidden="true">
+            <span>MEDIA STREAM // PRIMARY REEL</span>
+        </div>
+
+        <section class="section">
+            <video
+                class="reel-video"
+                controls
+                preload="metadata"
+                playsinline
+                poster="images/reel-poster.webp"
+                aria-label="Heath Lyon drone reel"
+            >
                 <source src="video/Dronereelcompress.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
+        </section>
 
+        <div class="trace-channel trace-channel-reverse" aria-hidden="true">
+            <span>FLIGHT CATEGORIES // MISSION RECORDS</span>
+        </div>
+
+        <section class="section">
             <div class="grid">
-                <div class="card">
+                <article class="card">
+                    <p class="card-index">F01_CINEMATIC</p>
                     <h3>Cinematic FPV</h3>
-                    <p>Building dives, tracking shots, landscapes, and smooth proximity flying.</p>
-                </div>
+                    <p>
+                        Building dives, tracking shots, landscapes,
+                        proximity flying, and smooth low-altitude movement.
+                    </p>
+                </article>
 
-                <div class="card">
+                <article class="card">
+                    <p class="card-index">F02_PRODUCTION</p>
                     <h3>Professional Shoots</h3>
-                    <p>Client-facing drone work, safety briefings, and production support.</p>
-                </div>
+                    <p>
+                        Client-facing drone work, location preparation,
+                        safety briefings, production coordination, and field support.
+                    </p>
+                </article>
 
-                <div class="card">
+                <article class="card">
+                    <p class="card-index">F03_TESTING</p>
                     <h3>Build Testing</h3>
-                    <p>Test flights, tuning, cinelifter setup, and field troubleshooting.</p>
-                </div>
+                    <p>
+                        Test flights, Betaflight tuning, cinelifter setup,
+                        vibration diagnosis, payload testing, and troubleshooting.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <div class="trace-channel" aria-hidden="true">
+            <span>FLIGHT SYSTEMS // CURRENT EQUIPMENT</span>
+        </div>
+
+        <section class="section">
+            <div class="project-list">
+                <article class="project-row">
+                    <span class="project-number">D01</span>
+                    <div>
+                        <h3>Custom FPV Platforms</h3>
+                        <p>Five-inch cinematic systems, seven-inch long-range builds, and heavy-lift cinelifter development.</p>
+                    </div>
+                    <span class="project-tag">CUSTOM</span>
+                </article>
+
+                <article class="project-row">
+                    <span class="project-number">D02</span>
+                    <div>
+                        <h3>Digital Video Systems</h3>
+                        <p>DJI O3/O4 integration, client monitoring workflows, action-camera payloads, and footage optimization.</p>
+                    </div>
+                    <span class="project-tag purple">DIGITAL</span>
+                </article>
             </div>
         </section>
     </main>

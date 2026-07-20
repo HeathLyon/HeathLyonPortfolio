@@ -3,46 +3,201 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#020806">
+    <meta name="description" content="Heath Lyon's drone, computer vision, sensing, and interactive 3D projects.">
     <title>Heath Lyon | Projects</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+    <canvas id="matrixCanvas" aria-hidden="true"></canvas>
+    <canvas id="cursorTrailCanvas" aria-hidden="true"></canvas>
+    <div class="cursor-field" aria-hidden="true"></div>
+    <div class="scanline-overlay" aria-hidden="true"></div>
+
     <div id="siteHeader"></div>
 
     <main class="page">
         <section class="section">
-            <p class="tagline">Hands-On Work</p>
-            <h1>Projects</h1>
-
-            <div class="grid two">
-                <div class="card">
-                    <h3>Custom X8 Cinelifter Build</h3>
-                    <p>
-                        Heavy-lift FPV drone platform using 8S power, separate ESCs,
-                        DJI video, ELRS control, and Betaflight tuning.
-                    </p>
+            <div class="section-heading">
+                <div>
+                    <p class="section-code">// PROJECT_ARCHIVE</p>
+                    <h1 class="glitch-title" data-text="Projects">Projects</h1>
                 </div>
+                <p>
+                    Active and completed systems combining custom hardware,
+                    software, sensing, computer vision, and interactive 3D data.
+                </p>
+            </div>
 
-                <div class="card">
-                    <h3>YOLO Fall Detection System</h3>
-                    <p>
-                        Python and OpenCV project using pose tracking to detect possible fall events.
-                    </p>
+            <dl class="system-stats" aria-label="Project archive status">
+                <div>
+                    <dt>ARCHIVE</dt>
+                    <dd><span class="status-dot"></span> ONLINE</dd>
                 </div>
+                <div>
+                    <dt>PROJECT TYPES</dt>
+                    <dd>HARDWARE / CODE</dd>
+                </div>
+                <div>
+                    <dt>3D FORMATS</dt>
+                    <dd>GLB / GLTF</dd>
+                </div>
+            </dl>
+        </section>
 
-                <div class="card">
+        <div class="trace-channel" aria-hidden="true">
+            <span>PROJECT INDEX // ACTIVE SYSTEMS</span>
+        </div>
+
+        <section class="section">
+            <div class="grid">
+                <article class="card">
+                    <p class="card-index">P01_HEAVY_LIFT</p>
+                    <h3>Custom X8 Cinelifter</h3>
+                    <p>
+                        Heavy-lift FPV platform built around 8S power, eight motors,
+                        independent ESC control, DJI digital video, ELRS control,
+                        and Betaflight tuning for professional camera payloads.
+                    </p>
+                </article>
+
+                <article class="card">
+                    <p class="card-index">P02_COMPUTER_VISION</p>
+                    <h3>YOLO Fall Detection</h3>
+                    <p>
+                        Python and OpenCV system using pose tracking to identify possible
+                        falls, display privacy-preserving skeletons, log alerts,
+                        and send notifications with supporting images.
+                    </p>
+                </article>
+
+                <article class="card">
+                    <p class="card-index">P03_RF_SENSING</p>
                     <h3>ESP32 CSI Presence Detection</h3>
                     <p>
-                        Wi-Fi sensing experiment using ESP32 CSI data and Python visualization.
+                        Wi-Fi channel-state sensing experiment using ESP32 receivers,
+                        Python signal processing, and a Tkinter visualizer to detect
+                        changes caused by movement and human presence.
                     </p>
+                </article>
+
+                <article class="card">
+                    <p class="card-index">P04_GESTURE_INPUT</p>
+                    <h3>Pose-Controlled Game Interface</h3>
+                    <p>
+                        Webcam-driven game controls using YOLO pose estimation,
+                        punch detection, movement gestures, calibration,
+                        and single- or two-player interaction.
+                    </p>
+                </article>
+
+                <article class="card">
+                    <p class="card-index">P05_KINECT_SYSTEMS</p>
+                    <h3>Xbox 360 Kinect Toolkit</h3>
+                    <p>
+                        RGB and depth-camera experiments, tilt-motor control,
+                        gesture processing, spatial scanning concepts,
+                        and Raspberry Pi integration planning.
+                    </p>
+                </article>
+
+                <article class="card">
+                    <p class="card-index">P06_WEB_SYSTEMS</p>
+                    <h3>Technical Portfolio & Client Sites</h3>
+                    <p>
+                        Responsive GitHub Pages websites, reusable business-demo templates,
+                        custom interfaces, media optimization, analytics,
+                        and local-service SEO foundations.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <div class="trace-channel trace-channel-reverse" aria-hidden="true">
+            <span>SPATIAL ARCHIVE // ARCHAEOLOGY DATA</span>
+        </div>
+
+        <section class="section scan-section" id="archaeology-scans">
+            <div class="section-heading">
+                <div>
+                    <p class="section-code">// ARCHAEOLOGY_3D_ARCHIVE</p>
+                    <h2>Interactive Scan Viewer</h2>
+                </div>
+                <p>
+                    A web-based archive for excavation scans with structured metadata,
+                    selectable areas, model records, and free-camera inspection.
+                </p>
+            </div>
+
+            <div class="scan-layout">
+                <div class="scan-viewer-placeholder">
+                    <div class="scan-reticle" aria-hidden="true"></div>
+                    <div class="scan-placeholder-copy">
+                        <p class="scan-label">THREE.JS VIEWPORT</p>
+                        <h3>3D Model Viewer</h3>
+                        <p>
+                            Place the embedded Three.js viewer here or connect this panel
+                            to your existing archaeology viewer page.
+                        </p>
+                        <a class="button compact secondary" href="#" aria-label="Placeholder link for archaeology viewer">
+                            Launch Viewer
+                        </a>
+                    </div>
                 </div>
 
-                <div class="card">
-                    <h3>3D Model Web Viewer</h3>
-                    <p>
-                        Web viewer for GLB models using HTML, CSS, JavaScript, and Three.js.
-                    </p>
+                <div class="scan-log">
+                    <div class="scan-log-row">
+                        <span>MODEL FORMAT</span>
+                        <strong>GLB / GLTF</strong>
+                    </div>
+                    <div class="scan-log-row">
+                        <span>FIELDS</span>
+                        <strong>NAME / CLASS / LOCATION</strong>
+                    </div>
+                    <div class="scan-log-row">
+                        <span>NOTES</span>
+                        <strong>SCAN RECORDS ENABLED</strong>
+                    </div>
+                    <div class="scan-log-row">
+                        <span>CAMERA</span>
+                        <strong>FREE ORBIT / ZOOM</strong>
+                    </div>
+                    <div class="scan-log-row">
+                        <span>DEPLOYMENT</span>
+                        <strong>GITHUB PAGES</strong>
+                    </div>
                 </div>
+            </div>
+        </section>
+
+        <div class="trace-channel" aria-hidden="true">
+            <span>RESEARCH BRANCH // FUTURE DEVELOPMENT</span>
+        </div>
+
+        <section class="section">
+            <div class="project-list">
+                <article class="project-row">
+                    <span class="project-number">R01</span>
+                    <div>
+                        <h3>Search-and-Rescue Drone Payloads</h3>
+                        <p>RF sensing, phone detection, mapping overlays, modular payloads, and field-test planning.</p>
+                    </div>
+                    <span class="project-tag">RESEARCH</span>
+                </article>
+
+                <article class="project-row">
+                    <span class="project-number">R02</span>
+                    <div>
+                        <h3>Assistive Mobile Robotics</h3>
+                        <p>Depth sensing, fall detection, gesture input, audio interaction, and autonomous monitoring concepts.</p>
+                    </div>
+                    <span class="project-tag purple">CONCEPT</span>
+                </article>
             </div>
         </section>
     </main>

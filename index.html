@@ -3,67 +3,278 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Heath Lyon | Home</title>
-    <link rel="preload" as="image" href="images/logo/ring-green.webp">
-    <link rel="preload" as="image" href="images/logo/ring-pink.webp">
-    <link rel="preload" as="image" href="images/logo/black-shadow.webp">
-    <link rel="preload" as="image" href="images/logo/heath-lyon.webp">
-    <link rel="preload" as="image" href="images/logo/fpv-tag.webp">
+    <meta name="theme-color" content="#020806">
+    <meta name="description" content="Heath Lyon's FPV drone, technical systems, software, and archaeology 3D scan portfolio.">
+    <title>Heath Lyon | Systems Portfolio</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+    <link rel="preload" as="image" href="images/logo/BackGroundFPV.webp" type="image/webp">
+    <link rel="preload" as="image" href="images/logo/FrontFPV.webp" type="image/webp">
     <link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
-    <div id="introScreen">
-        <div class="startup-logo">
-            <img src="images/logo/ring-green.webp" class="startup-layer startup-ring-green" alt="">
-            <img src="images/logo/ring-pink.webp" class="startup-layer startup-ring-pink" alt="">
-            <img src="images/logo/black-shadow.webp" class="startup-layer startup-shadow" alt="">
-            <img src="images/logo/heath-lyon.webp" class="startup-layer startup-name" alt="Heath Lyon">
-            <img src="images/logo/fpv-tag.webp" class="startup-layer startup-fpv" alt="FPV">
+
+<body class="intro-active">
+    <canvas id="matrixCanvas" aria-hidden="true"></canvas>
+    <canvas id="cursorTrailCanvas" aria-hidden="true"></canvas>
+    <div class="cursor-field" aria-hidden="true"></div>
+    <div class="scanline-overlay" aria-hidden="true"></div>
+
+    <div id="introScreen" aria-label="Heath Lyon FPV introduction">
+        <div class="intro-grid" aria-hidden="true"></div>
+        <div class="intro-orbit intro-orbit-one" aria-hidden="true"></div>
+        <div class="intro-orbit intro-orbit-two" aria-hidden="true"></div>
+
+        <div class="startup-logo" role="img" aria-label="Heath Lyon FPV">
+            <!-- <img
+                src="images/logo/BackGroundFPV.webp"
+                class="startup-backdrop"
+                alt=""
+                width="641"
+                height="434"
+                decoding="async"
+            >-->
+
+            <div class="startup-wordmark-wrap">
+                <img
+                    src="images/logo/FrontFPV.webp"
+                    class="startup-wordmark"
+                    alt="Heath Lyon FPV"
+                    width="549"
+                    height="371"
+                    decoding="async"
+                >
+            </div>
         </div>
+
+        <p class="intro-caption" aria-hidden="true">
+            SYSTEM BOOT <span></span> FPV / CODE / 3D DATA
+        </p>
+
+        <button class="intro-skip" id="introSkip" type="button">
+            Skip intro
+        </button>
     </div>
 
-    <div id="siteHeader"></div>
     <div id="siteHeader"></div>
 
     <main class="page">
         <section class="hero">
-            <div>
-                <p class="tagline">FAA Part 107 Drone Pilot • FPV Cinematic Operator</p>
-                <h1>Heath Lyon</h1>
-                <p>
-                    I build and fly custom FPV drone systems for cinematic work,
-                    inspections, and hands-on technical projects.
+            <div class="hero-copy">
+                <p class="eyebrow">FAA Part 107 // FPV CINEMATIC OPERATOR</p>
+
+                <h1 class="glitch-title" data-text="Heath Lyon">Heath Lyon</h1>
+
+                <p class="hero-summary">
+                    I build and fly custom FPV systems, develop technical tools,
+                    and create interactive digital projects involving drones,
+                    computer vision, embedded electronics, and 3D archaeological data.
                 </p>
 
                 <div class="button-row">
-                    <a class="button" href="drone-reel.html">View Drone Reel</a>
-                    <a class="button secondary" href="projects.html">View Projects</a>
+                    <a class="button" href="drone-reel.html">Open Drone Reel</a>
+                    <a class="button secondary" href="projects.html">Browse Projects</a>
                 </div>
+
+                <dl class="system-stats" aria-label="Portfolio system status">
+                    <div>
+                        <dt>STATUS</dt>
+                        <dd><span class="status-dot"></span> ONLINE</dd>
+                    </div>
+                    <div>
+                        <dt>CLEARANCE</dt>
+                        <dd>PART 107</dd>
+                    </div>
+                    <div>
+                        <dt>PRIMARY LINK</dt>
+                        <dd>FPV / DIGITAL</dd>
+                    </div>
+                </dl>
             </div>
 
-            <div class="image-box">
-                <p>Put your main drone photo here</p>
-            </div>
+            <aside class="terminal-panel" aria-label="Interactive portfolio terminal">
+                <div class="terminal-topbar">
+                    <span class="terminal-title">portfolio://boot_console</span>
+                    <span class="terminal-status is-booting" id="terminalStatus">BOOTING</span>
+                </div>
+
+                <div
+                    class="terminal-output"
+                    id="terminalOutput"
+                    role="log"
+                    aria-live="polite"
+                    aria-relevant="additions"
+                    aria-label="Terminal output"
+                ></div>
+
+                <form class="terminal-input-line" id="terminalForm" autocomplete="off">
+                    <label class="sr-only" for="terminalInput">Portfolio terminal command</label>
+                    <span class="prompt" aria-hidden="true">root@heath:~$</span>
+                    <input
+                        id="terminalInput"
+                        class="terminal-input"
+                        name="command"
+                        type="text"
+                        maxlength="80"
+                        placeholder="initializing..."
+                        autocomplete="off"
+                        autocapitalize="none"
+                        spellcheck="false"
+                        aria-describedby="terminalHelp"
+                        disabled
+                    >
+                    <button class="terminal-submit" type="submit" disabled>RUN</button>
+                </form>
+
+                <p class="terminal-help" id="terminalHelp">
+                    Commands: help, status, weather, date, projects, drone, scans, clear
+                </p>
+            </aside>
         </section>
 
         <section class="section">
-            <h2>Portfolio Focus</h2>
+            <div class="section-heading">
+                <div>
+                    <p class="section-code">// 01_PORTFOLIO_MODULES</p>
+                    <h2>Core Systems</h2>
+                </div>
+                <p>
+                    A growing archive of flight work, engineered builds,
+                    software experiments, and digital documentation.
+                </p>
+            </div>
 
             <div class="grid">
-                <div class="card">
-                    <h3>Drone Work</h3>
-                    <p>FPV highlights, client shoots, cinematic reels, and professional field experience.</p>
-                </div>
+                <article class="card">
+                    <p class="card-index">01</p>
+                    <h3>Drone Operations</h3>
+                    <p>
+                        FPV highlights, commercial shoots, aerial cinematography,
+                        field planning, and professional flight experience.
+                    </p>
+                    <a class="text-link" href="drone-reel.html">Access reel →</a>
+                </article>
 
-                <div class="card">
+                <article class="card">
+                    <p class="card-index">02</p>
                     <h3>Technical Builds</h3>
-                    <p>Custom drones, cinelifters, Betaflight tuning, soldering, and troubleshooting.</p>
+                    <p>
+                        Custom FPV drones, cinelifters, Betaflight tuning,
+                        soldering, power systems, and troubleshooting.
+                    </p>
+                    <a class="text-link" href="projects.html">Inspect builds →</a>
+                </article>
+
+                <article class="card">
+                    <p class="card-index">03</p>
+                    <h3>Software Systems</h3>
+                    <p>
+                        Python tools, computer vision, YOLO pose tracking,
+                        ESP32 sensing, interfaces, and web development.
+                    </p>
+                    <a class="text-link" href="projects.html">View systems →</a>
+                </article>
+            </div>
+        </section>
+
+        <div class="trace-channel" aria-hidden="true">
+            <span>DATA CHANNEL // SPATIAL ARCHIVE</span>
+        </div>
+
+        <section class="section scan-section" id="archaeology-scans">
+            <div class="section-heading">
+                <div>
+                    <p class="section-code">// 02_SPATIAL_ARCHIVE</p>
+                    <h2>Archaeology 3D Scans</h2>
+                </div>
+                <p>
+                    This section is prepared for interactive GLB models,
+                    excavation records, classifications, locations, and notes.
+                </p>
+            </div>
+
+            <div class="scan-layout">
+                <div class="scan-viewer-placeholder">
+                    <div class="scan-reticle" aria-hidden="true"></div>
+                    <div class="scan-placeholder-copy">
+                        <p class="scan-label">3D VIEWPORT READY</p>
+                        <h3>Insert Archaeology Viewer</h3>
+                        <p>
+                            Add your Three.js viewer or link this panel to the
+                            dedicated scan archive page.
+                        </p>
+                        <a class="button compact secondary" href="projects.html">
+                            Open Project Archive
+                        </a>
+                    </div>
                 </div>
 
-                <div class="card">
-                    <h3>Software Projects</h3>
-                    <p>Python tools, YOLO fall detection, ESP32 projects, and web development.</p>
+                <div class="scan-log">
+                    <div class="scan-log-row">
+                        <span>FORMAT</span>
+                        <strong>GLB / GLTF</strong>
+                    </div>
+                    <div class="scan-log-row">
+                        <span>VIEW MODE</span>
+                        <strong>FREE CAMERA</strong>
+                    </div>
+                    <div class="scan-log-row">
+                        <span>METADATA</span>
+                        <strong>CLASS / LOCATION / NOTES</strong>
+                    </div>
+                    <div class="scan-log-row">
+                        <span>ARCHIVE</span>
+                        <strong>EXPANDABLE</strong>
+                    </div>
                 </div>
+            </div>
+        </section>
+
+        <div class="trace-channel trace-channel-reverse" aria-hidden="true">
+            <span>DATA CHANNEL // ACTIVE PROJECTS</span>
+        </div>
+
+        <section class="section">
+            <div class="section-heading">
+                <div>
+                    <p class="section-code">// 03_ACTIVE_PROJECTS</p>
+                    <h2>Current Development</h2>
+                </div>
+                <p>
+                    Systems that combine physical hardware, code, sensing,
+                    visualization, and field testing.
+                </p>
+            </div>
+
+            <div class="project-list">
+                <article class="project-row">
+                    <span class="project-number">A01</span>
+                    <div>
+                        <h3>Search and Rescue Drone Systems</h3>
+                        <p>RF sensing, mapping, payload integration, and field-ready detection concepts.</p>
+                    </div>
+                    <span class="project-tag">HARDWARE</span>
+                </article>
+
+                <article class="project-row">
+                    <span class="project-number">A02</span>
+                    <div>
+                        <h3>Computer Vision Interfaces</h3>
+                        <p>YOLO pose tracking, fall detection, gesture input, and live visualizers.</p>
+                    </div>
+                    <span class="project-tag">VISION</span>
+                </article>
+
+                <article class="project-row">
+                    <span class="project-number">A03</span>
+                    <div>
+                        <h3>Interactive 3D Archives</h3>
+                        <p>Three.js model viewers and structured archaeological scan collections.</p>
+                    </div>
+                    <span class="project-tag purple">3D DATA</span>
+                </article>
             </div>
         </section>
     </main>
