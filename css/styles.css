@@ -158,7 +158,7 @@ h3,
 #matrixCanvas {
     position: fixed;
     inset: 0;
-    z-index: -6;
+    z-index: 0;
     width: 100%;
     height: 100%;
     opacity: 0.32;
@@ -168,7 +168,7 @@ h3,
 #cursorTrailCanvas {
     position: fixed;
     inset: 0;
-    z-index: 1;
+    z-index: -1;
     width: 100%;
     height: 100%;
     pointer-events: none;
@@ -520,22 +520,42 @@ h3,
 .logo {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    color: var(--text);
-    font-size: 0.98rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    justify-content: center;
+    min-height: 52px;
+    padding: 0.15rem 0;
+    text-decoration: none;
 }
 
-.logo::before {
-    content: "<";
-    color: var(--green);
-}
-
+.logo::before,
 .logo::after {
-    content: "/>";
-    color: var(--purple-bright);
+    content: none;
+}
+
+.site-logo-mark {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: clamp(120px, 18vw, 180px);
+    max-height: 56px;
+    filter:
+        drop-shadow(0 0 10px rgba(66, 245, 141, 0.16))
+        drop-shadow(0 0 14px rgba(199, 152, 255, 0.12));
+    transition:
+        transform 0.22s ease,
+        filter 0.22s ease,
+        opacity 0.22s ease;
+}
+
+.logo:hover .site-logo-mark,
+.logo:focus-visible .site-logo-mark {
+    transform: translateY(-1px) scale(1.02);
+    filter:
+        drop-shadow(0 0 12px rgba(66, 245, 141, 0.24))
+        drop-shadow(0 0 18px rgba(199, 152, 255, 0.18));
+}
+
+.logo:focus-visible {
+    outline: none;
 }
 
 .menu-button {
@@ -761,13 +781,12 @@ h3,
     overflow: hidden;
     min-height: 70px;
     border: 1px solid rgba(66, 245, 141, 0.20);
-    background:        linear-gradient(180deg, rgba(4, 14, 10, 0.92), rgba(1, 7, 4, 0.96));
+    background:
+        linear-gradient(180deg, rgba(4, 14, 10, 0.92), rgba(1, 7, 4, 0.96));
     box-shadow: var(--shadow), var(--green-glow), var(--purple-glow);
-    transition:        border-color 0.2s ease,        box-shadow 0.2s ease;
-    -webkit-transition:        border-color 0.2s ease,        box-shadow 0.2s ease;
-    -moz-transition:        border-color 0.2s ease,        box-shadow 0.2s ease;
-    -ms-transition:        border-color 0.2s ease,        box-shadow 0.2s ease;
-    -o-transition:        border-color 0.2s ease,        box-shadow 0.2s ease;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 .terminal-panel:focus-within {
@@ -1607,6 +1626,12 @@ figure {
 }
 
 @media (max-width: 560px) {
+    .site-logo-mark {
+        max-width: 132px;
+        max-height: 44px;
+    }
+
+
     .page {
         padding: 1.6rem 1rem 3rem;
     }

@@ -5,7 +5,16 @@ if (header) {
     header.innerHTML = `
         <header class="site-header">
             <nav class="navbar" aria-label="Primary navigation">
-                <a class="logo" href="index.html">Heath Lyon</a>
+                <a class="logo" href="index.html" aria-label="Heath Lyon home">
+                    <img
+                        src="images/logo/FrontFPV.webp"
+                        class="site-logo-mark"
+                        alt="Heath Lyon FPV"
+                        width="420"
+                        height="226"
+                        decoding="async"
+                    >
+                </a>
 
                 <button
                     class="menu-button"
@@ -213,7 +222,7 @@ function initializeCursorTrail() {
         context.clearRect(0, 0, window.innerWidth, window.innerHeight);
 
         for (const point of points) {
-            point.life -= 0.035;
+            point.life -= 0.018;
         }
 
         while (points.length && points[0].life <= 0) {
