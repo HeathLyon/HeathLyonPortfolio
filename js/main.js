@@ -1,1320 +1,229 @@
-const header = document.getElementById("siteHeader");
-const footer = document.getElementById("siteFooter");
+"use strict";
 
-if (header) {
-    header.innerHTML = `
-        <header class="site-header">
-            <nav class="navbar" aria-label="Primary navigation">
-                <a class="logo" href="index.html" aria-label="Heath Lyon home">
-                    <img
-                        src="images/logo/FrontFPV.webp"
-                        class="site-logo-mark"
-                        alt="Heath Lyon FPV"
-                        width="420"
-                        height="226"
-                        decoding="async"
-                    >
-                </a>
+const sections = [["home","Boot"],["reel","Flight reel"],["projects","Projects"],["skills","Capabilities"],["contact","Contact"]];
+const completions = ["help","about","status","ls","reel","projects","scans","skills","work","contact","next","prev","weather","weather precise","flightlog","cert","date","history","matrix on","matrix off","trail on","trail off","scanlines on","scanlines off","theme green","theme pink","theme amber","clear","reboot"];
+const scroller = document.querySelector("#scroller");
+const output = document.querySelector("#terminalOutput");
+const form = document.querySelector("#terminalForm");
+const input = document.querySelector("#terminalInput");
+const runButton = document.querySelector("#terminalRun");
+const statusLabel = document.querySelector("#terminalStatus");
+const quickButtons = [...document.querySelectorAll("[data-command]")];
+const matrixCanvas = document.querySelector("#matrixCanvas");
+const trailCanvas = document.querySelector("#trailCanvas");
+const scanlines = document.querySelector("#scanlines");
+let active = "home", busy = true, matrixOn = true, trailOn = true;
+let commandHistory = [], historyPosition = 0, matrixFrame = 0, trailFrame = 0;
 
-                <button
-                    class="menu-button"
-                    id="menuButton"
-                    type="button"
-                    aria-label="Open menu"
-                    aria-controls="navLinks"
-                    aria-expanded="false"
-                >
-                    ☰
-                </button>
+document.querySelector("#year").textContent = new Date().getFullYear();
 
-                <ul class="nav-links" id="navLinks">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="drone-reel.html">Drone Reel</a></li>
-                    <li><a href="projects.html">Projects</a></li>
-                    <li><a href="work-history.html">Work History</a></li>
-                    <li><a href="skills.html">Skills</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
-        </header>
-    `;
+function add(text, tone = "") {
+  const line = document.createElement("p");
+  line.textContent = text;
+  if (tone) line.className = tone;
+  output.append(line);
+  output.scrollTop = output.scrollHeight;
 }
 
-if (footer) {
-    footer.innerHTML = `
-        <footer class="site-footer">
-            <p>&copy; <span id="currentYear"></span> Heath Lyon // SYSTEMS PORTFOLIO</p>
-            <p class="last-updated">Last build: <span id="lastUpdated"></span></p>
-        </footer>
-    `;
+function setBusy(value) {
+  busy = value;
+  input.disabled = value;
+  runButton.disabled = value;
+  quickButtons.forEach(button => button.disabled = value);
+  statusLabel.textContent = value ? "◌ BOOTING" : "● ONLINE";
+  input.placeholder = value ? "initializing..." : "type “help”";
 }
 
-const menuButton = document.getElementById("menuButton");
-const navLinks = document.getElementById("navLinks");
-
-function closeMenu() {
-    if (!menuButton || !navLinks) return;
-
-    navLinks.classList.remove("show");
-    menuButton.setAttribute("aria-expanded", "false");
-    menuButton.setAttribute("aria-label", "Open menu");
-}
-
-if (menuButton && navLinks) {
-    menuButton.addEventListener("click", () => {
-        const isOpen = navLinks.classList.toggle("show");
-
-        menuButton.setAttribute("aria-expanded", String(isOpen));
-        menuButton.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
-    });
-
-    navLinks.addEventListener("click", (event) => {
-        if (event.target.closest("a")) {
-            closeMenu();
-        }
-    });
-
-    document.addEventListener("click", (event) => {
-        if (!event.target.closest(".navbar")) {
-            closeMenu();
-        }
-    });
-
-    window.addEventListener("resize", () => {
-        if (window.innerWidth > 920) {
-            closeMenu();
-        }
-    });
-}
-
-const currentYear = document.getElementById("currentYear");
-if (currentYear) {
-    currentYear.textContent = new Date().getFullYear();
-}
-
-const lastUpdated = document.getElementById("lastUpdated");
-if (lastUpdated) {
-    const modifiedDate = new Date(document.lastModified);
-
-    lastUpdated.textContent = modifiedDate.toLocaleString("en-US", {
-        year: "numeric",
-        month: "short",
-        day: "numeric",
-        hour: "numeric",
-        minute: "2-digit"
-    });
-}
-
-const currentPage = window.location.pathname.split("/").pop() || "index.html";
-
-document.querySelectorAll(".nav-links a").forEach((link) => {
-    if (link.getAttribute("href") === currentPage) {
-        link.classList.add("active");
-        link.setAttribute("aria-current", "page");
+function boot() {
+  output.replaceChildren();
+  setBusy(true);
+  const sequence = [
+    ["initialize --portfolio --single-page","cmd"],
+    ["[SUCCESS] flight archive mounted","ok"],
+    ["[SUCCESS] project modules indexed","ok"],
+    ["[SUCCESS] snap navigation synchronized","ok"],
+    ["[READY] shell active — type “help”","pink"]
+  ];
+  sequence.forEach(([text,tone], index) => setTimeout(() => {
+    add(text,tone);
+    if (index === sequence.length - 1) {
+      setBusy(false);
+      input.focus();
     }
+  }, 250 + index * 280));
+}
+
+function go(target) {
+  const routes = {home:"home",boot:"home",reel:"reel",drone:"reel",projects:"projects",scans:"projects",archaeology:"projects",skills:"skills",work:"skills",contact:"contact"};
+  const route = routes[target];
+  if (!route) return add(`Unknown destination: ${target}`,"err");
+  const section = document.getElementById(route);
+  add(`[OPEN] #${route}`,"pink");
+  history.replaceState(null,"",`#${route}`);
+  scroller.scrollTo({top:section.offsetTop,behavior:"smooth"});
+}
+
+function step(direction) {
+  const index = Math.max(0, sections.findIndex(([id]) => id === active));
+  go(sections[Math.max(0,Math.min(sections.length - 1,index + direction))][0]);
+}
+
+async function weather(precise) {
+  setBusy(true);
+  add(precise ? "[INFO] requesting browser location..." : "[INFO] checking Provo flight conditions...","dim");
+  try {
+    let lat = 40.2338, lon = -111.6585, place = "PROVO, UT";
+    if (precise) {
+      const position = await new Promise((resolve,reject) => {
+        if (!navigator.geolocation) return reject(new Error("location unavailable"));
+        navigator.geolocation.getCurrentPosition(resolve,reject,{timeout:8000});
+      });
+      lat = position.coords.latitude;
+      lon = position.coords.longitude;
+      place = "DEVICE LOCATION";
+    }
+    const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,apparent_temperature,weather_code,wind_speed_10m&temperature_unit=fahrenheit&wind_speed_unit=mph`);
+    if (!response.ok) throw new Error(`weather link ${response.status}`);
+    const {current} = await response.json();
+    add(`[SUCCESS] WEATHER LINK: ${place}`,"ok");
+    add(`${Math.round(current.temperature_2m)}°F | FEELS ${Math.round(current.apparent_temperature)}°F | WIND ${Math.round(current.wind_speed_10m)} MPH`,"pink");
+  } catch (error) {
+    add(`[ERROR] ${error.message || "weather unavailable"}`,"err");
+  }
+  setBusy(false);
+}
+
+async function run(raw) {
+  const command = raw.trim();
+  if (!command || busy) return;
+  add(`root@heath:~$ ${command}`,"cmd");
+  const [name,...args] = command.toLowerCase().split(/\s+/);
+  if (name === "help" || name === "?") {
+    ["AVAILABLE COMMANDS","about / status       operator and system data","ls / open <module>   inspect page modules","next / prev          move one snap section","reel / projects      open featured work","skills / contact     capability or contact","flightlog / cert     mission and credential data","weather [precise]    flight conditions","theme green|pink|amber","matrix / trail / scanlines on|off","date / history / clear / reboot"].forEach((line,index) => add(line,index ? "" : "ok"));
+  } else if (name === "about" || name === "whoami") {
+    add("HEATH LYON // FAA PART 107 REMOTE PILOT","ok");
+    add("FPV cinematography + custom flight systems + computer vision + embedded electronics + interactive 3D.");
+  } else if (name === "status") {
+    add("PORTFOLIO........ ONLINE","ok"); add("FLIGHT SYSTEMS... READY","ok");
+    add(`ACTIVE MODULE..... ${active.toUpperCase()}`,"pink"); add(`LOCAL CLOCK....... ${new Date().toLocaleString()}`);
+  } else if (name === "ls" || name === "dir") {
+    ["reel/","projects/","skills/","work-history/","contact/"].forEach(item => add(item,"pink"));
+  } else if (["home","reel","drone","projects","scans","skills","work","contact"].includes(name)) {
+    go(name);
+  } else if (["open","cd","goto"].includes(name)) {
+    args[0] ? go(args[0]) : add("Usage: open <reel|projects|skills|contact>","err");
+  } else if (name === "next") step(1);
+  else if (name === "prev") step(-1);
+  else if (name === "weather") await weather(args[0] === "precise");
+  else if (name === "flightlog") {
+    add("2026 // HOMESTEAD-MIAMI AUDI F1 PRODUCTION","ok");
+    add("2026—NOW // INDEPENDENT DRONE PILOT — THINK GLOBAL MEDIA");
+    add("PLATFORMS // CUSTOM FPV / MAVIC / CINELIFTER","pink");
+  } else if (name === "cert") add("FAA PART 107 REMOTE PILOT CERTIFICATE // ACTIVE","ok");
+  else if (name === "date" || name === "time") add(new Date().toLocaleString(),"ok");
+  else if (name === "history") commandHistory.forEach((item,index) => add(`${String(index + 1).padStart(2,"0")}  ${item}`));
+  else if (name === "echo") add(args.join(" "));
+  else if (name === "matrix" && ["on","off"].includes(args[0])) {
+    matrixOn = args[0] === "on"; matrixCanvas.hidden = !matrixOn;
+    if (matrixOn) startMatrix(); else cancelAnimationFrame(matrixFrame);
+    add(`Matrix rain ${args[0]}.`,"pink");
+  } else if (name === "trail" && ["on","off"].includes(args[0])) {
+    trailOn = args[0] === "on"; trailCanvas.hidden = !trailOn;
+    if (trailOn) startTrail(); else cancelAnimationFrame(trailFrame);
+    add(`Pointer trace ${args[0]}.`,"pink");
+  } else if (name === "scanlines" && ["on","off"].includes(args[0])) {
+    scanlines.hidden = args[0] === "off"; add(`CRT scanlines ${args[0]}.`,"pink");
+  } else if (name === "theme" && ["green","pink","amber"].includes(args[0])) {
+    document.documentElement.dataset.theme = args[0]; add(`Interface theme: ${args[0].toUpperCase()}`,"ok");
+  } else if (name === "email") location.href = "mailto:Lyon.m.heath@gmail.com";
+  else if (name === "github") window.open("https://github.com/HeathLyon","_blank","noopener");
+  else if (name === "clear" || name === "cls") output.replaceChildren();
+  else if (name === "reboot" || name === "boot") boot();
+  else if (name === "sudo") add("Permission denied: public portfolio shell.","err");
+  else { add(`Command not found: ${name}`,"err"); add("Type “help” for available commands.","dim"); }
+}
+
+form.addEventListener("submit", event => {
+  event.preventDefault();
+  if (!input.value.trim() || busy) return;
+  const value = input.value.trim();
+  commandHistory.push(value); historyPosition = commandHistory.length; input.value = "";
+  run(value);
+});
+quickButtons.forEach(button => button.addEventListener("click",() => run(button.dataset.command)));
+input.addEventListener("keydown", event => {
+  if (event.key === "ArrowUp") {
+    event.preventDefault(); historyPosition = Math.max(0,historyPosition - 1); input.value = commandHistory[historyPosition] || "";
+  } else if (event.key === "ArrowDown") {
+    event.preventDefault(); historyPosition = Math.min(commandHistory.length,historyPosition + 1); input.value = historyPosition === commandHistory.length ? "" : commandHistory[historyPosition];
+  } else if (event.key === "Tab") {
+    event.preventDefault(); const match = completions.find(item => item.startsWith(input.value.toLowerCase())); if (match) input.value = match;
+  } else if (event.ctrlKey && event.key.toLowerCase() === "l") {
+    event.preventDefault(); output.replaceChildren();
+  }
 });
 
-function initializeCursorField() {
-    const root = document.documentElement;
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+document.addEventListener("click", event => {
+  const link = event.target.closest('a[href^="#"]');
+  if (!link) return;
+  const target = document.querySelector(link.getAttribute("href"));
+  if (!target) return;
+  event.preventDefault();
+  history.replaceState(null,"",link.getAttribute("href"));
+  scroller.scrollTo({top:target.offsetTop,behavior:"smooth"});
+});
 
-    let targetX = window.innerWidth * 0.5;
-    let targetY = window.innerHeight * 0.35;
-    let currentX = targetX;
-    let currentY = targetY;
+const observer = new IntersectionObserver(entries => {
+  const visible = entries.filter(entry => entry.isIntersecting).sort((a,b) => b.intersectionRatio - a.intersectionRatio)[0];
+  if (!visible) return;
+  active = visible.target.id;
+  document.querySelectorAll('header nav a,.rail a').forEach(link => link.classList.toggle("active",link.getAttribute("href") === `#${active}`));
+},{root:scroller,threshold:[.4,.65]});
+document.querySelectorAll(".snap").forEach(section => observer.observe(section));
 
-    root.style.setProperty("--cursor-x", `${currentX}px`);
-    root.style.setProperty("--cursor-y", `${currentY}px`);
+document.addEventListener("pointermove", event => {
+  document.documentElement.style.setProperty("--x",`${event.clientX}px`);
+  document.documentElement.style.setProperty("--y",`${event.clientY}px`);
+},{passive:true});
 
-    if (reducedMotion) return;
-
-    function updateTarget(x, y) {
-        targetX = x;
-        targetY = y;
-    }
-
-    window.addEventListener("pointermove", (event) => {
-        updateTarget(event.clientX, event.clientY);
-    }, { passive: true });
-
-    window.addEventListener("touchmove", (event) => {
-        const touch = event.touches[0];
-        if (!touch) return;
-
-        updateTarget(touch.clientX, touch.clientY);
-    }, { passive: true });
-
-    window.addEventListener("pointerleave", () => {
-        updateTarget(window.innerWidth * 0.5, window.innerHeight * 0.35);
-    });
-
-    function animate() {
-        currentX += (targetX - currentX) * 0.075;
-        currentY += (targetY - currentY) * 0.075;
-
-        root.style.setProperty("--cursor-x", `${currentX.toFixed(1)}px`);
-        root.style.setProperty("--cursor-y", `${currentY.toFixed(1)}px`);
-
-        window.requestAnimationFrame(animate);
-    }
-
-    window.requestAnimationFrame(animate);
+const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+function fitCanvas(canvas,context) {
+  const dpr = Math.min(devicePixelRatio || 1,1.5);
+  canvas.width = innerWidth * dpr; canvas.height = innerHeight * dpr;
+  canvas.style.width = `${innerWidth}px`; canvas.style.height = `${innerHeight}px`;
+  context.setTransform(dpr,0,0,dpr,0,0);
 }
-
-
-function initializeCursorTrail() {
-    const canvas = document.getElementById("cursorTrailCanvas");
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    if (!canvas || reducedMotion) return;
-
-    const context = canvas.getContext("2d", { alpha: true });
-    if (!context) return;
-
-    const points = [];
-    const maxPoints = 52;
-    let deviceScale = 1;
-    let animationFrame = 0;
-    let pointerActive = false;
-    let lastX = 0;
-    let lastY = 0;
-
-    function resizeCanvas() {
-        deviceScale = Math.min(window.devicePixelRatio || 1, 1.5);
-        canvas.width = Math.floor(window.innerWidth * deviceScale);
-        canvas.height = Math.floor(window.innerHeight * deviceScale);
-        canvas.style.width = `${window.innerWidth}px`;
-        canvas.style.height = `${window.innerHeight}px`;
-        context.setTransform(deviceScale, 0, 0, deviceScale, 0, 0);
-    }
-
-    function addPoint(x, y) {
-        const distance = Math.hypot(x - lastX, y - lastY);
-
-        if (!pointerActive || distance >= 3) {
-            points.push({ x, y, life: 1 });
-            lastX = x;
-            lastY = y;
-
-            if (points.length > maxPoints) {
-                points.splice(0, points.length - maxPoints);
-            }
-        }
-
-        pointerActive = true;
-    }
-
-    window.addEventListener("pointermove", (event) => {
-        addPoint(event.clientX, event.clientY);
-    }, { passive: true });
-
-    window.addEventListener("touchmove", (event) => {
-        const touch = event.touches[0];
-        if (!touch) return;
-        addPoint(touch.clientX, touch.clientY);
-    }, { passive: true });
-
-    window.addEventListener("pointerleave", () => {
-        pointerActive = false;
-    });
-
-    function drawTrail() {
-        context.clearRect(0, 0, window.innerWidth, window.innerHeight);
-
-        for (const point of points) {
-            point.life -= 0.05;
-        }
-
-        while (points.length && points[0].life <= 0) {
-            points.shift();
-        }
-
-        if (points.length > 1) {
-            context.save();
-            context.globalCompositeOperation = "lighter";
-            context.lineCap = "round";
-            context.lineJoin = "round";
-            context.shadowColor = "rgba(199, 152, 255, 0.96)";
-            context.shadowBlur = 24;
-
-            for (let index = 1; index < points.length; index += 1) {
-                const previous = points[index - 1];
-                const current = points[index];
-                const alpha = Math.max(0, ((previous.life + current.life) / 2) * 0.80);
-
-                context.beginPath();
-                context.moveTo(previous.x, previous.y);
-                context.lineTo(current.x, current.y);
-                context.strokeStyle = `rgba(199, 152, 255, ${alpha})`;
-                context.lineWidth = 1.2 + current.life * 4.4;
-                context.stroke();
-
-                if (index % 4 === 0) {
-                    const blockSize = 2 + current.life * 3.5;
-                    context.fillStyle = `rgba(225, 204, 255, ${current.life * 0.62})`;
-                    context.fillRect(
-                        current.x - blockSize / 2,
-                        current.y - blockSize / 2,
-                        blockSize,
-                        blockSize
-                    );
-                }
-            }
-
-            const newest = points[points.length - 1];
-            context.beginPath();
-            context.arc(newest.x, newest.y, 3 + newest.life * 2.8, 0, Math.PI * 2);
-            context.fillStyle = `rgba(239, 226, 255, ${newest.life * 0.92})`;
-            context.fill();
-
-            context.restore();
-        }
-
-        animationFrame = window.requestAnimationFrame(drawTrail);
-    }
-
-    function handleVisibility() {
-        if (document.hidden) {
-            window.cancelAnimationFrame(animationFrame);
-        } else {
-            animationFrame = window.requestAnimationFrame(drawTrail);
-        }
-    }
-
-    resizeCanvas();
-    window.addEventListener("resize", resizeCanvas);
-    document.addEventListener("visibilitychange", handleVisibility);
-    animationFrame = window.requestAnimationFrame(drawTrail);
+function startMatrix() {
+  if (reducedMotion || !matrixOn) return;
+  cancelAnimationFrame(matrixFrame);
+  const context = matrixCanvas.getContext("2d"), size = 16, glyphs = "01アイウエオカキクケコFPV<>/{}[]";
+  let drops = [], last = 0;
+  const resize = () => { fitCanvas(matrixCanvas,context); drops = Array.from({length:Math.ceil(innerWidth/size)},() => Math.floor(Math.random() * -60)); };
+  const draw = time => {
+    matrixFrame = requestAnimationFrame(draw); if (time - last < 75) return; last = time;
+    context.fillStyle = "rgba(1,4,3,.1)"; context.fillRect(0,0,innerWidth,innerHeight); context.font = `${size}px monospace`;
+    drops.forEach((drop,index) => { context.fillStyle = index % 15 ? "rgba(162,255,47,.34)" : "rgba(255,42,157,.38)"; context.fillText(glyphs[Math.floor(Math.random()*glyphs.length)],index*size,drop*size); drops[index] = drop*size > innerHeight && Math.random() > .98 ? -10 : drop + 1; });
+  };
+  resize(); matrixCanvas._resizeHandler && removeEventListener("resize",matrixCanvas._resizeHandler); matrixCanvas._resizeHandler = resize; addEventListener("resize",resize); matrixFrame = requestAnimationFrame(draw);
 }
-
-function initializeMatrixRain() {
-    const canvas = document.getElementById("matrixCanvas");
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    if (!canvas || reducedMotion) return;
-
-    const context = canvas.getContext("2d", { alpha: true });
-    if (!context) return;
-
-    const characters = "01アイウエオカキクケコサシスセソABCDEFGHIJKLMNOPQRSTUVWXYZ{}[]<>/\\|";
-    const fontSize = 15;
-    let columns = 0;
-    let drops = [];
-    let animationFrame = 0;
-    let lastFrameTime = 0;
-    const frameInterval = 62;
-
-    function resizeCanvas() {
-        const deviceScale = Math.min(window.devicePixelRatio || 1, 1.5);
-
-        canvas.width = Math.floor(window.innerWidth * deviceScale);
-        canvas.height = Math.floor(window.innerHeight * deviceScale);
-        canvas.style.width = `${window.innerWidth}px`;
-        canvas.style.height = `${window.innerHeight}px`;
-
-        context.setTransform(deviceScale, 0, 0, deviceScale, 0, 0);
-
-        columns = Math.ceil(window.innerWidth / fontSize);
-        drops = Array.from({ length: columns }, () => {
-            return Math.floor(Math.random() * -80);
-        });
-    }
-
-    function draw(timestamp) {
-        animationFrame = window.requestAnimationFrame(draw);
-
-        if (timestamp - lastFrameTime < frameInterval) return;
-        lastFrameTime = timestamp;
-
-        context.fillStyle = "rgba(1, 4, 3, 0.10)";
-        context.fillRect(0, 0, window.innerWidth, window.innerHeight);
-
-        context.font = `${fontSize}px "Share Tech Mono", monospace`;
-
-        for (let index = 0; index < drops.length; index += 1) {
-            const character = characters[Math.floor(Math.random() * characters.length)];
-            const x = index * fontSize;
-            const y = drops[index] * fontSize;
-
-            const usePurple = index % 17 === 0;
-            context.fillStyle = usePurple
-                ? "rgba(199, 152, 255, 0.42)"
-                : "rgba(66, 245, 141, 0.46)";
-
-            context.fillText(character, x, y);
-
-            if (y > window.innerHeight && Math.random() > 0.982) {
-                drops[index] = Math.floor(Math.random() * -30);
-            }
-
-            drops[index] += 1;
-        }
-    }
-
-    function handleVisibility() {
-        if (document.hidden) {
-            window.cancelAnimationFrame(animationFrame);
-        } else {
-            animationFrame = window.requestAnimationFrame(draw);
-        }
-    }
-
-    resizeCanvas();
-    window.addEventListener("resize", resizeCanvas);
-    document.addEventListener("visibilitychange", handleVisibility);
-    animationFrame = window.requestAnimationFrame(draw);
+const trailPoints = [];
+function startTrail() {
+  if (reducedMotion || !trailOn) return;
+  cancelAnimationFrame(trailFrame);
+  const context = trailCanvas.getContext("2d");
+  fitCanvas(trailCanvas,context);
+  const draw = () => {
+    trailFrame = requestAnimationFrame(draw); context.clearRect(0,0,innerWidth,innerHeight);
+    trailPoints.forEach(point => point.life -= .05); while (trailPoints[0]?.life <= 0) trailPoints.shift();
+    context.save(); context.globalCompositeOperation = "lighter"; context.lineCap = "round";
+    for (let index=1; index<trailPoints.length; index++) { const point=trailPoints[index],previous=trailPoints[index-1]; context.beginPath(); context.moveTo(previous.x,previous.y); context.lineTo(point.x,point.y); context.strokeStyle=`rgba(255,42,157,${point.life*.55})`; context.lineWidth=1+point.life*3; context.shadowColor="#ff2a9d"; context.shadowBlur=16; context.stroke(); }
+    context.restore();
+  };
+  trailFrame = requestAnimationFrame(draw);
 }
-
-function initializeTerminal() {
-    const terminalPanel = document.querySelector(".terminal-panel");
-    const terminalOutput = document.getElementById("terminalOutput");
-    const terminalForm = document.getElementById("terminalForm");
-    const terminalInput = document.getElementById("terminalInput");
-    const terminalSubmit = terminalForm?.querySelector(".terminal-submit");
-    const terminalStatus = document.getElementById("terminalStatus");
-    const matrixCanvas = document.getElementById("matrixCanvas");
-    const trailCanvas = document.getElementById("cursorTrailCanvas");
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    if (
-        !terminalPanel ||
-        !terminalOutput ||
-        !terminalForm ||
-        !terminalInput ||
-        !terminalSubmit
-    ) {
-        return;
-    }
-
-    const history = [];
-    let historyIndex = 0;
-    let commandBusy = false;
-    let weatherSnapshot = null;
-
-    const WEATHER_CACHE_KEY = "heath-portfolio-weather-v1";
-    const WEATHER_CACHE_MAX_AGE = 10 * 60 * 1000;
-
-    const destinations = {
-        home: "index.html",
-        projects: "projects.html",
-        project: "projects.html",
-        drone: "drone-reel.html",
-        reel: "drone-reel.html",
-        scans: "index.html#archaeology-scans",
-        scan: "index.html#archaeology-scans",
-        archaeology: "index.html#archaeology-scans",
-        skills: "skills.html",
-        work: "work-history.html",
-        history: "work-history.html",
-        contact: "contact.html"
-    };
-
-    const weatherDescriptions = {
-        0: "clear sky",
-        1: "mainly clear",
-        2: "partly cloudy",
-        3: "overcast",
-        45: "fog",
-        48: "depositing rime fog",
-        51: "light drizzle",
-        53: "drizzle",
-        55: "heavy drizzle",
-        56: "light freezing drizzle",
-        57: "freezing drizzle",
-        61: "light rain",
-        63: "rain",
-        65: "heavy rain",
-        66: "light freezing rain",
-        67: "freezing rain",
-        71: "light snow",
-        73: "snow",
-        75: "heavy snow",
-        77: "snow grains",
-        80: "light rain showers",
-        81: "rain showers",
-        82: "heavy rain showers",
-        85: "light snow showers",
-        86: "heavy snow showers",
-        95: "thunderstorm",
-        96: "thunderstorm with light hail",
-        99: "thunderstorm with heavy hail"
-    };
-
-    const sleep = (milliseconds) => {
-        return new Promise((resolve) => window.setTimeout(resolve, milliseconds));
-    };
-
-    // Animated command suggestions shown inside the empty terminal input.
-    // These values are milliseconds, not pixels.
-    const SUGGESTION_DELAY_MIN_MS = 70;
-    const SUGGESTION_DELAY_MAX_MS = 130;
-    const SUGGESTION_HOLD_MS = 1150;
-    const SUGGESTION_GAP_MS = 260;
-
-    const suggestedCommands = [
-        "help",
-        "status",
-        "weather",
-        "projects",
-        "drone",
-        "scans",
-        "skills",
-        "work",
-        "contact",
-        "date"
-    ];
-
-    function getRandomSuggestionDelay() {
-        const range = SUGGESTION_DELAY_MAX_MS - SUGGESTION_DELAY_MIN_MS;
-
-        return Math.round(
-            SUGGESTION_DELAY_MIN_MS + Math.random() * range
-        );
-    }
-
-    async function animateCommandSuggestions() {
-        let commandIndex = 0;
-
-        while (document.body.contains(terminalInput)) {
-            if (
-                terminalInput.disabled ||
-                commandBusy ||
-                terminalInput.value.length > 0
-            ) {
-                await sleep(180);
-                continue;
-            }
-
-            const command = suggestedCommands[commandIndex];
-            const suggestionText = `type "${command}"`;
-            let interrupted = false;
-
-            // Type the full suggestion, for example: type "help"
-            for (let length = 1; length <= suggestionText.length; length += 1) {
-                if (
-                    terminalInput.disabled ||
-                    commandBusy ||
-                    terminalInput.value.length > 0
-                ) {
-                    interrupted = true;
-                    break;
-                }
-
-                terminalInput.placeholder = suggestionText.slice(0, length);
-                await sleep(getRandomSuggestionDelay());
-            }
-
-            if (!interrupted) {
-                await sleep(SUGGESTION_HOLD_MS);
-            }
-
-            // Delete the full suggestion before showing the next command.
-            for (let length = suggestionText.length - 1; length >= 0; length -= 1) {
-                if (
-                    terminalInput.disabled ||
-                    commandBusy ||
-                    terminalInput.value.length > 0
-                ) {
-                    interrupted = true;
-                    break;
-                }
-
-                terminalInput.placeholder = suggestionText.slice(0, length);
-                await sleep(getRandomSuggestionDelay());
-            }
-
-            if (
-                !terminalInput.disabled &&
-                !commandBusy &&
-                terminalInput.value.length === 0
-            ) {
-                terminalInput.placeholder = "";
-            }
-
-            commandIndex = (commandIndex + 1) % suggestedCommands.length;
-            await sleep(interrupted ? 180 : SUGGESTION_GAP_MS);
-        }
-    }
-
-    function scrollToBottom() {
-        terminalOutput.scrollTop = terminalOutput.scrollHeight;
-    }
-
-    function setStatus(text, state = "online") {
-        if (!terminalStatus) return;
-
-        terminalStatus.textContent = text;
-        terminalStatus.classList.remove("is-booting", "is-online", "is-warning");
-        terminalStatus.classList.add(`is-${state}`);
-    }
-
-    function setInputEnabled(enabled) {
-        terminalInput.disabled = !enabled;
-        terminalSubmit.disabled = !enabled;
-
-        if (!enabled) {
-            terminalInput.placeholder = "processing...";
-        } else if (terminalInput.value.length === 0) {
-            terminalInput.placeholder = "";
-        }
-    }
-
-    function createLine(className = "terminal-info") {
-        const paragraph = document.createElement("p");
-        paragraph.className = className;
-        terminalOutput.appendChild(paragraph);
-        scrollToBottom();
-        return paragraph;
-    }
-
-    function appendLine(text, className = "terminal-info") {
-        const paragraph = createLine(className);
-        paragraph.textContent = text;
-        scrollToBottom();
-        return paragraph;
-    }
-
-    function appendCommand(command) {
-        const paragraph = createLine("terminal-command-line");
-
-        const prompt = document.createElement("span");
-        prompt.className = "prompt";
-        prompt.textContent = "root@heath:~$";
-
-        paragraph.append(prompt, document.createTextNode(command));
-        scrollToBottom();
-    }
-
-    async function typeLine(
-        text,
-        className = "terminal-info",
-        {
-            prompt = false,
-            speed = 16,
-            pause = 100
-        } = {}
-    ) {
-        const paragraph = createLine(`${className} terminal-typing`);
-
-        if (prompt) {
-            const promptElement = document.createElement("span");
-            promptElement.className = "prompt";
-            promptElement.textContent = "root@heath:~$";
-            paragraph.appendChild(promptElement);
-        }
-
-        const textNode = document.createTextNode("");
-        paragraph.appendChild(textNode);
-
-        if (reducedMotion) {
-            textNode.nodeValue = text;
-        } else {
-            for (const character of text) {
-                textNode.nodeValue += character;
-                scrollToBottom();
-
-                const characterDelay = character === " "
-                    ? Math.max(4, speed * 0.35)
-                    : speed + Math.random() * 8;
-
-                await sleep(characterDelay);
-            }
-        }
-
-        paragraph.classList.remove("terminal-typing");
-        scrollToBottom();
-
-        if (pause > 0) {
-            await sleep(reducedMotion ? 0 : pause);
-        }
-
-        return paragraph;
-    }
-
-    function formatLocalDate() {
-        return new Intl.DateTimeFormat(undefined, {
-            weekday: "long",
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-            hour: "numeric",
-            minute: "2-digit",
-            timeZoneName: "short"
-        }).format(new Date());
-    }
-
-    function getTemperatureUnit() {
-        let region = "";
-
-        try {
-            region = new Intl.Locale(navigator.language).region || "";
-        } catch {
-            region = "";
-        }
-
-        const fahrenheitRegions = new Set([
-            "US", "BS", "BZ", "KY", "LR", "MH", "FM", "PW"
-        ]);
-
-        return fahrenheitRegions.has(region) ? "fahrenheit" : "celsius";
-    }
-
-    function readWeatherCache() {
-        try {
-            const cached = JSON.parse(sessionStorage.getItem(WEATHER_CACHE_KEY));
-
-            if (
-                cached &&
-                Date.now() - cached.savedAt < WEATHER_CACHE_MAX_AGE &&
-                cached.weather
-            ) {
-                return cached.weather;
-            }
-        } catch {
-            // Ignore storage failures and fetch live data.
-        }
-
-        return null;
-    }
-
-    function saveWeatherCache(weather) {
-        try {
-            sessionStorage.setItem(
-                WEATHER_CACHE_KEY,
-                JSON.stringify({
-                    savedAt: Date.now(),
-                    weather
-                })
-            );
-        } catch {
-            // Weather still works if storage is blocked.
-        }
-    }
-
-    async function fetchJson(url, timeout = 7000) {
-        const controller = new AbortController();
-        const timeoutId = window.setTimeout(() => controller.abort(), timeout);
-
-        try {
-            const response = await fetch(url, {
-                headers: {
-                    Accept: "application/json"
-                },
-                signal: controller.signal
-            });
-
-            if (!response.ok) {
-                throw new Error(`HTTP ${response.status}`);
-            }
-
-            return await response.json();
-        } finally {
-            window.clearTimeout(timeoutId);
-        }
-    }
-
-    async function getIpLocation() {
-        const data = await fetchJson("https://ipapi.co/json/", 6500);
-
-        if (
-            data.error ||
-            !Number.isFinite(Number(data.latitude)) ||
-            !Number.isFinite(Number(data.longitude))
-        ) {
-            throw new Error(data.reason || "IP location unavailable");
-        }
-
-        const locationLabel = [
-            data.city,
-            data.region_code,
-            data.country_code
-        ].filter(Boolean).join(", ");
-
-        return {
-            latitude: Number(data.latitude),
-            longitude: Number(data.longitude),
-            label: locationLabel || "coarse network location",
-            source: "coarse IP location"
-        };
-    }
-
-    function getDeviceLocation() {
-        return new Promise((resolve, reject) => {
-            if (!navigator.geolocation) {
-                reject(new Error("Browser geolocation is not supported"));
-                return;
-            }
-
-            navigator.geolocation.getCurrentPosition(
-                (position) => {
-                    resolve({
-                        latitude: position.coords.latitude,
-                        longitude: position.coords.longitude,
-                        label: "browser device location",
-                        source: "browser geolocation"
-                    });
-                },
-                (error) => {
-                    reject(new Error(error.message || "Location permission denied"));
-                },
-                {
-                    enableHighAccuracy: false,
-                    timeout: 8000,
-                    maximumAge: 15 * 60 * 1000
-                }
-            );
-        });
-    }
-
-    async function fetchCurrentWeather(location) {
-        const temperatureUnit = getTemperatureUnit();
-        const windUnit = temperatureUnit === "fahrenheit" ? "mph" : "kmh";
-
-        const url = new URL("https://api.open-meteo.com/v1/forecast");
-        url.searchParams.set("latitude", String(location.latitude));
-        url.searchParams.set("longitude", String(location.longitude));
-        url.searchParams.set(
-            "current",
-            "temperature_2m,apparent_temperature,weather_code,wind_speed_10m"
-        );
-        url.searchParams.set("temperature_unit", temperatureUnit);
-        url.searchParams.set("wind_speed_unit", windUnit);
-        url.searchParams.set("timezone", "auto");
-        url.searchParams.set("forecast_days", "1");
-
-        const data = await fetchJson(url.toString(), 7500);
-        const current = data.current;
-
-        if (!current) {
-            throw new Error("Weather response did not include current conditions");
-        }
-
-        const degreeUnit = temperatureUnit === "fahrenheit" ? "F" : "C";
-        const description = weatherDescriptions[current.weather_code] || "conditions unavailable";
-
-        return {
-            location: location.label,
-            source: location.source,
-            description,
-            temperature: Math.round(current.temperature_2m),
-            apparentTemperature: Math.round(current.apparent_temperature),
-            windSpeed: Math.round(current.wind_speed_10m),
-            degreeUnit,
-            windUnit: windUnit === "mph" ? "mph" : "km/h",
-            observationTime: current.time || null
-        };
-    }
-
-    async function getWeather({
-        precise = false,
-        forceRefresh = false
-    } = {}) {
-        if (!precise && !forceRefresh) {
-            const cachedWeather = readWeatherCache();
-
-            if (cachedWeather) {
-                weatherSnapshot = cachedWeather;
-                return cachedWeather;
-            }
-        }
-
-        const location = precise
-            ? await getDeviceLocation()
-            : await getIpLocation();
-
-        const weather = await fetchCurrentWeather(location);
-        weatherSnapshot = weather;
-
-        if (!precise) {
-            saveWeatherCache(weather);
-        }
-
-        return weather;
-    }
-
-    async function printWeather({
-        precise = false,
-        forceRefresh = false,
-        typed = false
-    } = {}) {
-        const write = typed ? typeLine : async (text, className) => {
-            appendLine(text, className);
-        };
-
-        const locationMode = precise
-            ? "browser location permission"
-            : "coarse network location";
-
-        await write(
-            `[INFO] resolving weather through ${locationMode}...`,
-            "terminal-muted",
-            { speed: 10, pause: 80 }
-        );
-
-        const weather = await getWeather({ precise, forceRefresh });
-
-        await write(
-            `[SUCCESS] weather link established: ${weather.location}`,
-            "terminal-weather",
-            { speed: 9, pause: 70 }
-        );
-
-        await write(
-            `${weather.description.toUpperCase()} | ${weather.temperature}°${weather.degreeUnit} | feels ${weather.apparentTemperature}°${weather.degreeUnit} | wind ${weather.windSpeed} ${weather.windUnit}`,
-            "terminal-weather-detail",
-            { speed: 6, pause: 80 }
-        );
-
-        return weather;
-    }
-
-    async function navigate(target) {
-        const destination = destinations[target];
-
-        if (!destination) {
-            appendLine(`Unknown destination: ${target}`, "terminal-error");
-            appendLine(
-                "Use: open projects | drone | scans | skills | work | contact",
-                "terminal-muted"
-            );
-            return;
-        }
-
-        await typeLine(`[OPEN] ${destination}`, "terminal-purple", {
-            speed: 8,
-            pause: 80
-        });
-
-        window.setTimeout(() => {
-            window.location.href = destination;
-        }, 220);
-    }
-
-    async function runBootSequence() {
-        commandBusy = true;
-        setInputEnabled(false);
-        setStatus("BOOTING", "booting");
-        terminalOutput.replaceChildren();
-
-        await typeLine("initialize --portfolio --network", "terminal-command-line", {
-            prompt: true,
-            speed: 23,
-            pause: 190
-        });
-
-        await typeLine("[SUCCESS] document interface mounted", "terminal-success", {
-            speed: 11,
-            pause: 90
-        });
-
-        await typeLine("[SUCCESS] navigation routes verified", "terminal-success", {
-            speed: 11,
-            pause: 90
-        });
-
-        await typeLine("[SUCCESS] project archive indexed", "terminal-success", {
-            speed: 11,
-            pause: 90
-        });
-
-        await typeLine(
-            `[SUCCESS] local clock synchronized: ${formatLocalDate()}`,
-            "terminal-success",
-            { speed: 8, pause: 130 }
-        );
-
-        await typeLine(
-            "[PRIVACY] automatic weather uses a coarse IP-based city lookup; run “weather precise” to request browser location.",
-            "terminal-privacy",
-            { speed: 5, pause: 120 }
-        );
-
-        try {
-            await printWeather({ typed: true });
-        } catch (error) {
-            await typeLine(
-                `[WARN] automatic weather unavailable: ${error.message}`,
-                "terminal-error",
-                { speed: 7, pause: 90 }
-            );
-
-            await typeLine(
-                '[INFO] type “weather precise” to request browser location or “weather” to retry.',
-                "terminal-muted",
-                { speed: 7, pause: 90 }
-            );
-        }
-
-        await typeLine(
-            '[READY] interactive shell active — type “help”',
-            "terminal-success",
-            { speed: 12, pause: 0 }
-        );
-
-        setStatus("ONLINE", "online");
-        setInputEnabled(true);
-        commandBusy = false;
-    }
-
-    async function runCommand(rawCommand) {
-        const command = rawCommand.trim();
-        if (!command || commandBusy) return;
-
-        commandBusy = true;
-        setInputEnabled(false);
-        appendCommand(command);
-
-        const parts = command.toLowerCase().split(/\s+/);
-        const name = parts[0];
-        const args = parts.slice(1);
-
-        try {
-            switch (name) {
-                case "help":
-                case "?":
-                    [
-                        "AVAILABLE COMMANDS",
-                        "help                 show this command list",
-                        "about | whoami       portfolio owner summary",
-                        "status               system, clock, and weather status",
-                        "ls                   list portfolio modules",
-                        "projects             open project archive",
-                        "drone | reel         open drone reel",
-                        "scans                open archaeology scan area",
-                        "skills               open technical skills",
-                        "work                 open work history",
-                        "contact              open contact page",
-                        "open <target>        open a named portfolio page",
-                        "weather              show cached/coarse local weather",
-                        "weather refresh      refresh coarse IP weather",
-                        "weather precise      request browser location permission",
-                        "matrix on|off        toggle falling code",
-                        "trail on|off         toggle purple cursor trace",
-                        "date                 show browser-local date and time",
-                        "boot                 replay the initialization sequence",
-                        "clear                clear this terminal"
-                    ].forEach((line, index) => {
-                        appendLine(
-                            line,
-                            index === 0 ? "terminal-success" : "terminal-info"
-                        );
-                    });
-                    break;
-
-                case "about":
-                case "whoami":
-                    appendLine("Heath Lyon // FAA Part 107 drone pilot", "terminal-success");
-                    appendLine(
-                        "FPV cinematography, custom drone systems, software, computer vision, embedded electronics, and 3D archives.",
-                        "terminal-info"
-                    );
-                    break;
-
-                case "status":
-                    appendLine("PORTFOLIO........ ONLINE", "terminal-success");
-                    appendLine("FLIGHT SYSTEMS... READY", "terminal-success");
-                    appendLine("3D ARCHIVE........ STANDBY", "terminal-purple");
-                    appendLine("MATRIX LINK....... ACTIVE", "terminal-success");
-                    appendLine(`LOCAL CLOCK....... ${formatLocalDate()}`, "terminal-info");
-
-                    if (weatherSnapshot) {
-                        appendLine(
-                            `WEATHER........... ${weatherSnapshot.temperature}°${weatherSnapshot.degreeUnit}, ${weatherSnapshot.description}`,
-                            "terminal-weather"
-                        );
-                    } else {
-                        appendLine("WEATHER........... NOT CACHED", "terminal-muted");
-                    }
-                    break;
-
-                case "ls":
-                case "dir":
-                    [
-                        "drone-reel/",
-                        "projects/",
-                        "archaeology-scans/",
-                        "skills/",
-                        "work-history/",
-                        "contact/"
-                    ].forEach((line) => appendLine(line, "terminal-purple"));
-                    break;
-
-                case "projects":
-                case "project":
-                case "drone":
-                case "reel":
-                case "scans":
-                case "scan":
-                case "archaeology":
-                case "skills":
-                case "work":
-                case "contact":
-                    await navigate(name);
-                    break;
-
-                case "open":
-                case "cd":
-                    if (!args[0]) {
-                        appendLine(
-                            "Usage: open <projects|drone|scans|skills|work|contact>",
-                            "terminal-error"
-                        );
-                    } else {
-                        await navigate(args[0]);
-                    }
-                    break;
-
-                case "date":
-                case "time":
-                    appendLine(formatLocalDate(), "terminal-success");
-                    break;
-
-                case "weather":
-                    await printWeather({
-                        precise: args[0] === "precise",
-                        forceRefresh: args[0] === "refresh"
-                    });
-                    break;
-
-                case "matrix":
-                    if (!args[0] || !["on", "off"].includes(args[0])) {
-                        appendLine("Usage: matrix on | matrix off", "terminal-error");
-                        break;
-                    }
-
-                    if (matrixCanvas) {
-                        matrixCanvas.hidden = args[0] === "off";
-                    }
-
-                    appendLine(`Matrix rain ${args[0]}.`, "terminal-purple");
-                    break;
-
-                case "trail":
-                    if (!args[0] || !["on", "off"].includes(args[0])) {
-                        appendLine("Usage: trail on | trail off", "terminal-error");
-                        break;
-                    }
-
-                    if (trailCanvas) {
-                        trailCanvas.hidden = args[0] === "off";
-                    }
-
-                    appendLine(`Purple cursor trace ${args[0]}.`, "terminal-purple");
-                    break;
-
-                case "boot":
-                case "initialize":
-                    commandBusy = false;
-                    await runBootSequence();
-                    return;
-
-                case "clear":
-                case "cls":
-                    terminalOutput.replaceChildren();
-                    break;
-
-                case "sudo":
-                    appendLine(
-                        "Permission denied: public portfolio shell.",
-                        "terminal-error"
-                    );
-                    break;
-
-                default:
-                    appendLine(`Command not found: ${name}`, "terminal-error");
-                    appendLine(
-                        'Type “help” for available commands.',
-                        "terminal-muted"
-                    );
-            }
-        } catch (error) {
-            setStatus("DEGRADED", "warning");
-            appendLine(`[ERROR] ${error.message}`, "terminal-error");
-            appendLine(
-                "The portfolio remains available; retry the command or continue through the navigation.",
-                "terminal-muted"
-            );
-        } finally {
-            commandBusy = false;
-            setInputEnabled(true);
-            terminalInput.focus({ preventScroll: true });
-        }
-    }
-
-    terminalForm.addEventListener("submit", (event) => {
-        event.preventDefault();
-
-        const command = terminalInput.value.trim();
-        if (!command || commandBusy) return;
-
-        history.push(command);
-        historyIndex = history.length;
-        terminalInput.value = "";
-        void runCommand(command);
-    });
-
-    terminalInput.addEventListener("keydown", (event) => {
-        if (event.key === "ArrowUp") {
-            event.preventDefault();
-
-            if (historyIndex > 0) {
-                historyIndex -= 1;
-                terminalInput.value = history[historyIndex];
-                terminalInput.setSelectionRange(
-                    terminalInput.value.length,
-                    terminalInput.value.length
-                );
-            }
-        }
-
-        if (event.key === "ArrowDown") {
-            event.preventDefault();
-
-            if (historyIndex < history.length - 1) {
-                historyIndex += 1;
-                terminalInput.value = history[historyIndex];
-            } else {
-                historyIndex = history.length;
-                terminalInput.value = "";
-            }
-        }
-
-        if (event.key === "Tab") {
-            event.preventDefault();
-
-            const value = terminalInput.value.toLowerCase();
-            const commands = [
-                "help",
-                "about",
-                "whoami",
-                "status",
-                "ls",
-                "projects",
-                "drone",
-                "reel",
-                "scans",
-                "skills",
-                "work",
-                "contact",
-                "open",
-                "weather",
-                "weather refresh",
-                "weather precise",
-                "matrix",
-                "trail",
-                "date",
-                "boot",
-                "clear"
-            ];
-
-            const match = commands.find((commandName) => {
-                return commandName.startsWith(value);
-            });
-
-            if (match) {
-                terminalInput.value = match;
-                terminalInput.setSelectionRange(match.length, match.length);
-            }
-        }
-    });
-
-    terminalPanel.addEventListener("click", (event) => {
-        if (!event.target.closest("button, a") && !terminalInput.disabled) {
-            terminalInput.focus();
-        }
-    });
-
-    void runBootSequence().then(() => {
-        void animateCommandSuggestions();
-    });
-}
-
-function initializeIntro() {
-    const introScreen = document.getElementById("introScreen");
-    const introSkip = document.getElementById("introSkip");
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    if (!introScreen) {
-        document.body.classList.remove("intro-active");
-        return;
-    }
-
-    const displayTime = reducedMotion ? 800 : 2700;
-    const exitTime = 720;
-
-    let hasClosed = false;
-    let displayTimer;
-
-    function finishIntro() {
-        introScreen.remove();
-        document.body.classList.remove("intro-active");
-        document.removeEventListener("keydown", handleIntroKey);
-
-        document.dispatchEvent(
-            new CustomEvent("portfolio:introComplete")
-        );
-    }
-
-    function closeIntro() {
-        if (hasClosed) return;
-
-        hasClosed = true;
-        window.clearTimeout(displayTimer);
-
-        introScreen.classList.add("is-exiting");
-        introScreen.setAttribute("aria-hidden", "true");
-        document.body.classList.remove("intro-active");
-
-        window.setTimeout(finishIntro, exitTime);
-    }
-
-    function handleIntroKey(event) {
-        if (event.key === "Escape" || event.key === "Enter" || event.key === " ") {
-            closeIntro();
-        }
-    }
-
-    introSkip?.addEventListener("click", closeIntro);
-    document.addEventListener("keydown", handleIntroKey);
-
-    const introImages = [...introScreen.querySelectorAll("img")];
-
-    const imageReady = introImages.map((image) => {
-        if (image.complete) {
-            return image.decode?.().catch(() => undefined) ?? Promise.resolve();
-        }
-
-        return new Promise((resolve) => {
-            image.addEventListener("load", resolve, { once: true });
-            image.addEventListener("error", resolve, { once: true });
-        });
-    });
-
-    Promise.race([
-        Promise.all(imageReady),
-        new Promise((resolve) => window.setTimeout(resolve, 700))
-    ]).finally(() => {
-        window.requestAnimationFrame(() => {
-            introScreen.classList.add("is-ready");
-            displayTimer = window.setTimeout(closeIntro, displayTime);
-        });
-    });
-}
-
-initializeCursorField();
-initializeCursorTrail();
-initializeMatrixRain();
-
-const hasIntroScreen = Boolean(document.getElementById("introScreen"));
-
-if (hasIntroScreen) {
-    document.addEventListener(
-        "portfolio:introComplete",
-        initializeTerminal,
-        { once: true }
-    );
-
-    initializeIntro();
-} else {
-    initializeTerminal();
-}
+addEventListener("resize",() => { if (trailOn) fitCanvas(trailCanvas,trailCanvas.getContext("2d")); });
+addEventListener("pointermove",event => { if (!trailOn) return; trailPoints.push({x:event.clientX,y:event.clientY,life:1}); if (trailPoints.length > 38) trailPoints.shift(); },{passive:true});
+
+if (!reducedMotion) { startMatrix(); startTrail(); }
+else { matrixCanvas.hidden = true; trailCanvas.hidden = true; }
+boot();
