@@ -1,41 +1,414 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Heath Lyon — FAA Part 107 FPV pilot, drone systems builder, and creative technologist.">
-  <meta name="theme-color" content="#010403"><title>Heath Lyon | FPV Pilot & Systems Builder</title>
-  <link rel="stylesheet" href="css/styles.css"><script src="js/main.js" defer></script>
-</head>
-<body>
-<div class="shell">
-  <canvas id="matrixCanvas" class="matrix" aria-hidden="true"></canvas><canvas id="trailCanvas" class="trail" aria-hidden="true"></canvas><div id="scanlines" class="scanlines" aria-hidden="true"></div>
-  <header>
-    <a href="#home" class="mini-logo" aria-label="Heath Lyon home"><img src="images/logo/FrontFPV.webp" alt="Heath Lyon FPV"></a>
-    <nav aria-label="Primary navigation"><a href="#home" class="active"><span>01</span>Boot</a><a href="#reel"><span>02</span>Flight reel</a><a href="#projects"><span>03</span>Projects</a><a href="#skills"><span>04</span>Capabilities</a><a href="#contact"><span>05</span>Contact</a></nav>
-    <div class="online"><i></i> PART 107 // ONLINE</div>
-  </header>
-  <nav class="rail" aria-label="Section shortcuts"><a href="#home" class="active" aria-label="Go to Boot"><i></i><b>Boot</b></a><a href="#reel" aria-label="Go to Flight reel"><i></i><b>Flight reel</b></a><a href="#projects" aria-label="Go to Projects"><i></i><b>Projects</b></a><a href="#skills" aria-label="Go to Capabilities"><i></i><b>Capabilities</b></a><a href="#contact" aria-label="Go to Contact"><i></i><b>Contact</b></a></nav>
-  <main id="scroller" tabindex="0">
-    <section id="home" class="snap hero"><div class="hero-image"></div><div class="inner hero-grid">
-      <div class="hero-copy"><p class="code">FAA PART 107 // FPV CINEMATIC OPERATOR</p><img class="wordmark" src="images/logo/img5.webp" alt="Heath Lyon FPV"><p class="summary">I fly custom FPV systems, build technical tools, and turn motion, hardware, code, and spatial data into cinematic experiences.</p><div class="actions"><a class="button primary" href="#reel">▶ Run flight reel</a><a class="button" href="#projects">Explore systems</a></div><dl class="stats"><div><dt>BASE</dt><dd>PROVO, UT</dd></div><div><dt>LINK</dt><dd>FPV / DIGITAL</dd></div><div><dt>MODE</dt><dd>LOCAL / TRAVEL</dd></div></dl></div>
-      <aside class="terminal" aria-label="Interactive portfolio terminal"><div class="term-bar"><span>portfolio://flight_console</span><b id="terminalStatus">◌ BOOTING</b></div><div id="terminalOutput" class="term-output" role="log" aria-live="polite"></div><form id="terminalForm"><label class="sr-only" for="terminalInput">Terminal command</label><span>root@heath:~$</span><input id="terminalInput" disabled placeholder="initializing..." autocomplete="off" spellcheck="false"><button id="terminalRun" disabled>RUN</button></form><div class="quick"><button data-command="help" disabled>help</button><button data-command="status" disabled>status</button><button data-command="projects" disabled>projects</button><button data-command="reel" disabled>reel</button><button data-command="contact" disabled>contact</button></div></aside>
-    </div><a class="next" href="#reel"><span>Enter flight archive</span><b>↓</b></a></section>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="Heath Lyon — FAA Part 107 FPV pilot, drone systems builder, and creative technologist."
+    />
+    <meta name="theme-color" content="#010403" />
+    <title>Heath Lyon | FPV Pilot &amp; Systems Builder</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="js/terminal-answers.js" defer></script>
+    <script src="js/main.js" defer></script>
+  </head>
+  <body>
+    <div class="shell">
+      <canvas id="matrixCanvas" class="matrix" aria-hidden="true"></canvas
+      ><canvas id="trailCanvas" class="trail" aria-hidden="true"></canvas>
+      <div id="scanlines" class="scanlines" aria-hidden="true"></div>
+      <header>
+        <a href="#home" class="mini-logo" aria-label="Heath Lyon home"
+          ><img src="images/logo/FrontFPV.webp" alt="Heath Lyon FPV"
+        /></a>
+        <nav aria-label="Primary navigation">
+          <a href="#home" class="active"><span>01</span>Boot</a
+          ><a href="#reel"><span>02</span>Flight reel</a
+          ><a href="#projects"><span>03</span>Projects</a
+          ><a href="#skills"><span>04</span>Capabilities</a
+          ><a href="#contact"><span>05</span>Contact</a>
+        </nav>
+        <div class="online"><i></i> PART 107 // ONLINE</div>
+      </header>
+      <nav class="rail" aria-label="Section shortcuts">
+        <a href="#home" class="active" aria-label="Go to Boot"
+          ><i></i><b>Boot</b></a
+        ><a href="#reel" aria-label="Go to Flight reel"
+          ><i></i><b>Flight reel</b></a
+        ><a href="#projects" aria-label="Go to Projects"
+          ><i></i><b>Projects</b></a
+        ><a href="#skills" aria-label="Go to Capabilities"
+          ><i></i><b>Capabilities</b></a
+        ><a href="#contact" aria-label="Go to Contact"><i></i><b>Contact</b></a>
+      </nav>
+      <main id="scroller" tabindex="0">
+        <section id="home" class="snap hero">
+          <div class="hero-image"></div>
+          <div class="inner hero-grid">
+            <div class="hero-copy">
+              <p class="code">FAA PART 107 // FPV CINEMATIC OPERATOR</p>
+              <img
+                class="wordmark"
+                src="images/logo/img5.webp"
+                alt="Heath Lyon FPV"
+              />
+              <p class="summary">
+                I fly custom FPV systems, build technical tools, and turn
+                motion, hardware, code, and spatial data into cinematic
+                experiences.
+              </p>
+              <div class="actions">
+                <a class="button primary" href="#reel">▶ Run flight reel</a
+                ><a class="button" href="#projects">Explore systems</a>
+              </div>
+              <dl class="stats">
+                <div>
+                  <dt>BASE</dt>
+                  <dd>PROVO, UT</dd>
+                </div>
+                <div>
+                  <dt>LINK</dt>
+                  <dd>FPV / DIGITAL</dd>
+                </div>
+                <div>
+                  <dt>MODE</dt>
+                  <dd>LOCAL / TRAVEL</dd>
+                </div>
+              </dl>
+            </div>
+            <aside class="terminal" aria-label="Interactive portfolio terminal">
+              <div class="term-bar">
+                <span>portfolio://flight_console</span
+                ><b id="terminalStatus">◌ BOOTING</b>
+              </div>
+              <div
+                id="terminalOutput"
+                class="term-output"
+                role="log"
+                aria-live="polite"
+              ></div>
+              <form id="terminalForm">
+                <label class="sr-only" for="terminalInput"
+                  >Terminal command</label
+                ><span>root@heath:~$</span
+                ><input
+                  type="text"
+                  id="terminalInput"
+                  disabled
+                  placeholder="initializing..."
+                  autocomplete="off"
+                  spellcheck="false"
+                /><button type="submit" id="terminalRun" disabled>RUN</button>
+              </form>
+              <div class="quick">
+                <button type="button" data-command="help" disabled>help</button
+                ><button type="button" data-command="status" disabled>
+                  status</button
+                ><button type="button" data-command="projects" disabled>
+                  projects</button
+                ><button type="button" data-command="reel" disabled>reel</button
+                ><button type="button" data-command="downloads" disabled>
+                  downloads</button
+                ><button type="button" data-command="questions" disabled>
+                  questions</button
+                ><button type="button" data-command="contact" disabled>
+                  contact
+                </button>
+              </div>
+            </aside>
+          </div>
+          <a class="next" href="#reel"
+            ><span>Enter flight archive</span><b>↓</b></a
+          >
+        </section>
 
-    <section id="reel" class="snap reel"><div class="inner"><div class="heading"><div><p class="code">SYS 01_FLIGHT_MEDIA_ARCHIVE</p><h2>See the flight line.</h2></div><p>Cinematic FPV, production work, build testing, and low-altitude movement—captured through systems I fly and maintain.</p></div><div class="reel-grid"><div class="video"><div class="video-hud"><span>REC ●</span><span>HL-FPV_2026</span><span>4K SOURCE</span></div><video controls playsinline preload="metadata" poster="images/logo/img1.webp"><source src="video/Dronereelcompress.mp4" type="video/mp4"></video></div><aside class="manifest"><p class="code">FLIGHT_MANIFEST</p><article><span>01</span><div><h3>Cinematic FPV</h3><p>Proximity, tracking, landscape, and dynamic movement.</p></div></article><article><span>02</span><div><h3>Production</h3><p>Safety briefings, field support, and client-facing shoots.</p></div></article><article><span>03</span><div><h3>Build testing</h3><p>Payload trials, tuning, vibration diagnosis, and repair.</p></div></article></aside></div></div><a class="next" href="#projects"><span>Inspect active systems</span><b>↓</b></a></section>
+        <section id="reel" class="snap reel">
+          <div class="inner">
+            <div class="heading">
+              <div>
+                <p class="code">SYS 01_FLIGHT_MEDIA_ARCHIVE</p>
+                <h2>See the flight line.</h2>
+              </div>
+              <p>
+                Cinematic FPV, production work, build testing, and low-altitude
+                movement—captured through systems I fly and maintain.
+              </p>
+            </div>
+            <div class="reel-grid">
+              <div class="video">
+                <div class="video-hud">
+                  <span>REC ●</span><span>HL-FPV_2026</span
+                  ><span>4K SOURCE</span>
+                </div>
+                <video
+                  controls
+                  playsinline
+                  preload="metadata"
+                  poster="images/logo/img1.webp"
+                >
+                  <source src="video/Dronereelcompress.mp4" type="video/mp4" />
+                </video>
+              </div>
+              <aside class="manifest" aria-label="Flight reel manifest">
+                <p class="code">FLIGHT_MANIFEST</p>
+                <article>
+                  <span>01</span>
+                  <div>
+                    <h3>Cinematic FPV</h3>
+                    <p>Proximity, tracking, landscape, and dynamic movement.</p>
+                  </div>
+                </article>
+                <article>
+                  <span>02</span>
+                  <div>
+                    <h3>Production</h3>
+                    <p>
+                      Safety briefings, field support, and client-facing shoots.
+                    </p>
+                  </div>
+                </article>
+                <article>
+                  <span>03</span>
+                  <div>
+                    <h3>Build testing</h3>
+                    <p>
+                      Payload trials, tuning, vibration diagnosis, and repair.
+                    </p>
+                  </div>
+                </article>
+              </aside>
+            </div>
+          </div>
+          <a class="next" href="#projects"
+            ><span>Inspect active systems</span><b>↓</b></a
+          >
+        </section>
 
-    <section id="projects" class="snap projects"><div class="inner"><div class="heading"><div><p class="code">SYS 02_ACTIVE_PROJECTS</p><h2>Built beyond the frame.</h2></div><p>Field-tested work where flight systems meet sensing, software, fabrication, and interactive data.</p></div><div class="project-grid">
-      <article class="project-card feature"><img src="images/logo/img2.webp" alt="Custom FPV drone at sunset"><div><span>A01 · FLIGHT HARDWARE</span><h3>Custom FPV & Cinelifter Systems</h3><p>Full-stack aircraft builds: power, digital video, ELRS, Betaflight tuning, payload integration, and field troubleshooting.</p></div></article>
-      <article class="project-card"><b>RF</b><span>A02 · RESEARCH</span><h3>Search & Rescue Payloads</h3><p>RF sensing, phone detection, mapping overlays, modular payloads, and field-ready detection concepts.</p></article>
-      <article class="project-card pink"><b>CV</b><span>A03 · COMPUTER VISION</span><h3>Human-aware Interfaces</h3><p>YOLO pose tracking, fall detection, gesture input, live visualizers, and privacy-conscious alerting.</p></article>
-      <article class="project-card"><b>3D</b><span>A04 · SPATIAL ARCHIVE</span><h3>Archaeology 3D Scans</h3><p>Three.js GLB viewers with selectable sites, metadata, free camera controls, and excavation records.</p></article>
-    </div></div><a class="next" href="#skills"><span>Load capability index</span><b>↓</b></a></section>
+        <section id="projects" class="snap projects">
+          <div class="inner">
+            <div class="heading">
+              <div>
+                <p class="code">SYS 02_ACTIVE_PROJECTS</p>
+                <h2>Built beyond the frame.</h2>
+              </div>
+              <p>
+                Field-tested work where flight systems meet sensing, software,
+                fabrication, and interactive data.
+                <a class="project-library-link" href="downloads.html"
+                  >Browse project downloads →</a
+                >
+              </p>
+            </div>
+            <div class="project-grid">
+              <a
+                class="project-card feature"
+                href="#reel"
+                aria-label="Watch the custom FPV and cinelifter flight reel"
+              >
+                <img
+                  src="images/logo/img2.webp"
+                  alt="Custom FPV drone at sunset"
+                />
+                <div>
+                  <span>A01 · FLIGHT HARDWARE</span>
+                  <h3>Custom FPV &amp; Cinelifter Systems</h3>
+                  <p>
+                    Full-stack aircraft builds: power, digital video, ELRS,
+                    Betaflight tuning, payload integration, and field
+                    troubleshooting.
+                  </p>
+                </div>
+                <span class="card-action">WATCH REEL ↗</span>
+              </a>
+              <a
+                class="project-card"
+                href="sar-project.html"
+                aria-label="Open the search and rescue payload project"
+              >
+                <b>RF</b><span>A02 · RESEARCH</span>
+                <h3>Search &amp; Rescue Payloads</h3>
+                <p>
+                  RF sensing, phone detection, mapping overlays, modular
+                  payloads, and field-ready detection concepts.
+                </p>
+                <span class="card-action">OPEN CASE STUDY ↗</span>
+              </a>
+              <a
+                class="project-card pink"
+                href="Yollo.html"
+                aria-label="Open the YOLO fall detection demonstration"
+              >
+                <b>CV</b><span>A03 · COMPUTER VISION</span>
+                <h3>YOLO Fall Detection</h3>
+                <p>
+                  Pose tracking, temporal fall scoring, privacy-aware rendering,
+                  logging, and alert workflows.
+                </p>
+                <span class="card-action">RUN SLIDESHOW ↗</span>
+              </a>
+              <a
+                class="project-card"
+                href="archaeology-project.html"
+                aria-label="Open the archaeology 3D scan archive project"
+              >
+                <b>3D</b><span>A04 · SPATIAL ARCHIVE</span>
+                <h3>Archaeology 3D Scans</h3>
+                <p>
+                  Three.js GLB viewers with selectable sites, metadata, free
+                  camera controls, and excavation records.
+                </p>
+                <span class="card-action">OPEN CASE STUDY ↗</span>
+              </a>
+            </div>
+          </div>
+          <a class="next" href="#skills"
+            ><span>Load capability index</span><b>↓</b></a
+          >
+        </section>
 
-    <section id="skills" class="snap skills"><div class="skills-image"></div><div class="inner"><div class="heading"><div><p class="code">SYS 03_CAPABILITY_INDEX</p><h2>Operator + builder.</h2></div><p>A practical stack developed through commercial shoots, custom hardware, software prototypes, and field leadership.</p></div><div class="skills-grid"><div class="capabilities">
-      <article><span>01</span><div><h3>Flight Operations</h3><p>FPV, Mavic, safety planning, cinematic proximity, production support</p></div></article><article><span>02</span><div><h3>Drone Engineering</h3><p>Cinelifters, Betaflight, ELRS, DJI O3/O4, soldering, power systems</p></div></article><article><span>03</span><div><h3>Software</h3><p>Python, OpenCV, YOLO, Tkinter, HTML, CSS, JavaScript, automation</p></div></article><article><span>04</span><div><h3>Embedded & 3D</h3><p>ESP32, Raspberry Pi, CSI sensing, Three.js, GLB/GLTF, rapid prototyping</p></div></article>
-    </div><aside class="missions"><p class="code">MISSION_LOG</p><article class="mission"><span>2026—NOW</span><h3>Independent Drone Pilot</h3><p>Think Global Media Group // FPV + Mavic production</p></article><article class="mission"><span>2026</span><h3>Homestead-Miami Audi F1</h3><p>Production flight operation and field support</p></article><article class="mission hot"><span>CERTIFICATION</span><h3>FAA Part 107</h3><p>Remote Pilot Certificate // Active</p></article></aside></div></div><a class="next" href="#contact"><span>Open contact channel</span><b>↓</b></a></section>
+        <section id="skills" class="snap skills">
+          <div class="skills-image"></div>
+          <div class="inner">
+            <div class="heading">
+              <div>
+                <p class="code">SYS 03_CAPABILITY_INDEX</p>
+                <h2>Operator + builder.</h2>
+              </div>
+              <p>
+                A practical stack developed through commercial shoots, custom
+                hardware, software prototypes, and field leadership.
+              </p>
+            </div>
+            <div class="skills-grid">
+              <div class="capabilities">
+                <article>
+                  <span>01</span>
+                  <div>
+                    <h3>Flight Operations</h3>
+                    <p>
+                      FPV, Mavic, safety planning, cinematic proximity,
+                      production support
+                    </p>
+                  </div>
+                </article>
+                <article>
+                  <span>02</span>
+                  <div>
+                    <h3>Drone Engineering</h3>
+                    <p>
+                      Cinelifters, Betaflight, ELRS, DJI O3/O4, soldering, power
+                      systems
+                    </p>
+                  </div>
+                </article>
+                <article>
+                  <span>03</span>
+                  <div>
+                    <h3>Software</h3>
+                    <p>
+                      Python, OpenCV, YOLO, Tkinter, HTML, CSS, JavaScript,
+                      automation
+                    </p>
+                  </div>
+                </article>
+                <article>
+                  <span>04</span>
+                  <div>
+                    <h3>Embedded &amp; 3D</h3>
+                    <p>
+                      ESP32, Raspberry Pi, CSI sensing, Three.js, GLB/GLTF,
+                      rapid prototyping
+                    </p>
+                  </div>
+                </article>
+              </div>
+              <aside
+                class="missions"
+                aria-label="Mission and certification log"
+              >
+                <p class="code">MISSION_LOG</p>
+                <article class="mission">
+                  <span>2026—NOW</span>
+                  <h3>Independent Drone Pilot</h3>
+                  <p>Think Global Media Group // FPV + Mavic production</p>
+                </article>
+                <article class="mission">
+                  <span>2026</span>
+                  <h3>Homestead-Miami Audi F1</h3>
+                  <p>Production flight operation and field support</p>
+                </article>
+                <article class="mission hot">
+                  <span>CERTIFICATION</span>
+                  <h3>FAA Part 107</h3>
+                  <p>Remote Pilot Certificate // Active</p>
+                </article>
+              </aside>
+            </div>
+          </div>
+          <a class="next" href="#contact"
+            ><span>Open contact channel</span><b>↓</b></a
+          >
+        </section>
 
-    <section id="contact" class="snap contact"><div class="contact-image"></div><div class="inner contact-grid"><div><p class="code">SYS 04_SECURE_CONTACT_LINK</p><h2>Let’s build the shot—or the system behind it.</h2><p class="summary">Available for FPV production, drone systems, technical prototypes, interactive websites, and collaborative development.</p><div class="actions"><a class="button primary" href="mailto:Lyon.m.heath@gmail.com">Send transmission</a><a class="button" href="https://www.youtube.com/@SkyLensProvo" target="_blank" rel="noreferrer">YouTube reel</a></div></div><div class="contact-console"><p><span>EMAIL</span><a href="mailto:Lyon.m.heath@gmail.com">Lyon.m.heath@gmail.com</a></p><p><span>GITHUB</span><a href="https://github.com/HeathLyon" target="_blank" rel="noreferrer">github.com/HeathLyon</a></p><p><span>INSTAGRAM</span><a href="https://instagram.com/skylensprovo" target="_blank" rel="noreferrer">@skylensprovo</a></p><p><span>LOCATION</span><b>Provo, Utah // Travel ready</b></p><div class="available"><i></i> CHANNEL OPEN // NEW PROJECTS</div></div></div><footer><span>© <span id="year"></span> HEATH LYON</span><span>FPV // CODE // 3D DATA</span><a href="#home">RETURN TO BOOT ↑</a></footer></section>
-  </main>
-</div>
-</body>
+        <section id="contact" class="snap contact">
+          <div class="contact-image"></div>
+          <div class="inner contact-grid">
+            <div>
+              <p class="code">SYS 04_SECURE_CONTACT_LINK</p>
+              <h2>Let’s build the shot—or the system behind it.</h2>
+              <p class="summary">
+                Available for FPV production, drone systems, technical
+                prototypes, interactive websites, and collaborative development.
+              </p>
+              <div class="actions">
+                <a class="button primary" href="mailto:Lyon.m.heath@gmail.com"
+                  >Send transmission</a
+                ><a
+                  class="button"
+                  href="https://www.youtube.com/@SkyLensProvo"
+                  target="_blank"
+                  rel="noreferrer"
+                  >YouTube reel</a
+                >
+              </div>
+            </div>
+            <div class="contact-console">
+              <p>
+                <span>EMAIL</span
+                ><a href="mailto:Lyon.m.heath@gmail.com"
+                  >Lyon.m.heath@gmail.com</a
+                >
+              </p>
+              <p>
+                <span>GITHUB</span
+                ><a
+                  href="https://github.com/HeathLyon"
+                  target="_blank"
+                  rel="noreferrer"
+                  >github.com/HeathLyon</a
+                >
+              </p>
+              <p>
+                <span>INSTAGRAM</span
+                ><a
+                  href="https://instagram.com/skylensprovo"
+                  target="_blank"
+                  rel="noreferrer"
+                  >@skylensprovo</a
+                >
+              </p>
+              <p><span>LOCATION</span><b>Provo, Utah // Travel ready</b></p>
+              <div class="available"><i></i> CHANNEL OPEN // NEW PROJECTS</div>
+            </div>
+          </div>
+          <footer>
+            <span>© <span id="year"></span> HEATH LYON</span
+            ><span>FPV // CODE // 3D DATA</span
+            ><a href="#home">RETURN TO BOOT ↑</a>
+          </footer>
+        </section>
+      </main>
+    </div>
+  </body>
 </html>

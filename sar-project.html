@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="Search and rescue RF payload research by Heath Lyon."
+    />
+    <meta name="theme-color" content="#010403" />
+    <title>Search &amp; Rescue Payloads | Heath Lyon</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="js/project-showcase.js" defer></script>
+  </head>
+  <body class="project-page">
+    <div class="shell project-shell">
+      <div class="scanlines" aria-hidden="true"></div>
+      <header class="sub-header">
+        <a href="index.html#home" class="mini-logo" aria-label="Heath Lyon home"
+          ><img src="images/logo/FrontFPV.webp" alt="Heath Lyon FPV"
+        /></a>
+        <nav aria-label="Project navigation">
+          <a href="index.html#projects"><span>01</span>Projects</a
+          ><a href="#system" class="active"><span>02</span>System</a
+          ><a href="downloads.html"><span>03</span>Downloads</a>
+        </nav>
+        <a class="sub-status" href="index.html#contact">COLLABORATE ↗</a>
+      </header>
+      <main class="project-main">
+        <section class="project-hero">
+          <div>
+            <p class="code">RF_02 // SEARCH + RESCUE RESEARCH</p>
+            <h1>Find the <em>signal.</em></h1>
+            <p class="project-lead">
+              A modular aerial payload concept for directional RF sensing,
+              phone-presence research, search-pattern telemetry, and spatial
+              overlays. The design separates flight safety from experimental
+              sensing hardware.
+            </p>
+            <div class="project-meta">
+              <span>ESP32</span><span>RASPBERRY PI</span><span>PYTHON</span
+              ><span>RF SENSING</span><span>GIS OVERLAY</span>
+            </div>
+            <div class="actions">
+              <a class="button primary" href="#system">Inspect system</a
+              ><a class="button" href="downloads.html">Project library</a>
+            </div>
+          </div>
+          <div
+            class="case-visual sar"
+            role="img"
+            aria-label="Custom FPV drone representing a modular search and rescue payload"
+          ></div>
+        </section>
+        <section id="system" class="content-section">
+          <div class="section-heading">
+            <div>
+              <p class="code">ARCH_02 // MODULAR FIELD STACK</p>
+              <h2>Separate the aircraft from the experiment.</h2>
+            </div>
+            <p>
+              The payload should collect repeatable data without turning
+              experimental code into a flight-critical dependency.
+            </p>
+          </div>
+          <div class="architecture-grid">
+            <article class="detail-card">
+              <span>01 // CAPTURE</span>
+              <h3>RF sensor head</h3>
+              <p>
+                Directional antenna and embedded capture module produce
+                timestamped signal observations.
+              </p>
+            </article>
+            <article class="detail-card">
+              <span>02 // POSITION</span>
+              <h3>Flight telemetry</h3>
+              <p>
+                Position, heading, altitude, and sweep state make each
+                observation spatially meaningful.
+              </p>
+            </article>
+            <article class="detail-card">
+              <span>03 // TRANSPORT</span>
+              <h3>Modular link</h3>
+              <p>
+                A contained payload link prevents a sensor failure from
+                interfering with the aircraft control system.
+              </p>
+            </article>
+            <article class="detail-card">
+              <span>04 // VISUALIZE</span>
+              <h3>Radar playback</h3>
+              <p>
+                Recorded observations become a browser radar, heatmap, timeline,
+                and confidence trail.
+              </p>
+            </article>
+            <article class="detail-card">
+              <span>05 // TEST</span>
+              <h3>Known targets</h3>
+              <p>
+                Bench and field trials use controlled distances, orientations,
+                and signal sources before operational claims.
+              </p>
+            </article>
+            <article class="detail-card">
+              <span>06 // ETHICS</span>
+              <h3>Privacy boundary</h3>
+              <p>
+                Research should minimize retained identifiers, document consent,
+                and follow applicable radio and privacy rules.
+              </p>
+            </article>
+          </div>
+        </section>
+        <footer class="project-footer">
+          <span>© <span data-year></span> HEATH LYON</span
+          ><span>RF // PAYLOADS // FIELD DATA</span
+          ><a href="index.html#projects">RETURN TO PROJECTS ↑</a>
+        </footer>
+      </main>
+    </div>
+  </body>
+</html>

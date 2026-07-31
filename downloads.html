@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="Project downloads, source packages, demonstrations, and build briefs from Heath Lyon."
+    />
+    <meta name="theme-color" content="#010403" />
+    <title>Project Downloads | Heath Lyon</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="js/project-showcase.js" defer></script>
+  </head>
+  <body class="project-page">
+    <div class="shell project-shell">
+      <div class="scanlines" aria-hidden="true"></div>
+      <header class="sub-header">
+        <a
+          href="index.html#home"
+          class="mini-logo"
+          aria-label="Heath Lyon home"
+        >
+          <img src="images/logo/FrontFPV.webp" alt="Heath Lyon FPV" />
+        </a>
+        <nav aria-label="Download navigation">
+          <a href="index.html#projects"><span>01</span>Projects</a>
+          <a href="#library" class="active"><span>02</span>Downloads</a>
+          <a href="#browser-ideas"><span>03</span>Build queue</a>
+        </nav>
+        <a class="sub-status" href="index.html#contact">CONTACT CHANNEL ↗</a>
+      </header>
+
+      <main class="project-main">
+        <section class="downloads-hero">
+          <p class="code">SYS_05 // PUBLIC_PROJECT_LIBRARY</p>
+          <h1>Download the <em>work.</em></h1>
+          <p>
+            Source packages, editable files, technical briefs, and working
+            demonstrations. Every active download is a real file; items marked
+            “source pending” stay locked until they can be safely verified.
+          </p>
+        </section>
+
+        <section id="library" class="content-section">
+          <div class="section-heading">
+            <div>
+              <p class="code">LIBRARY_01 // FILTERABLE_INDEX</p>
+              <h2>Projects and files.</h2>
+            </div>
+            <p>
+              Filter by source type. Browser projects open directly from static
+              hosting; desktop Python projects use a download and local setup.
+            </p>
+          </div>
+          <div
+            class="filter-bar"
+            role="group"
+            aria-label="Filter project downloads"
+          >
+            <button
+              class="filter-button active"
+              type="button"
+              data-filter="all"
+            >
+              All
+            </button>
+            <button class="filter-button" type="button" data-filter="browser">
+              Browser
+            </button>
+            <button class="filter-button" type="button" data-filter="python">
+              Python
+            </button>
+            <button class="filter-button" type="button" data-filter="source">
+              Source
+            </button>
+            <button class="filter-button" type="button" data-filter="brief">
+              Briefs
+            </button>
+          </div>
+
+          <div class="project-download-grid">
+            <article class="download-card" data-category="browser source">
+              <span class="card-id">DL_01 // HTML + CSS + JS</span>
+              <h2>Retro portfolio source</h2>
+              <p>
+                Editable source for the snap-scroll index, terminal, project
+                pages, slideshow, download filters, images, and JavaScript text
+                copies. The lightweight ZIP omits the 25 MB reel; the complete
+                folder download includes it.
+              </p>
+              <span class="status-chip">READY // ZIP</span>
+              <div class="download-actions">
+                <a
+                  class="button primary"
+                  href="downloads/Heath-Portfolio-Source.zip"
+                  download
+                  >Download source</a
+                >
+                <a class="button" href="index.html">Open site</a>
+              </div>
+            </article>
+
+            <article class="download-card" data-category="python brief">
+              <span class="card-id">DL_02 // COMPUTER VISION</span>
+              <h2>YOLO fall detector</h2>
+              <p>
+                Desktop pose-estimation prototype with temporal fall logic,
+                privacy rendering, local logging, and an optional alert adapter.
+              </p>
+              <span class="status-chip pending"
+                >SOURCE PENDING // BRIEF READY</span
+              >
+              <div class="download-actions">
+                <a class="button primary" href="Yollo.html">View demo</a>
+                <a
+                  class="button"
+                  href="downloads/YOLO-Fall-Detector-Project-Brief.txt"
+                  download
+                  >Download brief</a
+                >
+                <a class="button" aria-disabled="true" href="#"
+                  >Python ZIP locked</a
+                >
+              </div>
+            </article>
+
+            <article class="download-card" data-category="browser brief">
+              <span class="card-id">DL_03 // BUILD QUEUE</span>
+              <h2>Browser project ideas</h2>
+              <p>
+                Six presentation-ready builds ranked for an FPV pilot, systems
+                builder, computer-vision developer, and spatial-data portfolio.
+              </p>
+              <span class="status-chip">READY // TXT</span>
+              <div class="download-actions">
+                <a
+                  class="button primary"
+                  href="downloads/Browser-Project-Ideas.txt"
+                  download
+                  >Download ideas</a
+                >
+                <a class="button" href="#browser-ideas">Preview queue</a>
+              </div>
+            </article>
+
+            <article class="download-card" data-category="browser">
+              <span class="card-id">DL_04 // FPV MEDIA</span>
+              <h2>Flight reel</h2>
+              <p>
+                The existing cinematic reel remains embedded in the index with
+                poster art, native playback controls, and the original video
+                file.
+              </p>
+              <span class="status-chip">LIVE // BROWSER</span>
+              <div class="download-actions">
+                <a class="button primary" href="index.html#reel">Watch reel</a>
+              </div>
+            </article>
+
+            <article class="download-card" data-category="browser brief">
+              <span class="card-id">DL_05 // RF RESEARCH</span>
+              <h2>SAR payload system</h2>
+              <p>
+                Modular RF sensing concept joining embedded capture, Python
+                telemetry, directional search patterns, and field mapping.
+              </p>
+              <span class="status-chip pending">CASE STUDY // PROTOTYPE</span>
+              <div class="download-actions">
+                <a class="button primary" href="sar-project.html"
+                  >Open case study</a
+                >
+              </div>
+            </article>
+
+            <article class="download-card" data-category="browser source">
+              <span class="card-id">DL_06 // THREE.JS</span>
+              <h2>Archaeology 3D archive</h2>
+              <p>
+                Browser-native GLB/GLTF viewer concept with site selection,
+                metadata, free camera controls, annotations, and field records.
+              </p>
+              <span class="status-chip pending">CASE STUDY // NEXT BUILD</span>
+              <div class="download-actions">
+                <a class="button primary" href="archaeology-project.html"
+                  >Open case study</a
+                >
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section id="browser-ideas" class="content-section">
+          <div class="section-heading">
+            <div>
+              <p class="code">QUEUE_01 // BROWSER_NATIVE_BUILDS</p>
+              <h2>What to program next.</h2>
+            </div>
+            <p>
+              Each idea can run from static hosting with HTML, CSS, and
+              JavaScript. Start with uploaded or sample data, then add live APIs
+              only where they improve the presentation.
+            </p>
+          </div>
+          <div class="idea-grid">
+            <article class="idea-card">
+              <strong>01</strong><span>BEST NEXT PROJECT</span>
+              <h3>FPV Blackbox Analyzer</h3>
+              <p>
+                Upload a flight log, synchronize gyro, motor, voltage, and event
+                charts, then produce an evidence-based diagnostic summary.
+              </p>
+            </article>
+            <article class="idea-card">
+              <strong>02</strong><span>FIELD TOOL</span>
+              <h3>FPV Shot Planner</h3>
+              <p>
+                Draw a route, estimate battery use, build a shot list, and
+                export a compact production brief for the crew.
+              </p>
+            </article>
+            <article class="idea-card">
+              <strong>03</strong><span>SENSING</span>
+              <h3>RF / CSI Playback Radar</h3>
+              <p>
+                Replay recorded ESP32 or Pi data as a radar, heatmap, timeline,
+                and anomaly log without needing live hardware.
+              </p>
+            </article>
+            <article class="idea-card">
+              <strong>04</strong><span>COMPUTER VISION</span>
+              <h3>Browser Pose Arcade</h3>
+              <p>
+                Use local webcam pose estimation for gesture targets, reaction
+                timing, or a two-player mirror challenge with privacy mode.
+              </p>
+            </article>
+            <article class="idea-card">
+              <strong>05</strong><span>ENGINEERING</span>
+              <h3>Drone Power Calculator</h3>
+              <p>
+                Model motor KV, prop, battery, payload, hover current,
+                thrust-to-weight, and save a build as shareable JSON.
+              </p>
+            </article>
+            <article class="idea-card">
+              <strong>06</strong><span>SPATIAL DATA</span>
+              <h3>3D Field Archive</h3>
+              <p>
+                Load GLB scans, inspect site metadata, place annotations,
+                measure distances, and save a guided tour in the browser.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <footer class="project-footer">
+          <span>© <span data-year></span> HEATH LYON</span>
+          <span>DOWNLOADS // SOURCE // DEMOS</span>
+          <a href="index.html#projects">RETURN TO PROJECTS ↑</a>
+        </footer>
+      </main>
+    </div>
+  </body>
+</html>

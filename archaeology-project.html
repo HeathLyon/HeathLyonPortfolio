@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="Browser-based archaeology 3D scan archive concept by Heath Lyon."
+    />
+    <meta name="theme-color" content="#010403" />
+    <title>Archaeology 3D Archive | Heath Lyon</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="js/project-showcase.js" defer></script>
+  </head>
+  <body class="project-page">
+    <div class="shell project-shell">
+      <div class="scanlines" aria-hidden="true"></div>
+      <header class="sub-header">
+        <a href="index.html#home" class="mini-logo" aria-label="Heath Lyon home"
+          ><img src="images/logo/FrontFPV.webp" alt="Heath Lyon FPV"
+        /></a>
+        <nav aria-label="Project navigation">
+          <a href="index.html#projects"><span>01</span>Projects</a
+          ><a href="#viewer" class="active"><span>02</span>Viewer plan</a
+          ><a href="downloads.html"><span>03</span>Downloads</a>
+        </nav>
+        <a class="sub-status" href="index.html#contact">COLLABORATE ↗</a>
+      </header>
+      <main class="project-main">
+        <section class="project-hero">
+          <div>
+            <p class="code">3D_04 // SPATIAL FIELD ARCHIVE</p>
+            <h1>Preserve the <em>site.</em></h1>
+            <p class="project-lead">
+              A static-hosted Three.js archive for GLB/GLTF scans, selectable
+              sites, excavation metadata, free camera controls, measurements,
+              and guided annotations.
+            </p>
+            <div class="project-meta">
+              <span>THREE.JS</span><span>GLB / GLTF</span><span>WEBGL</span
+              ><span>METADATA</span><span>STATIC HOSTING</span>
+            </div>
+            <div class="actions">
+              <a class="button primary" href="#viewer">Inspect viewer plan</a
+              ><a class="button" href="downloads.html">Project library</a>
+            </div>
+          </div>
+          <div
+            class="case-visual scan"
+            role="img"
+            aria-label="Technical visual representing a browser-based 3D field archive"
+          ></div>
+        </section>
+        <section id="viewer" class="content-section">
+          <div class="section-heading">
+            <div>
+              <p class="code">VIEWER_01 // BROWSER_NATIVE</p>
+              <h2>Make every scan explainable.</h2>
+            </div>
+            <p>
+              The viewer should connect geometry to the site record, not present
+              an isolated object with no field context.
+            </p>
+          </div>
+          <div class="architecture-grid">
+            <article class="detail-card">
+              <span>01 // SELECT</span>
+              <h3>Site index</h3>
+              <p>
+                Choose a trench, feature, artifact, or survey from a searchable
+                project inventory.
+              </p>
+            </article>
+            <article class="detail-card">
+              <span>02 // LOAD</span>
+              <h3>Progressive model</h3>
+              <p>
+                Load optimized GLB assets with visible progress, scale checks,
+                and a useful default camera.
+              </p>
+            </article>
+            <article class="detail-card">
+              <span>03 // INSPECT</span>
+              <h3>Free camera</h3>
+              <p>
+                Orbit, pan, zoom, reset, and switch to documented viewpoints
+                without losing orientation.
+              </p>
+            </article>
+            <article class="detail-card">
+              <span>04 // RECORD</span>
+              <h3>Metadata panel</h3>
+              <p>
+                Show provenience, date, team, method, scale, notes, and linked
+                field documentation.
+              </p>
+            </article>
+            <article class="detail-card">
+              <span>05 // ANNOTATE</span>
+              <h3>Spatial markers</h3>
+              <p>
+                Attach labels, interpretive notes, measurements, and confidence
+                to positions on the scan.
+              </p>
+            </article>
+            <article class="detail-card">
+              <span>06 // SHARE</span>
+              <h3>Guided tour</h3>
+              <p>
+                Save a sequence of viewpoints and captions as a browser
+                presentation for classes or reports.
+              </p>
+            </article>
+          </div>
+        </section>
+        <footer class="project-footer">
+          <span>© <span data-year></span> HEATH LYON</span
+          ><span>THREE.JS // GLB // FIELD RECORDS</span
+          ><a href="index.html#projects">RETURN TO PROJECTS ↑</a>
+        </footer>
+      </main>
+    </div>
+  </body>
+</html>

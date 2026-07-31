@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="YOLO pose-based fall detection prototype by Heath Lyon — technical demonstration, architecture, and project download information."
+    />
+    <meta name="theme-color" content="#010403" />
+    <title>YOLO Fall Detection | Heath Lyon</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="js/project-showcase.js" defer></script>
+  </head>
+  <body class="project-page">
+    <div class="shell project-shell">
+      <div class="scanlines" aria-hidden="true"></div>
+      <header class="sub-header">
+        <a
+          href="index.html#home"
+          class="mini-logo"
+          aria-label="Heath Lyon home"
+        >
+          <img src="images/logo/FrontFPV.webp" alt="Heath Lyon FPV" />
+        </a>
+        <nav aria-label="Project navigation">
+          <a href="index.html#projects"><span>01</span>Projects</a>
+          <a href="#demo" class="active"><span>02</span>Demo</a>
+          <a href="#architecture"><span>03</span>Architecture</a>
+        </nav>
+        <a class="sub-status" href="downloads.html">DOWNLOAD LIBRARY ↗</a>
+      </header>
+
+      <main class="project-main">
+        <section class="project-hero">
+          <div>
+            <p class="code">CV_01 // DESKTOP PYTHON PROTOTYPE</p>
+            <h1>YOLO <em>fall</em> detection.</h1>
+            <p class="project-lead">
+              A pose-estimation system that follows body geometry over time,
+              scores fall-like movement, renders a privacy-aware skeleton, and
+              records or forwards an incident. This page is a safe presentation:
+              it does not request your camera and it does not run Python in the
+              browser.
+            </p>
+            <div class="project-meta">
+              <span>PYTHON</span><span>YOLO11 POSE</span><span>OPENCV</span
+              ><span>TEMPORAL RULES</span><span>LOCAL-FIRST</span>
+            </div>
+            <div class="actions">
+              <a class="button primary" href="#demo"
+                >▶ Run technical slideshow</a
+              >
+              <a class="button" href="downloads.html">Open downloads</a>
+            </div>
+          </div>
+          <aside class="system-card" aria-label="Project system status">
+            <div class="system-id">
+              <span>PROJECT_CV01</span><span>CASE STUDY</span>
+            </div>
+            <strong>17</strong>
+            <h2>Pose keypoints per subject</h2>
+            <p>
+              The model provides joints and confidence values. A separate
+              detector evaluates posture, vertical movement, and time spent
+              down.
+            </p>
+            <div class="system-lines">
+              <span>RUNTIME <b>DESKTOP PYTHON</b></span>
+              <span>WEB MODE <b>SLIDESHOW ONLY</b></span>
+              <span>CAMERA ACCESS <b>NOT REQUESTED</b></span>
+              <span>RELEASE <b>SOURCE SANITIZATION</b></span>
+            </div>
+          </aside>
+        </section>
+
+        <section id="demo" class="content-section">
+          <div class="section-heading">
+            <div>
+              <p class="code">DEMO_01 // FOUR-STAGE WALKTHROUGH</p>
+              <h2>How the prototype reads a fall.</h2>
+            </div>
+            <p>
+              Use the controls, arrow keys, or auto play. The diagrams present
+              the system clearly without pretending that the Python model is
+              executing in a static webpage.
+            </p>
+          </div>
+
+          <div
+            class="showcase-window"
+            data-showcase
+            tabindex="0"
+            aria-label="YOLO fall detection technical slideshow"
+          >
+            <div class="showcase-bar">
+              <span>portfolio://cv01_demo</span>
+              <span data-counter>01 / 04</span>
+            </div>
+            <div class="showcase-stage">
+              <article class="showcase-slide active" data-slide>
+                <div class="slide-visual">
+                  <svg
+                    viewBox="0 0 400 300"
+                    role="img"
+                    aria-label="Tracked human pose with seventeen keypoints"
+                  >
+                    <g
+                      fill="none"
+                      stroke="#a2ff2f"
+                      stroke-width="4"
+                      stroke-linecap="round"
+                    >
+                      <path d="M199 59 L199 93 L160 116 L140 163 L116 203" />
+                      <path d="M199 93 L238 116 L260 160 L286 194" />
+                      <path d="M199 93 L199 164 L170 211 L151 266" />
+                      <path d="M199 164 L230 211 L249 266" />
+                      <path
+                        d="M179 50 Q199 31 219 50 Q220 78 199 84 Q178 77 179 50Z"
+                      />
+                    </g>
+                    <g fill="#ff2a9d" stroke="#010403" stroke-width="3">
+                      <circle cx="199" cy="47" r="8" />
+                      <circle cx="181" cy="50" r="6" />
+                      <circle cx="217" cy="50" r="6" />
+                      <circle cx="174" cy="60" r="5" />
+                      <circle cx="224" cy="60" r="5" />
+                      <circle cx="160" cy="116" r="7" />
+                      <circle cx="238" cy="116" r="7" />
+                      <circle cx="140" cy="163" r="7" />
+                      <circle cx="260" cy="160" r="7" />
+                      <circle cx="116" cy="203" r="7" />
+                      <circle cx="286" cy="194" r="7" />
+                      <circle cx="199" cy="164" r="7" />
+                      <circle cx="170" cy="211" r="7" />
+                      <circle cx="230" cy="211" r="7" />
+                      <circle cx="151" cy="266" r="7" />
+                      <circle cx="249" cy="266" r="7" />
+                      <circle cx="199" cy="93" r="7" />
+                    </g>
+                    <rect
+                      x="79"
+                      y="22"
+                      width="242"
+                      height="265"
+                      fill="none"
+                      stroke="#a2ff2f"
+                      stroke-dasharray="8 8"
+                      opacity=".5"
+                    />
+                    <text
+                      x="91"
+                      y="43"
+                      fill="#a2ff2f"
+                      font-size="12"
+                      font-family="monospace"
+                    >
+                      PERSON 01 // 0.93
+                    </text>
+                  </svg>
+                </div>
+                <div class="slide-copy">
+                  <span class="slide-number">SLIDE 01 // INFERENCE</span>
+                  <h3>Find the person and joints.</h3>
+                  <p>
+                    YOLO pose inference returns a person box, seventeen body
+                    keypoints, and confidence values. Low-confidence joints can
+                    be ignored before the motion logic begins.
+                  </p>
+                  <ul class="slide-list">
+                    <li>Normalize keypoints to the subject box</li>
+                    <li>Reject unstable or incomplete detections</li>
+                    <li>Retain a short history instead of judging one frame</li>
+                  </ul>
+                </div>
+              </article>
+
+              <article class="showcase-slide" data-slide aria-hidden="true">
+                <div class="slide-visual">
+                  <svg
+                    viewBox="0 0 400 300"
+                    role="img"
+                    aria-label="Skeleton-only privacy rendering"
+                  >
+                    <rect
+                      x="34"
+                      y="28"
+                      width="332"
+                      height="244"
+                      rx="4"
+                      fill="#020806"
+                      stroke="#203329"
+                    />
+                    <g opacity=".24" stroke="#a2ff2f" stroke-width="1">
+                      <path d="M34 78H366M34 128H366M34 178H366M34 228H366" />
+                      <path
+                        d="M84 28V272M134 28V272M184 28V272M234 28V272M284 28V272M334 28V272"
+                      />
+                    </g>
+                    <g
+                      transform="translate(4 10) rotate(64 205 155)"
+                      fill="none"
+                      stroke="#a2ff2f"
+                      stroke-width="5"
+                      stroke-linecap="round"
+                    >
+                      <circle cx="200" cy="65" r="24" />
+                      <path
+                        d="M200 90V160M200 112L145 143M200 112L251 149M200 160L163 222M200 160L244 218"
+                      />
+                    </g>
+                    <rect
+                      x="72"
+                      y="188"
+                      width="258"
+                      height="48"
+                      fill="#ff2a9d"
+                      opacity=".09"
+                      stroke="#ff2a9d"
+                      stroke-dasharray="7 7"
+                    />
+                    <text
+                      x="82"
+                      y="215"
+                      fill="#ff2a9d"
+                      font-size="12"
+                      font-family="monospace"
+                    >
+                      PRIVACY VIEW // VIDEO HIDDEN
+                    </text>
+                  </svg>
+                </div>
+                <div class="slide-copy">
+                  <span class="slide-number">SLIDE 02 // PRIVACY</span>
+                  <h3>Render geometry, not identity.</h3>
+                  <p>
+                    The presentation layer can replace the camera image with a
+                    skeleton-only canvas. Operators still see posture and system
+                    state while faces and environmental details remain hidden.
+                  </p>
+                  <ul class="slide-list">
+                    <li>Optional raw-video suppression</li>
+                    <li>Status and confidence remain visible</li>
+                    <li>Local processing keeps footage off a cloud service</li>
+                  </ul>
+                </div>
+              </article>
+
+              <article class="showcase-slide" data-slide aria-hidden="true">
+                <div class="slide-visual">
+                  <div
+                    class="metric-stack"
+                    role="img"
+                    aria-label="Example fall confidence signals"
+                  >
+                    <div class="metric-row">
+                      <span>BODY ANGLE</span>
+                      <div class="metric-bar"><i></i></div>
+                      <b>0.88</b>
+                    </div>
+                    <div class="metric-row">
+                      <span>HIP DROP</span>
+                      <div class="metric-bar"><i></i></div>
+                      <b>0.76</b>
+                    </div>
+                    <div class="metric-row">
+                      <span>DOWN TIME</span>
+                      <div class="metric-bar"><i></i></div>
+                      <b>0.92</b>
+                    </div>
+                    <div class="metric-row">
+                      <span>KEYPOINTS</span>
+                      <div class="metric-bar"><i></i></div>
+                      <b>0.81</b>
+                    </div>
+                    <div class="metric-row">
+                      <span>FALL SCORE</span>
+                      <div class="metric-bar"><i></i></div>
+                      <b>0.86</b>
+                    </div>
+                  </div>
+                </div>
+                <div class="slide-copy">
+                  <span class="slide-number">SLIDE 03 // TEMPORAL SCORE</span>
+                  <h3>Combine evidence over time.</h3>
+                  <p>
+                    A useful fall detector cannot rely on a horizontal body in a
+                    single image. It combines sudden vertical change, body
+                    angle, keypoint quality, and continued time near the floor.
+                  </p>
+                  <ul class="slide-list">
+                    <li>Short history reduces one-frame false alarms</li>
+                    <li>Thresholds live in settings instead of model code</li>
+                    <li>Cooldown prevents repeated alerts for one incident</li>
+                  </ul>
+                </div>
+              </article>
+
+              <article class="showcase-slide" data-slide aria-hidden="true">
+                <div class="slide-visual">
+                  <div
+                    class="pipeline"
+                    role="img"
+                    aria-label="Fall alert processing pipeline"
+                  >
+                    <span>POSE<br />FRAME</span><span>FALL<br />STATE</span
+                    ><span>LOCAL<br />LOG</span><span>OPTIONAL<br />ALERT</span>
+                  </div>
+                </div>
+                <div class="slide-copy">
+                  <span class="slide-number">SLIDE 04 // RESPONSE</span>
+                  <h3>Record first. Notify safely.</h3>
+                  <p>
+                    Confirmed events create a local incident record. An optional
+                    adapter can forward a notification, but credentials belong
+                    in environment variables and never in a public source
+                    archive.
+                  </p>
+                  <ul class="slide-list">
+                    <li>Timestamped local event log</li>
+                    <li>Pluggable alert destination</li>
+                    <li>Public release requires credential sanitization</li>
+                  </ul>
+                </div>
+              </article>
+            </div>
+            <div class="showcase-controls">
+              <button type="button" data-previous>← PREVIOUS</button>
+              <div
+                class="showcase-dots"
+                role="group"
+                aria-label="Choose a slide"
+              >
+                <button
+                  type="button"
+                  class="active"
+                  data-slide-to="0"
+                  aria-label="Slide 1"
+                ></button>
+                <button
+                  type="button"
+                  data-slide-to="1"
+                  aria-label="Slide 2"
+                ></button>
+                <button
+                  type="button"
+                  data-slide-to="2"
+                  aria-label="Slide 3"
+                ></button>
+                <button
+                  type="button"
+                  data-slide-to="3"
+                  aria-label="Slide 4"
+                ></button>
+              </div>
+              <button type="button" data-play>▶ AUTO PLAY</button>
+              <button type="button" data-next>NEXT →</button>
+            </div>
+          </div>
+        </section>
+
+        <section id="architecture" class="content-section">
+          <div class="section-heading">
+            <div>
+              <p class="code">ARCH_01 // MODULAR DESKTOP PIPELINE</p>
+              <h2>Designed as separable systems.</h2>
+            </div>
+            <p>
+              The split makes camera handling, inference, fall logic, rendering,
+              logging, and notifications easier to test and replace.
+            </p>
+          </div>
+          <div class="architecture-grid">
+            <article class="detail-card">
+              <span>01 // INPUT</span>
+              <h3>Camera lifecycle</h3>
+              <p>
+                Opens the source, validates frames, controls resolution, and
+                releases hardware cleanly.
+              </p>
+            </article>
+            <article class="detail-card">
+              <span>02 // VISION</span>
+              <h3>Pose inference</h3>
+              <p>
+                Runs the compact pose model and converts detections into stable,
+                normalized keypoints.
+              </p>
+            </article>
+            <article class="detail-card">
+              <span>03 // LOGIC</span>
+              <h3>Fall state</h3>
+              <p>
+                Evaluates posture and motion across a short time window with
+                cooldown and recovery states.
+              </p>
+            </article>
+            <article class="detail-card">
+              <span>04 // DISPLAY</span>
+              <h3>Privacy renderer</h3>
+              <p>
+                Draws skeletons, state, confidence, and diagnostic data with
+                optional source-video hiding.
+              </p>
+            </article>
+            <article class="detail-card">
+              <span>05 // RECORD</span>
+              <h3>Incident logger</h3>
+              <p>
+                Writes a timestamped local record so alerts can be audited and
+                detector behavior reviewed.
+              </p>
+            </article>
+            <article class="detail-card">
+              <span>06 // OUTPUT</span>
+              <h3>Alert adapter</h3>
+              <p>
+                Sends an optional notification while keeping endpoints and
+                secrets outside public code.
+              </p>
+            </article>
+          </div>
+          <div class="notice">
+            <strong>DOWNLOAD STATUS</strong>
+            <p>
+              The architecture brief is available now. The Python source button
+              remains locked until the original files are reattached, secrets
+              are removed, and the package is tested in a clean environment.
+            </p>
+            <a
+              class="button primary"
+              href="downloads/YOLO-Fall-Detector-Project-Brief.txt"
+              download
+              >Download brief</a
+            >
+          </div>
+        </section>
+
+        <footer class="project-footer">
+          <span>© <span data-year></span> HEATH LYON</span>
+          <span>YOLO // POSE // TEMPORAL DETECTION</span>
+          <a href="index.html#projects">RETURN TO PROJECTS ↑</a>
+        </footer>
+      </main>
+    </div>
+  </body>
+</html>
