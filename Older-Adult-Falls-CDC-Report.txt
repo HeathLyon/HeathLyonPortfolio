@@ -1,0 +1,82 @@
+OLDER-ADULT FALLS: FREQUENCY, DANGERS, AND DESIGN CONTEXT
+==========================================================
+Prepared for the Heath Lyon YOLO Fall Detection case study
+Sources reviewed: August 2, 2026
+Population: United States adults age 65 and older
+
+EXECUTIVE SUMMARY
+Falls are the leading cause of injury for U.S. adults age 65 and older. More
+than 14 million older adults—about one in four—report falling each year. CDC
+estimates about nine million fall injuries annually. Falls also account for
+roughly three million emergency-department visits and about one million
+hospitalizations among older adults each year.
+
+HOW OFTEN FALLS HAPPEN
+- More than 14 million, or one in four, adults age 65+ report a fall each year.
+- About 37% of older adults who fall report an injury that requires medical
+  treatment or restricts activity for at least one day.
+- That burden represents an estimated nine million fall injuries annually.
+- Falling once doubles a person's chance of falling again.
+
+SERIOUS HEALTH CONSEQUENCES
+- About three million emergency-department visits each year are related to
+  older-adult falls.
+- About one million fall-related hospitalizations occur among older adults
+  each year.
+- Falls are the most common cause of traumatic brain injury.
+- Nearly 319,000 older adults are hospitalized for hip fractures each year;
+  CDC separately summarizes the annual burden as about 300,000 hip-fracture
+  hospitalizations due to older-adult falls.
+- Hip fractures can be difficult to recover from, and some people cannot live
+  independently afterward.
+
+MORTALITY TREND
+Falls are the leading cause of injury-related death for adults age 65 and
+older. The CDC reports that the age-adjusted older-adult fall death rate rose
+21%, from 64.7 deaths per 100,000 in 2018 to 78.4 per 100,000 in 2024.
+
+EFFECTS BEYOND THE INITIAL INJURY
+Falls can cause broken bones, head injuries, reduced mobility, hospitalization,
+loss of independence, and death. People who fall may also become afraid of
+falling again. That fear can reduce everyday activity; lower activity can lead
+to weakness and raise future fall risk.
+
+DESIGN CONTEXT FOR A FALL-DETECTION PROTOTYPE
+A computer-vision prototype may explore whether pose and movement patterns can
+help bring attention to a possible event. A responsible design should:
+
+1. Evaluate movement across time instead of classifying one image.
+2. Track detection quality and expose uncertainty.
+3. Use confirmation and cooldown states to reduce repeated alerts.
+4. Minimize retained imagery and support privacy-aware rendering.
+5. Log events for review instead of treating every signal as certain.
+6. State clearly that false alarms and missed events are possible.
+7. Avoid promising diagnosis, prevention, guaranteed detection, or emergency
+   response unless those claims are supported by appropriate validation and
+   regulatory review.
+
+PREVENTION CONTEXT
+Detection is not prevention. CDC recommends that older adults and caregivers
+work with healthcare professionals on fall-risk assessment, medication review,
+strength and balance, vision, footwear, osteoporosis screening, and home
+hazards. CDC's STEADI resources support clinical screening, assessment, and
+intervention.
+
+PRIMARY SOURCES
+CDC — Older Adult Falls Data (updated February 26, 2026)
+https://www.cdc.gov/falls/data-research/index.html
+
+CDC — Facts About Falls (updated January 27, 2026)
+https://www.cdc.gov/falls/data-research/facts-stats/index.html
+
+CDC — Preventing Falls and Hip Fractures (updated January 27, 2026)
+https://www.cdc.gov/falls/prevention/index.html
+
+CDC STEADI — Older Adult Fall Prevention
+https://www.cdc.gov/steadi/
+
+IMPORTANT LIMITATION
+This report provides public-health context for a portfolio research prototype.
+It is not medical advice. The YOLO project is not a medical device, diagnostic
+tool, validated monitoring system, or emergency-response service. If a fall or
+serious injury may have occurred, seek appropriate medical or emergency help.

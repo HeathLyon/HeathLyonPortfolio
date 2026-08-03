@@ -1,0 +1,86 @@
+HEATH LYON // YOLO FALL DETECTION PROJECT BRIEF
+================================================
+
+STATUS
+Desktop Python research prototype. The portfolio page plays a recorded video;
+the browser does not execute the Python model or request a visitor's camera.
+
+PURPOSE
+Detect a person, estimate body pose, evaluate fall-like motion over time, render
+a privacy-aware skeleton view, log the event, and optionally send an alert.
+
+THE FIVE PROCESSING STEPS
+1. CAPTURE
+   camera.py opens the selected video source, validates each frame, and releases
+   the hardware when the application closes.
+
+2. DETECT
+   pose.py runs YOLO pose inference. It returns body keypoints and confidence
+   values, then rejects detections that are too incomplete or unstable.
+
+3. COMPARE
+   fall_detector.py compares body angle, hip height, vertical movement, and
+   posture history. One horizontal frame does not automatically mean a fall.
+
+4. CONFIRM
+   Configurable timing thresholds require fall-like evidence to persist. A
+   recovery state and cooldown reduce repeated alerts for the same incident.
+
+5. RESPOND
+   renderer.py draws the privacy-aware display, alert_logger.py records the
+   event, and an optional notification adapter can forward an alert. Secrets
+   must remain outside public source code.
+
+WHY FALL AWARENESS MATTERS
+These U.S. figures apply to adults age 65 and older:
+
+- More than 14 million older adults, about 1 in 4, report falling each year.
+- About 37% of those who fall report an injury needing medical treatment or
+  restricting activity for at least one day. CDC estimates about 9 million
+  fall injuries annually.
+- Falls lead to roughly 3 million emergency-department visits and about
+  1 million hospitalizations among older adults each year.
+- The age-adjusted older-adult fall death rate increased 21%, from 64.7 deaths
+  per 100,000 in 2018 to 78.4 per 100,000 in 2024.
+- CDC identifies falls as the most common cause of traumatic brain injury and
+  estimates roughly 300,000 hip-fracture hospitalizations caused by falls each
+  year.
+
+DANGERS AND CONSEQUENCES
+A fall can cause traumatic brain injury, hip fracture, hospitalization, reduced
+mobility, loss of independence, or death. Fear after a fall can also reduce
+activity; reduced activity may weaken strength and balance and increase future
+risk.
+
+PRIMARY SOURCES
+CDC — Older Adult Falls Data
+https://www.cdc.gov/falls/data-research/index.html
+
+CDC — Facts About Falls
+https://www.cdc.gov/falls/data-research/facts-stats/index.html
+
+CDC — Preventing Falls and Hip Fractures
+https://www.cdc.gov/falls/prevention/index.html
+
+CDC STEADI — Clinical Fall Prevention
+https://www.cdc.gov/steadi/
+
+Sources reviewed August 2, 2026.
+
+PROTOTYPE LIMITS
+This project is a research and portfolio demonstration. It is not a medical
+device, diagnostic tool, or emergency-response service. Computer vision can
+miss events or create false alerts. It should not replace professional care, a
+validated monitoring system, or emergency services.
+
+BEFORE A PUBLIC SOURCE RELEASE
+1. Remove webhook URLs, tokens, and local machine paths.
+2. Add a .env.example file with placeholder values only.
+3. Pin dependencies and document installation/model setup.
+4. Include the prototype/non-medical-device notice.
+5. Test in a clean virtual environment.
+6. Confirm permission for every demonstration video or image.
+
+PUBLIC RELEASE NOTE
+The downloadable source package remains withheld until the original Python
+files are sanitized and tested as a clean public package.

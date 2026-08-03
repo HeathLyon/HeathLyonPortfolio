@@ -17,6 +17,24 @@ document.querySelectorAll('[aria-disabled="true"]').forEach((element) => {
   element.addEventListener("click", (event) => event.preventDefault());
 });
 
+const yoloVideo = document.querySelector("[data-yolo-video]");
+const yoloVideoSource = document.querySelector("[data-yolo-video-source]");
+const videoMissingNote = document.querySelector("[data-video-missing]");
+
+if (yoloVideo && videoMissingNote) {
+  const showMissingVideoMessage = () => {
+    videoMissingNote.hidden = false;
+  };
+
+  const hideMissingVideoMessage = () => {
+    videoMissingNote.hidden = true;
+  };
+
+  yoloVideoSource?.addEventListener("error", showMissingVideoMessage);
+  yoloVideo.addEventListener("error", showMissingVideoMessage);
+  yoloVideo.addEventListener("loadedmetadata", hideMissingVideoMessage);
+}
+
 const showcase = document.querySelector("[data-showcase]");
 
 if (showcase) {
