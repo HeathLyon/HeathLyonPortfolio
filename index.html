@@ -1,17 +1,108 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-US">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta
       name="description"
-      content="Heath Lyon — FAA Part 107 FPV pilot, drone systems builder, and creative technologist."
+      content="FAA Part 107 drone pilot Heath Lyon provides FPV video, aerial media, and 360 drone tours in Provo and throughout Utah County."
     />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
     <meta name="theme-color" content="#010403" />
-    <title>Heath Lyon | FPV Pilot &amp; Systems Builder</title>
+    <link rel="canonical" href="https://heathfpv.com/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta
+      property="og:title"
+      content="Utah County Drone Pilot &amp; 360 Tours | Heath Lyon"
+    />
+    <meta
+      property="og:description"
+      content="FPV drone video, aerial media, and interactive 360 drone tours from an FAA Part 107 pilot based in Provo, Utah."
+    />
+    <meta property="og:url" content="https://heathfpv.com/" />
+    <meta
+      property="og:image"
+      content="https://heathfpv.com/images/utah-county-fpv-drone-tour.webp"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>Utah County Drone Pilot &amp; 360 Tours | Heath Lyon</title>
     <link rel="stylesheet" href="css/styles.css" />
     <script src="js/terminal-answers.js" defer></script>
     <script src="js/main.js" defer></script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://heathfpv.com/#website",
+            "url": "https://heathfpv.com/",
+            "name": "Heath Lyon FPV",
+            "inLanguage": "en-US"
+          },
+          {
+            "@type": "ProfessionalService",
+            "@id": "https://heathfpv.com/#business",
+            "name": "Heath Lyon FPV",
+            "url": "https://heathfpv.com/",
+            "image": "https://heathfpv.com/images/utah-county-fpv-drone-tour.webp",
+            "email": "mailto:Lyon.m.heath@gmail.com",
+            "description": "FAA Part 107 drone pilot providing FPV video, aerial media, and 360 drone tours in Utah County, Utah.",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Provo",
+              "addressRegion": "UT",
+              "addressCountry": "US"
+            },
+            "areaServed": {
+              "@type": "AdministrativeArea",
+              "name": "Utah County, Utah"
+            },
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Drone media services",
+              "itemListElement": [
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "360 Drone Tours"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "FPV Drone Video"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Aerial Photography and Video"
+                  }
+                }
+              ]
+            },
+            "sameAs": [
+              "https://www.youtube.com/@SkyLensProvo",
+              "https://instagram.com/skylensprovo",
+              "https://github.com/HeathLyon"
+            ]
+          },
+          {
+            "@type": "Person",
+            "@id": "https://heathfpv.com/#heath-lyon",
+            "name": "Heath Lyon",
+            "url": "https://heathfpv.com/",
+            "jobTitle": "FAA Part 107 Drone Pilot",
+            "worksFor": { "@id": "https://heathfpv.com/#business" }
+          }
+        ]
+      }
+    </script>
   </head>
   <body class="is-loading">
     <div class="shell">
@@ -25,7 +116,7 @@
         <div class="startup-panel">
           <img src="images/logo/FrontFPV.webp" alt="" aria-hidden="true" />
           <p class="code">FLIGHT SYSTEM STARTUP</p>
-          <h1>INITIALIZING</h1>
+          <div class="startup-title">INITIALIZING</div>
           <div
             id="startupTrack"
             class="startup-track"
@@ -53,9 +144,9 @@
         <nav aria-label="Primary navigation">
           <a href="#home" class="active"><span>01</span>Boot</a
           ><a href="#reel"><span>02</span>Flight reel</a
-          ><a href="#projects"><span>03</span>Projects</a
+          ><a href="#rates"><span>03</span>Rates</a
           ><a href="#skills"><span>04</span>Capabilities</a
-          ><a href="#rates"><span>05</span>Rates</a
+          ><a href="#projects"><span>05</span>Projects</a
           ><a href="#contact"><span>06</span>Contact</a>
         </nav>
         <div class="online"><i></i> PART 107 // ONLINE</div>
@@ -65,11 +156,11 @@
           ><i></i><b>Boot</b></a
         ><a href="#reel" aria-label="Go to Flight reel"
           ><i></i><b>Flight reel</b></a
-        ><a href="#projects" aria-label="Go to Projects"
-          ><i></i><b>Projects</b></a
+        ><a href="#rates" aria-label="Go to Rates"><i></i><b>Rates</b></a
         ><a href="#skills" aria-label="Go to Capabilities"
           ><i></i><b>Capabilities</b></a
-        ><a href="#rates" aria-label="Go to Rates"><i></i><b>Rates</b></a
+        ><a href="#projects" aria-label="Go to Projects"
+          ><i></i><b>Projects</b></a
         ><a href="#contact" aria-label="Go to Contact"><i></i><b>Contact</b></a>
       </nav>
       <a class="contact-beacon" href="#contact" aria-label="Contact Heath">
@@ -91,20 +182,36 @@
           >
             <source src="video/Background Hero Clip.mp4" type="video/mp4" />
           </video>
+          <div class="hero-contrast" aria-hidden="true"></div>
           <div class="inner hero-grid">
             <div class="hero-copy">
               <p class="code">FAA PART 107 // FPV CINEMATIC OPERATOR</p>
-              <img
-                class="wordmark"
-                src="images/logo/img5.webp"
-                alt="Heath Lyon FPV"
-              />
+              <h1 class="hero-title">
+                Utah County drone video <em>&amp; 360 tours.</em>
+              </h1>
+              <figure class="hero-media-frame">
+                <div class="hero-media-hud" aria-hidden="true">
+                  <span>CH 05 // UHF</span><span>FPV SIGNAL</span>
+                </div>
+                <img
+                  class="wordmark"
+                  src="images/logo/img3.webp"
+                  alt="Custom FPV drone silhouetted against a green sky"
+                />
+                <span class="crt-static" aria-hidden="true"></span>
+                <span class="crt-scan" aria-hidden="true"></span>
+                <figcaption>
+                  <span>SIGNAL LOCKED // FIELD TESTED</span>
+                  <b>PROVO_UT · LIVE</b>
+                </figcaption>
+              </figure>
               <p class="summary">
-                HELLO WORLD! Im Heath Lyon, a part 107 certified FPV cinematic operator. Drop me a line and let's build your shot!
+                I'm Heath Lyon, a Provo-based FAA Part 107 pilot creating FPV
+                video, aerial media, and interactive 360 tours.
               </p>
               <div class="actions">
                 <a class="button primary" href="#reel">▶ Run flight reel</a
-                ><a class="button" href="#projects">Explore systems</a>
+                ><a class="button" href="contact-form.html">Email Heath</a>
               </div>
               <dl class="stats">
                 <div>
@@ -238,8 +345,8 @@
               </aside>
             </div>
           </div>
-          <a class="next" href="#projects"
-            ><span>Inspect active systems</span><b>↓</b></a
+          <a class="next" href="#rates"
+            ><span>Review starting rates</span><b>↓</b></a
           >
         </section>
 
@@ -247,12 +354,17 @@
           <div class="inner">
             <div class="heading">
               <div>
-                <p class="code">SYS 02_ACTIVE_PROJECTS</p>
+                <p class="code">SYS 04_ACTIVE_PROJECTS</p>
                 <h2>Built beyond the frame.</h2>
               </div>
               <p>
                 Field-tested work where flight systems meet sensing, software,
                 fabrication, and interactive data.
+                <a
+                  class="project-library-link"
+                  href="utah-county-drone-tours.html"
+                  >Explore 360 drone tours →</a
+                >
                 <a class="project-library-link" href="downloads.html"
                   >Browse project downloads →</a
                 >
@@ -320,8 +432,8 @@
               </a>
             </div>
           </div>
-          <a class="next" href="#skills"
-            ><span>Load capability index</span><b>↓</b></a
+          <a class="next" href="#contact"
+            ><span>Open direct contact</span><b>↓</b></a
           >
         </section>
 
@@ -404,8 +516,8 @@
               </aside>
             </div>
           </div>
-          <a class="next" href="#rates"
-            ><span>Review starting rates</span><b>↓</b></a
+          <a class="next" href="#projects"
+            ><span>Inspect active systems</span><b>↓</b></a
           >
         </section>
 
@@ -413,7 +525,7 @@
           <div class="inner">
             <div class="heading">
               <div>
-                <p class="code">SYS 04_SERVICE_RATE_INDEX</p>
+                <p class="code">SYS 02_SERVICE_RATE_INDEX</p>
                 <h2>Clear starting rates.</h2>
               </div>
               <p>
@@ -462,16 +574,16 @@
                 <p>Send the location, date, deliverables, and intended use.</p>
               </div>
               <div class="actions">
-                <a
-                  class="button primary"
-                  href="mailto:Lyon.m.heath@gmail.com?subject=Drone%20project%20quote"
+                <a class="button primary" href="contact-form.html"
                   >Request direct quote</a
-                ><a class="button" href="360.html">View 360 work</a>
+                ><a class="button" href="utah-county-drone-tours.html"
+                  >Utah County 360 tours</a
+                >
               </div>
             </div>
           </div>
-          <a class="next" href="#contact"
-            ><span>Open direct contact</span><b>↓</b></a
+          <a class="next" href="#skills"
+            ><span>Load capability index</span><b>↓</b></a
           >
         </section>
 
@@ -486,7 +598,7 @@
                 prototypes, interactive websites, and collaborative development.
               </p>
               <div class="actions">
-                <a class="button primary" href="mailto:Lyon.m.heath@gmail.com"
+                <a class="button primary" href="contact-form.html"
                   >Send transmission</a
                 ><a
                   class="button"

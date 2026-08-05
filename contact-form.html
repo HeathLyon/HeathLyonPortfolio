@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="Send Heath Lyon a project request, availability question, pricing request, or portfolio inquiry."
+    />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <meta name="theme-color" content="#010403" />
+    <link rel="canonical" href="https://heathfpv.com/contact-form.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta
+      property="og:title"
+      content="Request a Drone Project | Heath Lyon FPV"
+    />
+    <meta
+      property="og:description"
+      content="Request pricing and availability for FPV video, aerial media, or a 360 drone tour in Utah County."
+    />
+    <meta property="og:url" content="https://heathfpv.com/contact-form.html" />
+    <meta name="twitter:card" content="summary" />
+    <title>Request a Drone Project | Heath Lyon FPV</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body class="project-page transmission-page">
+    <div class="shell project-shell transmission-shell">
+      <div class="scanlines" aria-hidden="true"></div>
+
+      <header class="sub-header">
+        <a
+          href="index.html#home"
+          class="mini-logo"
+          aria-label="Heath Lyon portfolio home"
+        >
+          <img src="images/logo/FrontFPV.webp" alt="Heath Lyon FPV" />
+        </a>
+        <nav aria-label="Contact form navigation">
+          <a href="index.html#contact"><span>01</span>Portfolio</a>
+          <a href="index.html#rates"><span>02</span>Rates</a>
+          <a href="#transmission" class="active"><span>03</span>Message</a>
+        </nav>
+        <a class="sub-status" href="index.html#contact">CANCEL // RETURN</a>
+      </header>
+
+      <main class="project-main transmission-main">
+        <section id="transmission" class="transmission-layout">
+          <div class="transmission-copy">
+            <p class="code">SECURE_CONTACT_LINK // FORMSPREE</p>
+            <h1>Send a <em>transmission.</em></h1>
+            <p class="project-lead">
+              Tell me what you want to capture, build, or solve. Include the
+              location and target date when they are known.
+            </p>
+
+            <div class="transmission-status" aria-label="Contact status">
+              <p><span>STATUS</span><b>ACCEPTING PROJECT REQUESTS</b></p>
+              <p><span>BASE</span><b>PROVO, UTAH // TRAVEL READY</b></p>
+              <p><span>CHANNEL</span><b>DIRECT EMAIL RESPONSE</b></p>
+            </div>
+          </div>
+
+          <form
+            class="transmission-form"
+            action="https://formspree.io/f/mkjwnvpp"
+            method="POST"
+            accept-charset="UTF-8"
+          >
+            <div class="form-header">
+              <span>MESSAGE_COMPOSER</span><b>● LINK READY</b>
+            </div>
+
+            <label for="contactName">
+              <span>NAME <em>REQUIRED</em></span>
+              <input
+                id="contactName"
+                name="name"
+                type="text"
+                autocomplete="name"
+                placeholder="Your name"
+                required
+              />
+            </label>
+
+            <label for="contactEmail">
+              <span>EMAIL <em>REQUIRED</em></span>
+              <input
+                id="contactEmail"
+                name="email"
+                type="email"
+                autocomplete="email"
+                placeholder="you@example.com"
+                required
+              />
+            </label>
+
+            <label for="contactSubject">
+              <span>SUBJECT <em>REQUIRED</em></span>
+              <input
+                id="contactSubject"
+                name="subject"
+                type="text"
+                placeholder="What is this project about?"
+                required
+              />
+            </label>
+
+            <label for="questionType">
+              <span>QUESTION TO ANSWER <em>OPTIONAL</em></span>
+              <select id="questionType" name="question_to_answer">
+                <option value="">Select a topic...</option>
+                <option value="Pricing">Pricing</option>
+                <option value="Availability">Availability</option>
+                <option value="Previous work">Previous work</option>
+                <option value="Equipment">Equipment</option>
+                <option value="360 video or tour">360 video or tour</option>
+                <option value="Other">Other</option>
+              </select>
+            </label>
+
+            <label for="contactMessage">
+              <span>MESSAGE <em>REQUIRED</em></span>
+              <textarea
+                id="contactMessage"
+                name="message"
+                rows="7"
+                placeholder="Location, date, deliverables, intended use, and any questions..."
+                required
+              ></textarea>
+            </label>
+
+            <input
+              class="form-honeypot"
+              type="text"
+              name="_gotcha"
+              tabindex="-1"
+              autocomplete="off"
+              aria-hidden="true"
+            />
+            <input
+              type="hidden"
+              name="_subject"
+              value="New portfolio transmission for Heath Lyon"
+            />
+
+            <div class="form-submit-row">
+              <p>All required fields must be completed before transmission.</p>
+              <button class="button primary" type="submit">
+                Send transmission →
+              </button>
+            </div>
+          </form>
+        </section>
+
+        <footer class="project-footer transmission-footer">
+          <span>© 2026 HEATH LYON</span>
+          <span>FORM DELIVERY // FORMSPREE</span>
+          <a href="index.html#contact">RETURN TO CONTACT ↑</a>
+        </footer>
+      </main>
+    </div>
+  </body>
+</html>

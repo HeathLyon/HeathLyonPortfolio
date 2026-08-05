@@ -3,9 +3,9 @@
 const sections = [
   ["home", "Boot"],
   ["reel", "Flight reel"],
-  ["projects", "Projects"],
-  ["skills", "Capabilities"],
   ["rates", "Rates"],
+  ["skills", "Capabilities"],
+  ["projects", "Projects"],
   ["contact", "Contact"],
 ];
 const completions = [
