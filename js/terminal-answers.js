@@ -74,14 +74,65 @@ window.terminalFAQs = [
   {
     question: "What kind of work is Heath available for?",
     aliases: [
+      "availability",
+      "are you available",
+      "is heath taking projects",
+      "can i book heath",
       "what work is heath available for",
       "what services does heath offer",
       "what can i hire heath for",
       "is heath available",
     ],
     answer: [
-      "FPV production, drone systems, technical prototypes, interactive websites, computer vision, and collaborative development.",
-      "Type contact to open the contact section.",
+      "Heath is currently open to FPV production, aerial video, 360 capture, drone systems, technical prototypes, and collaborative development.",
+      "Type rates for starting estimates or contact to open the direct contact section.",
+    ],
+  },
+  {
+    question: "What equipment does Heath use?",
+    aliases: [
+      "equipment",
+      "gear",
+      "what gear does heath have",
+      "what drones does heath fly",
+      "what cameras does heath use",
+      "what is in heaths kit",
+    ],
+    answer: [
+      "Heath works with custom FPV and cinelifter aircraft, DJI production platforms, digital FPV video systems, action-camera payloads, and 360-capable capture equipment.",
+      "The aircraft and camera package are selected around the shot, payload, airspace, and safety requirements.",
+    ],
+  },
+  {
+    question: "Does Heath offer 360 video and tours?",
+    aliases: [
+      "360",
+      "360 video",
+      "360 tour",
+      "virtual tour",
+      "does heath shoot 360",
+      "can heath make a 360 tour",
+      "interactive tour",
+    ],
+    answer: [
+      "Yes. Heath offers immersive 360 flight video and clickable 360 tour media for properties, locations, and client presentations.",
+      "Type open 360 to view the dedicated 360 page or rates for a starting estimate.",
+    ],
+  },
+  {
+    question: "What are Heath's starting drone rates?",
+    aliases: [
+      "rates",
+      "pricing",
+      "prices",
+      "how much does heath charge",
+      "what does drone video cost",
+      "how much is fpv",
+      "request a quote",
+    ],
+    answer: [
+      "Current starting estimates: drone photos $225, drone video $450, FPV half-day $650, and basic 360 capture $350.",
+      "Airspace, travel, crew, equipment, editing, permits, and project risk can change the final quote. Type contact for a direct estimate.",
     ],
   },
   {

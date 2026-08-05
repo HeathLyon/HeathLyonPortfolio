@@ -5,6 +5,7 @@ const sections = [
   ["reel", "Flight reel"],
   ["projects", "Projects"],
   ["skills", "Capabilities"],
+  ["rates", "Rates"],
   ["contact", "Contact"],
 ];
 const completions = [
@@ -14,6 +15,13 @@ const completions = [
   "ls",
   "reel",
   "projects",
+  "availability",
+  "equipment",
+  "360",
+  "open 360",
+  "play reel",
+  "rates",
+  "quote",
   "questions",
   "faq",
   "ask why should you hire heath",
@@ -51,10 +59,19 @@ const form = document.querySelector("#terminalForm");
 const input = document.querySelector("#terminalInput");
 const runButton = document.querySelector("#terminalRun");
 const statusLabel = document.querySelector("#terminalStatus");
+const terminalConsole = document.querySelector("#terminalConsole");
+const terminalToggle = document.querySelector("#terminalToggle");
 const quickButtons = [...document.querySelectorAll("[data-command]")];
 const matrixCanvas = document.querySelector("#matrixCanvas");
 const trailCanvas = document.querySelector("#trailCanvas");
 const scanlines = document.querySelector("#scanlines");
+const startupScreen = document.querySelector("#startupScreen");
+const startupTrack = document.querySelector("#startupTrack");
+const startupProgress = document.querySelector("#startupProgress");
+const startupPercent = document.querySelector("#startupPercent");
+const startupStatus = document.querySelector("#startupStatus");
+const heroVideo = document.querySelector("#heroVideo");
+const reelVideo = document.querySelector("#reelVideo");
 let active = "home",
   busy = true,
   matrixOn = true,
@@ -63,6 +80,9 @@ let commandHistory = [],
   historyPosition = 0,
   matrixFrame = 0,
   trailFrame = 0;
+let terminalBootStarted = false;
+let terminalEngaged = false;
+let terminalAutoCollapseTimer = 0;
 
 document.querySelector("#year").textContent = new Date().getFullYear();
 
@@ -87,6 +107,33 @@ function setBusy(value) {
   input.placeholder = value ? "initializing..." : "type “help”";
 }
 
+function setTerminalCollapsed(collapsed, focusInput = false) {
+  if (!terminalConsole || !terminalToggle) return;
+  terminalConsole.classList.toggle("is-collapsed", collapsed);
+  terminalToggle.setAttribute("aria-expanded", String(!collapsed));
+  terminalToggle.textContent = collapsed ? "OPEN CONSOLE" : "MINIMIZE";
+  terminalConsole.setAttribute(
+    "aria-label",
+    collapsed
+      ? "Interactive portfolio terminal, collapsed"
+      : "Interactive portfolio terminal",
+  );
+
+  if (!collapsed && focusInput && !busy) {
+    window.setTimeout(() => input.focus(), 180);
+  }
+}
+
+function scheduleTerminalCollapse() {
+  window.clearTimeout(terminalAutoCollapseTimer);
+  terminalAutoCollapseTimer = window.setTimeout(
+    () => {
+      if (!terminalEngaged) setTerminalCollapsed(true);
+    },
+    reducedMotion ? 900 : 2400,
+  );
+}
+
 function boot() {
   output.replaceChildren();
   setBusy(true);
@@ -96,6 +143,7 @@ function boot() {
     ["[SUCCESS] project modules indexed", "ok"],
     ["[SUCCESS] question database mounted", "ok"],
     ["[SUCCESS] snap navigation synchronized", "ok"],
+    ["[INFO] ask: availability / equipment / 360 / play reel", "dim"],
     ["[READY] shell active — type “help”", "pink"],
   ];
   sequence.forEach(([text, tone], index) =>
@@ -104,7 +152,7 @@ function boot() {
         add(text, tone);
         if (index === sequence.length - 1) {
           setBusy(false);
-          input.focus();
+          scheduleTerminalCollapse();
         }
       },
       250 + index * 280,
@@ -180,6 +228,9 @@ function go(target) {
     archaeology: "projects",
     skills: "skills",
     work: "skills",
+    rates: "rates",
+    pricing: "rates",
+    quote: "rates",
     contact: "contact",
   };
   const route = routes[target];
@@ -196,6 +247,7 @@ function openPage(target) {
     yolo: "Yollo.html",
     sar: "sar-project.html",
     archaeology: "archaeology-project.html",
+    360: "360.html",
   };
   const page = pages[target];
   if (!page) return false;
@@ -204,6 +256,16 @@ function openPage(target) {
     window.location.href = page;
   }, 180);
   return true;
+}
+
+function playReel() {
+  add("[PLAY] loading flight reel", "pink");
+  go("reel");
+  window.setTimeout(() => {
+    reelVideo?.play().catch(() => {
+      add("Press play in the reel player to begin with audio.", "dim");
+    });
+  }, 650);
 }
 
 function step(direction) {
@@ -268,6 +330,11 @@ async function run(raw) {
       "ls / open <module>   inspect page modules",
       "next / prev          move one snap section",
       "reel / projects      open featured work",
+      "availability         current project availability",
+      "equipment            flight and capture equipment",
+      "360 / open 360       360 video and tour information",
+      "play reel            open and start the flight reel",
+      "rates / quote        starting rates and direct quote",
       "questions / faq      list questions I can answer",
       "ask <question>       ask about Heath in plain language",
       "downloads / yolo     open project library or demo",
@@ -291,6 +358,14 @@ async function run(raw) {
     add(`LOCAL CLOCK....... ${new Date().toLocaleString()}`);
   } else if (name === "questions" || (name === "faq" && !args.length)) {
     listQuestions();
+  } else if (name === "availability") {
+    answerQuestion("What kind of work is Heath available for?");
+  } else if (name === "equipment" || name === "gear") {
+    answerQuestion("What equipment does Heath use?");
+  } else if (name === "360" || name === "tour" || name === "tours") {
+    answerQuestion("Does Heath offer 360 video and tours?");
+  } else if (name === "play" && args[0] === "reel") {
+    playReel();
   } else if (name === "ask" || name === "question") {
     if (args.length) answerQuestion(args.join(" "));
     else listQuestions();
@@ -300,10 +375,12 @@ async function run(raw) {
       "projects/",
       "questions/",
       "downloads/",
+      "360-tours/",
       "yolo-demo/",
       "sar-research/",
       "archaeology-3d/",
       "skills/",
+      "rates/",
       "work-history/",
       "contact/",
     ].forEach((item) => add(item, "pink"));
@@ -316,16 +393,22 @@ async function run(raw) {
       "scans",
       "skills",
       "work",
+      "rates",
+      "pricing",
+      "quote",
       "contact",
     ].includes(name)
   ) {
-    go(name);
-  } else if (["downloads", "yolo", "sar", "archaeology"].includes(name)) {
+    if (name === "reel") playReel();
+    else go(name);
+  } else if (
+    ["downloads", "yolo", "sar", "archaeology", "360"].includes(name)
+  ) {
     openPage(name);
   } else if (["open", "cd", "goto"].includes(name)) {
     if (!args[0])
       add(
-        "Usage: open <reel|projects|downloads|yolo|sar|archaeology|skills|contact>",
+        "Usage: open <reel|projects|downloads|360|yolo|sar|archaeology|skills|rates|contact>",
         "err",
       );
     else if (!openPage(args[0])) go(args[0]);
@@ -393,6 +476,24 @@ form.addEventListener("submit", (event) => {
 quickButtons.forEach((button) =>
   button.addEventListener("click", () => run(button.dataset.command)),
 );
+terminalToggle?.addEventListener("click", (event) => {
+  event.stopPropagation();
+  terminalEngaged = true;
+  window.clearTimeout(terminalAutoCollapseTimer);
+  const willOpen = terminalConsole.classList.contains("is-collapsed");
+  setTerminalCollapsed(!willOpen, willOpen);
+});
+terminalConsole?.addEventListener("click", () => {
+  if (!terminalConsole.classList.contains("is-collapsed")) return;
+  terminalEngaged = true;
+  window.clearTimeout(terminalAutoCollapseTimer);
+  setTerminalCollapsed(false, true);
+});
+terminalConsole?.addEventListener("pointerdown", () => {
+  if (terminalConsole.classList.contains("is-collapsed")) return;
+  terminalEngaged = true;
+  window.clearTimeout(terminalAutoCollapseTimer);
+});
 input.addEventListener("keydown", (event) => {
   if (event.key === "ArrowUp") {
     event.preventDefault();
@@ -414,6 +515,9 @@ input.addEventListener("keydown", (event) => {
   } else if (event.ctrlKey && event.key.toLowerCase() === "l") {
     event.preventDefault();
     output.replaceChildren();
+  } else if (event.key === "Escape") {
+    input.blur();
+    setTerminalCollapsed(true);
   }
 });
 
@@ -442,6 +546,10 @@ const observer = new IntersectionObserver(
           link.getAttribute("href") === `#${active}`,
         ),
       );
+    if (heroVideo?.classList.contains("is-ready") && !reducedMotion) {
+      if (active === "home") heroVideo.play().catch(() => {});
+      else heroVideo.pause();
+    }
   },
   { root: scroller, threshold: [0.4, 0.65] },
 );
@@ -459,6 +567,122 @@ document.addEventListener(
 );
 
 const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+function startTerminalBoot() {
+  if (terminalBootStarted) return;
+  terminalBootStarted = true;
+  boot();
+}
+
+function startStartupSequence() {
+  if (!startupScreen) {
+    startTerminalBoot();
+    return;
+  }
+
+  const startedAt = performance.now();
+  const minimumDuration = reducedMotion ? 120 : 1650;
+  const maximumDuration = 7000;
+  const statusMessages = [
+    "VIDEO LINK // CONNECTING",
+    "DECODING BACKGROUND STREAM",
+    "SYNCING FLIGHT INTERFACE",
+    "MOUNTING PORTFOLIO MODULES",
+  ];
+  let displayedProgress = 4;
+  let statusIndex = 0;
+  let finishing = false;
+
+  function paintProgress(value) {
+    displayedProgress = Math.max(
+      displayedProgress,
+      Math.min(100, Math.round(value)),
+    );
+    startupProgress.style.width = `${displayedProgress}%`;
+    startupPercent.textContent = `${String(displayedProgress).padStart(2, "0")}%`;
+    startupTrack.setAttribute("aria-valuenow", String(displayedProgress));
+  }
+
+  paintProgress(displayedProgress);
+
+  const progressTimer = window.setInterval(() => {
+    if (finishing || displayedProgress >= 88) return;
+    paintProgress(displayedProgress + 1 + Math.random() * 4);
+  }, 95);
+
+  const statusTimer = window.setInterval(() => {
+    if (finishing) return;
+    statusIndex = Math.min(statusIndex + 1, statusMessages.length - 1);
+    startupStatus.textContent = statusMessages[statusIndex];
+  }, 390);
+
+  function finishStartup(message) {
+    if (finishing) return;
+    finishing = true;
+    window.clearInterval(progressTimer);
+    window.clearInterval(statusTimer);
+    paintProgress(100);
+    startupStatus.textContent = message;
+
+    const elapsed = performance.now() - startedAt;
+    window.setTimeout(
+      () => {
+        startupScreen.classList.add("is-complete");
+        startupScreen.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("is-loading");
+        startTerminalBoot();
+        window.setTimeout(() => {
+          startupScreen.hidden = true;
+        }, 650);
+      },
+      Math.max(0, minimumDuration - elapsed),
+    );
+  }
+
+  function revealVideo() {
+    if (!heroVideo) return;
+    heroVideo.classList.add("is-ready");
+    heroVideo.play().catch(() => {});
+    finishStartup("VIDEO READY // ENTERING");
+  }
+
+  function useFallback() {
+    finishStartup("FALLBACK READY // ENTERING");
+  }
+
+  if (reducedMotion) {
+    heroVideo?.pause();
+    finishStartup("REDUCED MOTION // READY");
+    return;
+  }
+
+  if (!heroVideo) {
+    useFallback();
+    return;
+  }
+
+  const videoSource = heroVideo.querySelector("source");
+  heroVideo.muted = true;
+  heroVideo.addEventListener("canplay", revealVideo, { once: true });
+  heroVideo.addEventListener("error", useFallback, { once: true });
+  videoSource?.addEventListener("error", useFallback, { once: true });
+  heroVideo.addEventListener("progress", () => {
+    if (!heroVideo.duration || !heroVideo.buffered.length || finishing) return;
+    const bufferedEnd = heroVideo.buffered.end(heroVideo.buffered.length - 1);
+    paintProgress(Math.min(88, (bufferedEnd / heroVideo.duration) * 88));
+  });
+
+  if (heroVideo.readyState >= HTMLMediaElement.HAVE_FUTURE_DATA) {
+    revealVideo();
+  } else {
+    heroVideo.load();
+  }
+
+  window.setTimeout(() => {
+    if (!finishing) useFallback();
+  }, maximumDuration);
+}
+
 function fitCanvas(canvas, context) {
   const dpr = Math.min(devicePixelRatio || 1, 1.5);
   canvas.width = innerWidth * dpr;
@@ -557,4 +781,4 @@ if (!reducedMotion) {
   matrixCanvas.hidden = true;
   trailCanvas.hidden = true;
 }
-boot();
+startStartupSequence();
