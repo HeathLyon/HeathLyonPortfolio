@@ -5,51 +5,61 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta
       name="description"
-      content="View 360 drone tour examples from Provo-based FAA Part 107 pilot Heath Lyon, then request an aerial or clickable virtual tour in Utah County."
+      content="Explore a three-scene interactive 360 drone tour demo by Provo FAA Part 107 pilot Heath Lyon, then request a custom Utah County tour."
     />
     <meta name="robots" content="index,follow,max-image-preview:large" />
     <meta name="theme-color" content="#010403" />
-    <link rel="canonical" href="https://heathfpv.com/360.html" />
+    <link rel="canonical" href="https://www.heathfpv.com/360.html" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="en_US" />
     <meta
       property="og:title"
-      content="360 Drone Tour Examples in Utah | Heath Lyon FPV"
+      content="Interactive 360 Drone Tour Demo | Heath Lyon FPV"
     />
     <meta
       property="og:description"
-      content="Watch 360 drone video, open a clickable virtual tour, and request immersive aerial media in Utah County."
+      content="Drag, move, and click through three interactive 360 scenes captured by Heath Lyon FPV in Utah County."
     />
-    <meta property="og:url" content="https://heathfpv.com/360.html" />
+    <meta property="og:url" content="https://www.heathfpv.com/360.html" />
     <meta
       property="og:image"
-      content="https://heathfpv.com/images/utah-county-fpv-drone-tour.webp"
+      content="https://www.heathfpv.com/images/logo/360/360img1.webp"
     />
     <meta name="twitter:card" content="summary_large_image" />
-    <title>360 Drone Tour Examples in Utah | Heath Lyon FPV</title>
+    <title>Interactive 360 Drone Tour Demo | Heath Lyon FPV</title>
     <link rel="stylesheet" href="css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/pannellum@2.5.7/build/pannellum.css"
+    />
+    <link rel="stylesheet" href="css/360-demo.css" />
     <script src="js/project-showcase.js" defer></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/pannellum@2.5.7/build/pannellum.js"
+      defer
+    ></script>
+    <script src="js/360-demo.js" defer></script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "CollectionPage",
-        "@id": "https://heathfpv.com/360.html#page",
-        "url": "https://heathfpv.com/360.html",
-        "name": "360 Drone Tour Examples in Utah",
-        "description": "Examples of 360 drone video and clickable virtual tours by Heath Lyon FPV.",
+        "@id": "https://www.heathfpv.com/360.html#page",
+        "url": "https://www.heathfpv.com/360.html",
+        "name": "Interactive 360 Drone Tour Demo",
+        "description": "A three-scene interactive 360 drone tour demonstration by Heath Lyon FPV.",
         "isPartOf": {
           "@type": "WebSite",
-          "@id": "https://heathfpv.com/#website",
-          "url": "https://heathfpv.com/",
+          "@id": "https://www.heathfpv.com/#website",
+          "url": "https://www.heathfpv.com/",
           "name": "Heath Lyon FPV"
         },
         "about": {
-          "@id": "https://heathfpv.com/utah-county-drone-tours.html#service"
+          "@id": "https://www.heathfpv.com/utah-county-drone-tours.html#service"
         }
       }
     </script>
   </head>
-  <body class="project-page">
+  <body class="project-page tour-demo-page">
     <div class="shell project-shell">
       <div class="scanlines" aria-hidden="true"></div>
 
@@ -62,113 +72,179 @@
           <img src="images/logo/FrontFPV.webp" alt="Heath Lyon FPV" />
         </a>
         <nav aria-label="360 experience navigation">
-          <a href="#watch" class="active"><span>01</span>360 videos</a>
-          <a href="#tour"><span>02</span>360 tour</a>
+          <a href="#tour" class="active"><span>01</span>Live demo</a>
+          <a href="#video"><span>02</span>360 video</a>
           <a href="utah-county-drone-tours.html"><span>03</span>Services</a>
         </nav>
-        <a
-          class="sub-status"
-          href="https://www.youtube.com/@SkyLensProvo/videos"
-          target="_blank"
-          rel="noreferrer"
-          >WATCH 360° ↗</a
-        >
+        <a class="sub-status" href="contact-form.html">REQUEST TOUR ↗</a>
       </header>
 
       <main class="project-main">
-        <section class="project-hero">
+        <section class="project-hero tour-demo-hero">
           <div>
-            <p class="code">SKYLENS_360 // IMMERSIVE MEDIA</p>
-            <h1>360° drone tour <em>examples.</em></h1>
+            <p class="code">SKYLENS_360 // THREE-SCENE DEMO</p>
+            <h1>Step inside the <em>view.</em></h1>
             <p class="project-lead">
-              Watch an interactive flight or click through a virtual tour, then
-              request a Utah County experience built for your location.
+              Explore three connected 360° scenes. Drag on a computer, swipe on
+              a phone, or enable motion to look around naturally.
             </p>
             <div class="actions">
-              <a class="button primary" href="contact-form.html"
-                >Request a 360° tour</a
-              >
-              <a class="button" href="#watch">Watch 360° video</a>
-              <a class="button" href="utah-county-drone-tours.html"
-                >Tour services</a
-              >
+              <a class="button primary" href="#tour">Launch 360° demo</a>
+              <a class="button" href="contact-form.html">Request your tour</a>
             </div>
           </div>
 
-          <aside class="system-card" aria-label="Request a 360 degree tour">
-            <div class="system-id">
-              <span>BOOK_360</span><span>CLIENT REQUEST</span>
-            </div>
-            <strong>TOUR</strong>
-            <h2>Request a 360° tour</h2>
-            <p>
-              Send the location and project goal. Receive a shareable,
-              interactive tour link.
-            </p>
-            <div class="actions">
-              <a class="button primary" href="contact-form.html"
-                >Start request</a
-              >
-            </div>
+          <aside class="tour-brief" aria-label="360 tour instructions">
+            <p class="code">HOW_TO_EXPLORE</p>
+            <ol>
+              <li><span>01</span><b>DRAG</b> to look in any direction.</li>
+              <li><span>02</span><b>CLICK</b> a hotspot to change scenes.</li>
+              <li><span>03</span><b>ENABLE MOTION</b> on a compatible phone.</li>
+            </ol>
           </aside>
         </section>
 
-        <section id="watch" class="content-section">
+        <section id="tour" class="content-section tour-demo-section">
           <div class="section-heading">
             <div>
-              <p class="code">VIEW_01 // CHOOSE AN EXPERIENCE</p>
-              <h2>Watch. Click. Explore.</h2>
+              <p class="code">LIVE_VIEW // INTERACTIVE TOUR</p>
+              <h2>Three connected scenes.</h2>
             </div>
-            <p>Drag the view on desktop or move your phone to look around.</p>
+            <p id="tourHelp">Drag or swipe the image to look around.</p>
           </div>
 
-          <div class="project-download-grid">
-            <article class="download-card" data-category="video">
-              <span class="card-id">360_VIDEO // INTERACTIVE FLIGHT</span>
-              <h2>360° flight video</h2>
-              <p>Look in any direction while the drone flies.</p>
-              <span class="status-chip">WATCH // YOUTUBE 360°</span>
-              <div class="download-actions">
-                <!-- Replace this channel URL with the direct 360 video URL. -->
-                <a
-                  class="button primary"
-                  href="https://www.youtube.com/watch?v=CFqNCqLwsVo"
-                  target="_blank"
-                  rel="noreferrer"
-                  >Watch 360° ↗</a
-                >
+          <div class="tour-viewer-shell" data-tour-demo>
+            <div class="tour-hud" aria-hidden="true">
+              <span><i></i> LIVE 360°</span>
+              <span id="sceneReadout">SCENE 01 // OVERVIEW</span>
+              <span>HEATH FPV</span>
+            </div>
+
+            <div
+              id="panorama"
+              class="tour-panorama"
+              aria-label="Interactive three-scene 360 degree tour"
+            ></div>
+
+            <div id="tourLoading" class="tour-loading" role="status">
+              <span class="tour-loader" aria-hidden="true"></span>
+              <strong>LOADING 360° SCENE</strong>
+              <small>360img1.webp</small>
+            </div>
+
+            <div id="tourError" class="tour-error" role="alert" hidden>
+              <strong>360 IMAGE NOT FOUND</strong>
+              <p id="tourErrorMessage">
+                The panorama could not be loaded. Check the file path and image size.
+              </p>
+              <code id="tourErrorPath">images/logo/360/360img1.webp</code>
+              <button type="button" id="tourRetry">TRY AGAIN</button>
+            </div>
+
+            <div class="tour-controls" aria-label="360 viewer controls">
+              <button type="button" data-tour-control="zoom-in" aria-label="Zoom in">+</button>
+              <button type="button" data-tour-control="zoom-out" aria-label="Zoom out">−</button>
+              <button type="button" data-tour-control="reset">RESET</button>
+              <button type="button" data-tour-control="motion" aria-pressed="false">
+                ENABLE MOTION
+              </button>
+              <button type="button" data-tour-control="fullscreen">FULLSCREEN</button>
+            </div>
+          </div>
+
+          <div class="scene-selector" role="group" aria-label="Choose a 360 scene">
+            <button type="button" class="active" data-scene="scene1" aria-pressed="true">
+              <span>01</span><b>OVERVIEW</b><small>360img1.webp</small>
+            </button>
+            <button type="button" data-scene="scene2" aria-pressed="false">
+              <span>02</span><b>VIEWPOINT</b><small>360img2.webp</small>
+            </button>
+            <button type="button" data-scene="scene3" aria-pressed="false">
+              <span>03</span><b>FINAL VIEW</b><small>360img3.webp</small>
+            </button>
+          </div>
+
+          <noscript>
+            <p class="tour-noscript">JavaScript is required for the interactive 360° viewer.</p>
+          </noscript>
+        </section>
+
+        <section id="video" class="content-section tour-support-section">
+          <div class="section-heading">
+            <div>
+              <p class="code">MORE_360 // FLIGHT + CLIENT TOURS</p>
+              <h2>See it in motion.</h2>
+            </div>
+            <p>Watch a moving 360° flight or request a tour for your location.</p>
+          </div>
+
+          <div class="tour-video-grid">
+            <article class="tour-video-card">
+              <div class="tour-video-hud" aria-hidden="true">
+                <span>360_VIDEO // FLIGHT 01</span><span>YOUTUBE // LIVE</span>
+              </div>
+              <div class="tour-video-frame">
+                <iframe
+                  src="https://www.youtube-nocookie.com/embed/CFqNCqLwsVo?rel=0&amp;playsinline=1"
+                  title="Heath Lyon FPV interactive 360 degree flight video one"
+                  loading="lazy"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen
+                ></iframe>
+              </div>
+              <div class="tour-video-copy">
+                <span class="card-id">FLIGHT_ARCHIVE // 01</span>
+                <h3>Interactive 360° flight</h3>
+                <p>Press play, then drag or move your phone to explore the flight.</p>
               </div>
             </article>
 
-            <article id="tour" class="download-card" data-category="tour">
-              <span class="card-id">360_TOUR // CLICKABLE VIEW</span>
-              <h2>Clickable 360° tour</h2>
-              <p>Open the tour and explore the location yourself.</p>
-              <span class="status-chip">OPEN // INTERACTIVE</span>
-              <div class="download-actions">
-                <!-- Replace this channel URL with the direct clickable tour URL. -->
-                <a
-                  class="button primary"
-                  href="https://www.youtube.com/watch?v=CFqNCqLwsVo"
-                  target="_blank"
-                  rel="noreferrer"
-                  >Open 360° tour ↗</a
-                >
+            <article class="tour-video-card">
+              <div class="tour-video-hud" aria-hidden="true">
+                <span>360_VIDEO // FLIGHT 02</span><span>YOUTUBE // LIVE</span>
               </div>
-            </article>
-
-            <article id="request" class="download-card" data-category="request">
-              <span class="card-id">YOUR_PROJECT // CUSTOM TOUR</span>
-              <h2>Request your tour</h2>
-              <p>Property, venue, trail, or project site.</p>
-              <span class="status-chip">BOOKING // OPEN</span>
-              <div class="download-actions">
-                <a class="button primary" href="contact-form.html"
-                  >Request a tour</a
-                >
+              <div class="tour-video-frame">
+                <iframe
+                  src="https://www.youtube-nocookie.com/embed/048hkDHqqQ4?rel=0&amp;playsinline=1"
+                  title="Heath Lyon FPV interactive 360 degree flight video two"
+                  loading="lazy"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen
+                ></iframe>
+              </div>
+              <div class="tour-video-copy">
+                <span class="card-id">FLIGHT_ARCHIVE // 02</span>
+                <h3>Immersive 360° perspective</h3>
+                <p>Choose the view yourself while the camera moves through the scene.</p>
               </div>
             </article>
           </div>
+
+          <div class="tour-request-strip">
+            <div>
+              <p class="code">YOUR_LOCATION // CUSTOM TOUR</p>
+              <h3>Put visitors inside your space.</h3>
+              <p>Ideal for venues, properties, attractions, trails, and project sites.</p>
+            </div>
+            <div class="actions">
+              <a class="button primary" href="contact-form.html">Request a tour</a>
+              <a class="button" href="utah-county-drone-tours.html">View services</a>
+            </div>
+          </div>
+        </section>
+
+        <section class="content-section embed-callout" aria-labelledby="embedTitle">
+          <div>
+            <p class="code">SHAREABLE // EMBEDDABLE</p>
+            <h2 id="embedTitle">One link. Any website.</h2>
+            <p>
+              Each finished tour can have a direct client link and can be embedded
+              into another website without sending visitors somewhere else.
+            </p>
+          </div>
+          <a class="button primary" href="contact-form.html">Build my 360° tour</a>
         </section>
 
         <footer class="project-footer">
