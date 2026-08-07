@@ -1,0 +1,96 @@
+.tour-demo-page .tour-demo-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(162, 255, 47, 0.24);
+  background: #010403;
+}
+
+.tour-demo-page .tour-demo-hero > :not(.tour-hero-accent) {
+  position: relative;
+  z-index: 2;
+}
+
+.tour-hero-accent {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.tour-hero-accent img {
+  width: min(64%, 860px);
+  height: auto;
+  max-height: 100%;
+  max-width: none;
+  object-fit: contain;
+  object-position: right center;
+  opacity: 0.8;
+  filter: brightness(0.92) saturate(0.9) contrast(1.08);
+}
+
+.tour-hero-accent::before,
+.tour-hero-accent::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.tour-hero-accent::before {
+  z-index: 1;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(1, 4, 3, 0.97) 0%,
+      rgba(1, 4, 3, 0.9) 35%,
+      rgba(1, 4, 3, 0.52) 68%,
+      rgba(1, 4, 3, 0.76) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(1, 4, 3, 0.42),
+      transparent 38%,
+      rgba(1, 4, 3, 0.78)
+    );
+}
+
+.tour-hero-accent::after {
+  z-index: 2;
+  left: auto;
+  width: 5px;
+  background: #a2ff2f;
+  box-shadow:
+    -10px 0 28px rgba(162, 255, 47, 0.28),
+    -2px 0 0 #ff2a9d;
+  opacity: 0.72;
+}
+
+@media (max-width: 820px) {
+  .tour-hero-accent {
+    align-items: flex-start;
+  }
+
+  .tour-hero-accent img {
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+    opacity: 0.56;
+    object-position: center top;
+  }
+
+  .tour-hero-accent::before {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(1, 4, 3, 0.88),
+        rgba(1, 4, 3, 0.68) 48%,
+        rgba(1, 4, 3, 0.92)
+      ),
+      linear-gradient(90deg, rgba(1, 4, 3, 0.74), transparent);
+  }
+}
