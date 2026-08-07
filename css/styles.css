@@ -640,13 +640,13 @@ p {
   max-width: none;
   object-fit: cover;
   object-position: center;
-  filter: saturate(0.78) contrast(1.08);
+  filter: brightness(1.08) saturate(0.82) contrast(1.06);
   opacity: 0;
   transform: scale(1.015);
   transition: opacity 0.7s ease;
 }
 .hero-video.is-ready {
-  opacity: 0.72;
+  opacity: 0.78;
 }
 .hero-contrast {
   position: absolute;
@@ -1174,6 +1174,7 @@ p {
   line-height: 1.58;
 }
 .projects {
+  min-height: max(100svh, 760px);
   background:
     linear-gradient(rgba(1, 4, 3, 0.96), rgba(2, 9, 6, 0.97)),
     url("../images/logo/img1.webp") center/cover;
@@ -1181,7 +1182,7 @@ p {
 .project-grid {
   display: grid;
   grid-template-columns: 1.3fr 0.7fr 0.7fr;
-  grid-template-rows: repeat(2, minmax(190px, 1fr));
+  grid-template-rows: repeat(2, minmax(220px, 1fr));
   gap: 12px;
   min-height: min(57vh, 580px);
 }
@@ -3067,7 +3068,8 @@ footer a {
   }
   .project-grid {
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 300px repeat(2, 190px);
+    grid-template-rows: 300px;
+    grid-auto-rows: minmax(220px, auto);
   }
   .quote-strip .actions {
     width: 100%;
@@ -3214,7 +3216,8 @@ footer a {
   }
   .project-grid {
     grid-template-columns: 1fr;
-    grid-template-rows: 300px repeat(3, 190px);
+    grid-template-rows: 300px;
+    grid-auto-rows: minmax(220px, auto);
   }
   .project-card.feature {
     grid-column: auto;

@@ -199,11 +199,30 @@
   color: var(--acid);
 }
 
-.tour-controls button:first-child,
-.tour-controls button:nth-child(2) {
+.tour-controls button[data-tour-control="zoom-in"],
+.tour-controls button[data-tour-control="zoom-out"] {
   width: 42px;
   padding-inline: 0;
   font-size: 1rem;
+}
+
+.tour-controls .scene-step {
+  border-color: var(--acid);
+  color: var(--acid);
+  box-shadow: 0 0 18px rgba(var(--a), 0.2);
+}
+
+.tour-controls .scene-step-next {
+  background: var(--acid);
+  color: #010403;
+  box-shadow: 0 0 24px rgba(var(--a), 0.36);
+}
+
+.tour-controls .scene-step-next:hover,
+.tour-controls .scene-step-next:focus-visible {
+  background: var(--hot);
+  border-color: var(--hot);
+  color: #010403;
 }
 
 .tour-loading,
@@ -503,29 +522,58 @@
   box-shadow: none;
 }
 
-.pnlm-hotspot-base.pnlm-scene {
-  width: auto;
-  height: auto;
-  padding: 9px 12px;
-  border: 1px solid var(--acid);
-  border-radius: 0;
+.tour-scene-hotspot {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  place-items: center;
+  border: 2px solid var(--acid);
+  border-radius: 50%;
   background: rgba(1, 6, 4, 0.9);
+  box-shadow:
+    0 0 0 6px rgba(var(--a), 0.1),
+    0 0 28px rgba(var(--a), 0.46);
+  cursor: pointer;
+  transition: background 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.tour-scene-hotspot::before {
+  content: "→";
   color: var(--acid);
   font-family: var(--mono);
-  font-size: 0.58rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  box-shadow: 0 0 22px rgba(var(--a), 0.25);
+  font-size: 1.25rem;
+  font-weight: 900;
+  line-height: 1;
 }
 
-.pnlm-hotspot-base.pnlm-scene::before {
-  content: "→ ";
-  color: var(--hot);
+.tour-scene-hotspot-back::before {
+  content: "←";
 }
 
-.pnlm-hotspot-base.pnlm-scene .pnlm-tooltip span {
+.tour-scene-hotspot-restart::before {
+  content: "↺";
+}
+
+.tour-scene-hotspot:hover,
+.tour-scene-hotspot:focus-visible {
+  border-color: var(--hot);
+  background: rgba(var(--h), 0.22);
+  box-shadow:
+    0 0 0 7px rgba(var(--h), 0.14),
+    0 0 32px rgba(var(--h), 0.52);
+}
+
+div.tour-scene-hotspot.pnlm-tooltip span {
+  padding: 7px 10px;
+  border: 1px solid var(--acid);
+  border-radius: 0;
+  background: rgba(1, 6, 4, 0.94);
+  color: var(--acid);
   font-family: var(--mono);
-  font-size: 0.6rem;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
 }
 
 @keyframes tourSpin {
@@ -595,9 +643,14 @@
     flex: 1 1 auto;
   }
 
-  .tour-controls button:first-child,
-  .tour-controls button:nth-child(2) {
+  .tour-controls button[data-tour-control="zoom-in"],
+  .tour-controls button[data-tour-control="zoom-out"] {
     flex: 0 0 40px;
+  }
+
+  .tour-controls .scene-step {
+    flex: 1 1 calc(50% - 4px);
+    order: -1;
   }
 }
 

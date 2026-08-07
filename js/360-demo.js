@@ -44,6 +44,8 @@
     scene3: "images/logo/360/360img3.webp",
   };
 
+  const sceneOrder = ["scene1", "scene2", "scene3"];
+
   const loading = document.querySelector("#tourLoading");
   const loadingFile = loading?.querySelector("small");
   const errorMessage = document.querySelector("#tourError");
@@ -87,6 +89,7 @@
             pitch: -4,
             yaw: 75,
             type: "scene",
+            cssClass: "tour-scene-hotspot",
             text: "Continue to Viewpoint",
             sceneId: "scene2",
             targetPitch: 0,
@@ -103,6 +106,7 @@
             pitch: -3,
             yaw: -72,
             type: "scene",
+            cssClass: "tour-scene-hotspot tour-scene-hotspot-back",
             text: "Return to Overview",
             sceneId: "scene1",
             targetPitch: 0,
@@ -112,6 +116,7 @@
             pitch: -2,
             yaw: 72,
             type: "scene",
+            cssClass: "tour-scene-hotspot",
             text: "Continue to Final View",
             sceneId: "scene3",
             targetPitch: 0,
@@ -128,6 +133,7 @@
             pitch: -3,
             yaw: -68,
             type: "scene",
+            cssClass: "tour-scene-hotspot tour-scene-hotspot-back",
             text: "Back to Viewpoint",
             sceneId: "scene2",
             targetPitch: 0,
@@ -137,6 +143,7 @@
             pitch: -1,
             yaw: 68,
             type: "scene",
+            cssClass: "tour-scene-hotspot tour-scene-hotspot-restart",
             text: "Restart Tour",
             sceneId: "scene1",
             targetPitch: 0,
@@ -217,6 +224,13 @@
     viewer.loadScene(sceneId);
   }
 
+  function stepScene(direction) {
+    const currentIndex = sceneOrder.indexOf(currentScene);
+    const safeIndex = currentIndex < 0 ? 0 : currentIndex;
+    const nextIndex = (safeIndex + direction + sceneOrder.length) % sceneOrder.length;
+    loadScene(sceneOrder[nextIndex]);
+  }
+
   async function toggleMotion() {
     if (motionActive) {
       viewer.stopOrientation();
@@ -250,6 +264,12 @@
   controlButtons.forEach((button) => {
     button.addEventListener("click", () => {
       switch (button.dataset.tourControl) {
+        case "previous":
+          stepScene(-1);
+          break;
+        case "next":
+          stepScene(1);
+          break;
         case "zoom-in":
           viewer.setHfov(Math.max(45, viewer.getHfov() - 10));
           break;
