@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: drone-rush-relay
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python server.py
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.13.7
+      - key: ALLOWED_ORIGINS
+        sync: false

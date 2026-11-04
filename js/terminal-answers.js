@@ -131,7 +131,7 @@ window.terminalFAQs = [
       "request a quote",
     ],
     answer: [
-      "Current starting estimates: drone photos $225, drone video $450, FPV half-day $650, and basic 360 capture $350.",
+      "Starting rates: full day (10 hours) $600; half day (5 hours) $400; same-day rush (full day) $800. Reserve your shoot with $100 upfront. Standard packages include finished photos or edited video and a two-day turnaround.",
       "Airspace, travel, crew, equipment, editing, permits, and project risk can change the final quote. Type contact for a direct estimate.",
     ],
   },

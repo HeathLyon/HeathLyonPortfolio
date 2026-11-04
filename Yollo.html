@@ -1,27 +1,21 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta
-      name="description"
-      content="YOLO pose-based fall detection prototype by Heath Lyon — recorded demonstration, simplified processing steps, and CDC-sourced fall-safety research."
-    />
-    <meta name="theme-color" content="#010403" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="YOLO pose-based fall detection prototype by Heath Lyon — recorded demonstration, simplified processing steps, and CDC-sourced fall-safety research.">
+    <meta name="theme-color" content="#010403">
     <title>YOLO Fall Detection | Heath Lyon</title>
-    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/styles.css">
     <script src="js/project-showcase.js" defer></script>
-  </head>
+  <script src="js/main.js?v=drone-rush-1" defer></script>
+</head>
   <body class="project-page">
     <div class="shell project-shell">
       <div class="scanlines" aria-hidden="true"></div>
       <header class="sub-header">
-        <a
-          href="index.html#home"
-          class="mini-logo"
-          aria-label="Heath Lyon home"
-        >
-          <img src="images/logo/FrontFPV.webp" alt="Heath Lyon FPV" />
+        <a href="index.html#home" class="mini-logo" aria-label="Heath Lyon home">
+          <img src="images/logo/FrontFPV.webp" alt="Heath Lyon FPV">
         </a>
         <nav aria-label="Project navigation">
           <a href="index.html#projects"><span>01</span>Projects</a>
@@ -44,8 +38,7 @@
               desktop Python system without requesting a visitor's camera.
             </p>
             <div class="project-meta">
-              <span>PYTHON</span><span>YOLO11 POSE</span><span>OPENCV</span
-              ><span>TEMPORAL RULES</span><span>LOCAL-FIRST</span>
+              <span>PYTHON</span><span>YOLO11 POSE</span><span>OPENCV</span><span>TEMPORAL RULES</span><span>LOCAL-FIRST</span>
             </div>
             <div class="actions">
               <a class="button primary" href="#demo">▶ Watch demonstration</a>
@@ -91,19 +84,8 @@
               <span>LOCAL PYTHON // VIDEO PLAYBACK</span>
             </div>
             <div class="demo-video-frame">
-              <video
-                data-yolo-video
-                controls
-                playsinline
-                preload="metadata"
-                poster="images/logo/img1.webp"
-                aria-label="Recorded demonstration of the YOLO fall detection prototype"
-              >
-                <source
-                  data-yolo-video-source
-                  src="video/Yolloproject.mp4"
-                  type="video/mp4"
-                />
+              <video data-yolo-video controls playsinline preload="metadata" poster="images/logo/img1.webp" aria-label="Recorded demonstration of the YOLO fall detection prototype">
+                <source data-yolo-video-source src="video/Yolloproject.mp4" type="video/mp4">
                 Your browser does not support HTML video playback.
               </video>
               <div class="video-missing-note" data-video-missing hidden>
@@ -212,12 +194,7 @@
               removed, dependencies are pinned, and the prototype is tested in a
               clean environment.
             </p>
-            <a
-              class="button primary"
-              href="downloads/YOLO-Fall-Detector-Project-Brief.txt"
-              download
-              >Download brief</a
-            >
+            <a class="button primary" href="downloads/YOLO-Fall-Detector-Project-Brief.txt" download>Download brief</a>
           </div>
         </section>
 
@@ -242,12 +219,7 @@
                 More than 14 million U.S. adults age 65+ report falling
                 annually.
               </p>
-              <a
-                href="https://www.cdc.gov/falls/data-research/index.html"
-                target="_blank"
-                rel="noreferrer"
-                >CDC Older Adult Falls Data ↗</a
-              >
+              <a href="https://www.cdc.gov/falls/data-research/index.html" target="_blank" rel="noreferrer">CDC Older Adult Falls Data ↗</a>
             </article>
             <article class="research-stat">
               <strong>9M</strong>
@@ -256,12 +228,7 @@
                 About 37% of older adults who fall report an injury that needs
                 medical treatment or restricts activity for at least a day.
               </p>
-              <a
-                href="https://www.cdc.gov/falls/data-research/index.html"
-                target="_blank"
-                rel="noreferrer"
-                >CDC Older Adult Falls Data ↗</a
-              >
+              <a href="https://www.cdc.gov/falls/data-research/index.html" target="_blank" rel="noreferrer">CDC Older Adult Falls Data ↗</a>
             </article>
             <article class="research-stat">
               <strong>3M / 1M</strong>
@@ -270,12 +237,7 @@
                 Falls lead to roughly 3 million emergency-department visits and
                 about 1 million hospitalizations among older adults each year.
               </p>
-              <a
-                href="https://www.cdc.gov/falls/data-research/facts-stats/index.html"
-                target="_blank"
-                rel="noreferrer"
-                >CDC Facts About Falls ↗</a
-              >
+              <a href="https://www.cdc.gov/falls/data-research/facts-stats/index.html" target="_blank" rel="noreferrer">CDC Facts About Falls ↗</a>
             </article>
             <article class="research-stat">
               <strong>+21%</strong>
@@ -284,12 +246,7 @@
                 The age-adjusted rate increased from 64.7 deaths per 100,000 in
                 2018 to 78.4 in 2024.
               </p>
-              <a
-                href="https://www.cdc.gov/falls/data-research/index.html"
-                target="_blank"
-                rel="noreferrer"
-                >CDC Older Adult Falls Data ↗</a
-              >
+              <a href="https://www.cdc.gov/falls/data-research/index.html" target="_blank" rel="noreferrer">CDC Older Adult Falls Data ↗</a>
             </article>
           </div>
 
@@ -314,44 +271,19 @@
               <p class="code">PRIMARY SOURCES</p>
               <ul class="source-list">
                 <li>
-                  <a
-                    href="https://www.cdc.gov/falls/data-research/index.html"
-                    target="_blank"
-                    rel="noreferrer"
-                    >CDC — Older Adult Falls Data</a
-                  >
+                  <a href="https://www.cdc.gov/falls/data-research/index.html" target="_blank" rel="noreferrer">CDC — Older Adult Falls Data</a>
                 </li>
                 <li>
-                  <a
-                    href="https://www.cdc.gov/falls/data-research/facts-stats/index.html"
-                    target="_blank"
-                    rel="noreferrer"
-                    >CDC — Facts About Falls</a
-                  >
+                  <a href="https://www.cdc.gov/falls/data-research/facts-stats/index.html" target="_blank" rel="noreferrer">CDC — Facts About Falls</a>
                 </li>
                 <li>
-                  <a
-                    href="https://www.cdc.gov/falls/prevention/index.html"
-                    target="_blank"
-                    rel="noreferrer"
-                    >CDC — Preventing Falls and Hip Fractures</a
-                  >
+                  <a href="https://www.cdc.gov/falls/prevention/index.html" target="_blank" rel="noreferrer">CDC — Preventing Falls and Hip Fractures</a>
                 </li>
                 <li>
-                  <a
-                    href="https://www.cdc.gov/steadi/"
-                    target="_blank"
-                    rel="noreferrer"
-                    >CDC STEADI — Clinical Fall Prevention</a
-                  >
+                  <a href="https://www.cdc.gov/steadi/" target="_blank" rel="noreferrer">CDC STEADI — Clinical Fall Prevention</a>
                 </li>
               </ul>
-              <a
-                class="button source-download"
-                href="downloads/Older-Adult-Falls-CDC-Report.txt"
-                download
-                >Download full report</a
-              >
+              <a class="button source-download" href="downloads/Older-Adult-Falls-CDC-Report.txt" download>Download full report</a>
             </aside>
           </div>
 

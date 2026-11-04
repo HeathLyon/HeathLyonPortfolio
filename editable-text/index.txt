@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="FAA Part 107 drone pilot Heath Lyon provides FPV video, aerial media, and 360 drone tours in Provo and throughout Utah County.">
+    <meta name="robots" content="index,follow,max-image-preview:large">
+    <meta name="theme-color" content="#010403">
+    <link rel="canonical" href="https://heathfpv.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:title" content="Utah County Drone Pilot &amp; 360 Tours | Heath Lyon">
+    <meta property="og:description" content="FPV drone video, aerial media, and interactive 360 drone tours from an FAA Part 107 pilot based in Provo, Utah.">
+    <meta property="og:url" content="https://heathfpv.com/">
+    <meta property="og:image" content="https://heathfpv.com/images/utah-county-fpv-drone-tour.webp">
+    <meta name="twitter:card" content="summary_large_image">
+    <title>Utah County Drone Pilot &amp; 360 Tours | Heath Lyon</title>
+    <link rel="stylesheet" href="css/styles.css?v=drone-rush-1">
+<script src="js/main.js?v=drone-rush-1" defer></script>
+</head>
+  <body class="portfolio-page">
+    <div id="logoIntro" class="logo-intro" role="region" aria-label="Loading Heath FPV portfolio" hidden>
+ <div class="intro-content">
+<div class="logo-loader"><img src="images/logo/FrontFPV.webp" alt="Heath Lyon FPV" width="190" decoding="async"></div>
+ <div class="loading-details">
+<div class="loading-readout">
+<p class="intro-label">LOADING HEATH FPV</p>
+<span class="loading-percent" data-load-percent aria-hidden="true">0%</span>
+</div>
+<progress class="loading-progress" max="100" value="0" aria-label="Homepage readiness"></progress><p class="loading-status" data-load-status role="status" aria-live="polite">Preparing homepage…</p>
+</div>
+<button class="skip-intro" data-skip-intro type="button">Skip intro →</button>
+</div>
+</div>
+<a class="skip-link" href="#mainContent">Skip to content</a><div class="shell">
+      <canvas id="matrixCanvas" class="matrix" aria-hidden="true"></canvas><canvas id="trailCanvas" class="trail" aria-hidden="true"></canvas>
+      <div id="scanlines" class="scanlines" aria-hidden="true"></div>
+      <header class="site-header">
+        <a href="#home" class="mini-logo" aria-label="Heath Lyon home"><img src="images/logo/FrontFPV.webp" alt="Heath Lyon FPV" decoding="async"></a>
+        <nav aria-label="Primary navigation"><a href="#reel">Reel</a><a href="#rates">Rates</a><a href="#projects">About</a><a href="drone-rush.html">Game</a><a href="#contact">Contact</a></nav><div class="header-tools">
+  <a class="terminal-link" href="terminal.html">Terminal <span aria-hidden="true">↗</span></a>
+  <button class="search-toggle" type="button" data-open-search aria-haspopup="dialog" aria-controls="siteSearch">Search <span aria-hidden="true">⌕</span></button>
+</div></header>
+      <main id="mainContent" tabindex="-1">
+        <section id="home" class="snap hero" aria-labelledby="home-title">
+          <div class="hero-image" aria-hidden="true"></div>
+          <video id="heroVideo" class="hero-video" muted="" loop playsinline="" preload="metadata" aria-hidden="true" tabindex="-1" autoplay="" poster="images/logo/img5.webp">
+            <source src="video/Background%20Hero%20Clip.mp4" type="video/mp4">
+          </video>
+          <div class="hero-contrast" aria-hidden="true"></div>
+          <div class="inner hero-grid">
+            <div class="hero-copy">
+              <p class="code">FAA PART 107 // FPV CINEMATIC OPERATOR</p>
+              <h1 class="hero-title" id="home-title">FPV drone video <em>&amp; 360 tours in Utah.</em>
+</h1>
+              <p class="summary">I'm Heath Lyon, an FAA Part 107 pilot based in Provo. I create cinematic FPV video, aerial photography, and interactive 360 tours for properties, brands, and productions.</p>
+              <div class="actions">
+<a href="#reel" class="button primary">Watch the reel</a><a href="contact-form.html" class="button">Request a quote</a>
+</div>
+<dl class="stats">
+                <div>
+                  <dt>BASED IN</dt>
+                  <dd>Provo, Utah</dd>
+                </div>
+                <div>
+                  <dt>CERTIFIED</dt>
+                  <dd>FAA Part 107</dd>
+                </div>
+                <div>
+                  <dt>AVAILABLE FOR</dt>
+                  <dd>Local &amp; travel</dd>
+                </div>
+              </dl>
+            </div>
+            </div>
+          </section>
+
+        <section id="reel" class="snap reel" aria-labelledby="reel-title">
+          <div class="inner">
+            <div class="heading">
+              <div>
+                <p class="code">SYS 01_FLIGHT_MEDIA_ARCHIVE</p>
+                <h2 id="reel-title">FPV drone video reel</h2>
+              </div>
+              <p>
+                Aerial footage, tracking shots, and production work filmed with
+                aircraft I build, maintain, and fly.
+              </p>
+            </div>
+            <div class="reel-grid">
+              <div class="video">
+                <div class="video-hud">
+                  <span>REC ●</span><span>HL-FPV_2026</span><span>4K SOURCE</span>
+                </div>
+                <video id="reelVideo" controls playsinline preload="none" poster="images/logo/img1.webp">
+                  <source src="video/Dronereelcompress.mp4" type="video/mp4">
+                </video>
+              </div>
+              <aside class="manifest" aria-label="Flight reel manifest">
+                <p class="code">FLIGHT_MANIFEST</p>
+                <article>
+                  <span>01</span>
+                  <div>
+                    <h3>Cinematic FPV</h3>
+                    <p>Proximity, tracking, landscape, and dynamic movement.</p>
+                  </div>
+                </article>
+                <article>
+                  <span>02</span>
+                  <div>
+                    <h3>Production</h3>
+                    <p>
+                      Safety briefings, field support, and client-facing shoots.
+                    </p>
+                  </div>
+                </article>
+                <article>
+                  <span>03</span>
+                  <div>
+                    <h3>Build testing</h3>
+                    <p>
+                      Payload trials, tuning, vibration diagnosis, and repair.
+                    </p>
+                  </div>
+                </article>
+              </aside>
+            </div>
+          </div>
+          </section>
+
+        <section id="rates" class="snap rates" aria-labelledby="rates-title">
+          <div class="inner">
+            <div class="heading">
+              <div>
+                <p class="code">SYS 02_SERVICE_RATE_INDEX</p>
+                <h2 id="rates-title">Drone filming rates</h2>
+              </div>
+              <p>
+                Reserve your shoot with $100 upfront. Standard packages include
+                a guaranteed two-day turnaround; rush delivery is available below.
+              </p>
+            </div>
+            <div class="rate-grid">
+              <article class="rate-card">
+                <span>01 · FULL DAY</span>
+                <h3>Full Day</h3>
+                <p class="rate-price"><b>$600</b><em>starting</em></p>
+                <p>
+                  10 hours of coverage, including finished aerial photos or edited video.
+                </p>
+              </article>
+              <article class="rate-card">
+                <span>02 · HALF DAY</span>
+                <h3>Half Day</h3>
+                <p class="rate-price"><b>$400</b><em>starting</em></p>
+                <p>5 hours of coverage, including finished aerial photos or edited video.</p>
+              </article>
+              <article class="rate-card hot">
+                <span>03 · RUSH DELIVERY</span>
+                <h3>Same-Day Rush</h3>
+                <p class="rate-price"><b>$800</b><em>starting</em></p>
+                <p>
+                  Full-day coverage with same-day delivery of your finished video.
+                </p>
+              </article>
+            </div>
+            <div class="quote-strip">
+              <div>
+                <p class="code">CUSTOM_MISSION</p>
+                <h3>Request a project quote.</h3>
+                <p>Send the location, date, deliverables, and intended use.</p>
+              </div>
+              <div class="actions">
+                <a class="button primary" href="contact-form.html">Request a quote</a><a class="button" href="utah-county-drone-tours.html">Utah County 360 tours</a>
+              </div>
+            </div>
+          </div>
+          </section>
+
+        <section id="projects" class="snap projects" aria-labelledby="projects-title">
+          <div class="inner">
+            <div class="heading">
+              <div>
+                <p class="code">SYS 04_ABOUT_HEATH</p>
+                <h2 id="projects-title">About Heath Lyon</h2>
+              </div>
+              <p>I'm a Provo-based drone pilot and developer with hands-on experience in aerial production, custom aircraft, and software. Here is a look at the person and projects behind Heath FPV.</p>
+            </div>
+            <div class="about-layout">
+<div class="about-profile">
+<div class="portrait-frame">
+<img src="images/logo/Selfi.jpg" alt="Heath Lyon, FPV drone pilot and developer" loading="lazy" decoding="async">
+                </div>
+  <p class="code">PILOT // BUILDER // DEVELOPER</p>
+  <h3>Creative production. Practical engineering.</h3>
+  <p>I build and fly custom FPV aircraft for cinematic production. My work also spans search and rescue research, computer vision, and interactive media.</p>
+  <a class="button" href="contact-form.html">Work with Heath</a>
+</div>
+<div class="about-work">
+<h3>Selected projects</h3>
+<div class="project-grid">
+              <a class="project-card game-card" id="drone-game" href="drone-rush.html" aria-label="Play Drone Rush in your browser">
+<b aria-hidden="true">GODOT</b><span class="game-status">PLAY IN BROWSER</span><span>A01 · INTERACTIVE GAME</span>
+<h3 id="drone-game-title">Drone Rush</h3>
+<p>Race a drone through three 3D courses using your mouse. Launch a solo time trial, then explore private races with a connected race server.</p>
+<span class="card-action">LAUNCH GAME ↗</span></a><a class="project-card" href="sar-project.html" aria-label="Open the search and rescue payload project">
+                <b>RF</b><span>A02 · RESEARCH</span>
+                <h3>Search &amp; Rescue Payloads</h3>
+                <p>
+                  Research into RF sensing, phone detection, and modular
+                  drone payloads for search and rescue.
+                </p>
+                <span class="card-action">View project ↗</span>
+              </a>
+              <a class="project-card pink" href="Yollo.html" aria-label="Open the YOLO fall detection demonstration">
+                <b>CV</b><span>A03 · COMPUTER VISION</span>
+                <h3>YOLO Fall Detection</h3>
+                <p>
+                  A computer vision prototype combining pose tracking, fall
+                  detection, privacy controls, and alerts.
+                </p>
+                <span class="card-action">View project ↗</span>
+              </a>
+              <a class="project-card" href="archaeology-project.html" aria-label="Open the archaeology 3D scan archive project">
+                <b>3D</b><span>A04 · SPATIAL ARCHIVE</span>
+                <h3>Archaeology 3D Scans</h3>
+                <p>
+                  Interactive 3D viewers for exploring excavation sites,
+                  scanned artifacts, and field records.
+                </p>
+                <span class="card-action">View project ↗</span>
+              </a>
+              <a class="project-card" href="360.html" aria-label="Open the interactive 360 drone tour demo">
+                <b>360</b><span>A05 · IMMERSIVE MEDIA</span>
+                <h3>Interactive 360 Tours</h3>
+                <p>
+                  Connected aerial panoramas that let viewers explore a
+                  property or location in every direction.
+                </p>
+                <span class="card-action">View project ↗</span>
+              </a>
+            </div>
+          </div>
+</div>
+</div>
+          </section>
+
+        <section id="contact" class="snap contact" aria-labelledby="contact-title">
+          <div class="contact-image"></div>
+          <div class="inner contact-grid">
+            <div>
+              <p class="code">SYS 05_CONTACT</p>
+              <h2 id="contact-title">Book your drone shoot</h2>
+              <p class="summary">
+                Tell me what you need, where you’re filming, and your timeline.
+                Available for aerial production and technical projects in Utah
+                and on location.
+              </p>
+              <div class="actions">
+                <a class="button primary" href="contact-form.html">Discuss your project</a><a class="button" href="https://www.youtube.com/@SkyLensProvo" target="_blank" rel="noreferrer">YouTube reel</a>
+              </div>
+            </div>
+            <div class="contact-console">
+              <p>
+                <span>EMAIL</span><a href="mailto:Lyon.m.heath@gmail.com">Lyon.m.heath@gmail.com</a>
+              </p>
+              <p>
+                <span>GITHUB</span><a href="https://github.com/HeathLyon" target="_blank" rel="noreferrer">github.com/HeathLyon</a>
+              </p>
+              <p>
+                <span>INSTAGRAM</span><a href="https://instagram.com/skylensprovo" target="_blank" rel="noreferrer">@skylensprovo</a>
+              </p>
+              <p><span>LOCATION</span><b>Provo, Utah // Travel ready</b></p>
+              <div class="available">
+<i></i> CHANNEL OPEN // NEW PROJECTS</div>
+            </div>
+          </div>
+          <footer>
+            <span>© <span id="year"></span> HEATH LYON</span><nav aria-label="More from Heath"><a href="360.html">360 tours</a><a href="downloads.html">Downloads</a><a href="terminal.html">Terminal</a><a href="drone-rush.html">Drone Rush</a></nav><a href="#home">BACK TO TOP ↑</a>
+          </footer>
+        </section>
+      </main>
+    </div>
+  <dialog id="siteSearch" class="search-dialog" aria-labelledby="searchTitle">
+  <div class="search-top">
+<h2 id="searchTitle">Search Heath FPV</h2>
+<button type="button" class="search-close" data-close-search aria-label="Close search">Close ×</button>
+</div>
+  <form id="siteSearchForm" role="search">
+<label for="siteSearchInput">Find services, rates, projects, and more</label>
+  <div class="search-field">
+<input type="search" id="siteSearchInput" name="q" placeholder="Try “rates”, “360 tours”, or “FPV”" autocomplete="off" maxlength="120" aria-controls="siteSearchResults" autofocus><button type="submit">Search</button>
+</div>
+</form>
+  <p id="siteSearchStatus" class="search-status" role="status" aria-live="polite"></p>
+  <ul id="siteSearchResults" class="search-results" aria-label="Search results"></ul>
+  <p class="search-hint">Search this portfolio · Esc to close</p>
+</dialog>
+</body>
+</html>

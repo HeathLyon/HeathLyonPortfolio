@@ -1,0 +1,85 @@
+HEATH FPV — COMPLETE WEBSITE WITH DRONE RUSH
+
+WHAT TO UPLOAD
+The website/ folder contains the ready-to-host site: homepage, shared stylesheet
+and script, all project/service/contact pages, the terminal, portraits, videos,
+360 images, downloads, and the complete browser game export.
+
+Upload the CONTENTS of website/ to your HeathLyonPortfolio repository root.
+index.html belongs at the root; the game belongs at games/drone-rush/index.html.
+Do not replace the portfolio's root index.html or js/main.js with Godot's files.
+
+Use GitHub Desktop or Git for this upload. The game's index.wasm is about 38 MB;
+GitHub's browser file uploader is limited to 25 MiB per file. Existing video files
+also exceed the browser upload limit. All individual files here are under GitHub's
+100 MiB regular-Git file limit. No LFS setup is required for these files.
+
+In GitHub Desktop:
+1. Open your existing HeathLyonPortfolio checkout, or clone it from GitHub.
+2. Copy everything inside website/ into that checkout, replacing matching files.
+3. Commit the changes and click Push origin.
+4. Wait for your existing GitHub Pages deployment to finish, then hard-refresh.
+5. The game page will be /drone-rush.html on your existing domain.
+
+The existing CNAME is retained. This package does not change your DNS or publish
+anything automatically. Keep your GitHub Pages branch/root settings as they are.
+
+EDITING
+Your homepage still uses css/styles.css and js/main.js. Custom site CSS and JS are
+external; there are no authored inline CSS/JS blocks in the supplied HTML pages.
+The Godot-generated index.js and audio worklets stay inside games/drone-rush/ as
+required engine files. Do not move or rename individual exported files.
+editable-text/ contains plain-text copies if you prefer to copy into your editor.
+
+GAME MODES
+Solo racing: included in the browser export, with Neon Circuit, Canyon Run,
+and Sky Spiral. Move the mouse to steer/climb; left mouse boosts; right brakes.
+Use the game's Leave Race button to return to its menu.
+
+Private rooms: the compiled game supports room codes, but online rooms require
+a live WebSocket relay. No public relay address was supplied, so this package
+does not claim that internet multiplayer is connected.
+
+MULTIPLAYER SETUP
+multiplayer-relay/ contains the tested Python relay, requirements, tests, a Render
+manifest, and an environment-variable example. Deploy it on a host that supports
+Python and WebSockets. GitHub Pages serves the static site; it cannot run this
+Python process.
+
+Relay start command: python server.py
+Health endpoint: /health
+WebSocket endpoint: /ws
+Allowed frontend origins: https://heathfpv.com,https://www.heathfpv.com
+
+After deployment, edit the single DRONE_RUSH_RELAY_URL constant in js/main.js
+and set it to your real wss://.../ws endpoint. The launch page then passes the
+address to the game automatically. Pilots can also enter the same endpoint in
+the in-game multiplayer server field. Room codes work only on that same relay.
+Do not use localhost as the public multiplayer address.
+
+RE-EXPORTING LATER
+Export your updated game as index.html with Thread Support disabled. Keep the
+entire export together. The helper in tools/update_game_export.py updates the
+binaries and file-size configuration without replacing the website's game shell:
+
+  python tools/update_game_export.py PATH_TO_EXPORT_FOLDER website
+
+The original editable game/relay project is included in editable-game-project/,
+outside the public website folder. Open that source archive in Godot for edits.
+
+VALIDATION AND LIMITS
+See VALIDATION.txt. The supplied PCK loaded in Godot 4.5 and all three solo courses
+passed a native headless flight check. Four relay tests passed. Local website
+links, asset paths, syntax, game launch/close/fallback, and the terminal were
+checked. The game page has no horizontal overflow at a 375px viewport.
+
+This preview browser lacks WebGL 2 and a secure context, so full browser 3D
+gameplay could not be verified here. Test after publishing over HTTPS in a browser
+with WebGL 2 and WebAssembly enabled.
+The contact form's existing Formspree destination was preserved; no test email
+was sent. External services and browser/driver differences remain outside these
+local checks.
+
+REFERENCE
+Godot web hosting: https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_web.html
+GitHub size limits: https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github

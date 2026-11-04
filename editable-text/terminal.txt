@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Explore Heath Lyon's drone services, equipment, projects, and rates through an interactive portfolio terminal.">
+<meta name="theme-color" content="#010403">
+<title>Interactive Portfolio Terminal | Heath Lyon FPV</title>
+<link rel="canonical" href="https://heathfpv.com/terminal.html">
+<link rel="stylesheet" href="css/styles.css?v=drone-rush-1">
+<script src="js/terminal-answers.js" defer></script><script src="js/main.js?v=drone-rush-1" defer></script>
+</head>
+<body class="portfolio-page terminal-page">
+<a class="skip-link" href="#mainContent">Skip to content</a><div class="shell">
+<canvas id="matrixCanvas" class="matrix" aria-hidden="true"></canvas><canvas id="trailCanvas" class="trail" aria-hidden="true"></canvas><div id="scanlines" class="scanlines" aria-hidden="true"></div>
+<header class="site-header"><a href="index.html" class="mini-logo" aria-label="Heath Lyon home"><img src="images/logo/FrontFPV.webp" alt="Heath Lyon FPV"></a>
+<nav aria-label="Primary navigation"><a href="index.html">Home</a><a href="index.html#reel">Reel</a><a href="index.html#rates">Rates</a><a href="index.html#contact">Contact</a></nav>
+<div class="header-tools"><button class="search-toggle" type="button" data-open-search aria-haspopup="dialog" aria-controls="siteSearch">Search ⌕</button></div></header>
+<main id="mainContent" tabindex="-1" class="terminal-main"><div class="terminal-heading">
+<p class="code">PORTFOLIO // INTERACTIVE CONSOLE</p>
+<h1>Explore the terminal.</h1>
+<p>Type a command or a question about my work. Start with <strong>help</strong>, <strong>equipment</strong>, or <strong>rates</strong>.</p>
+</div>
+<div id="terminalConsole" class="terminal" aria-label="Interactive portfolio terminal">
+              <div class="term-bar">
+                <span>portfolio://flight_console</span>
+                <div class="term-actions">
+                  <b id="terminalStatus">◌ BOOTING</b>
+                  <button type="button" id="terminalToggle" aria-expanded="true" aria-controls="terminalOutput terminalForm terminalQuick">
+                    MINIMIZE
+                  </button>
+                </div>
+              </div>
+              <div id="terminalOutput" class="term-output" role="log" aria-live="polite"></div>
+              <form id="terminalForm">
+                <label class="sr-only" for="terminalInput">Terminal command</label><span>root@heath:~$</span><input type="text" id="terminalInput" maxlength="500" disabled placeholder="initializing..." autocomplete="off" spellcheck="false"><button type="submit" id="terminalRun" disabled>RUN</button>
+              </form>
+              <div id="terminalQuick" class="quick">
+                <button type="button" data-command="help" disabled>help</button><button type="button" data-command="availability" disabled>
+                  availability</button><button type="button" data-command="equipment" disabled>
+                  equipment</button><button type="button" data-command="360" disabled>360</button><button type="button" data-command="reel" disabled>reel</button><button type="button" data-command="rates" disabled>
+                  rates</button><button type="button" data-command="contact" disabled>
+                  contact
+                </button>
+              </div>
+            </div>
+          
+<noscript><p>The interactive terminal needs JavaScript. <a href="index.html#rates">View rates</a> or <a href="contact-form.html">contact Heath</a>.</p></noscript>
+<p class="terminal-return"><a href="index.html">← Back to the portfolio</a></p></main>
+</div>
+<dialog id="siteSearch" class="search-dialog" aria-labelledby="searchTitle">
+  <div class="search-top">
+<h2 id="searchTitle">Search Heath FPV</h2>
+<button type="button" class="search-close" data-close-search aria-label="Close search">Close ×</button>
+</div>
+  <form id="siteSearchForm" role="search">
+<label for="siteSearchInput">Find services, rates, projects, and more</label>
+  <div class="search-field">
+<input type="search" id="siteSearchInput" name="q" placeholder="Try “rates”, “360 tours”, or “FPV”" autocomplete="off" maxlength="120" aria-controls="siteSearchResults" autofocus><button type="submit">Search</button>
+</div>
+</form>
+  <p id="siteSearchStatus" class="search-status" role="status" aria-live="polite"></p>
+  <ul id="siteSearchResults" class="search-results" aria-label="Search results"></ul>
+  <p class="search-hint">Search this portfolio · Esc to close</p>
+</dialog>
+</body>
+</html>

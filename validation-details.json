@@ -1,0 +1,31 @@
+{
+  "repository_snapshot": "109c17354afbb3ca2ad4a42a6fdd39ac741d378a",
+  "relay_tests": {
+    "passed": 4,
+    "scope": [
+      "create/join/start/checkpoints/results/reset",
+      "health endpoint",
+      "live countdown, position relay, course change",
+      "missing room rejection and host transfer"
+    ]
+  },
+  "static_checks": "No missing local assets, broken section anchors, duplicate IDs, authored inline CSS/JS, JavaScript syntax errors, or missing CSS images.",
+  "browser_game": "The preview browser reports missing WebGL2 and secure context; visual gameplay not verified. The error fallback and launch/close UI were exercised.",
+  "engine_asset_hashes": {
+    "index.png": "3cb4495c0b98dfbe4b663cbf2b6836473572339beb66d902367893162a70be0e",
+    "index.pck": "0c21bad88ad93af9490b20f46508adfd4db23a551001d179c9248a3caa8de3b7",
+    "index.wasm": "1cee4c470d1fea06f7f3fbd22a563ffd0f1a55b54596b33cb9b695021ae476b0",
+    "index.icon.png": "9b374ecbc8558f480421e646f38aaa8a69d5b1d65ff7b48d0735da214c46773a",
+    "index.js": "8a7c7d57f7da69bb71da9de302480b87e4c7ecb467ce643665b4a288683cd18f",
+    "index.apple-touch-icon.png": "9b374ecbc8558f480421e646f38aaa8a69d5b1d65ff7b48d0735da214c46773a",
+    "index.audio.position.worklet.js": "be33985bc7160d6bf9646f259cd86b259cd67b02ccb297ee5c44f8ac84327bc8",
+    "index.audio.worklet.js": "5b476a9c9ce642c0ee4256436d1bc31d9c38f868aca0f9a8e2a57c18d2dec2a3"
+  },
+  "native_game_smoke": "Godot 4.5 loaded the supplied compiled PCK. Three solo courses initialized with eight gates each and the drone moved during physics steps.",
+  "browser_checks": [
+    "game page and loading fallback",
+    "launch/close lifecycle and iframe removal",
+    "standalone terminal equipment command",
+    "375px game page: no horizontal overflow"
+  ]
+}

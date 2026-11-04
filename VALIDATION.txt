@@ -1,0 +1,27 @@
+VALIDATION — HEATH FPV / DRONE RUSH
+
+PASSED
+- No missing internal HTML assets or links; no broken section anchors.
+- Unique element IDs and one H1 per content page (the canvas-only game shell is noindex).
+- No authored inline CSS, JavaScript, or inline style attributes in delivered HTML.
+- Syntax checks for all JavaScript files; CSS braces and relative image paths.
+- All supplied game engine/data/icon/worklet bytes preserved unchanged.
+- Exported file-size configuration matches the WASM and PCK files.
+- Native Godot 4.5 loaded the compiled game without script errors.
+- All three solo courses initialized eight gates and moved the drone during flight.
+- Four multiplayer relay tests: rooms, joining, host controls, starts, gate order,
+  position relay, results/reset, health, and host transfer.
+- Browser checks for the game launch page, loading failure message, close/relaunch
+  lifecycle, iframe removal, standalone terminal equipment command, and phone width.
+- Repaired downloads for portfolio source, project ideas, and supplied reports. The editable Godot source is outside the public site.
+
+VERIFICATION LIMITS
+- This cloud preview browser reported missing WebGL 2 and secure context. Full
+  browser-rendered racing and fullscreen gameplay were not verified here.
+- No public multiplayer relay was supplied or deployed. Internet multiplayer
+  remains unconnected until a WSS relay is configured.
+- Contact delivery, external video embeds, and all device/browser combinations
+  were not end-to-end tested. The original Formspree action and external URLs remain.
+- Nothing was deployed to the live heathfpv.com domain by this task.
+
+Exact game asset hashes and test evidence are in validation-details.json.
