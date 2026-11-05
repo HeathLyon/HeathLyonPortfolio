@@ -15,32 +15,31 @@
     <meta property="og:image" content="https://www.heathfpv.com/images/logo/360/360img1.webp">
     <meta name="twitter:card" content="summary_large_image">
     <title>Interactive 360 Drone Tour Demo | Heath Lyon FPV</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css?v=layout-search-2">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.7/build/pannellum.css">
     <link rel="stylesheet" href="css/360-demo.css">
     <link rel="stylesheet" href="css/360-hero-accent.css">
     <script src="js/project-showcase.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.7/build/pannellum.js" defer></script>
     <script src="js/360-demo.js" defer></script>
-    <script src="js/main.js?v=drone-rush-1" defer></script>
+    <script src="js/main.js?v=layout-search-2" defer></script>
 </head>
-  <body class="project-page tour-demo-page">
+  <body class="project-page tour-demo-page site-page">
+    <a class="skip-link" href="#mainContent">Skip to content</a>
     <div class="shell project-shell">
       <div class="scanlines" aria-hidden="true"></div>
 
-      <header class="sub-header">
-        <a href="index.html#home" class="mini-logo" aria-label="Heath Lyon portfolio home">
-          <img src="images/logo/FrontFPV.webp" alt="Heath Lyon FPV">
-        </a>
-        <nav aria-label="360 experience navigation">
-          <a href="#tour" class="active"><span>01</span>Live demo</a>
-          <a href="#video"><span>02</span>360 video</a>
-          <a href="utah-county-drone-tours.html"><span>03</span>Services</a>
-        </nav>
-        <a class="sub-status" href="contact-form.html">REQUEST TOUR ↗</a>
+      <header class="site-header">
+        <a href="index.html" class="mini-logo" aria-label="Heath Lyon FPV home"><img src="images/logo/FrontFPV.webp" alt="Heath Lyon FPV" decoding="async"></a>
+        <nav aria-label="Primary navigation"><a href="index.html#reel">Reel</a><a href="index.html#rates">Rates</a><a href="index.html#projects">About</a><a href="drone-rush.html">Game</a><a href="index.html#contact">Contact</a></nav>
+        <div class="header-tools">
+          <a class="terminal-link" href="terminal.html">Terminal <span aria-hidden="true">↗</span></a>
+          <button class="search-toggle" type="button" data-open-search aria-haspopup="dialog" aria-controls="siteSearch">Search <span aria-hidden="true">⌕</span></button>
+        </div>
       </header>
 
-      <main class="project-main">
+      <main id="mainContent" tabindex="-1" class="project-main">
+        <nav class="page-sections" aria-label="On this page"><span>On this page</span><a href="#tour">Live demo</a><a href="#video">360 video</a></nav>
         <section class="project-hero tour-demo-hero">
           <figure class="tour-hero-accent" aria-hidden="true">
             <img src="images/logo/img6.webp" alt="">
@@ -211,5 +210,20 @@
         </footer>
       </main>
     </div>
+  <dialog id="siteSearch" class="search-dialog" aria-labelledby="searchTitle">
+  <div class="search-top">
+<h2 id="searchTitle">Search Heath FPV</h2>
+<button type="button" class="search-close" data-close-search aria-label="Close search">Close ×</button>
+</div>
+  <form id="siteSearchForm" role="search">
+<label for="siteSearchInput">Search all pages, projects, services, and rates</label>
+  <div class="search-field">
+<input type="search" id="siteSearchInput" name="q" placeholder="Try “rates”, “360 tours”, or “FPV”" autocomplete="off" maxlength="120" aria-controls="siteSearchResults" autofocus><button type="submit">Search</button>
+</div>
+</form>
+  <p id="siteSearchStatus" class="search-status" role="status" aria-live="polite"></p>
+  <ul id="siteSearchResults" class="search-results" aria-label="Search results"></ul>
+  <p class="search-hint">All pages are listed below · ↑ ↓ to browse · Esc to close</p>
+</dialog>
   </body>
 </html>

@@ -36,9 +36,9 @@ Solo racing: included in the browser export, with Neon Circuit, Canyon Run,
 and Sky Spiral. Move the mouse to steer/climb; left mouse boosts; right brakes.
 Use the game's Leave Race button to return to its menu.
 
-Private rooms: the compiled game supports room codes, but online rooms require
-a live WebSocket relay. No public relay address was supplied, so this package
-does not claim that internet multiplayer is connected.
+Private rooms: the game is configured to use wss://drone-rush-relay.onrender.com/ws. The server address is
+filled in automatically. One pilot hosts a private room, and friends open the
+same game page and enter that room code. No game download or install is needed.
 
 MULTIPLAYER SETUP
 multiplayer-relay/ contains the tested Python relay, requirements, tests, a Render
@@ -51,9 +51,9 @@ Health endpoint: /health
 WebSocket endpoint: /ws
 Allowed frontend origins: https://heathfpv.com,https://www.heathfpv.com
 
-After deployment, edit the single DRONE_RUSH_RELAY_URL constant in js/main.js
-and set it to your real wss://.../ws endpoint. The launch page then passes the
-address to the game automatically. Pilots can also enter the same endpoint in
+The DRONE_RUSH_RELAY_URL constant in js/main.js already points to the deployed
+Render server. To change relays later, edit that one constant. Both the launcher
+and standalone game pass the address to Godot automatically. Pilots can also enter the same endpoint in
 the in-game multiplayer server field. Room codes work only on that same relay.
 Do not use localhost as the public multiplayer address.
 
@@ -83,3 +83,13 @@ local checks.
 REFERENCE
 Godot web hosting: https://docs.godotengine.org/en/stable/tutorials/export/exporting_for_web.html
 GitHub size limits: https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github
+
+
+NOVEMBER 5 FORMATTING AND SEARCH UPDATE
+All ten public pages now have the same top navigation and Search dialog.
+Opening Search lists all ten pages; typing searches page content and key homepage
+sections. Escape, arrow-key browsing, and Ctrl/Cmd+K are supported.
+Responsive headings, content widths, form layout, section spacing, and footer
+flow have been corrected while retaining the green/pink terminal theme.
+No new public HTML/CSS/JS filenames are needed. Replace the matching files in
+one update, then hard-refresh so the HTML, CSS, and JS versions stay together.

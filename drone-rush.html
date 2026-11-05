@@ -7,16 +7,20 @@
 <meta name="description" content="Play Drone Rush, a mouse-controlled 3D drone racing game by Heath Lyon. Three tracks, solo time trials, and private races with a connected server.">
 <meta name="theme-color" content="#010403">
 <link rel="canonical" href="https://heathfpv.com/drone-rush.html">
-<link rel="stylesheet" href="css/styles.css?v=drone-rush-1">
-<script src="js/main.js?v=drone-rush-1" defer></script>
+<link rel="stylesheet" href="css/styles.css?v=layout-search-2">
+<script src="js/main.js?v=relay-connected-1" defer></script>
 </head>
-<body class="portfolio-page game-page">
+<body class="portfolio-page game-page site-page">
 <a class="skip-link" href="#mainContent">Skip to content</a><div class="shell">
 <div class="scanlines" aria-hidden="true"></div>
-<header class="site-header"><a href="index.html" class="mini-logo" aria-label="Heath Lyon home"><img src="images/logo/FrontFPV.webp" alt="Heath Lyon FPV"></a>
-<nav aria-label="Primary navigation"><a href="index.html#reel">Reel</a><a href="index.html#rates">Rates</a><a href="index.html#projects">About</a><a class="active" aria-current="page" href="drone-rush.html">Game</a><a href="index.html#contact">Contact</a></nav><div class="header-tools">
-<a class="terminal-link" href="terminal.html">Terminal ↗</a><button type="button" class="search-toggle" data-open-search aria-haspopup="dialog" aria-controls="siteSearch">Search ⌕</button>
-</div></header>
+<header class="site-header">
+        <a href="index.html" class="mini-logo" aria-label="Heath Lyon FPV home"><img src="images/logo/FrontFPV.webp" alt="Heath Lyon FPV" decoding="async"></a>
+        <nav aria-label="Primary navigation"><a href="index.html#reel">Reel</a><a href="index.html#rates">Rates</a><a href="index.html#projects">About</a><a href="drone-rush.html" class="active" aria-current="page">Game</a><a href="index.html#contact">Contact</a></nav>
+        <div class="header-tools">
+          <a class="terminal-link" href="terminal.html">Terminal <span aria-hidden="true">↗</span></a>
+          <button class="search-toggle" type="button" data-open-search aria-haspopup="dialog" aria-controls="siteSearch">Search <span aria-hidden="true">⌕</span></button>
+        </div>
+      </header>
 <main id="mainContent" class="game-main" tabindex="-1"><section class="game-intro" aria-labelledby="game-title"><div>
 <p class="code">HEATH FPV // BROWSER ARCADE</p>
 <h1 id="game-title">DRONE <em>// RUSH</em>
@@ -45,8 +49,8 @@
 <div id="gameMount" class="game-mount"></div>
 </div>
 <div class="game-player-footer">
-<p id="relayStatus">Solo racing is available. Private rooms need a connected race server.</p>
-<a id="gameDirectLink" href="games/drone-rush/index.html" target="_blank" rel="noopener">Open game in its own tab ↗</a>
+<p id="relayStatus">The multiplayer server address is filled in automatically. Host or join a private race in the game.</p>
+<a id="gameDirectLink" href="games/drone-rush/index.html?relay=wss%3A%2F%2Fdrone-rush-relay.onrender.com%2Fws" target="_blank" rel="noopener">Open game in its own tab ↗</a>
 </div>
 <noscript><p class="game-noscript">The game requires JavaScript and WebGL 2. Enable JavaScript, then reload this page.</p></noscript></section>
 <section class="game-info" aria-label="Controls and courses"><article><p class="code">FLIGHT CONTROLS</p>
@@ -86,7 +90,7 @@
 <article><p class="code">PRIVATE RACES</p>
 <h2>Bring your crew.</h2>
 <p>Private rooms support up to six pilots on the same race server. The host chooses the course and shares a six-character room code.</p>
-<p id="privateRaceNote">Online rooms are not connected on this installation yet. Solo time trials work without a server.</p></article></section>
+<p id="privateRaceNote">Host a private race, choose a course, and share the room code with your friend. Open this same game page to join with that code.</p></article></section>
 <footer class="game-footer"><span>© <span data-year></span> HEATH LYON</span><a href="index.html#projects">← Back to projects</a><a href="downloads.html">Project downloads</a></footer></main>
 </div>
 <dialog id="siteSearch" class="search-dialog" aria-labelledby="searchTitle">
@@ -95,14 +99,14 @@
 <button type="button" class="search-close" data-close-search aria-label="Close search">Close ×</button>
 </div>
   <form id="siteSearchForm" role="search">
-<label for="siteSearchInput">Find services, rates, projects, and more</label>
+<label for="siteSearchInput">Search all pages, projects, services, and rates</label>
   <div class="search-field">
 <input type="search" id="siteSearchInput" name="q" placeholder="Try “rates”, “360 tours”, or “FPV”" autocomplete="off" maxlength="120" aria-controls="siteSearchResults" autofocus><button type="submit">Search</button>
 </div>
 </form>
   <p id="siteSearchStatus" class="search-status" role="status" aria-live="polite"></p>
   <ul id="siteSearchResults" class="search-results" aria-label="Search results"></ul>
-  <p class="search-hint">Search this portfolio · Esc to close</p>
+  <p class="search-hint">All pages are listed below · ↑ ↓ to browse · Esc to close</p>
 </dialog>
 </body>
 </html>

@@ -1,3 +1,45 @@
+LIVE RELAY CONNECTION UPDATE
+
+- Configured wss://drone-rush-relay.onrender.com/ws in the existing js/main.js.
+- The launcher iframe, own-tab link, and direct game URL use this endpoint.
+- Explicit alternative relay query parameters are preserved.
+- JavaScript syntax and four launcher/default configuration checks passed.
+- Render /health returned HTTP 200 with status ok.
+- Two real WebSocket clients, using the heathfpv.com and www.heathfpv.com origins,
+  joined the same private room, received countdown and go messages, and exchanged
+  a drone-position packet. Both connections closed; the next health check showed
+  rooms: 0. The temporary test room was cleaned up.
+- The supplied compiled game contains the relay query reader. All eight engine,
+  data, worklet, and icon files retain their previous SHA-256 hashes.
+- Game and export files do not need re-exporting. CSS was not changed.
+- No GitHub push or live website deployment was performed. Upload the update.
+- This checks real server connectivity and game configuration, not browser 3D
+  rendering. Earlier preview WebGL limitations are retained below as history.
+
+EARLIER PACKAGE VALIDATION (BEFORE THIS RELAY CONNECTION UPDATE)
+
+FORMATTING AND SEARCH REVIEW — NOVEMBER 5, 2026
+
+- Ten public pages have consistent headers and working Search dialogs.
+- Blank search lists all ten content pages; six homepage section/rate entries
+  appear for matching queries. The canvas game is reached via Drone Rush.
+- All ten pages checked at content viewport widths 360, 753, and 1265px:
+  no horizontal page overflow or structural text/form content outside the viewport.
+- Twelve search queries checked, including no-results feedback; expected page
+  destinations ranked first for the ten page queries.
+- Ctrl+K, Escape/focus restoration, arrow-key selection, and Enter navigation passed.
+- Download category filtering and the terminal equipment command passed.
+- Homepage background video loaded without a media error; the lazy-loaded selfie
+  loaded at its original width and retained its 2px frame.
+- All internal asset paths and section anchors resolve. Unique IDs, one H1 per
+  content page, one header, one dialog, and no authored inline CSS/JS.
+- JavaScript syntax checks passed for all seven script files.
+- Eight game engine/data/icon/worklet assets match their previous SHA-256 hashes.
+- The original Formspree destination remains; no message was submitted.
+- No live deployment was performed. Upload matching files to publish these edits.
+
+PREVIOUS PACKAGE VALIDATION (GAME CODE UNCHANGED)
+
 VALIDATION — HEATH FPV / DRONE RUSH
 
 PASSED

@@ -15,27 +15,25 @@
     <meta property="og:image" content="https://heathfpv.com/images/utah-county-fpv-drone-tour.webp">
     <meta name="twitter:card" content="summary_large_image">
     <title>360 Drone Tours in Utah County | Heath Lyon FPV</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <script src="js/main.js?v=drone-rush-1" defer></script>
+    <link rel="stylesheet" href="css/styles.css?v=layout-search-2">
+    <script src="js/main.js?v=layout-search-2" defer></script>
 </head>
-  <body class="project-page service-page">
+  <body class="project-page service-page site-page">
+    <a class="skip-link" href="#mainContent">Skip to content</a>
     <div class="shell project-shell service-shell">
       <div class="scanlines" aria-hidden="true"></div>
 
-      <header class="sub-header">
-        <a href="index.html#home" class="mini-logo" aria-label="Heath Lyon FPV home">
-          <img src="images/logo/FrontFPV.webp" alt="Heath Lyon FPV drone services">
-        </a>
-        <nav aria-label="Drone tour page navigation">
-          <a href="#service" class="active"><span>01</span>Service</a>
-          <a href="#uses"><span>02</span>Use cases</a>
-          <a href="#process"><span>03</span>Process</a>
-          <a href="#faq"><span>04</span>FAQ</a>
-        </nav>
-        <a class="sub-status" href="contact-form.html">REQUEST A TOUR ↗</a>
+      <header class="site-header">
+        <a href="index.html" class="mini-logo" aria-label="Heath Lyon FPV home"><img src="images/logo/FrontFPV.webp" alt="Heath Lyon FPV" decoding="async"></a>
+        <nav aria-label="Primary navigation"><a href="index.html#reel">Reel</a><a href="index.html#rates">Rates</a><a href="index.html#projects">About</a><a href="drone-rush.html">Game</a><a href="index.html#contact">Contact</a></nav>
+        <div class="header-tools">
+          <a class="terminal-link" href="terminal.html">Terminal <span aria-hidden="true">↗</span></a>
+          <button class="search-toggle" type="button" data-open-search aria-haspopup="dialog" aria-controls="siteSearch">Search <span aria-hidden="true">⌕</span></button>
+        </div>
       </header>
 
-      <main class="project-main">
+      <main id="mainContent" tabindex="-1" class="project-main">
+        <nav class="page-sections" aria-label="On this page"><span>On this page</span><a href="#service">Service</a><a href="#uses">Use cases</a><a href="#process">Process</a><a href="#faq">FAQ</a></nav>
         <section id="service" class="project-hero service-hero">
           <div>
             <nav class="breadcrumb" aria-label="Breadcrumb">
@@ -334,5 +332,20 @@
         </footer>
       </main>
     </div>
+  <dialog id="siteSearch" class="search-dialog" aria-labelledby="searchTitle">
+  <div class="search-top">
+<h2 id="searchTitle">Search Heath FPV</h2>
+<button type="button" class="search-close" data-close-search aria-label="Close search">Close ×</button>
+</div>
+  <form id="siteSearchForm" role="search">
+<label for="siteSearchInput">Search all pages, projects, services, and rates</label>
+  <div class="search-field">
+<input type="search" id="siteSearchInput" name="q" placeholder="Try “rates”, “360 tours”, or “FPV”" autocomplete="off" maxlength="120" aria-controls="siteSearchResults" autofocus><button type="submit">Search</button>
+</div>
+</form>
+  <p id="siteSearchStatus" class="search-status" role="status" aria-live="polite"></p>
+  <ul id="siteSearchResults" class="search-results" aria-label="Search results"></ul>
+  <p class="search-hint">All pages are listed below · ↑ ↓ to browse · Esc to close</p>
+</dialog>
   </body>
 </html>

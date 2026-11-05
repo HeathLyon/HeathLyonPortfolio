@@ -15,10 +15,10 @@
     <meta property="og:image" content="https://heathfpv.com/images/utah-county-fpv-drone-tour.webp">
     <meta name="twitter:card" content="summary_large_image">
     <title>Utah County Drone Pilot &amp; 360 Tours | Heath Lyon</title>
-    <link rel="stylesheet" href="css/styles.css?v=drone-rush-1">
-<script src="js/main.js?v=drone-rush-1" defer></script>
+    <link rel="stylesheet" href="css/styles.css?v=layout-search-2">
+<script src="js/main.js?v=layout-search-2" defer></script>
 </head>
-  <body class="portfolio-page">
+  <body class="portfolio-page site-page">
     <div id="logoIntro" class="logo-intro" role="region" aria-label="Loading Heath FPV portfolio" hidden>
  <div class="intro-content">
 <div class="logo-loader"><img src="images/logo/FrontFPV.webp" alt="Heath Lyon FPV" width="190" decoding="async"></div>
@@ -36,11 +36,13 @@
       <canvas id="matrixCanvas" class="matrix" aria-hidden="true"></canvas><canvas id="trailCanvas" class="trail" aria-hidden="true"></canvas>
       <div id="scanlines" class="scanlines" aria-hidden="true"></div>
       <header class="site-header">
-        <a href="#home" class="mini-logo" aria-label="Heath Lyon home"><img src="images/logo/FrontFPV.webp" alt="Heath Lyon FPV" decoding="async"></a>
-        <nav aria-label="Primary navigation"><a href="#reel">Reel</a><a href="#rates">Rates</a><a href="#projects">About</a><a href="drone-rush.html">Game</a><a href="#contact">Contact</a></nav><div class="header-tools">
-  <a class="terminal-link" href="terminal.html">Terminal <span aria-hidden="true">↗</span></a>
-  <button class="search-toggle" type="button" data-open-search aria-haspopup="dialog" aria-controls="siteSearch">Search <span aria-hidden="true">⌕</span></button>
-</div></header>
+        <a href="#home" class="mini-logo" aria-label="Heath Lyon FPV home"><img src="images/logo/FrontFPV.webp" alt="Heath Lyon FPV" decoding="async"></a>
+        <nav aria-label="Primary navigation"><a href="#reel">Reel</a><a href="#rates">Rates</a><a href="#projects">About</a><a href="drone-rush.html">Game</a><a href="#contact">Contact</a></nav>
+        <div class="header-tools">
+          <a class="terminal-link" href="terminal.html">Terminal <span aria-hidden="true">↗</span></a>
+          <button class="search-toggle" type="button" data-open-search aria-haspopup="dialog" aria-controls="siteSearch">Search <span aria-hidden="true">⌕</span></button>
+        </div>
+      </header>
       <main id="mainContent" tabindex="-1">
         <section id="home" class="snap hero" aria-labelledby="home-title">
           <div class="hero-image" aria-hidden="true"></div>
@@ -287,14 +289,14 @@
 <button type="button" class="search-close" data-close-search aria-label="Close search">Close ×</button>
 </div>
   <form id="siteSearchForm" role="search">
-<label for="siteSearchInput">Find services, rates, projects, and more</label>
+<label for="siteSearchInput">Search all pages, projects, services, and rates</label>
   <div class="search-field">
 <input type="search" id="siteSearchInput" name="q" placeholder="Try “rates”, “360 tours”, or “FPV”" autocomplete="off" maxlength="120" aria-controls="siteSearchResults" autofocus><button type="submit">Search</button>
 </div>
 </form>
   <p id="siteSearchStatus" class="search-status" role="status" aria-live="polite"></p>
   <ul id="siteSearchResults" class="search-results" aria-label="Search results"></ul>
-  <p class="search-hint">Search this portfolio · Esc to close</p>
+  <p class="search-hint">All pages are listed below · ↑ ↓ to browse · Esc to close</p>
 </dialog>
 </body>
 </html>

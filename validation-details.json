@@ -27,5 +27,87 @@
     "launch/close lifecycle and iframe removal",
     "standalone terminal equipment command",
     "375px game page: no horizontal overflow"
-  ]
+  ],
+  "formatting_search_review": {
+    "date": "2026-11-05",
+    "pages": [
+      "360.html",
+      "Yollo.html",
+      "archaeology-project.html",
+      "contact-form.html",
+      "downloads.html",
+      "drone-rush.html",
+      "index.html",
+      "sar-project.html",
+      "terminal.html",
+      "utah-county-drone-tours.html"
+    ],
+    "content_viewport_widths_px": [
+      360,
+      753,
+      1265
+    ],
+    "layout_cases_passed": 30,
+    "horizontal_overflow": false,
+    "structural_content_outside_viewport": false,
+    "blank_search_result_count_on_every_page": 10,
+    "indexed_homepage_sections": 6,
+    "search_query_checks": [
+      "home",
+      "drone rush",
+      "terminal",
+      "360 drone tours",
+      "interactive 360",
+      "yollo",
+      "rescue",
+      "archaeology",
+      "downloads",
+      "contact",
+      "half day",
+      "not-a-real-page-xyz"
+    ],
+    "interaction_checks": [
+      "Search button on all ten pages",
+      "Ctrl+K opens search and focuses input",
+      "Escape closes and restores focus",
+      "ArrowDown focuses results",
+      "Enter follows a result to archaeology-project.html",
+      "No-results message",
+      "Downloads Python filter and All reset",
+      "Terminal equipment command"
+    ],
+    "preserved_media": {
+      "hero_video_readyState": 4,
+      "hero_video_error": null,
+      "portrait_natural_width": 1122,
+      "portrait_frame_border_px": 2
+    },
+    "contact_form_submitted": false,
+    "published": false,
+    "engine_asset_hashes_rechecked": 8,
+    "native_game_and_relay_tests": "Retained from the previous package; not repeated for this HTML/CSS/search update."
+  },
+  "relay_connection_review": {
+    "endpoint": "wss://drone-rush-relay.onrender.com/ws",
+    "health_status": 200,
+    "health_body": {
+      "status": "ok",
+      "rooms": 0
+    },
+    "two_client_private_room": true,
+    "both_site_origins_allowed": true,
+    "shared_countdown_and_go": true,
+    "position_packet_relayed": true,
+    "temporary_test_room_cleaned_up": true,
+    "configuration_checks": [
+      "iframe URL",
+      "own-tab URL",
+      "direct game default",
+      "explicit query override retained"
+    ],
+    "compiled_game_query_reader_verified": true,
+    "unchanged_engine_asset_hashes": 8,
+    "browser_3d_gameplay_retested": false,
+    "website_deployed": false
+  }
 }

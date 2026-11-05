@@ -6,21 +6,23 @@
     <meta name="description" content="Browser-based archaeology 3D scan archive concept by Heath Lyon.">
     <meta name="theme-color" content="#010403">
     <title>Archaeology 3D Archive | Heath Lyon</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css?v=layout-search-2">
     <script src="js/project-showcase.js" defer></script>
-  <script src="js/main.js?v=drone-rush-1" defer></script>
+  <script src="js/main.js?v=layout-search-2" defer></script>
 </head>
-  <body class="project-page">
+  <body class="project-page site-page">
+    <a class="skip-link" href="#mainContent">Skip to content</a>
     <div class="shell project-shell">
       <div class="scanlines" aria-hidden="true"></div>
-      <header class="sub-header">
-        <a href="index.html#home" class="mini-logo" aria-label="Heath Lyon home"><img src="images/logo/FrontFPV.webp" alt="Heath Lyon FPV"></a>
-        <nav aria-label="Project navigation">
-          <a href="index.html#projects"><span>01</span>Projects</a><a href="#viewer" class="active"><span>02</span>Viewer plan</a><a href="downloads.html"><span>03</span>Downloads</a>
-        </nav>
-        <a class="sub-status" href="index.html#contact">COLLABORATE ↗</a>
+      <header class="site-header">
+        <a href="index.html" class="mini-logo" aria-label="Heath Lyon FPV home"><img src="images/logo/FrontFPV.webp" alt="Heath Lyon FPV" decoding="async"></a>
+        <nav aria-label="Primary navigation"><a href="index.html#reel">Reel</a><a href="index.html#rates">Rates</a><a href="index.html#projects">About</a><a href="drone-rush.html">Game</a><a href="index.html#contact">Contact</a></nav>
+        <div class="header-tools">
+          <a class="terminal-link" href="terminal.html">Terminal <span aria-hidden="true">↗</span></a>
+          <button class="search-toggle" type="button" data-open-search aria-haspopup="dialog" aria-controls="siteSearch">Search <span aria-hidden="true">⌕</span></button>
+        </div>
       </header>
-      <main class="project-main">
+      <main id="mainContent" tabindex="-1" class="project-main">
         <section class="project-hero">
           <div>
             <p class="code">3D_04 // SPATIAL FIELD ARCHIVE</p>
@@ -107,5 +109,20 @@
         </footer>
       </main>
     </div>
+  <dialog id="siteSearch" class="search-dialog" aria-labelledby="searchTitle">
+  <div class="search-top">
+<h2 id="searchTitle">Search Heath FPV</h2>
+<button type="button" class="search-close" data-close-search aria-label="Close search">Close ×</button>
+</div>
+  <form id="siteSearchForm" role="search">
+<label for="siteSearchInput">Search all pages, projects, services, and rates</label>
+  <div class="search-field">
+<input type="search" id="siteSearchInput" name="q" placeholder="Try “rates”, “360 tours”, or “FPV”" autocomplete="off" maxlength="120" aria-controls="siteSearchResults" autofocus><button type="submit">Search</button>
+</div>
+</form>
+  <p id="siteSearchStatus" class="search-status" role="status" aria-live="polite"></p>
+  <ul id="siteSearchResults" class="search-results" aria-label="Search results"></ul>
+  <p class="search-hint">All pages are listed below · ↑ ↓ to browse · Esc to close</p>
+</dialog>
   </body>
 </html>

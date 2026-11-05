@@ -1154,30 +1154,243 @@ startStartupSequence();
   // Avoid duplicate search listeners on pages with the separate search script.
   if (!hasExternal("search.js")) {
 /* js/search-index.js */
-/* Curated public destinations. Update this list when adding or renaming a page. */
+/* Every public content page is listed here. Keep this index in the shared main.js. */
 window.portfolioSearchIndex = [
-  { title: "Drone filming rates", url: "index.html#rates", description: "Full day from $600, half day from $400, and same-day rush from $800.", keywords: ["pricing", "prices", "cost", "quote", "booking", "100 upfront", "how much do you charge", "two day turnaround", "day rate", "half-day"] },
-  { title: "FPV drone video reel", url: "index.html#reel", description: "Watch cinematic FPV footage, tracking shots, and production work.", keywords: ["portfolio", "film", "video", "aerial", "cinematography", "work", "cinelifter"] },
-  { title: "360 drone tours", url: "utah-county-drone-tours.html", description: "Immersive aerial tours for properties and locations in Utah County.", keywords: ["virtual", "real estate", "property", "panorama", "video", "services"] },
-  { title: "Contact & booking", url: "contact-form.html", description: "Share your location, shoot date, and deliverables to request a quote.", keywords: ["email", "heath", "hire", "availability", "book", "quote"] },
-  { title: "About Heath Lyon", url: "index.html#projects", description: "Meet the Provo-based FAA Part 107 pilot, builder, and developer.", keywords: ["bio", "selfie", "certification", "who", "location", "utah", "projects"] },
-  { title: "Full-day drone shoot — $600 starting", url: "index.html#rates", description: "10 hours of coverage with finished aerial photos or edited video.", keywords: ["day rate", "pricing", "cost", "600", "full day"] },
-  { title: "Half-day drone shoot — $400 starting", url: "index.html#rates", description: "5 hours of coverage with finished aerial photos or edited video.", keywords: ["day rate", "pricing", "cost", "400", "half day"] },
-  { title: "Same-day rush — $800 starting", url: "index.html#rates", description: "Full-day coverage with same-day delivery of your finished video.", keywords: ["urgent", "fast", "rush delivery", "pricing", "800"] },
-  { title: "Interactive 360 tour demo", url: "360.html", description: "Explore connected panoramic scenes and 360 flight media.", keywords: ["virtual", "immersive", "panorama", "demo", "video"] },
-  { title: "Search & rescue payload research", url: "sar-project.html", description: "RF sensing, phone detection, and modular drone payload concepts.", keywords: ["SAR", "research", "rescue", "sensor", "phone", "RF", "projects"] },
-  { title: "YOLO fall detection", url: "Yollo.html", description: "A computer vision prototype with pose tracking and fall alerts.", keywords: ["yollo", "AI", "OpenCV", "Python", "tracking", "privacy", "projects"] },
-  { title: "Archaeology 3D scans", url: "archaeology-project.html", description: "Interactive viewers for scanned sites, artifacts, and field records.", keywords: ["GLB", "GLTF", "Three.js", "archive", "3d", "projects"] },
-  { title: "Project downloads", url: "downloads.html", description: "Find source packages, demos, and project briefs.", keywords: ["code", "software", "files", "download", "source", "library"] },
-  { title: "Drone Rush — play the browser game", url: "drone-rush.html", description: "Race three drone courses in your browser. Mouse controls, solo time trials, and private rooms with a connected race server.", keywords: ["game", "Godot", "gdot", "racing", "drone rush", "play", "browser", "projects"] },
-  { title: "Interactive portfolio terminal", url: "terminal.html", description: "Ask about equipment, services, and projects using the command console.", keywords: ["terminal", "console", "commands", "FAQ", "questions", "help"] },
+  {
+    "title": "Home — Heath Lyon FPV",
+    "url": "index.html",
+    "description": "Cinematic FPV video, aerial photography, filming rates, and the story behind Heath FPV.",
+    "keywords": [
+      "home",
+      "homepage",
+      "portfolio",
+      "Heath Lyon",
+      "selfi",
+      "about",
+      "pilot",
+      "Part 107"
+    ],
+    "kind": "page",
+    "content": "FAA PART 107 // FPV CINEMATIC OPERATOR FPV drone video & 360 tours in Utah. I'm Heath Lyon, an FAA Part 107 pilot based in Provo. I create cinematic FPV video, aerial photography, and interactive 360 tours for properties, brands, and productions. Watch the reel Request a quote BASED IN Provo, Utah CERTIFIED FAA Part 107 AVAILABLE FOR Local & travel SYS 01_FLIGHT_MEDIA_ARCHIVE FPV drone video reel Aerial footage, tracking shots, and production work filmed with aircraft I build, maintain, and fly. REC ● HL-FPV_2026 4K SOURCE FLIGHT_MANIFEST 01 Cinematic FPV Proximity, tracking, landscape, and dynamic movement. 02 Production Safety briefings, field support, and client-facing shoots. 03 Build testing Payload trials, tuning, vibration diagnosis, and repair. SYS 02_SERVICE_RATE_INDEX Drone filming rates Reserve your shoot with $100 upfront. Standard packages include a guaranteed two-day turnaround; rush delivery is available below. 01 · FULL DAY Full Day $600 starting 10 hours of coverage, including finished aerial photos or edited video. 02 · HALF DAY Half Day $400 starting 5 hours of coverage, including finished aerial photos or edited video. 03 · RUSH DELIVERY Same-Day Rush $800 starting Full-day coverage with same-day delivery of your finished video. CUSTOM_MISSION Request a project quote. Send the location, date, deliverables, and intended use. Request a quote Utah County 360 tours SYS 04_ABOUT_HEATH About Heath Lyon I'm a Provo-based drone pilot and developer with hands-on experience in aerial production, custom aircraft, and software. Here is a look at the person and projects behind Heath FPV. PILOT // BUILDER // DEVELOPER Creative production. Practical engineering. I build and fly custom FPV aircraft for cinematic production. My work also spans search and rescue research, computer vision, and interactive media. Work with Heath Selected projects GODOT PLAY IN BROWSER A01 · INTERACTIVE GAME Drone Rush Race a drone through three 3D courses using your mouse. Launch a solo time trial, then explore private races with a connected race server. LAUNCH GAME ↗ RF A02 · RESEARCH Search & Rescue Payloads Research into RF sensing, phone detection, and modular drone payloads for search and rescue. View project ↗ CV A03 · COMPUTER VISION YOLO Fall Detection A computer vision prototype combining pose tracking, fall detection, privacy controls, and alerts. View project ↗ 3D A04 · SPATIAL ARCHIVE Archaeology 3D Scans Interactive 3D viewers for exploring excavation sites, scanned artifacts, and field records. View project ↗ 360 A05 · IMMERSIVE MEDIA Interactive 360 Tours Connected aerial panoramas that let viewers explore a property or location in every direction. View project ↗ SYS 05_CONTACT Book your drone shoot Tell me what you need, where you’re filming, and your timeline. Available for aerial production and technical projects in Utah and on location. Discuss your project YouTube reel EMAIL Lyon.m.heath@gmail.com GITHUB github.com/HeathLyon INSTAGRAM @skylensprovo LOCATION Provo, Utah // Travel ready CHANNEL OPEN // NEW PROJECTS"
+  },
+  {
+    "title": "Drone Rush — browser game",
+    "url": "drone-rush.html",
+    "description": "Race three drone courses. Solo time trials and private rooms with a connected race server.",
+    "keywords": [
+      "game",
+      "Godot",
+      "gdot",
+      "racing",
+      "play",
+      "multiplayer"
+    ],
+    "kind": "page",
+    "content": "HEATH FPV // BROWSER ARCADE DRONE // RUSH Three tracks. One mouse. Find your racing line. A 3D drone racer built in Godot. Choose a course, launch a solo time trial, and fly through the gates. 3 COURSES MOUSE CONTROLS SOLO TIME TRIALS DRONE RUSH // WEB BUILD Fullscreen ↗ Close game READY ON THE START LINE Take the controls. The first launch downloads about 38 MB. Best played on a desktop or laptop with a mouse. Launch game ▶ The game loads only when you launch it. The multiplayer server address is filled in automatically. Host or join a private race in the game. Open game in its own tab ↗ The game requires JavaScript and WebGL 2. Enable JavaScript, then reload this page. FLIGHT CONTROLS Fly with your mouse. Move mouse Steer and climb Hold left click Boost Hold right click Brake Leave Race Return to the in-game menu Use fullscreen for the clearest view. Close the game above to stop it and return to the page. CHOOSE YOUR COURSE Three ways to race. Neon Circuit Fast city turns Canyon Run Rock pillars and sweeping bends Sky Spiral A high-altitude climbing course PRIVATE RACES Bring your crew. Private rooms support up to six pilots on the same race server. The host chooses the course and shares a six-character room code. Host a private race, choose a course, and share the room code with your friend. Open this same game page to join with that code."
+  },
+  {
+    "title": "Interactive portfolio terminal",
+    "url": "terminal.html",
+    "description": "Ask about equipment, availability, services, and projects in the command console.",
+    "keywords": [
+      "console",
+      "commands",
+      "faq",
+      "questions",
+      "help"
+    ],
+    "kind": "page",
+    "content": "PORTFOLIO // INTERACTIVE CONSOLE Explore the terminal. Type a command or a question about my work. Start with help , equipment , or rates . portfolio://flight_console ◌ BOOTING MINIMIZE Terminal command root@heath:~$ RUN help availability equipment 360 reel rates contact The interactive terminal needs JavaScript. View rates or contact Heath . ← Back to the portfolio"
+  },
+  {
+    "title": "360 drone tours in Utah County",
+    "url": "utah-county-drone-tours.html",
+    "description": "Immersive aerial tours for real estate, venues, and locations. Explore the service and booking process.",
+    "keywords": [
+      "virtual",
+      "property",
+      "services",
+      "panorama",
+      "Provo"
+    ],
+    "kind": "page",
+    "content": "PROVO_BASE // UTAH_COUNTY_SERVICE_AREA 360 drone tours in Utah County. Give clients a view they can control. Heath Lyon creates aerial 360 experiences, clickable virtual tours, and cinematic drone video for properties, venues, destinations, and project sites. Request a tour View 360 examples FAA PART 107 PILOT PROVO, UTAH SHAREABLE DELIVERY TOUR_SERVICE_01 BOOKING OPEN 360° Starter tour from $350 Basic 360 capture or a starter clickable-tour media package. Final pricing depends on the site, flight plan, scene count, editing, travel, and delivery needs. BASE PROVO, UT AREA UTAH COUNTY QUOTE PROJECT-SPECIFIC SERVICE_FORMATS // CHOOSE THE VIEW One location. Three ways to explore. The right format depends on whether the viewer should follow a story, explore freely, or see both ground-level and aerial views. 01 · GUIDED 360 drone video A guided aerial flight where viewers drag, swipe, or move their phone to look around while the scene moves. 02 · INTERACTIVE Clickable aerial tour Connected 360 viewpoints and hotspots that let a client choose where to look and which scene to open next. 03 · CINEMATIC Drone video tour A concise edited video that establishes the property, reveals the surroundings, and guides viewers through the key story. USE_CASES // BUILT TO SHARE Show more than a listing photo can. Aerial context helps viewers understand scale, access, views, surrounding features, and the relationship between spaces. FIELD_CAPTURE // UTAH VIEWPOINT READY 01 Real estate & development Show lots, land, luxury homes, access, views, and nearby context. 02 Venues & hospitality Let planners and guests explore a venue before they arrive. 03 Tourism & outdoor spaces Present trails, destinations, campuses, and recreation areas in context. 04 Construction & project sites Create a clear, shareable visual record for teams and stakeholders. MISSION_FLOW // FOUR STEPS A direct route from site to shareable tour. Every project begins with the location and intended use so the flight, capture plan, and delivery format match the goal. 01 Send the brief Location, preferred date, audience, and must-see areas. 02 Plan the mission Access, airspace, weather, safety, viewpoints, and deliverables. 03 Capture the site FAA Part 107 flight operations and the selected 360 or video format. 04 Receive and share Review the finished media and share the delivered link with your audience. SERVICE_AREA // LOCAL FLIGHT OPS Based in Provo. Serving Utah County. Local coverage includes communities across Utah County. Projects outside the county are available when travel fits the mission. Provo Orem Lehi American Fork Pleasant Grove Vineyard Springville Spanish Fork Saratoga Springs Eagle Mountain FAQ_INDEX // CLIENT QUESTIONS Utah County drone tour FAQ. Short answers before you request a project-specific quote. What is a 360 drone tour? It is an aerial experience where viewers can look in every direction. It may be a guided 360 video or a clickable virtual tour with connected scenes and hotspots. Where are 360 drone tours available? Heath is based in Provo and serves Utah County, including Provo, Orem, Lehi, American Fork, Pleasant Grove, Vineyard, Springville, Spanish Fork, Saratoga Springs, and Eagle Mountain. Travel outside the county is available by quote. How much does a 360 drone tour cost? Basic 360 capture or a starter clickable-tour package begins at $350. Airspace, access, scene count, travel, editing, hosting, and final deliverables affect the quote. Can the finished tour be shared with clients? Yes. The finished experience can be delivered as a shareable link for a website, listing, presentation, email, or client review. Can every property be flown? Not automatically. Weather, airspace, people, access, site conditions, and the requested flight path are reviewed before the project is confirmed. A safer alternative can be proposed when a specific flight is not practical. CHANNEL_OPEN // DIRECT_QUOTE Put your Utah County location in motion. Send the address or general location, target date, and what the viewer should understand after taking the tour. Request a tour See 360 work Watch FPV reel"
+  },
+  {
+    "title": "Interactive 360 tour demo",
+    "url": "360.html",
+    "description": "Explore connected panoramic scenes and watch 360 flight media.",
+    "keywords": [
+      "virtual",
+      "immersive",
+      "panorama",
+      "live demo",
+      "video"
+    ],
+    "kind": "page",
+    "content": "SKYLENS_360 // THREE-SCENE DEMO Step inside the view. Explore three connected 360° scenes. Drag on a computer, swipe on a phone, or enable motion to look around naturally. Launch 360° demo Request your tour HOW_TO_EXPLORE 01 DRAG to look in any direction. 02 CLICK a hotspot to change scenes. 03 ENABLE MOTION on a compatible phone. LIVE_VIEW // INTERACTIVE TOUR Three connected scenes. Drag or swipe the image to look around. LIVE 360° SCENE 01 // OVERVIEW HEATH FPV LOADING 360° SCENE 360img1.webp 360 IMAGE NOT FOUND The panorama could not be loaded. Check the file path and image size. images/logo/360/360img1.webp TRY AGAIN ← PREVIOUS NEXT VIEW → + − RESET ENABLE MOTION FULLSCREEN 01 OVERVIEW 360img1.webp 02 VIEWPOINT 360img2.webp 03 FINAL VIEW 360img3.webp JavaScript is required for the interactive 360° viewer. MORE_360 // FLIGHT + CLIENT TOURS See it in motion. Watch a moving 360° flight or request a tour for your location. 360_VIDEO // FLIGHT 01 YOUTUBE // LIVE FLIGHT_ARCHIVE // 01 Interactive 360° flight Press play, then drag or move your phone to explore the flight. 360_VIDEO // FLIGHT 02 YOUTUBE // LIVE FLIGHT_ARCHIVE // 02 Immersive 360° perspective Choose the view yourself while the camera moves through the scene. YOUR_LOCATION // CUSTOM TOUR Put visitors inside your space. Ideal for venues, properties, attractions, trails, and project sites. Request a tour View services SHAREABLE // EMBEDDABLE One link. Any website. Each finished tour can have a direct client link and can be embedded into another website without sending visitors somewhere else. Build my 360° tour"
+  },
+  {
+    "title": "YOLO fall detection",
+    "url": "Yollo.html",
+    "description": "A computer vision prototype with pose tracking, privacy rendering, and fall alerts.",
+    "keywords": [
+      "Yollo",
+      "AI",
+      "OpenCV",
+      "Python",
+      "tracking",
+      "computer vision"
+    ],
+    "kind": "page",
+    "content": "CV_01 // DESKTOP PYTHON PROTOTYPE YOLO fall detection. A pose-estimation prototype that follows body geometry over time, evaluates fall-like movement, renders a privacy-aware skeleton, and records or forwards an incident. The recorded demo shows the desktop Python system without requesting a visitor's camera. PYTHON YOLO11 POSE OPENCV TEMPORAL RULES LOCAL-FIRST ▶ Watch demonstration Open downloads PROJECT_CV01 CASE STUDY 17 Pose keypoints per subject The model supplies joints and confidence values. Separate logic examines posture, vertical movement, detection quality, and time spent down instead of judging a single frame. RUNTIME DESKTOP PYTHON WEB MODE RECORDED DEMO CAMERA ACCESS NOT REQUESTED STATUS RESEARCH PROTOTYPE DEMO_01 // RECORDED SYSTEM RUN See the detector in motion. This recording replaces the former technical slideshow. It shows the real desktop workflow while keeping the public portfolio page lightweight and browser-safe. portfolio://cv01_recorded_demo LOCAL PYTHON // VIDEO PLAYBACK Your browser does not support HTML video playback. DEMO FILE OFFLINE Add Yolloproject.mp4 to the video folder. The player will connect automatically. WHAT TO WATCH Pose keypoints, state changes, confidence, incident logging, and the optional alert path. PRIVACY The webpage plays a recording; it does not activate the viewer's webcam or execute the Python model. PROCESS_01 // FIVE CLEAR STEPS From camera frame to alert. The code is organized as a sequence of small responsibilities. Each stage can be tested, tuned, or replaced without rewriting the entire application. 01 CAPTURE Read one camera frame. camera.py opens the selected camera, checks that each frame is valid, and releases the hardware cleanly when the program closes. 02 DETECT Locate the person and joints. pose.py runs YOLO pose inference and returns body keypoints with confidence values. Unreliable detections are rejected before they reach the fall logic. 03 COMPARE Measure change over time. fall_detector.py compares body angle, hip height, vertical movement, and recent posture history. A single horizontal frame is not enough to declare a fall. 04 CONFIRM Hold the state long enough to matter. Configurable thresholds confirm that fall-like evidence lasts long enough, then use recovery and cooldown states to reduce duplicate or one-frame alerts. 05 RESPOND Render, log, and optionally notify. renderer.py draws the privacy-aware display, alert_logger.py records the event, and an optional adapter can send a notification with secrets kept outside the public code. DOWNLOAD STATUS The architecture and research brief is available now. A public Python package should be released only after credentials are removed, dependencies are pinned, and the prototype is tested in a clean environment. Download brief IMPACT_01 // UNITED STATES, AGE 65+ Why fall awareness matters. Falls are the leading cause of injury for adults 65 and older. The figures below are from current CDC fall data and prevention resources, reviewed August 2, 2026. 1 in 4 older adults report a fall each year More than 14 million U.S. adults age 65+ report falling annually. CDC Older Adult Falls Data ↗ 9M fall injuries are estimated each year About 37% of older adults who fall report an injury that needs medical treatment or restricts activity for at least a day. CDC Older Adult Falls Data ↗ 3M / 1M emergency visits / hospitalizations Falls lead to roughly 3 million emergency-department visits and about 1 million hospitalizations among older adults each year. CDC Facts About Falls ↗ +21% increase in the fall death rate The age-adjusted rate increased from 64.7 deaths per 100,000 in 2018 to 78.4 in 2024. CDC Older Adult Falls Data ↗ THE DANGERS A fall can change health and independence. Older-adult falls can cause traumatic brain injury, hip fracture, hospitalization, loss of mobility, and death. CDC identifies falls as the most common cause of traumatic brain injury and estimates roughly 300,000 hip-fracture hospitalizations related to falls each year. Even without a major injury, fear of another fall can lead a person to move less. Reduced activity can weaken strength and balance, which may increase future risk. PRIMARY SOURCES CDC — Older Adult Falls Data CDC — Facts About Falls CDC — Preventing Falls and Hip Fractures CDC STEADI — Clinical Fall Prevention Download full report PROTOTYPE LIMITS This project is a research and portfolio demonstration, not a medical device, diagnostic tool, or emergency-response service. Computer vision can miss events or produce false alerts. It should not replace professional care, a validated monitoring system, or calling emergency services when immediate help is needed."
+  },
+  {
+    "title": "Search & rescue payload research",
+    "url": "sar-project.html",
+    "description": "RF sensing, phone detection, and modular drone payload concepts.",
+    "keywords": [
+      "SAR",
+      "rescue",
+      "sensor",
+      "phone",
+      "RF",
+      "research"
+    ],
+    "kind": "page",
+    "content": "RF_02 // SEARCH + RESCUE RESEARCH Find the signal. A modular aerial payload concept for directional RF sensing, phone-presence research, search-pattern telemetry, and spatial overlays. The design separates flight safety from experimental sensing hardware. ESP32 RASPBERRY PI PYTHON RF SENSING GIS OVERLAY Inspect system Project library ARCH_02 // MODULAR FIELD STACK Separate the aircraft from the experiment. The payload should collect repeatable data without turning experimental code into a flight-critical dependency. 01 // CAPTURE RF sensor head Directional antenna and embedded capture module produce timestamped signal observations. 02 // POSITION Flight telemetry Position, heading, altitude, and sweep state make each observation spatially meaningful. 03 // TRANSPORT Modular link A contained payload link prevents a sensor failure from interfering with the aircraft control system. 04 // VISUALIZE Radar playback Recorded observations become a browser radar, heatmap, timeline, and confidence trail. 05 // TEST Known targets Bench and field trials use controlled distances, orientations, and signal sources before operational claims. 06 // ETHICS Privacy boundary Research should minimize retained identifiers, document consent, and follow applicable radio and privacy rules."
+  },
+  {
+    "title": "Archaeology 3D scans",
+    "url": "archaeology-project.html",
+    "description": "Interactive viewer plans for scanned sites, artifacts, and field records.",
+    "keywords": [
+      "GLB",
+      "GLTF",
+      "Three.js",
+      "archive",
+      "3d",
+      "archaeology"
+    ],
+    "kind": "page",
+    "content": "3D_04 // SPATIAL FIELD ARCHIVE Preserve the site. A static-hosted Three.js archive for GLB/GLTF scans, selectable sites, excavation metadata, free camera controls, measurements, and guided annotations. THREE.JS GLB / GLTF WEBGL METADATA STATIC HOSTING Inspect viewer plan Project library VIEWER_01 // BROWSER_NATIVE Make every scan explainable. The viewer should connect geometry to the site record, not present an isolated object with no field context. 01 // SELECT Site index Choose a trench, feature, artifact, or survey from a searchable project inventory. 02 // LOAD Progressive model Load optimized GLB assets with visible progress, scale checks, and a useful default camera. 03 // INSPECT Free camera Orbit, pan, zoom, reset, and switch to documented viewpoints without losing orientation. 04 // RECORD Metadata panel Show provenience, date, team, method, scale, notes, and linked field documentation. 05 // ANNOTATE Spatial markers Attach labels, interpretive notes, measurements, and confidence to positions on the scan. 06 // SHARE Guided tour Save a sequence of viewpoints and captions as a browser presentation for classes or reports."
+  },
+  {
+    "title": "Project downloads",
+    "url": "downloads.html",
+    "description": "Source packages, demonstrations, project briefs, and the browser build queue.",
+    "keywords": [
+      "code",
+      "software",
+      "files",
+      "download",
+      "source",
+      "library"
+    ],
+    "kind": "page",
+    "content": "SYS_05 // PUBLIC_PROJECT_LIBRARY Download the work. Source packages, editable files, technical briefs, and working demonstrations. Every active download is a real file; items marked “source pending” stay locked until they can be safely verified. LIBRARY_01 // FILTERABLE_INDEX Projects and files. Filter by source type. Browser projects open directly from static hosting; desktop Python projects use a download and local setup. All Browser Python Source Briefs GODOT // DRONE RUSH Drone Rush Play three drone racing tracks in your browser with mouse controls and solo time trials. Play in browser DL_01 // HTML + CSS + JS Retro portfolio source Editable HTML, CSS, and JavaScript for the portfolio, project pages, terminal, and game launcher. This source ZIP excludes large media and the Godot engine binaries. READY // ZIP Download source Open site DL_02 // COMPUTER VISION YOLO fall detector Desktop pose-estimation prototype with temporal fall logic, privacy rendering, local logging, and an optional alert adapter. SOURCE PENDING // BRIEF READY View demo Download brief Python ZIP locked DL_03 // BUILD QUEUE Browser project ideas Six presentation-ready builds ranked for an FPV pilot, systems builder, computer-vision developer, and spatial-data portfolio. READY // TXT Download ideas Preview queue DL_04 // FPV MEDIA Flight reel The existing cinematic reel remains embedded in the index with poster art, native playback controls, and the original video file. LIVE // BROWSER Watch reel DL_05 // RF RESEARCH SAR payload system Modular RF sensing concept joining embedded capture, Python telemetry, directional search patterns, and field mapping. CASE STUDY // PROTOTYPE Open case study DL_06 // THREE.JS Archaeology 3D archive Browser-native GLB/GLTF viewer concept with site selection, metadata, free camera controls, annotations, and field records. CASE STUDY // NEXT BUILD Open case study QUEUE_01 // BROWSER_NATIVE_BUILDS What to program next. Each idea can run from static hosting with HTML, CSS, and JavaScript. Start with uploaded or sample data, then add live APIs only where they improve the presentation. 01 BEST NEXT PROJECT FPV Blackbox Analyzer Upload a flight log, synchronize gyro, motor, voltage, and event charts, then produce an evidence-based diagnostic summary. 02 FIELD TOOL FPV Shot Planner Draw a route, estimate battery use, build a shot list, and export a compact production brief for the crew. 03 SENSING RF / CSI Playback Radar Replay recorded ESP32 or Pi data as a radar, heatmap, timeline, and anomaly log without needing live hardware. 04 COMPUTER VISION Browser Pose Arcade Use local webcam pose estimation for gesture targets, reaction timing, or a two-player mirror challenge with privacy mode. 05 ENGINEERING Drone Power Calculator Model motor KV, prop, battery, payload, hover current, thrust-to-weight, and save a build as shareable JSON. 06 SPATIAL DATA 3D Field Archive Load GLB scans, inspect site metadata, place annotations, measure distances, and save a guided tour in the browser."
+  },
+  {
+    "title": "Contact & booking",
+    "url": "contact-form.html",
+    "description": "Share your location, shoot date, and deliverables to request a quote.",
+    "keywords": [
+      "email",
+      "hire",
+      "availability",
+      "book",
+      "quote",
+      "message",
+      "transmission"
+    ],
+    "kind": "page",
+    "content": "SECURE_CONTACT_LINK // FORMSPREE Send a transmission. Tell me what you want to capture, build, or solve. Include the location and target date when they are known. STATUS ACCEPTING PROJECT REQUESTS BASE PROVO, UTAH // TRAVEL READY CHANNEL DIRECT EMAIL RESPONSE MESSAGE_COMPOSER ● LINK READY NAME REQUIRED EMAIL REQUIRED SUBJECT REQUIRED QUESTION TO ANSWER OPTIONAL Select a topic... Pricing Availability Previous work Equipment 360 video or tour Other MESSAGE REQUIRED All required fields must be completed before transmission. Send transmission →"
+  },
+  {
+    "title": "Drone filming rates",
+    "url": "index.html#rates",
+    "description": "Full day from $600, half day from $400, and same-day rush from $800. Reserve with $100 upfront.",
+    "keywords": [
+      "pricing",
+      "prices",
+      "cost",
+      "booking",
+      "day rate",
+      "two day turnaround"
+    ],
+    "kind": "section"
+  },
+  {
+    "title": "FPV drone video reel",
+    "url": "index.html#reel",
+    "description": "Watch cinematic FPV footage, tracking shots, and production work.",
+    "keywords": [
+      "film",
+      "aerial",
+      "cinematography",
+      "cinelifter",
+      "reel"
+    ],
+    "kind": "section"
+  },
+  {
+    "title": "About Heath Lyon",
+    "url": "index.html#projects",
+    "description": "Meet the Provo-based FAA Part 107 pilot, builder, and developer, and explore his projects.",
+    "keywords": [
+      "bio",
+      "selfie",
+      "selfi",
+      "certification",
+      "who",
+      "location",
+      "about me"
+    ],
+    "kind": "section"
+  },
+  {
+    "title": "Full-day drone shoot — $600 starting",
+    "url": "index.html#rates",
+    "description": "10 hours of coverage with finished aerial photos or edited video.",
+    "keywords": [
+      "day rate",
+      "pricing",
+      "cost",
+      "600",
+      "full day"
+    ],
+    "kind": "section"
+  },
+  {
+    "title": "Half-day drone shoot — $400 starting",
+    "url": "index.html#rates",
+    "description": "5 hours of coverage with finished aerial photos or edited video.",
+    "keywords": [
+      "day rate",
+      "pricing",
+      "cost",
+      "400",
+      "half day"
+    ],
+    "kind": "section"
+  },
+  {
+    "title": "Same-day rush — $800 starting",
+    "url": "index.html#rates",
+    "description": "Full-day coverage with same-day delivery of your finished video.",
+    "keywords": [
+      "urgent",
+      "fast",
+      "rush delivery",
+      "pricing",
+      "800"
+    ],
+    "kind": "section"
+  }
 ];
 
-
-
-
 /* js/search.js */
-/* Local, curated site search. Add pages and keywords in search-index.js. */
+/* Local search across all public pages and key homepage sections. */
 (() => {
   "use strict";
   const dialog = document.querySelector("#siteSearch");
@@ -1191,21 +1404,22 @@ window.portfolioSearchIndex = [
     .toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
   const indexed = entries.map((entry) => ({ ...entry,
     titleText: normalize(entry.title),
-    text: normalize([entry.title, entry.description, ...(entry.keywords || [])].join(" ")),
+    summaryText: normalize([entry.title, entry.description, ...(entry.keywords || [])].join(" ")),
+    text: normalize([entry.title, entry.description, ...(entry.keywords || []), entry.content || ""].join(" ")),
   }));
   let opener;
   function render() {
     const query = normalize(field.value);
     const tokens = query.split(" ").filter(Boolean);
-    const matches = !query ? indexed.slice(0, 6) : indexed
+    const matches = !query ? indexed.filter((entry) => entry.kind === "page") : indexed
       .filter((entry) => tokens.every((token) => entry.text.includes(token)))
-      .map((entry) => ({ ...entry, score: (entry.titleText.includes(query) ? 10 : 0) + tokens.filter((token) => entry.titleText.includes(token)).length }))
+      .map((entry) => ({ ...entry, score: (entry.titleText.includes(query) ? 20 : 0) + tokens.filter((token) => entry.titleText.includes(token)).length * 5 + tokens.filter((token) => entry.summaryText.includes(token)).length }))
       .sort((a, b) => b.score - a.score);
     list.replaceChildren();
     matches.forEach((entry) => {
       const item = document.createElement("li");
       const link = document.createElement("a");
-      // Entries are local, hand-maintained destinations, never user-provided URLs.
+      // Destinations come from this local index; search input is rendered as text.
       link.href = entry.url;
       const title = document.createElement("strong");
       title.textContent = entry.title;
@@ -1215,7 +1429,7 @@ window.portfolioSearchIndex = [
       item.append(link);
       list.append(item);
     });
-    status.textContent = !query ? "Popular destinations" : matches.length
+    status.textContent = !query ? `All ${matches.length} pages — type to search pages and sections` : matches.length
       ? `${matches.length} result${matches.length === 1 ? "" : "s"} for “${field.value.trim()}”`
       : `No results for “${field.value.trim()}”. Try “rates”, “FPV”, “360”, or “contact”.`;
   }
@@ -1241,6 +1455,19 @@ window.portfolioSearchIndex = [
     if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) dialog.close();
   });
   field.addEventListener("input", render);
+  dialog.addEventListener("keydown", (event) => {
+    if (event.key !== "ArrowDown" && event.key !== "ArrowUp") return;
+    const links = [...list.querySelectorAll("a")];
+    const current = links.indexOf(document.activeElement);
+    if (!links.length || (document.activeElement !== field && current < 0)) return;
+    event.preventDefault();
+    if (current < 0) links[event.key === "ArrowDown" ? 0 : links.length - 1].focus();
+    else {
+      const next = current + (event.key === "ArrowDown" ? 1 : -1);
+      if (next < 0 || next >= links.length) field.focus();
+      else links[next].focus();
+    }
+  });
   form.addEventListener("submit", (event) => {
     event.preventDefault();
     render();
@@ -1268,10 +1495,15 @@ const GODOT_EXPORT_CONFIG = {"args": [], "canvasResizePolicy": 2, "emscriptenPoo
 /* Drone Rush: site launch controls and the exported-engine loading screen. */
 (() => {
   "use strict";
-  // Set once after deploying the relay, e.g. "wss://your-race-server.example/ws".
-  const DRONE_RUSH_RELAY_URL = "";
+  // Public race relay; passed to the Godot export in its relay query parameter.
+  const DRONE_RUSH_RELAY_URL = "wss://drone-rush-relay.onrender.com/ws";
 
   if (document.body.classList.contains("godot-game")) {
+    const directURL = new URL(location.href);
+    if (!directURL.searchParams.get("relay")) {
+      directURL.searchParams.set("relay", DRONE_RUSH_RELAY_URL);
+      history.replaceState(history.state, "", directURL.href);
+    }
     bootExport();
     return;
   }
@@ -1295,8 +1527,8 @@ const GODOT_EXPORT_CONFIG = {"args": [], "canvasResizePolicy": 2, "emscriptenPoo
   const gameURL = new URL("games/drone-rush/index.html", location.href);
   if (relay) {
     gameURL.searchParams.set("relay", relay);
-    document.querySelector("#relayStatus").textContent = "Solo racing and private rooms are available. Connect to the configured race server in the game.";
-    document.querySelector("#privateRaceNote").textContent = "Host a private race, choose a course, and share the room code with friends connecting to the same server.";
+    document.querySelector("#relayStatus").textContent = "The multiplayer server address is filled in automatically. Host or join a private race in the game.";
+    document.querySelector("#privateRaceNote").textContent = "Host a private race, choose a course, and share the room code with your friend. Open this same game page to join with that code.";
   }
   direct.href = gameURL.href;
 
