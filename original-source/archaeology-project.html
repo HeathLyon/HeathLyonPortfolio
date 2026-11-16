@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="Browser-based archaeology 3D scan archive concept by Heath Lyon.">
+    <meta name="theme-color" content="#010403">
+    <title>Archaeology 3D Archive | Heath Lyon</title>
+    <link rel="stylesheet" href="css/styles.css?v=layout-search-2">
+    <script src="js/project-showcase.js" defer></script>
+  <script src="js/main.js?v=layout-search-2" defer></script>
+</head>
+  <body class="project-page site-page">
+    <a class="skip-link" href="#mainContent">Skip to content</a>
+    <div class="shell project-shell">
+      <div class="scanlines" aria-hidden="true"></div>
+      <header class="site-header">
+        <a href="index.html" class="mini-logo" aria-label="Heath Lyon FPV home"><img src="images/logo/FrontFPV.webp" alt="Heath Lyon FPV" decoding="async"></a>
+        <nav aria-label="Primary navigation"><a href="index.html#reel">Reel</a><a href="index.html#rates">Rates</a><a href="index.html#projects">About</a><a href="drone-rush.html">Game</a><a href="index.html#contact">Contact</a></nav>
+        <div class="header-tools">
+          <a class="terminal-link" href="terminal.html">Terminal <span aria-hidden="true">↗</span></a>
+          <button class="search-toggle" type="button" data-open-search aria-haspopup="dialog" aria-controls="siteSearch">Search <span aria-hidden="true">⌕</span></button>
+        </div>
+      </header>
+      <main id="mainContent" tabindex="-1" class="project-main">
+        <section class="project-hero">
+          <div>
+            <p class="code">3D_04 // SPATIAL FIELD ARCHIVE</p>
+            <h1>Preserve the <em>site.</em>
+</h1>
+            <p class="project-lead">
+              A static-hosted Three.js archive for GLB/GLTF scans, selectable
+              sites, excavation metadata, free camera controls, measurements,
+              and guided annotations.
+            </p>
+            <div class="project-meta">
+              <span>THREE.JS</span><span>GLB / GLTF</span><span>WEBGL</span><span>METADATA</span><span>STATIC HOSTING</span>
+            </div>
+            <div class="actions">
+              <a class="button primary" href="#viewer">Inspect viewer plan</a><a class="button" href="downloads.html">Project library</a>
+            </div>
+          </div>
+          <div class="case-visual scan" role="img" aria-label="Technical visual representing a browser-based 3D field archive"></div>
+        </section>
+        <section id="viewer" class="content-section">
+          <div class="section-heading">
+            <div>
+              <p class="code">VIEWER_01 // BROWSER_NATIVE</p>
+              <h2>Make every scan explainable.</h2>
+            </div>
+            <p>
+              The viewer should connect geometry to the site record, not present
+              an isolated object with no field context.
+            </p>
+          </div>
+          <div class="architecture-grid">
+            <article class="detail-card">
+              <span>01 // SELECT</span>
+              <h3>Site index</h3>
+              <p>
+                Choose a trench, feature, artifact, or survey from a searchable
+                project inventory.
+              </p>
+            </article>
+            <article class="detail-card">
+              <span>02 // LOAD</span>
+              <h3>Progressive model</h3>
+              <p>
+                Load optimized GLB assets with visible progress, scale checks,
+                and a useful default camera.
+              </p>
+            </article>
+            <article class="detail-card">
+              <span>03 // INSPECT</span>
+              <h3>Free camera</h3>
+              <p>
+                Orbit, pan, zoom, reset, and switch to documented viewpoints
+                without losing orientation.
+              </p>
+            </article>
+            <article class="detail-card">
+              <span>04 // RECORD</span>
+              <h3>Metadata panel</h3>
+              <p>
+                Show provenience, date, team, method, scale, notes, and linked
+                field documentation.
+              </p>
+            </article>
+            <article class="detail-card">
+              <span>05 // ANNOTATE</span>
+              <h3>Spatial markers</h3>
+              <p>
+                Attach labels, interpretive notes, measurements, and confidence
+                to positions on the scan.
+              </p>
+            </article>
+            <article class="detail-card">
+              <span>06 // SHARE</span>
+              <h3>Guided tour</h3>
+              <p>
+                Save a sequence of viewpoints and captions as a browser
+                presentation for classes or reports.
+              </p>
+            </article>
+          </div>
+        </section>
+        <footer class="project-footer">
+          <span>© <span data-year></span> HEATH LYON</span><span>THREE.JS // GLB // FIELD RECORDS</span><a href="index.html#projects">RETURN TO PROJECTS ↑</a>
+        </footer>
+      </main>
+    </div>
+  <dialog id="siteSearch" class="search-dialog" aria-labelledby="searchTitle">
+  <div class="search-top">
+<h2 id="searchTitle">Search Heath FPV</h2>
+<button type="button" class="search-close" data-close-search aria-label="Close search">Close ×</button>
+</div>
+  <form id="siteSearchForm" role="search">
+<label for="siteSearchInput">Search all pages, projects, services, and rates</label>
+  <div class="search-field">
+<input type="search" id="siteSearchInput" name="q" placeholder="Try “rates”, “360 tours”, or “FPV”" autocomplete="off" maxlength="120" aria-controls="siteSearchResults" autofocus><button type="submit">Search</button>
+</div>
+</form>
+  <p id="siteSearchStatus" class="search-status" role="status" aria-live="polite"></p>
+  <ul id="siteSearchResults" class="search-results" aria-label="Search results"></ul>
+  <p class="search-hint">All pages are listed below · ↑ ↓ to browse · Esc to close</p>
+</dialog>
+  </body>
+</html>

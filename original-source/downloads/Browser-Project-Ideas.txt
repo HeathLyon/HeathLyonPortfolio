@@ -1,0 +1,11 @@
+01BEST NEXT PROJECT FPV Blackbox Analyzer Upload a flight log, synchronize gyro, motor, voltage, and event charts, then produce an evidence-based diagnostic summary.
+
+02FIELD TOOL FPV Shot Planner Draw a route, estimate battery use, build a shot list, and export a compact production brief for the crew.
+
+03SENSING RF / CSI Playback Radar Replay recorded ESP32 or Pi data as a radar, heatmap, timeline, and anomaly log without needing live hardware.
+
+04COMPUTER VISION Browser Pose Arcade Use local webcam pose estimation for gesture targets, reaction timing, or a two-player mirror challenge with privacy mode.
+
+05ENGINEERING Drone Power Calculator Model motor KV, prop, battery, payload, hover current, thrust-to-weight, and save a build as shareable JSON.
+
+06SPATIAL DATA 3D Field Archive Load GLB scans, inspect site metadata, place annotations, measure distances, and save a guided tour in the browser.

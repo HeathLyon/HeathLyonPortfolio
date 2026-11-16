@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="YOLO pose-based fall detection prototype by Heath Lyon — recorded demonstration, simplified processing steps, and CDC-sourced fall-safety research.">
+    <meta name="theme-color" content="#010403">
+    <title>YOLO Fall Detection | Heath Lyon</title>
+    <link rel="stylesheet" href="css/styles.css?v=layout-search-2">
+    <script src="js/project-showcase.js" defer></script>
+  <script src="js/main.js?v=layout-search-2" defer></script>
+</head>
+  <body class="project-page site-page">
+    <a class="skip-link" href="#mainContent">Skip to content</a>
+    <div class="shell project-shell">
+      <div class="scanlines" aria-hidden="true"></div>
+      <header class="site-header">
+        <a href="index.html" class="mini-logo" aria-label="Heath Lyon FPV home"><img src="images/logo/FrontFPV.webp" alt="Heath Lyon FPV" decoding="async"></a>
+        <nav aria-label="Primary navigation"><a href="index.html#reel">Reel</a><a href="index.html#rates">Rates</a><a href="index.html#projects">About</a><a href="drone-rush.html">Game</a><a href="index.html#contact">Contact</a></nav>
+        <div class="header-tools">
+          <a class="terminal-link" href="terminal.html">Terminal <span aria-hidden="true">↗</span></a>
+          <button class="search-toggle" type="button" data-open-search aria-haspopup="dialog" aria-controls="siteSearch">Search <span aria-hidden="true">⌕</span></button>
+        </div>
+      </header>
+
+      <main id="mainContent" tabindex="-1" class="project-main">
+        <nav class="page-sections" aria-label="On this page"><span>On this page</span><a href="#demo">Demo</a><a href="#steps">Steps</a><a href="#research">Research</a></nav>
+        <section class="project-hero">
+          <div>
+            <p class="code">CV_01 // DESKTOP PYTHON PROTOTYPE</p>
+            <h1>YOLO <em>fall</em> detection.</h1>
+            <p class="project-lead">
+              A pose-estimation prototype that follows body geometry over time,
+              evaluates fall-like movement, renders a privacy-aware skeleton,
+              and records or forwards an incident. The recorded demo shows the
+              desktop Python system without requesting a visitor's camera.
+            </p>
+            <div class="project-meta">
+              <span>PYTHON</span><span>YOLO11 POSE</span><span>OPENCV</span><span>TEMPORAL RULES</span><span>LOCAL-FIRST</span>
+            </div>
+            <div class="actions">
+              <a class="button primary" href="#demo">▶ Watch demonstration</a>
+              <a class="button" href="downloads.html">Open downloads</a>
+            </div>
+          </div>
+          <aside class="system-card" aria-label="Project system status">
+            <div class="system-id">
+              <span>PROJECT_CV01</span><span>CASE STUDY</span>
+            </div>
+            <strong>17</strong>
+            <h2>Pose keypoints per subject</h2>
+            <p>
+              The model supplies joints and confidence values. Separate logic
+              examines posture, vertical movement, detection quality, and time
+              spent down instead of judging a single frame.
+            </p>
+            <div class="system-lines">
+              <span>RUNTIME <b>DESKTOP PYTHON</b></span>
+              <span>WEB MODE <b>RECORDED DEMO</b></span>
+              <span>CAMERA ACCESS <b>NOT REQUESTED</b></span>
+              <span>STATUS <b>RESEARCH PROTOTYPE</b></span>
+            </div>
+          </aside>
+        </section>
+
+        <section id="demo" class="content-section">
+          <div class="section-heading">
+            <div>
+              <p class="code">DEMO_01 // RECORDED SYSTEM RUN</p>
+              <h2>See the detector in motion.</h2>
+            </div>
+            <p>
+              This recording replaces the former technical slideshow. It shows
+              the real desktop workflow while keeping the public portfolio page
+              lightweight and browser-safe.
+            </p>
+          </div>
+
+          <div class="demo-video-shell">
+            <div class="demo-video-bar">
+              <span>portfolio://cv01_recorded_demo</span>
+              <span>LOCAL PYTHON // VIDEO PLAYBACK</span>
+            </div>
+            <div class="demo-video-frame">
+              <video data-yolo-video controls playsinline preload="metadata" poster="images/logo/img1.webp" aria-label="Recorded demonstration of the YOLO fall detection prototype">
+                <source data-yolo-video-source src="video/Yolloproject.mp4" type="video/mp4">
+                Your browser does not support HTML video playback.
+              </video>
+              <div class="video-missing-note" data-video-missing hidden>
+                <strong>DEMO FILE OFFLINE</strong>
+                <p>
+                  Add <code>Yolloproject.mp4</code> to the <code>video</code>
+                  folder. The player will connect automatically.
+                </p>
+              </div>
+            </div>
+            <div class="demo-video-caption">
+              <p>
+                <span>WHAT TO WATCH</span> Pose keypoints, state changes,
+                confidence, incident logging, and the optional alert path.
+              </p>
+              <p>
+                <span>PRIVACY</span> The webpage plays a recording; it does not
+                activate the viewer's webcam or execute the Python model.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="steps" class="content-section">
+          <div class="section-heading">
+            <div>
+              <p class="code">PROCESS_01 // FIVE CLEAR STEPS</p>
+              <h2>From camera frame to alert.</h2>
+            </div>
+            <p>
+              The code is organized as a sequence of small responsibilities.
+              Each stage can be tested, tuned, or replaced without rewriting the
+              entire application.
+            </p>
+          </div>
+
+          <ol class="process-steps">
+            <li class="process-step">
+              <span>01</span>
+              <div>
+                <p class="code">CAPTURE</p>
+                <h3>Read one camera frame.</h3>
+                <p>
+                  <code>camera.py</code> opens the selected camera, checks that
+                  each frame is valid, and releases the hardware cleanly when
+                  the program closes.
+                </p>
+              </div>
+            </li>
+            <li class="process-step">
+              <span>02</span>
+              <div>
+                <p class="code">DETECT</p>
+                <h3>Locate the person and joints.</h3>
+                <p>
+                  <code>pose.py</code> runs YOLO pose inference and returns body
+                  keypoints with confidence values. Unreliable detections are
+                  rejected before they reach the fall logic.
+                </p>
+              </div>
+            </li>
+            <li class="process-step">
+              <span>03</span>
+              <div>
+                <p class="code">COMPARE</p>
+                <h3>Measure change over time.</h3>
+                <p>
+                  <code>fall_detector.py</code> compares body angle, hip height,
+                  vertical movement, and recent posture history. A single
+                  horizontal frame is not enough to declare a fall.
+                </p>
+              </div>
+            </li>
+            <li class="process-step">
+              <span>04</span>
+              <div>
+                <p class="code">CONFIRM</p>
+                <h3>Hold the state long enough to matter.</h3>
+                <p>
+                  Configurable thresholds confirm that fall-like evidence lasts
+                  long enough, then use recovery and cooldown states to reduce
+                  duplicate or one-frame alerts.
+                </p>
+              </div>
+            </li>
+            <li class="process-step">
+              <span>05</span>
+              <div>
+                <p class="code">RESPOND</p>
+                <h3>Render, log, and optionally notify.</h3>
+                <p>
+                  <code>renderer.py</code> draws the privacy-aware display,
+                  <code>alert_logger.py</code> records the event, and an
+                  optional adapter can send a notification with secrets kept
+                  outside the public code.
+                </p>
+              </div>
+            </li>
+          </ol>
+
+          <div class="notice">
+            <strong>DOWNLOAD STATUS</strong>
+            <p>
+              The architecture and research brief is available now. A public
+              Python package should be released only after credentials are
+              removed, dependencies are pinned, and the prototype is tested in a
+              clean environment.
+            </p>
+            <a class="button primary" href="downloads/YOLO-Fall-Detector-Project-Brief.txt" download>Download brief</a>
+          </div>
+        </section>
+
+        <section id="research" class="content-section research-section">
+          <div class="section-heading">
+            <div>
+              <p class="code">IMPACT_01 // UNITED STATES, AGE 65+</p>
+              <h2>Why fall awareness matters.</h2>
+            </div>
+            <p>
+              Falls are the leading cause of injury for adults 65 and older. The
+              figures below are from current CDC fall data and prevention
+              resources, reviewed August 2, 2026.
+            </p>
+          </div>
+
+          <div class="research-stats">
+            <article class="research-stat">
+              <strong>1 in 4</strong>
+              <h3>older adults report a fall each year</h3>
+              <p>
+                More than 14 million U.S. adults age 65+ report falling
+                annually.
+              </p>
+              <a href="https://www.cdc.gov/falls/data-research/index.html" target="_blank" rel="noreferrer">CDC Older Adult Falls Data ↗</a>
+            </article>
+            <article class="research-stat">
+              <strong>9M</strong>
+              <h3>fall injuries are estimated each year</h3>
+              <p>
+                About 37% of older adults who fall report an injury that needs
+                medical treatment or restricts activity for at least a day.
+              </p>
+              <a href="https://www.cdc.gov/falls/data-research/index.html" target="_blank" rel="noreferrer">CDC Older Adult Falls Data ↗</a>
+            </article>
+            <article class="research-stat">
+              <strong>3M / 1M</strong>
+              <h3>emergency visits / hospitalizations</h3>
+              <p>
+                Falls lead to roughly 3 million emergency-department visits and
+                about 1 million hospitalizations among older adults each year.
+              </p>
+              <a href="https://www.cdc.gov/falls/data-research/facts-stats/index.html" target="_blank" rel="noreferrer">CDC Facts About Falls ↗</a>
+            </article>
+            <article class="research-stat">
+              <strong>+21%</strong>
+              <h3>increase in the fall death rate</h3>
+              <p>
+                The age-adjusted rate increased from 64.7 deaths per 100,000 in
+                2018 to 78.4 in 2024.
+              </p>
+              <a href="https://www.cdc.gov/falls/data-research/index.html" target="_blank" rel="noreferrer">CDC Older Adult Falls Data ↗</a>
+            </article>
+          </div>
+
+          <div class="research-detail-grid">
+            <article class="research-copy">
+              <p class="code">THE DANGERS</p>
+              <h3>A fall can change health and independence.</h3>
+              <p>
+                Older-adult falls can cause traumatic brain injury, hip
+                fracture, hospitalization, loss of mobility, and death. CDC
+                identifies falls as the most common cause of traumatic brain
+                injury and estimates roughly 300,000 hip-fracture
+                hospitalizations related to falls each year.
+              </p>
+              <p>
+                Even without a major injury, fear of another fall can lead a
+                person to move less. Reduced activity can weaken strength and
+                balance, which may increase future risk.
+              </p>
+            </article>
+            <aside class="source-panel" aria-label="Primary research sources">
+              <p class="code">PRIMARY SOURCES</p>
+              <ul class="source-list">
+                <li>
+                  <a href="https://www.cdc.gov/falls/data-research/index.html" target="_blank" rel="noreferrer">CDC — Older Adult Falls Data</a>
+                </li>
+                <li>
+                  <a href="https://www.cdc.gov/falls/data-research/facts-stats/index.html" target="_blank" rel="noreferrer">CDC — Facts About Falls</a>
+                </li>
+                <li>
+                  <a href="https://www.cdc.gov/falls/prevention/index.html" target="_blank" rel="noreferrer">CDC — Preventing Falls and Hip Fractures</a>
+                </li>
+                <li>
+                  <a href="https://www.cdc.gov/steadi/" target="_blank" rel="noreferrer">CDC STEADI — Clinical Fall Prevention</a>
+                </li>
+              </ul>
+              <a class="button source-download" href="downloads/Older-Adult-Falls-CDC-Report.txt" download>Download full report</a>
+            </aside>
+          </div>
+
+          <div class="medical-note">
+            <strong>PROTOTYPE LIMITS</strong>
+            <p>
+              This project is a research and portfolio demonstration, not a
+              medical device, diagnostic tool, or emergency-response service.
+              Computer vision can miss events or produce false alerts. It should
+              not replace professional care, a validated monitoring system, or
+              calling emergency services when immediate help is needed.
+            </p>
+          </div>
+        </section>
+
+        <footer class="project-footer">
+          <span>© <span data-year></span> HEATH LYON</span>
+          <span>YOLO // POSE // TEMPORAL DETECTION</span>
+          <a href="index.html#projects">RETURN TO PROJECTS ↑</a>
+        </footer>
+      </main>
+    </div>
+  <dialog id="siteSearch" class="search-dialog" aria-labelledby="searchTitle">
+  <div class="search-top">
+<h2 id="searchTitle">Search Heath FPV</h2>
+<button type="button" class="search-close" data-close-search aria-label="Close search">Close ×</button>
+</div>
+  <form id="siteSearchForm" role="search">
+<label for="siteSearchInput">Search all pages, projects, services, and rates</label>
+  <div class="search-field">
+<input type="search" id="siteSearchInput" name="q" placeholder="Try “rates”, “360 tours”, or “FPV”" autocomplete="off" maxlength="120" aria-controls="siteSearchResults" autofocus><button type="submit">Search</button>
+</div>
+</form>
+  <p id="siteSearchStatus" class="search-status" role="status" aria-live="polite"></p>
+  <ul id="siteSearchResults" class="search-results" aria-label="Search results"></ul>
+  <p class="search-hint">All pages are listed below · ↑ ↓ to browse · Esc to close</p>
+</dialog>
+  </body>
+</html>

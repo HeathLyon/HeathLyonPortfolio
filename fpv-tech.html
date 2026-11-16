@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FPV Tech, Drone Builds &amp; Engineering | Heath FPV</title>
+    <meta name="description" content="Technical notes on Heath Lyon’s Akira X8 cinelifter, drone electronics, Betaflight, software, sensors, and search-and-rescue research.">
+    <meta name="robots" content="index,follow,max-image-preview:large">
+    <meta name="theme-color" content="#101313">
+    <link rel="canonical" href="https://www.heathfpv.com/fpv-tech.html">
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon.png">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:title" content="FPV Tech, Drone Builds &amp; Engineering | Heath FPV">
+    <meta property="og:description" content="Technical notes on Heath Lyon’s Akira X8 cinelifter, drone electronics, Betaflight, software, sensors, and search-and-rescue research.">
+    <meta property="og:url" content="https://www.heathfpv.com/fpv-tech.html">
+    <meta property="og:image" content="https://www.heathfpv.com/images/logo/img3.webp">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="css/styles.css?v=portfolio-1">
+    <script src="js/main.js?v=portfolio-1" defer></script>
+  </head>
+  <body class="site-page editorial-page">
+    
+    <a class="skip-link" href="#mainContent">Skip to content</a>
+    <header class="masthead" data-masthead>
+      <div class="masthead-inner">
+        <a class="brand" href="index.html" aria-label="Heath FPV home">
+          <img src="images/logo/FrontFPV.webp" width="643" height="557" alt="">
+        </a>
+        <nav id="siteNavigation" class="primary-nav" aria-label="Primary navigation">
+          <a href="index.html">Home</a>
+          <a href="services.html">Drone Services</a>
+          <a href="projects.html">Portfolio</a>
+          <details class="explore-menu" data-explore>
+            <summary class="is-current">Explore</summary>
+            <div class="explore-links">
+              <a href="fpv-tech.html" aria-current="page">FPV Tech</a>
+              <a href="projects.html">Projects</a>
+              <a href="hosting.html">Hosted Apps &amp; Games</a>
+              <a href="articles.html">Articles &amp; Blog</a>
+              <a href="videos.html">Videos &amp; Reels</a>
+              <a href="about.html">About Me</a>
+            </div>
+          </details>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <div class="masthead-tools">
+          <button class="masthead-button" type="button" data-open-search aria-haspopup="dialog" aria-controls="siteSearch">
+            <span class="search-icon" aria-hidden="true"></span> Search
+          </button>
+          <button class="masthead-button mobile-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="siteNavigation" hidden>
+            <span class="menu-icon" aria-hidden="true"></span> Menu
+          </button>
+        </div>
+      </div>
+    </header>
+    <main id="mainContent" tabindex="-1">
+      <section class="page-intro site-wrap" aria-labelledby="pageTitle">
+        <p class="eyebrow">Engineering &amp; development</p>
+        <h1 id="pageTitle">FPV Tech</h1>
+        <p class="lede">Airframes, electronics, firmware, and sensor experiments from my FPV work.</p>
+        <nav class="jump-links" aria-label="FPV Tech sections"><a href="#drone-builds">Drone builds</a><a href="#electronics">Electronics</a><a href="#firmware">Software &amp; firmware</a><a href="#research">Research</a></nav>
+      </section>
+      <section id="drone-builds" class="site-wrap content-band" aria-labelledby="builds-title">
+        <div class="feature-split">
+          <div>
+            <p class="eyebrow">Drone builds</p>
+            <h2 id="builds-title">Cinelifters &amp; camera platforms</h2>
+            <article id="akira-x8" class="tech-notes">
+              <h3>Shendrones Akira X8</h3>
+              <p class="status-text">Build and tuning</p>
+              <p>A 9-inch coaxial X8 cinelifter configured for a Sony a7S III camera payload. Work on the build includes mounting, power wiring, and vibration testing.</p>
+              <dl class="spec-list">
+                <div><dt>Airframe</dt><dd>Shendrones Akira X8, eight motors</dd></div>
+                <div><dt>Flight controller</dt><dd>iFlight 2RAW Thunder H7</dd></div>
+                <div><dt>ESC</dt><dd>iFlight Thunder 80A 8-in-1</dd></div>
+                <div><dt>Power system</dt><dd>8S build</dd></div>
+              </dl>
+            </article>
+          </div>
+          <figure class="feature-photo">
+            <img src="images/logo/img3.webp" width="6016" height="4016" alt="A Heath FPV camera drone photographed outdoors" loading="lazy" decoding="async">
+            <figcaption>FPV camera setup from the portfolio</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="content-band tone-raised" aria-label="Electronics and software">
+        <div class="site-wrap two-column">
+          <article id="electronics" class="rate-tile">
+            <h2>Electronics</h2>
+            <p>Flight controllers, ESC and motor combinations, battery layout, and camera and receiver wiring. The X8 brings eight motor outputs into a single ESC assembly.</p>
+            <a class="text-link" href="#akira-x8">See the X8 electronics →</a>
+          </article>
+          <article id="firmware" class="rate-tile">
+            <h2>Software &amp; firmware</h2>
+            <p>Betaflight configuration, flight-control experiments, and software for sensing and visualization.</p>
+            <a class="text-link" href="https://github.com/HeathLyon">Heath’s GitHub →</a>
+          </article>
+        </div>
+      </section>
+
+      <section id="research" class="site-wrap content-band" aria-labelledby="research-title">
+        <h2 id="research-title">Research &amp; development</h2>
+        <div class="two-column">
+          <article class="rate-tile"><h3>Modular SAR payloads</h3><p>Research into collecting and visualizing RF measurements from a drone-mounted sensor.</p><a class="text-link" href="sar-project.html">Read case study →</a></article>
+          <article class="rate-tile"><h3>Pose tracking</h3><p>Computer vision prototype that evaluates posture and movement over time.</p><a class="text-link" href="articles/yolo-fall-detection-notes.html">Read project notes →</a></article>
+        </div>
+      </section>
+    </main>
+    <footer class="editorial-footer">
+      <div class="site-wrap footer-content">
+        <span>© <span data-year>2026</span> Heath Lyon</span>
+        <nav aria-label="More from Heath">
+          <a href="downloads.html">Downloads</a>
+          <a href="terminal.html">Terminal</a>
+          <a href="hosting.html">Hosted apps</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+    </footer>
+          <dialog id="siteSearch" class="search-dialog" aria-labelledby="searchTitle">
+        <div class="search-top">
+          <h2 id="searchTitle">Search Heath FPV</h2>
+          <button type="button" class="search-close" data-close-search>Close</button>
+        </div>
+        <form id="siteSearchForm" role="search">
+          <label for="siteSearchInput">Search pages, projects, and articles</label>
+          <div class="search-field">
+            <input type="search" id="siteSearchInput" name="q" placeholder="Try “drone rates” or “360 tours”" autocomplete="off" maxlength="120" aria-controls="siteSearchResults" autofocus>
+            <button type="submit">Search</button>
+          </div>
+        </form>
+        <p id="siteSearchStatus" class="search-status" role="status"></p>
+        <ul id="siteSearchResults" class="search-results" aria-label="Search results"></ul>
+        <p class="search-hint">Use ↑ and ↓ to browse results. Press Esc to close.</p>
+      </dialog>
+  </body>
+</html>

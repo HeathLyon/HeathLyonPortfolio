@@ -3,25 +3,59 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="description" content="Browser-based archaeology 3D scan archive concept by Heath Lyon.">
-    <meta name="theme-color" content="#010403">
     <title>Archaeology 3D Archive | Heath Lyon</title>
-    <link rel="stylesheet" href="css/styles.css?v=layout-search-2">
+    <meta name="description" content="Browser-based archaeology 3D scan archive concept by Heath Lyon.">
+    <meta name="robots" content="index,follow,max-image-preview:large">
+    <meta name="theme-color" content="#101313">
+    <link rel="canonical" href="https://www.heathfpv.com/archaeology-project.html">
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon.png">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:title" content="Archaeology 3D Archive | Heath Lyon">
+    <meta property="og:description" content="Browser-based archaeology 3D scan archive concept by Heath Lyon.">
+    <meta property="og:url" content="https://www.heathfpv.com/archaeology-project.html">
+    <meta property="og:image" content="https://www.heathfpv.com/images/logo/img5.webp">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="css/styles.css?v=portfolio-1">
     <script src="js/project-showcase.js" defer></script>
-  <script src="js/main.js?v=layout-search-2" defer></script>
+  <script src="js/main.js?v=portfolio-1" defer></script>
 </head>
   <body class="project-page site-page">
     <a class="skip-link" href="#mainContent">Skip to content</a>
     <div class="shell project-shell">
       <div class="scanlines" aria-hidden="true"></div>
-      <header class="site-header">
-        <a href="index.html" class="mini-logo" aria-label="Heath Lyon FPV home"><img src="images/logo/FrontFPV.webp" alt="Heath Lyon FPV" decoding="async"></a>
-        <nav aria-label="Primary navigation"><a href="index.html#reel">Reel</a><a href="index.html#rates">Rates</a><a href="index.html#projects">About</a><a href="drone-rush.html">Game</a><a href="index.html#contact">Contact</a></nav>
-        <div class="header-tools">
-          <a class="terminal-link" href="terminal.html">Terminal <span aria-hidden="true">↗</span></a>
-          <button class="search-toggle" type="button" data-open-search aria-haspopup="dialog" aria-controls="siteSearch">Search <span aria-hidden="true">⌕</span></button>
+      <header class="masthead" data-masthead>
+      <div class="masthead-inner">
+        <a class="brand" href="index.html" aria-label="Heath FPV home">
+          <img src="images/logo/FrontFPV.webp" width="643" height="557" alt="">
+        </a>
+        <nav id="siteNavigation" class="primary-nav" aria-label="Primary navigation">
+          <a href="index.html">Home</a>
+          <a href="services.html">Drone Services</a>
+          <a href="projects.html" aria-current="location">Portfolio</a>
+          <details class="explore-menu" data-explore>
+            <summary class="is-current">Explore</summary>
+            <div class="explore-links">
+              <a href="fpv-tech.html">FPV Tech</a>
+              <a href="projects.html" aria-current="location">Projects</a>
+              <a href="hosting.html">Hosted Apps &amp; Games</a>
+              <a href="articles.html">Articles &amp; Blog</a>
+              <a href="videos.html">Videos &amp; Reels</a>
+              <a href="about.html">About Me</a>
+            </div>
+          </details>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <div class="masthead-tools">
+          <button class="masthead-button" type="button" data-open-search aria-haspopup="dialog" aria-controls="siteSearch">
+            <span class="search-icon" aria-hidden="true"></span> Search
+          </button>
+          <button class="masthead-button mobile-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="siteNavigation" hidden>
+            <span class="menu-icon" aria-hidden="true"></span> Menu
+          </button>
         </div>
-      </header>
+      </div>
+    </header>
       <main id="mainContent" tabindex="-1" class="project-main">
         <section class="project-hero">
           <div>
@@ -109,20 +143,21 @@
         </footer>
       </main>
     </div>
-  <dialog id="siteSearch" class="search-dialog" aria-labelledby="searchTitle">
-  <div class="search-top">
-<h2 id="searchTitle">Search Heath FPV</h2>
-<button type="button" class="search-close" data-close-search aria-label="Close search">Close ×</button>
-</div>
-  <form id="siteSearchForm" role="search">
-<label for="siteSearchInput">Search all pages, projects, services, and rates</label>
-  <div class="search-field">
-<input type="search" id="siteSearchInput" name="q" placeholder="Try “rates”, “360 tours”, or “FPV”" autocomplete="off" maxlength="120" aria-controls="siteSearchResults" autofocus><button type="submit">Search</button>
-</div>
-</form>
-  <p id="siteSearchStatus" class="search-status" role="status" aria-live="polite"></p>
-  <ul id="siteSearchResults" class="search-results" aria-label="Search results"></ul>
-  <p class="search-hint">All pages are listed below · ↑ ↓ to browse · Esc to close</p>
-</dialog>
+        <dialog id="siteSearch" class="search-dialog" aria-labelledby="searchTitle">
+        <div class="search-top">
+          <h2 id="searchTitle">Search Heath FPV</h2>
+          <button type="button" class="search-close" data-close-search>Close</button>
+        </div>
+        <form id="siteSearchForm" role="search">
+          <label for="siteSearchInput">Search pages, projects, and articles</label>
+          <div class="search-field">
+            <input type="search" id="siteSearchInput" name="q" placeholder="Try “drone rates” or “360 tours”" autocomplete="off" maxlength="120" aria-controls="siteSearchResults" autofocus>
+            <button type="submit">Search</button>
+          </div>
+        </form>
+        <p id="siteSearchStatus" class="search-status" role="status"></p>
+        <ul id="siteSearchResults" class="search-results" aria-label="Search results"></ul>
+        <p class="search-hint">Use ↑ and ↓ to browse results. Press Esc to close.</p>
+      </dialog>
   </body>
 </html>

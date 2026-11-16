@@ -131,7 +131,7 @@ window.terminalFAQs = [
       "request a quote",
     ],
     answer: [
-      "Starting rates: full day (10 hours) $600; half day (5 hours) $400; same-day rush (full day) $800. Reserve your shoot with $100 upfront. Standard packages include finished photos or edited video and a two-day turnaround.",
+      "Heath offers half-day, full-day, same-day rush, and 360 starter packages. Type rates to view current prices and booking terms.",
       "Airspace, travel, crew, equipment, editing, permits, and project risk can change the final quote. Type contact for a direct estimate.",
     ],
   },
