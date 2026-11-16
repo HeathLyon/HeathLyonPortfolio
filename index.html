@@ -63,18 +63,7 @@
       <section id="home" class="home-section hero-cover" aria-labelledby="home-title">
         <div class="cover-media">
           <img src="images/logo/img5.webp" width="6008" height="4004" fetchpriority="high" alt="FPV camera drone silhouetted against a turquoise sky">
-          <video
-            id="heroVideo"
-            src="video/Background Hero Clip.mp4"
-            poster="images/logo/img5.webp"
-            muted
-            loop
-            playsinline
-            preload="none"
-            aria-hidden="true"
-            tabindex="-1"
-            hidden
-          ></video>
+          <video id="heroVideo" src="video/Background Hero Clip.mp4" poster="images/logo/img5.webp" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1" hidden></video>
         </div>
         <div class="site-wrap cover-layout">
           <div class="cover-copy">
@@ -109,15 +98,15 @@
         </div>
       </section>
 
-      <section id="rates" class="home-section tone-raised" aria-labelledby="rates-title">
+      <section id="services" class="home-section tone-raised" aria-labelledby="services-title">
         <div class="site-wrap feature-split">
           <div>
             <p class="eyebrow">Drone services</p>
-            <h2 id="rates-title">Aerial media for your next shoot</h2>
+            <h2 id="services-title">Aerial media for your next shoot</h2>
             <p class="lede">Cinematic FPV, aerial photo and video, property fly-throughs, and interactive 360° tours in Utah County and on location.</p>
             <div class="site-actions">
               <a class="site-button is-primary" href="contact-form.html">Request a quote</a>
-              <a class="site-button" href="services.html#rates">Services &amp; rates <span aria-hidden="true">→</span></a>
+              <a class="site-button" href="#rates">View rates <span aria-hidden="true">→</span></a>
             </div>
           </div>
           <figure class="feature-photo">
@@ -153,38 +142,33 @@
         </div>
       </section>
 
-      <section id="fpv-tech" class="home-section tone-raised" aria-labelledby="tech-title">
-        <div class="site-wrap feature-split">
-          <figure class="feature-photo">
-            <img src="images/logo/img3.webp" width="6016" height="4016" alt="FPV camera drone on a wooden stand" loading="lazy" decoding="async">
-            <figcaption>FPV aircraft and camera integration</figcaption>
-          </figure>
-          <div>
-            <p class="eyebrow">FPV Tech</p>
-            <h2 id="tech-title">From airframes to sensors</h2>
-            <p class="lede">Build notes on the Akira X8 cinelifter, flight electronics, and experiments with modular search-and-rescue payloads.</p>
-            <div class="site-actions">
-              <a class="site-button is-primary" href="fpv-tech.html">Explore FPV Tech</a>
-              <a class="text-link" href="sar-project.html">SAR payload research <span aria-hidden="true">→</span></a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="latest" class="home-section" aria-labelledby="latest-title">
+      <!-- Edit public starting rates and booking terms in this section. -->
+      <section id="rates" class="home-section tone-raised" aria-labelledby="pricing-title">
         <div class="site-wrap">
           <div class="section-bar">
-            <div>
-              <p class="eyebrow">Articles &amp; media</p>
-              <h2 id="latest-title">Latest content</h2>
-            </div>
-            <a class="site-button" href="articles.html">Articles &amp; blog <span aria-hidden="true">→</span></a>
+            <div><p class="eyebrow">Packages</p><h2 id="pricing-title">Drone filming rates</h2></div>
+            <a class="site-button" href="contact-form.html">Get a project quote</a>
           </div>
-          <ul class="content-grid">
-            <li><a href="articles/connecting-aerial-panoramas.html"><span class="eyebrow">Article · 360 tours</span><strong>Connecting three aerial panoramas</strong><span class="text-link">Read article →</span></a></li>
-            <li><a href="videos.html#reel"><span class="eyebrow">Video · FPV</span><strong>Heath FPV flight reel</strong><span class="text-link">Watch reel →</span></a></li>
-            <li><a href="articles/yolo-fall-detection-notes.html"><span class="eyebrow">Project notes · Computer vision</span><strong>How the fall detector evaluates motion</strong><span class="text-link">Read project notes →</span></a></li>
-          </ul>
+          <div class="rates-grid">
+            <article class="rate-tile" id="half-day">
+              <h3>Half day</h3><p class="price">From <strong>$400</strong></p>
+              <p>Five hours of coverage with finished aerial photos or edited video.</p>
+            </article>
+            <article class="rate-tile" id="full-day">
+              <h3>Full day</h3><p class="price">From <strong>$600</strong></p>
+              <p>Ten hours of coverage with finished aerial photos or edited video.</p>
+            </article>
+            <article class="rate-tile" id="same-day-rush">
+              <h3>Same-day rush</h3><p class="price">From <strong>$800</strong></p>
+              <p>Full-day coverage and same-day delivery of your finished video.</p>
+            </article>
+            <article class="rate-tile" id="360-tour">
+              <h3>360° starter tour</h3><p class="price">From <strong>$350</strong></p>
+              <p>Basic 360° capture or a starter clickable-tour media package.</p>
+              <a class="text-link" href="utah-county-drone-tours.html">Utah County 360° tour details →</a>
+            </article>
+          </div>
+          <p class="fine-print">A $100 upfront payment reserves a shoot. Standard filming packages include two-day turnaround. Location, access, scene count, travel, editing, and delivery needs affect the final quote.</p>
         </div>
       </section>
 
@@ -199,9 +183,41 @@
           </div>
           <ul class="contact-links">
             <li><a href="mailto:Lyon.m.heath@gmail.com"><span>Email</span><strong>Lyon.m.heath@gmail.com</strong></a></li>
-            <li><a href="https://www.youtube.com/@SkyLensProvo"><span>YouTube</span><strong>@SkyLensProvo</strong></a></li>
-            <li><a href="https://instagram.com/skylensprovo"><span>Instagram</span><strong>@skylensprovo</strong></a></li>
+            <li><a href="https://www.youtube.com/SkyLensProvo"><span>YouTube</span><strong>@SkyLensProvo</strong></a></li>
+            <li><a href="https://instagram.com/Heathfpv"><span>Instagram</span><strong>@Heathfpv</strong></a></li>
             <li><a href="https://github.com/HeathLyon"><span>GitHub</span><strong>HeathLyon</strong></a></li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="latest" class="home-section" aria-labelledby="latest-title">
+        <div class="site-wrap" id="fpv-tech">
+          <div class="section-bar">
+            <h2 id="latest-title">Latest in FPV Tech</h2>
+            <a class="site-button" href="fpv-tech.html">Open FPV Tech <span aria-hidden="true">→</span></a>
+          </div>
+          <ul class="content-grid">
+            <li>
+              <a href="fpv-tech.html#akira-x8">
+                <span class="eyebrow">Drone build</span>
+                <strong>Shendrones Akira X8</strong>
+                <span class="text-link">Build and tuning notes →</span>
+              </a>
+            </li>
+            <li>
+              <a href="fpv-tech.html#electronics">
+                <span class="eyebrow">Electronics</span>
+                <strong>Flight controllers, ESCs &amp; wiring</strong>
+                <span class="text-link">View electronics →</span>
+              </a>
+            </li>
+            <li>
+              <a href="fpv-tech.html#research">
+                <span class="eyebrow">Research</span>
+                <strong>Modular search-and-rescue payloads</strong>
+                <span class="text-link">View research →</span>
+              </a>
+            </li>
           </ul>
         </div>
       </section>
