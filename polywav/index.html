@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#111310">
+  <title>PolyWAV Lite | Heath FPV</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <header class="top"><a href="../" class="brand">HEATH<span>FPV</span></a>
+    <a href="../hosting.html">← Hosted apps</a></header>
+  <main>
+    <div class="intro"><div><h1>PolyWAV Lite<span>.</span></h1>
+      <p>Record separate audio channels into one Broadcast WAV.</p></div>
+      <details id="view"><summary>View</summary><div class="popover">
+        <label><input type="checkbox" checked data-panel="tracks"> Channels</label>
+        <label><input type="checkbox" checked data-panel="metadata"> Take settings</label>
+        <label><input type="checkbox" checked data-panel="markers-panel"> Markers</label>
+      </div></details>
+    </div>
+
+    <section class="deck" aria-label="Recorder">
+      <div class="clock"><span id="state">READY</span><output id="counter" aria-label="Timecode" aria-live="off">01:00:00:00</output><small id="elapsed">00:00:00</small></div>
+      <div class="transport"><button id="record" class="record" disabled>● Record</button><button id="stop" disabled>■ Stop</button></div>
+      <p id="status" role="status">Choose an input or try the demo. Audio stays on this device.</p>
+    </section>
+
+    <section class="card sources" aria-label="Audio input and destination">
+      <label>Input device <select id="device"><option value="">System default</option></select></label>
+      <label>Request channels <input id="requested" type="number" min="1" max="32" value="2"></label>
+      <div class="buttons"><button id="connect">Connect input</button><button id="demo">Try demo</button><button id="disconnect" hidden>Disconnect</button></div>
+      <label class="disk" id="disk-label" hidden><input id="disk" type="checkbox"> Write directly to a WAV file</label>
+    </section>
+
+    <div class="panels">
+      <section id="tracks" class="card"><div class="heading"><h2>Channels</h2><span id="input-info">No input connected</span></div><div id="channels"></div></section>
+      <section id="metadata" class="card"><div class="heading"><h2>Take settings</h2></div>
+        <div class="fields">
+          <label>Project <input id="project" maxlength="64"></label>
+          <label>Roll <input id="roll" value="A01" maxlength="24"></label>
+          <label>Scene <input id="scene" maxlength="24"></label>
+          <label>Take <input id="take" value="001" maxlength="24"></label>
+          <label>Timecode <select id="tc-mode"><option value="manual">Manual start</option><option value="clock">Computer clock</option></select></label>
+          <label>Frame rate <select id="fps"><option>23.976</option><option selected>24</option><option>25</option><option>29.97 NDF</option><option>29.97 DF</option><option>30</option></select></label>
+          <label class="wide">Start timecode <input id="start" maxlength="11" value="01:00:00:00"></label>
+          <label class="wide">Notes <textarea id="notes" maxlength="500" rows="2"></textarea></label>
+        </div>
+      </section>
+    </div>
+
+    <section id="markers-panel" class="card">
+      <div class="heading"><h2>Markers</h2><button id="report" disabled>Download CSV</button></div>
+      <form id="marker-form"><input id="marker" maxlength="250" placeholder="Add a take note…" aria-label="Marker note"><button id="add-marker" disabled>Add marker</button></form>
+      <ol id="markers"></ol>
+    </section>
+    <section id="result" class="card result" hidden aria-label="Completed take">
+      <span id="finished"></span><a id="download" class="download" hidden>Download WAV</a>
+    </section>
+  </main>
+  <footer>Browser-local recording · Use headphones to monitor through your mixer</footer>
+  <template id="channel-row"><div class="channel">
+    <span class="channel-id"></span><input class="name" maxlength="48"><meter min="-60" max="0" value="-60"></meter><span class="db">−∞</span>
+    <label class="armed"><input type="checkbox" checked> Arm</label>
+  </div></template>
+</body>
+</html>
