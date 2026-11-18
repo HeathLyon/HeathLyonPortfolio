@@ -1,6 +1,34 @@
 [
-  {"title":"FPV vs. Cine: How Drones Changed Cinema","url":"articles/fpv-vs-cine.html","date":"2026-11-18","category":"FPV & film history","description":"From helicopter shots and early DJI drones to cinematic FPV and Hollywood cinelifters: how drones changed the way cameras move.","image":"https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/FPV_Quadrocopter.jpg/960px-FPV_Quadrocopter.jpg"},
-  {"title":"Why I Fly","url":"articles/why-i-fly.html","date":"2026-11-18","category":"FPV stories","description":"From crashing cheap quadcopters to flying FPV professionally, here's how I got started and why I keep flying.","image":"images/logo/FrontFPV.webp"},
-  {"title":"Connecting three aerial panoramas","url":"articles/connecting-aerial-panoramas.html","date":"2026-11-15","category":"360 tours","description":"How the tour combines full-sphere images, hotspots, and a shareable viewer.","image":"images/previews/aerial-panorama.webp"},
-  {"title":"How the fall detector evaluates motion","url":"articles/yolo-fall-detection-notes.html","date":"2026-11-15","category":"Computer vision","description":"Project notes on pose keypoints, posture history, and event logging.","image":"images/previews/yolo-pose.webp"}
+  {
+    "title": "Why I Fly",
+    "url": "articles/why-i-fly.html",
+    "date": "2026-11-18",
+    "category": "FPV stories",
+    "description": "From crashing cheap quadcopters to flying FPV professionally, here’s how I got started and why I keep flying.",
+    "image": "https://www.heathfpv.com/images/logo/FrontFPV.webp"
+  },
+  {
+    "title": "FPV vs. Cine: How Drones Changed Cinema",
+    "url": "articles/fpv-vs-cine.html",
+    "date": "2026-11-18",
+    "category": "FPV & film history",
+    "description": "From helicopter shots and early DJI drones to cinematic FPV and Hollywood cinelifters: how drones changed the way cameras move.",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/FPV_Quadrocopter.jpg/960px-FPV_Quadrocopter.jpg"
+  },
+  {
+    "title": "How the fall detector evaluates motion",
+    "url": "articles/yolo-fall-detection-notes.html",
+    "date": "2026-11-15",
+    "category": "Computer vision · Project notes",
+    "description": "Project notes on the Heath FPV desktop prototype using YOLO pose, posture history, and local event logging.",
+    "image": "https://www.heathfpv.com/images/previews/yolo-pose.webp"
+  },
+  {
+    "title": "Connecting three aerial panoramas",
+    "url": "articles/connecting-aerial-panoramas.html",
+    "date": "2026-11-15",
+    "category": "360 tours",
+    "description": "See how Heath FPV’s 360° tour uses equirectangular images, scene hotspots, and an embeddable panorama viewer.",
+    "image": "https://www.heathfpv.com/images/previews/aerial-panorama.webp"
+  }
 ]
