@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to Fly First Person View (FPV) | Heath FPV</title>
+<meta name="description" content="Learn what FPV flying is, how Acro, Angle, Horizon and Air Mode differ, and why a radio transmitter and simulator are the best way to start.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#101313">
+<link rel="canonical" href="https://www.heathfpv.com/articles/how-to-fly-fpv.html">
+<link rel="icon" type="image/png" sizes="96x96" href="../favicon.png">
+<meta property="og:type" content="article"><meta property="og:locale" content="en_US">
+<meta property="og:title" content="How to Fly First Person View (FPV) | Heath FPV">
+<meta property="og:description" content="A beginner-friendly introduction to flying FPV, radio transmitters, Acro Mode, and learning in a simulator.">
+<meta property="og:url" content="https://www.heathfpv.com/articles/how-to-fly-fpv.html">
+<meta property="og:image" content="https://www.heathfpv.com/images/logo/FrontFPV.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="../css/styles.css?v=portfolio-1">
+<script src="../js/main.js?v=portfolio-1" defer></script>
+</head>
+<body class="site-page editorial-page">
+<a class="skip-link" href="#mainContent">Skip to content</a>
+<header class="masthead" data-masthead><div class="masthead-inner">
+<a class="brand" href="../index.html" aria-label="Heath FPV home"><img src="../images/logo/FrontFPV.webp" width="643" height="557" alt=""></a>
+<nav id="siteNavigation" class="primary-nav" aria-label="Primary navigation"><a href="../index.html">Home</a><a href="../services.html">Drone Services</a><a href="../projects.html">Portfolio</a>
+<details class="explore-menu" data-explore><summary class="is-current">Explore</summary><div class="explore-links"><a href="../fpv-tech.html">FPV Tech</a><a href="../projects.html">Projects</a><a href="../hosting.html">Hosted Apps &amp; Games</a><a href="../articles.html" aria-current="location">Articles &amp; Blog</a><a href="../videos.html">Videos &amp; Reels</a><a href="../about.html">About Me</a></div></details><a href="../contact.html">Contact</a></nav>
+<div class="masthead-tools"><button class="masthead-button" type="button" data-open-search aria-haspopup="dialog" aria-controls="siteSearch"><span class="search-icon" aria-hidden="true"></span> Search</button><button class="masthead-button mobile-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="siteNavigation" hidden><span class="menu-icon" aria-hidden="true"></span> Menu</button></div></div></header>
+<main id="mainContent" tabindex="-1"><article class="site-wrap story"><header class="story-intro"><a class="text-link" href="../articles.html">← All articles</a><p class="eyebrow">FPV beginner guide</p><h1>How to Fly First Person View (FPV)</h1><p class="lede">FPV might look intimidating, but you can start learning on a computer before buying your first quadcopter.</p><p class="byline">Heath Lyon · <time datetime="2026-11-18">November 18, 2026</time></p></header>
+<div class="story-body">
+<p>When you’re flying a normal quadcopter drone, you’re traditionally flying from a third-person perspective, standing and looking up at your drone. You might reference, or even fly from, the camera view on your controller. Depending on the aircraft, you might have self-leveling, altitude hold, GPS positioning, and obstacle sensors doing some of the work for you. These are all genuinely useful features, and depending on what you’re trying to accomplish, they might be all you need.</p>
+<p>Another way to fly is in Acro Mode, where the drone no longer automatically levels itself. You can orient the aircraft freely in three dimensions, including flying upside down for a moment if you know what you’re doing. You <em>can</em> fly acro while looking at the drone from the ground, but it’s extremely difficult, and it’s not quite the same experience as flying FPV — First Person View.</p>
+<p>FPV puts you in the pilot’s seat, at least as far as your brain is concerned. A camera on the drone sends a live video feed to a pair of goggles or a screen. The result feels less like watching a machine fly and more like flying through the environment yourself. That feeling is a big part of why I love it.</p>
+<h2>FPV is a view, not a flight mode</h2>
+<p>One thing that confuses people getting into the hobby is that FPV and Acro get used almost interchangeably. They aren’t the same thing. FPV describes <em>how you see</em> what the aircraft sees. Acro describes <em>how you control</em> the aircraft.</p>
+<p>You can fly FPV in a self-leveling mode. In fact, I think that’s a great way to get comfortable looking through goggles for the first time. But if you’ve seen a racing quad whipping through gates or a freestyle pilot doing flips down a hillside, chances are they’re using Acro Mode.</p>
+<p>In Betaflight, there are a few terms worth knowing:</p>
+<ul><li><strong>Angle Mode:</strong> The drone self-levels when you release the pitch and roll sticks, and limits its tilt. A friendlier starting point.</li><li><strong>Horizon Mode:</strong> It self-levels around the center of the sticks, but allows flips and rolls with larger stick inputs.</li><li><strong>Acro (Rate) Mode:</strong> The aircraft doesn’t self-level. Pitch, roll, and yaw inputs command rotational rates, and the pilot manages the orientation.</li><li><strong>Air Mode:</strong> A separate Betaflight feature that helps the flight controller keep authority at low throttle. It is not another name for Acro Mode.</li></ul>
+<h2>What the sticks actually do</h2>
+<p>Most FPV pilots use a control layout called <strong>Mode 2</strong>. On the left stick, moving up and down changes <strong>throttle</strong>, while moving left and right changes <strong>yaw</strong>, or which direction the nose points. The right stick controls <strong>pitch</strong> (nose forward and backward) and <strong>roll</strong> (tilting left and right).</p>
+<p>There’s a catch: in Acro Mode, moving the right stick doesn’t tell the drone ‘go to this position and stop.’ It tells the drone how quickly to rotate. Let go of the stick and it stops rotating, but it stays tilted until you tell it otherwise.</p>
+<p>If you pitch forward, the drone tips forward and some of its thrust starts pulling it ahead instead of straight up. That means you have to think about your throttle too, especially when you’re turning or diving. You’re constantly making little adjustments, and eventually they start happening without much thought.</p>
+<p>At first, though, you’re probably going to crash. A lot. I did.</p>
+<h2>The cheapest crash is the one in a simulator</h2>
+<p>This is the advice I’d give almost anyone who wants to get into FPV: <strong>don’t start by buying the drone.</strong> Start with a radio transmitter and a simulator.</p>
+<p>An FPV simulator is a video game that tries to recreate the physics and controls of flying a quadcopter. You can crash into trees, miss gates, and fly straight into the ground as many times as you want without having to replace a single propeller.</p>
+<p>You don’t even need FPV goggles to practice. Most desktop simulators show the camera view right on your monitor. More importantly, many modern radio transmitters connect to a computer over USB and act like a game controller. That lets you learn on the same kind of sticks you’ll eventually use to control a real aircraft.</p>
+<p>A normal Xbox controller can work in some simulators, and that’s perfectly fine for trying one out. But dedicated FPV radios usually have a non-centering throttle stick and adjustable gimbals, which makes them a better way to build habits that transfer to the real thing.</p>
+<p><a href="https://www.liftoff-game.com/">Liftoff</a> and <a href="https://www.velocidrone.com/">VelociDrone</a> are two established options. You don’t have to obsess over which one is the most realistic yet. The important thing is getting comfortable keeping a drone in the air, making intentional turns, and recovering when you get disoriented.</p>
+<h2>If you buy one thing, make it the transmitter</h2>
+<p>If you decide this is a hobby you want to pursue, my recommendation is to buy a proper radio before buying a full drone kit. Look for one that supports <strong>USB joystick mode</strong>, so you can plug it directly into your computer, and check that its radio protocol will work with the receiver on whichever real drone you choose later.</p>
+<p>For a beginner looking at custom FPV quads, a compact radio like the <a href="https://radiomasterrc.com/products/pocket-radio-controller-m2">RadioMaster Pocket</a> in the ExpressLRS version is one option worth researching. It runs EdgeTX and supports the kind of simulator setup I’m talking about. ExpressLRS (ELRS) is a common radio-control link in the FPV hobby, but it isn’t universal, so make sure your future drone and radio are compatible.</p>
+<p>The nice thing about buying the radio first is that it’s not wasted money if you stick with FPV. You can practice on the computer now and keep using the same transmitter when you move to a real drone.</p>
+<h2>Your first few practice sessions</h2>
+<p>Don’t jump straight into the most complicated racecourse and wonder why you can’t make it through the first gate. I’d start in a wide-open virtual field.</p>
+<ol><li>Connect your USB-compatible transmitter to the computer and calibrate it in the simulator.</li><li>Start with a forgiving practice area, not a course full of tight gates.</li><li>Practice lifting off, hovering roughly in place, and landing without flipping over.</li><li>Fly a wide figure-eight and learn to control your height while banking.</li><li>Practice stopping a mistake early: straighten the drone, regain control, and use the simulator’s reset button when needed.</li><li>Only then start flying tighter gaps, racing lines, and more aggressive freestyle maneuvers.</li></ol>
+<h2>When you’re ready to fly for real</h2>
+<p>Once you can take off, fly a few controlled laps, and land consistently in a simulator, you’ll have a much better idea of whether you actually enjoy flying FPV. That’s when I’d start looking at a beginner-friendly small quad, often called a <strong>tiny whoop</strong>, rather than immediately jumping into a powerful 5-inch freestyle build.</p>
+<p>Small, propeller-guarded drones can be a more forgiving way to practice, especially in suitable indoor spaces, but they’re still real aircraft with spinning propellers and batteries that need to be handled correctly.</p>
+<p>If you’re flying outside in the United States, take the FAA’s free <a href="https://www.faa.gov/uas/recreational_flyers/knowledge_test_updates">TRUST</a> test before recreational flights, check the airspace, and follow the rules that apply to your aircraft. When you’re wearing FPV goggles, you generally need a co-located visual observer to keep an eye on the drone and the surrounding airspace. Registration and Remote ID requirements also depend on how and where the aircraft is being flown.</p>
+<p>A simulator doesn’t teach you everything about batteries, airspace, or being responsible around other people. But it can save you a remarkable amount of frustration while you figure out what your thumbs are supposed to be doing.</p>
+<h2>Try it here</h2>
+<p>I’m working on a browser-based FPV simulator in Godot that I plan to add to Heath FPV. The idea is simple: give someone who’s never flown a chance to try the controls before they spend money on an aircraft.</p>
+<p>When it’s ready, I’ll link it here. Until then, you can check out the other things I’m building on the <a href="../hosting.html">Hosted Apps &amp; Games</a> page. And if you’re serious about learning, pick up a USB-compatible transmitter, spend some time in a simulator, and see how quickly the flying starts to make sense.</p>
+<p>You will probably crash. That’s part of the hobby. But it’s a lot more fun when the reset button works.</p>
+<div class="callout"><h2>Want to try flying?</h2><p><strong>Godot FPV simulator — coming soon.</strong> The browser demo will be linked here when it is published. You can explore my other hosted projects in the meantime.</p><p><a class="text-link" href="../hosting.html">See hosted apps &amp; games →</a></p><!-- After publishing the Godot simulator, add its confirmed URL here as a new CTA. --></div>
+<div class="callout"><h2>Sources and further reading</h2><ul>
+<li><a href="https://betaflight.com/docs/wiki/guides/current/Modes">Betaflight — Flight modes and Air Mode</a></li>
+<li><a href="https://betaflight.com/docs/wiki/getting-started/setup-guide">Betaflight — Getting started and Acro Mode</a></li>
+<li><a href="https://manual.edgetx.org/v2.11/bw-radios/model-select/setup">EdgeTX — Radio setup and USB joystick options</a></li>
+<li><a href="https://www.faa.gov/uas/recreational_flyers">FAA — Rules for recreational flyers</a></li>
+<li><a href="https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_91-57D.pdf">FAA — Advisory Circular 91-57D (FPV visual observer guidance)</a></li>
+</ul></div>
+<p class="byline"><a href="../about.html">Heath Lyon</a> is an FPV pilot and developer based in Provo, Utah.</p>
+</div></article></main>
+<footer class="editorial-footer"><div class="site-wrap footer-content"><span>© <span data-year>2026</span> Heath Lyon</span><nav aria-label="More from Heath"><a href="../downloads.html">Downloads</a><a href="../terminal.html">Terminal</a><a href="../hosting.html">Hosted apps</a><a href="../contact.html">Contact</a></nav></div></footer>
+<dialog id="siteSearch" class="search-dialog" aria-labelledby="searchTitle"><div class="search-top"><h2 id="searchTitle">Search Heath FPV</h2><button type="button" class="search-close" data-close-search>Close</button></div><form id="siteSearchForm" role="search"><label for="siteSearchInput">Search pages, projects, and articles</label><div class="search-field"><input type="search" id="siteSearchInput" name="q" placeholder="Try ‘drone rates’ or ‘360 tours’" autocomplete="off" maxlength="120" aria-controls="siteSearchResults" autofocus><button type="submit">Search</button></div></form><p id="siteSearchStatus" class="search-status" role="status"></p><ul id="siteSearchResults" class="search-results" aria-label="Search results"></ul><p class="search-hint">Use ↑ and ↓ to browse results. Press Esc to close.</p></dialog>
+</body></html>
