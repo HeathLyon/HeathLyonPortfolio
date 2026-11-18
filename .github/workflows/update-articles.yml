@@ -1,0 +1,33 @@
+name: Update article listing
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'articles/**/*.html'
+      - 'scripts/build_articles.py'
+      - '.github/workflows/update-articles.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build-index:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Rebuild article index
+        run: python scripts/build_articles.py
+      - name: Commit updated feed
+        run: |
+          if git diff --quiet -- articles/index.json && git ls-files --error-unmatch articles/index.json >/dev/null 2>&1; then
+            echo 'Article index unchanged'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add articles/index.json
+          git diff --cached --quiet && exit 0
+          git commit -m 'Update article feed'
+          git push
