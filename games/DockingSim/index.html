@@ -43,7 +43,10 @@ body {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	visibility: hidden;
+	visibility: visible;
+	z-index: 10;
+	font-family: system-ui, sans-serif;
+	text-align: center;
 }
 
 #status-splash {
@@ -71,10 +74,28 @@ body {
 }
 
 #status-progress {
-	bottom: 10%;
-	width: 50%;
-	margin: 0 auto;
+	position: static;
+	width: min(420px, 80vw);
+	height: 12px;
+	margin: 20px auto;
+	accent-color: #b4ff74;
 }
+
+#loading-copy { padding: 24px; }
+#loading-copy h1 { font-size: clamp(24px, 5vw, 38px); margin: 0 0 12px; }
+#loading-label { color: #b4ff74; }
+#loading-hint { color: #a8bacb; max-width: 38ch; line-height: 1.5; }
+#loading-spinner {
+	display: inline-block;
+	width: 14px; height: 14px;
+	border: 2px solid #294136;
+	border-top-color: #b4ff74;
+	border-radius: 50%;
+	animation: loading-spin 1s linear infinite;
+	margin-right: 8px;
+}
+@keyframes loading-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { #loading-spinner { animation: none; } }
 
 #status-notice {
 	background-color: #5b3943;
@@ -105,7 +126,12 @@ body {
 
 		<div id="status">
 			<img id="status-splash" class="show-image--false fullsize--true use-filter--true" src="index.png" alt="">
-			<progress id="status-progress"></progress>
+			<div id="loading-copy">
+				<h1>Orbital Approach</h1>
+				<p id="loading-label" role="status" aria-live="polite"><span id="loading-spinner" aria-hidden="true"></span><span id="loading-text">Preparing download…</span></p>
+				<p id="loading-hint">Your first launch downloads about 40 MB. Starting the simulator can take a moment afterward.</p>
+			</div>
+			<progress id="status-progress" aria-label="Game download progress"></progress>
 			<div id="status-notice"></div>
 		</div>
 
@@ -119,6 +145,10 @@ const engine = new Engine(GODOT_CONFIG);
 	const statusOverlay = document.getElementById('status');
 	const statusProgress = document.getElementById('status-progress');
 	const statusNotice = document.getElementById('status-notice');
+	const loadingCopy = document.getElementById('loading-copy');
+	const loadingText = document.getElementById('loading-text');
+	const loadingHint = document.getElementById('loading-hint');
+	let starting = false;
 
 	let initializing = true;
 	let statusMode = '';
@@ -133,6 +163,7 @@ const engine = new Engine(GODOT_CONFIG);
 			return;
 		}
 		statusOverlay.style.visibility = 'visible';
+		loadingCopy.style.display = mode === 'notice' ? 'none' : 'block';
 		statusProgress.style.display = mode === 'progress' ? 'block' : 'none';
 		statusNotice.style.display = mode === 'notice' ? 'block' : 'none';
 		statusMode = mode;
@@ -201,12 +232,21 @@ const engine = new Engine(GODOT_CONFIG);
 		setStatusMode('progress');
 		engine.startGame({
 			'onProgress': function (current, total) {
-				if (current > 0 && total > 0) {
-					statusProgress.value = current;
+				if (starting || (total > 0 && current >= total)) {
+					// Download progress ends here; Godot exposes no startup percentage.
+					starting = true;
+					loadingText.textContent = 'Starting simulator…';
+					loadingHint.textContent = 'Download complete. Preparing graphics and the mission menu. Please keep this tab open.';
+					statusProgress.removeAttribute('value');
+					statusProgress.removeAttribute('max');
+				} else if (current > 0 && total > 0) {
 					statusProgress.max = total;
+					statusProgress.value = current;
+					loadingText.textContent = 'Downloading simulator: ' + Math.floor(current / total * 100) + '%';
 				} else {
 					statusProgress.removeAttribute('value');
 					statusProgress.removeAttribute('max');
+					loadingText.textContent = 'Downloading simulator…';
 				}
 			},
 		}).then(() => {
@@ -217,4 +257,3 @@ const engine = new Engine(GODOT_CONFIG);
 		</script>
 	</body>
 </html>
-
