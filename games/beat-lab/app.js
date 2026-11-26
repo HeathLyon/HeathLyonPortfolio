@@ -1,13 +1,15 @@
 import {parseVideoId,OnsetDetector} from './detector.mjs';
+import {snapshotDetail,captureHealth} from './debug.mjs';
 const $=id=>document.getElementById(id);
 const detector=new OnsetDetector();
 let player,ready=false,videoId='',analysisVideoId=null,apiPromise,ctx,stream,node,filter,oscillator,demoTimer;
 let mode='idle',busy=false,lastFrame=0,lastAnchorCheck=0,anchor=null,pulseUntil=0,trace=[],logs=[],startedAt=null,lastSignal=0,lastWarning=0,replayIndex=0,lastReplayTime=-1;
+let receivedFrames=0,acceptedFrames=0,latestFrameAt=0,latestPeak=0,lastHealthCode='',healthTimer=null;
 let diagnostics={secureContext:isSecureContext,tabCapture:!!navigator.mediaDevices?.getDisplayMedia,audioWorklet:!!window.AudioWorkletNode,silentConstraint:!!navigator.mediaDevices?.getSupportedConstraints?.().suppressLocalAudioPlayback};
-function log(message,detail){const entry={at:new Date().toISOString(),message,...(detail===undefined?{}:{detail})};logs.push(entry);logs=logs.slice(-200);$('log').textContent=logs.map(x=>`${x.at.slice(11,19)} ${x.message}${x.detail===undefined?'':' '+JSON.stringify(x.detail)}`).join('\n');$('log').scrollTop=$('log').scrollHeight}
+function log(message,detail){const entry={at:new Date().toISOString(),message,...(detail===undefined?{}:{detail:snapshotDetail(detail)})};logs.push(entry);logs=logs.slice(-200);$('log').textContent=logs.map(x=>`${x.at.slice(11,19)} ${x.message}${x.detail===undefined?'':' '+JSON.stringify(x.detail)}`).join('\n');$('log').scrollTop=$('log').scrollHeight}
 function message(text,error=false){$('message').textContent=text;$('message').classList.toggle('error',error)}
 function showDiagnostics(){const dl=$('diagnostics');dl.replaceChildren();for(const [k,v] of Object.entries(diagnostics)){const dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=k;dd.textContent=typeof v==='object'?JSON.stringify(v):String(v);dl.append(dt,dd)}}
-function updateButtons(){const active=!!ctx;$('capture').disabled=busy||active||!ready||!diagnostics.tabCapture||!isSecureContext;$('demo').disabled=busy||active||!isSecureContext;$('stop').disabled=busy||!active;$('url').disabled=active;$('load-form').querySelector('button').disabled=active;$('silent').disabled=active;$('reset').disabled=active;$('replay').disabled=busy||!ready||!detector.events.length||!analysisVideoId||analysisVideoId!==videoId||mode==='demo';$('export').disabled=busy}
+function updateButtons(){const active=!!ctx;$('capture').disabled=busy||active||!ready||!diagnostics.tabCapture||!isSecureContext;$('demo').disabled=busy||active||!isSecureContext;$('stop').disabled=busy||!active;$('url').disabled=active;$('load-form').querySelector('button').disabled=active;$('silent').disabled=active;$('reset').disabled=active;$('replay').disabled=busy||!ready||!detector.events.length||!analysisVideoId||analysisVideoId!==videoId||mode==='demo';$('export').disabled=busy;$('resume').disabled=!ctx||ctx.state==='running'||busy}
 function flash(){pulseUntil=performance.now()+120}
 function ensureAPI(){
  if(window.YT?.Player)return Promise.resolve();if(apiPromise)return apiPromise;
@@ -19,15 +21,18 @@ $('load-form').addEventListener('submit',async e=>{
  onReady(){ready=true;const rates=player.getAvailablePlaybackRates();$('rate').replaceChildren(...rates.map(rate=>new Option(`${rate}×`,rate)));$('rate').value='1';$('rate').disabled=false;$('play').disabled=false;log('Player ready',{videoId:id,rates});message('Press Play, then Start tab capture. Choose this tab and enable Share tab audio.');updateButtons()},
  onStateChange(e){log('Player state',e.data);if(e.data!==1){anchor=null}if(e.data===0&&mode==='capture'){message('Video ended. Stopping capture; timing is ready to export or replay.');stopCapture().catch(fail)}},
  onPlaybackRateChange(e){anchor=null;if(mode==='capture')detector.segment();$('rate').value=String(e.data);log('Actual playback rate',e.data)},
+ onAutoplayBlocked(){log('YouTube autoplay was blocked');message('YouTube needs a direct click. Click the Play button inside the video, then watch the input meter.',true)},
  onError(e){const errors={2:'Invalid video ID.',5:'YouTube HTML5 playback failed.',100:'Video unavailable or private.',101:'Embedding is disabled for this video.',150:'Embedding is disabled for this video.',153:'YouTube requires a valid site referrer. Use HTTPS or localhost; do not open this file directly.'};fail(Error(errors[e.data]||`YouTube error ${e.data}`));}
  }});
  }catch(err){fail(err)}finally{busy=false;updateButtons()}
 });
-$('play').onclick=()=>{if(ready){if(player.getPlayerState()===1)player.pauseVideo();else player.playVideo()}};
+$('play').onclick=()=>{if(ready){const state=player.getPlayerState();log('Play / pause clicked',{previousState:state});if(state===1)player.pauseVideo();else player.playVideo()}};
 $('rate').onchange=()=>{if(ready){player.setPlaybackRate(Number($('rate').value));log('Requested playback rate',Number($('rate').value))}};
 function fail(err){log('ERROR',{name:err.name,message:err.message});message(err.message,true)}
 async function makeGraph(sourceStream,demo=false){
- ctx=new AudioContext({latencyHint:'interactive'});await ctx.resume();await ctx.audioWorklet.addModule('./meter-worklet.js');
+ ctx=new AudioContext({latencyHint:'interactive'});
+ // Do not let a blocked resume promise hang setup. The Resume button provides a fresh gesture.
+ ctx.resume().catch(fail);await ctx.audioWorklet.addModule('./meter-worklet.js');
  filter=ctx.createBiquadFilter();filter.type='lowpass';filter.frequency.value=Number($('band').value);
  node=new AudioWorkletNode(ctx,'energy-meter');const silent=ctx.createGain();silent.gain.value=0;filter.connect(node);node.connect(silent);silent.connect(ctx.destination);
  node.port.onmessage=({data})=>receive(data);
@@ -37,13 +42,17 @@ async function makeGraph(sourceStream,demo=false){
   for(let i=0;i<30;i++){const t=start+i*.5;envelope.gain.setValueAtTime(.8,t);envelope.gain.exponentialRampToValueAtTime(.00001,t+.07)}
   oscillator.start();demoTimer=setTimeout(()=>{message('Self-test finished. Expected BPM: 120. Export diagnostics if the estimate differs.');stopCapture().catch(fail)},16000);
  }else ctx.createMediaStreamSource(sourceStream).connect(filter);
- diagnostics={...diagnostics,sampleRate:ctx.sampleRate,audioContext:ctx.state,source:demo?'internal 120 BPM pulse train':'shared tab'};ctx.onstatechange=()=>{diagnostics.audioContext=ctx?.state||'closed';showDiagnostics()};
- startedAt=performance.now();lastSignal=startedAt;lastWarning=0;anchor=null;lastAnchorCheck=0;trace=[];showDiagnostics();
+ diagnostics={...diagnostics,sampleRate:ctx.sampleRate,audioContext:ctx.state,source:demo?'internal 120 BPM pulse train':'shared tab'};
+ const activeContext=ctx;activeContext.onstatechange=()=>{if(ctx!==activeContext)return;diagnostics.audioContext=activeContext.state;log('Audio context state',activeContext.state);showDiagnostics();updateButtons()};
+ startedAt=performance.now();lastSignal=startedAt;lastWarning=0;anchor=null;lastAnchorCheck=0;trace=[];receivedFrames=0;acceptedFrames=0;latestPeak=0;latestFrameAt=startedAt;lastHealthCode='';
+ clearInterval(healthTimer);healthTimer=setInterval(checkHealth,500);showDiagnostics();
 }
 $('band').onchange=()=>{if(filter&&ctx){filter.frequency.setValueAtTime(Number($('band').value),ctx.currentTime);detector.segment();log('Detection band changed',$('band').value)}};
 $('capture').onclick=async()=>{
  if(busy||ctx)return;
  busy=true;updateButtons();let selected;
+ // Request playback inside the button gesture, rather than relying on the sharing dialog.
+ if(ready&&player.getPlayerState()!==1){player.playVideo();log('Requested YouTube playback before sharing');}
  try{
   // Invoke the picker directly from the click handler to preserve user activation.
   selected=await navigator.mediaDevices.getDisplayMedia({video:{displaySurface:'browser'},audio:{suppressLocalAudioPlayback:$('silent').checked,echoCancellation:false,noiseSuppression:false,autoGainControl:false},selfBrowserSurface:'include',systemAudio:'exclude'});
@@ -59,16 +68,16 @@ $('capture').onclick=async()=>{
 };
 $('demo').onclick=async()=>{if(busy||ctx)return;busy=true;updateButtons();try{if(ready)player.pauseVideo();detector.reset();analysisVideoId=null;mode='demo';await makeGraph(null,true);log('Started silent 120 BPM self-test');message('Silent 120 BPM self-test running for 16 seconds. No camera or microphone is used.')}catch(err){await stopCapture();fail(err)}finally{busy=false;updateButtons()}};
 async function stopCapture(){
- clearTimeout(demoTimer);demoTimer=null;const old=ctx;ctx=null;
+ clearTimeout(demoTimer);demoTimer=null;clearInterval(healthTimer);healthTimer=null;const old=ctx;ctx=null;if(old)old.onstatechange=null;
  if(node){node.port.onmessage=null;node.disconnect();node=null}if(filter){filter.disconnect();filter=null}if(oscillator){try{oscillator.stop()}catch{}oscillator=null}
  if(stream){for(const t of stream.getTracks()){t.onended=null;t.stop()}stream=null}
  if(old&&old.state!=='closed')await old.close();
- if(mode!=='replay')mode='idle';anchor=null;diagnostics.audioContext='closed';showDiagnostics();updateButtons();log('Capture stopped',{onsets:detector.events.length});
+ if(mode!=='replay')mode='idle';anchor=null;diagnostics.audioContext='closed';showDiagnostics();updateButtons();log('Capture stopped',{onsets:detector.events.length,receivedFrames,acceptedFrames});
 }
 $('stop').onclick=()=>stopCapture().then(()=>message('Capture stopped. No audio retained. You can replay or export the derived timing.')).catch(fail);
 $('reset').onclick=()=>{detector.reset();trace=[];mode='idle';startedAt=null;log('Cleared analysis');message('Analysis cleared.');updateButtons()};
 function receive(data){
- if(!ctx)return;const now=performance.now();$('level').value=Math.min(1,data.peak);if(data.energy>.001)lastSignal=now;
+ if(!ctx)return;const now=performance.now();receivedFrames++;latestFrameAt=now;latestPeak=data.peak;$('level').value=Math.min(1,data.peak);if(data.energy>.001)lastSignal=now;
  trace.push({energy:data.energy,onset:false});if(trace.length>450)trace.shift();
  let sourceTime=data.time;
  if(mode==='capture'){
@@ -83,13 +92,24 @@ function receive(data){
   // Account for queue latency and accelerated playback using the player timeline.
   sourceTime=Math.max(0,anchor.video+(data.time-anchor.audio)*anchor.rate);
  }
+ acceptedFrames++;
  const result=detector.feed(data.energy,data.time,sourceTime,Number($('sensitivity').value));
  if(result.onset){trace[trace.length-1].onset=true;flash();if(detector.events.length%16===1)log('Onset / tempo',{time:+sourceTime.toFixed(3),bpm:result.bpm,consistency:+result.confidence.toFixed(2)});updateButtons()}
- if(now-lastSignal>5000&&now-lastWarning>10000){lastWarning=now;log('No useful audio for 5 seconds. Check tab selection, Share tab audio, player volume, and playback state.');message('No useful audio detected. Check Share tab audio, selected tab, and that YouTube is playing and unmuted.',true)}
+
 }
-$('replay').onclick=async()=>{try{if(!ready)return;await stopCapture();const all=detector.events.filter(x=>Number.isFinite(x.time)).sort((a,b)=>a.time-b.time);detector.events=all;mode='replay';replayIndex=0;lastReplayTime=-1;player.setPlaybackRate(1);player.seekTo(0,true);player.playVideo();message('Replaying saved onset flashes. Adjust Flash offset if they lead or lag. No audio capture is active.');log('Replay started',{events:all.length})}catch(err){fail(err)}};
+function checkHealth(){
+ if(!ctx)return;
+ const now=performance.now(),state=ready?player.getPlayerState():-1;
+ const result=captureHealth({contextState:ctx.state,elapsed:(now-startedAt)/1000,frames:receivedFrames,lastFrameAge:(now-latestFrameAt)/1000,signalAge:(now-lastSignal)/1000,playerState:mode==='demo'?1:state});
+ diagnostics={...diagnostics,audioContext:ctx.state,receivedFrames,acceptedFrames,latestPeak:+latestPeak.toFixed(5),lastFrameAgeSeconds:+((now-latestFrameAt)/1000).toFixed(2),playerState:state,playerTime:ready?+player.getCurrentTime().toFixed(2):null,health:result.code};
+ showDiagnostics();updateButtons();
+ if(result.code!==lastHealthCode){lastHealthCode=result.code;log('Capture health',{...result,receivedFrames,acceptedFrames,playerState:state});if(result.code!=='starting')message(result.text,!['ok'].includes(result.code));}
+}
+$('resume').onclick=async()=>{try{if(!ctx)return;log('Resume audio processing clicked',{previousState:ctx.state});await ctx.resume();checkHealth()}catch(err){fail(err)}};
+async function beginReplay(){try{if(!ready)return;await stopCapture();const all=detector.events.filter(x=>Number.isFinite(x.time)).sort((a,b)=>a.time-b.time);detector.events=all;mode='replay';replayIndex=0;lastReplayTime=-1;player.setPlaybackRate(1);player.seekTo(0,true);player.playVideo();message('Replaying saved onset flashes. Adjust Flash offset if they lead or lag. No audio capture is active.');log('Replay started',{events:all.length})}catch(err){fail(err);throw err}}
+$('replay').onclick=()=>beginReplay().catch(()=>{});
 $('export').onclick=()=>{
- const payload={version:'0.1',createdAt:new Date().toISOString(),videoId:analysisVideoId,source:diagnostics.source||null,estimate:detector.tempo,sensitivity:Number($('sensitivity').value),bandHz:Number($('band').value),flashOffsetMs:Number($('offset').value),timingMethod:'Approximate AudioContext-to-YouTube clock mapping; uncalibrated capture latency. Onsets are not a validated beat grid.',onsets:detector.events,diagnostics,logs};
+ const payload={version:'0.3',createdAt:new Date().toISOString(),videoId:analysisVideoId,source:diagnostics.source||null,estimate:detector.tempo,sensitivity:Number($('sensitivity').value),bandHz:Number($('band').value),flashOffsetMs:Number($('offset').value),timingMethod:'Approximate AudioContext-to-YouTube clock mapping; uncalibrated capture latency. Onsets are not a validated beat grid.',onsets:detector.events,diagnostics,logs};
  const url=URL.createObjectURL(new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download=`beat-lab-${analysisVideoId||'self-test'}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);log('Exported derived timing and diagnostics; no audio/video');
 };
 function frame(now){requestAnimationFrame(frame);if(now-lastFrame<45)return;lastFrame=now;
@@ -103,3 +123,10 @@ function frame(now){requestAnimationFrame(frame);if(now-lastFrame<45)return;last
 window.addEventListener('error',e=>log('Window error',e.message));window.addEventListener('unhandledrejection',e=>fail(e.reason instanceof Error?e.reason:Error(String(e.reason))));window.addEventListener('pagehide',()=>{stream?.getTracks().forEach(t=>t.stop());ctx?.close()});
 if(!isSecureContext||location.protocol==='file:')message('Serve this folder using HTTPS or http://localhost. Opening index.html directly will not work.',true);
 showDiagnostics();updateButtons();log('Beat Lab initialized',diagnostics);requestAnimationFrame(frame);
+
+// Small read-only bridge for the pose experiment; capture remains owned by Beat Lab.
+export const beatSession={
+ snapshot(withTiming=false){return {ready,videoId,analysisVideoId,isCapturing:!!ctx,playerState:ready?player.getPlayerState():-1,time:ready?player.getCurrentTime():0,rate:ready?player.getPlaybackRate():1,duration:ready?player.getDuration():0,bpm:detector.tempo.bpm,onsets:withTiming?detector.events.map(e=>({time:e.time,energy:e.energy})):[]}},
+ beginReplay,
+ log
+};

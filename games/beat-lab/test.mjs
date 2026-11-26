@@ -13,3 +13,19 @@ for(const rate of [1,2]){
 // Jitter and a few missed attacks should still yield a usable estimate.
 const irregular=Array.from({length:40},(_,i)=>i*.5+Math.sin(i)*.008).filter((_,i)=>i%9!==0);assert(Math.abs(estimateTempo(irregular).bpm-120)<=3);
 console.log('PASS: URL validation, 80/100/120/150 BPM, silence rejection, 1x/2x source timing, jitter/missed attacks, segment/reset behavior.');
+
+const {snapshotDetail,captureHealth}=await import('./debug.mjs');
+const live={audioContext:'running',nested:{received:10}};
+const history=snapshotDetail(live);live.audioContext='closed';live.nested.received=20;
+assert.equal(history.audioContext,'running');assert.equal(history.nested.received,10);
+const base={contextState:'running',elapsed:10,frames:500,lastFrameAge:.1,signalAge:.1,playerState:1};
+assert.equal(captureHealth(base).code,'ok');
+assert.equal(captureHealth({...base,playerState:-1}).code,'not-playing');
+assert.equal(captureHealth({...base,playerState:2}).code,'not-playing');
+assert.equal(captureHealth({...base,playerState:3}).code,'not-playing');
+assert.equal(captureHealth({...base,signalAge:7}).code,'silence');
+assert.equal(captureHealth({...base,frames:0}).code,'no-frames');
+assert.equal(captureHealth({...base,lastFrameAge:5}).code,'no-frames');
+assert.equal(captureHealth({...base,contextState:'suspended'}).code,'suspended');
+assert.equal(captureHealth({...base,contextState:'closed'}).code,'closed');
+console.log('PASS: immutable debug snapshots and health diagnosis for paused, buffering, silent, stalled, suspended, and running capture.');

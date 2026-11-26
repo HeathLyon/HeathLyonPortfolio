@@ -1,6 +1,6 @@
-# Heath FPV Beat Lab — prototype 0.1
+# Heath FPV Beat Lab — prototype 0.3
 
-A standalone test for a future webcam rhythm game. It includes a YouTube link player, user-approved tab-audio capture, an experimental silent-capture request, rate selection, input meter, onset flashes, estimated BPM, replay, and JSON diagnostics. No pose tracking yet.
+A standalone test for a future webcam rhythm game. It includes a YouTube link player, user-approved tab-audio capture, an experimental silent-capture request, rate selection, input meter, onset flashes, estimated BPM, replay, and JSON diagnostics. Includes a simple upper-body pose and beat-sync experiment.
 
 ## Run on HeathFPV.com
 
@@ -39,7 +39,7 @@ Replay flashes stored measured attacks, NOT a full validated beat grid. Speech, 
 
 ## Privacy & network
 
-Audio PCM is processed transiently in the browser; it is not recorded, persisted, or uploaded. Captured video frames are never read or recorded, though the browser requires a video track for display capture. The app releases all tracks when stopped. It does not request microphone or camera access. Only derived onset times/energies and debug details are retained in memory. Export is optional. YouTube receives normal embed/player requests when you load a link. The only external script is YouTube's iframe API; there are no analytics or model downloads.
+Audio PCM is processed transiently in the browser; it is not recorded, persisted, or uploaded. Captured video frames are never read or recorded, though the browser requires a video track for display capture. The app releases all tracks when stopped. Microphone access is never requested. Camera access is requested only after Enable camera is clicked; webcam frames are processed locally and are not recorded or uploaded. Only derived onset times/energies and debug details are retained in memory. Export is optional. YouTube receives normal embed/player requests when you load a link. YouTube loads its iframe API. Enabling pose tracking additionally loads the pinned MediaPipe Tasks Vision 0.10.32 runtime from jsDelivr and the Google-hosted Pose Landmarker Lite model. No analytics are included.
 
 This is a technical capture experiment; it does not establish permission for every source. YouTube capture/analysis policy compatibility remains unresolved. Keep the player visible and leave its controls and advertisements intact.
 
@@ -51,3 +51,49 @@ This is a technical capture experiment; it does not establish permission for eve
 - meter-worklet.js: audio-thread energy measurements
 - detector.mjs: pure onset/tempo and link parsing logic
 - test.mjs: deterministic signal, parser, and tempo checks (`node test.mjs`)
+
+
+## v0.2 troubleshooting changes
+
+- Start capture requests playback from the capture button gesture. If YouTube blocks autoplay, use the Play button inside the visible video.
+- Resume audio processing provides a new browser gesture when AudioContext is suspended.
+- A watchdog runs even if no audio callbacks arrive. It reports suspended processing, missing/stalled callbacks, a non-playing embedded video, and silent input separately.
+- Debug fields receivedFrames and acceptedFrames distinguish incoming worklet frames from frames actually passed to the detector. If receivedFrames rises but acceptedFrames stays at zero, check playerState; it must be 1 (playing).
+- Historical log details are immutable snapshots. Stopping capture no longer changes the earlier Capture started audioContext value.
+- Run `node test-capture.mjs` for the mocked capture lifecycle regression checks. These do not substitute for testing real browser capture.
+- After replacing files, hard-refresh with Ctrl+Shift+R. Test at 1x first. For silence, tick Request silent speaker output BEFORE starting capture; confirm the returned setting.
+
+
+## v0.3 pose + beat test — start here
+
+Upload ALL files into the same `games/beat-lab/` folder, replacing the earlier files. Do not upload the ZIP without extracting it. Hard refresh the page with Ctrl+Shift+R.
+
+### Test the camera first
+
+1. Scroll to 05 / Pose + beat test.
+2. Click Enable camera & load tracking, approve CAMERA access, and wait for the model/runtime download (the model alone is about 5.8 MB).
+3. Face the camera and step back until shoulders, elbows, wrists, and hips are visible. The preview and skeleton are mirrored. Pink marks your left arm.
+4. Hold Arms out. Live match should approach 100%. Try Practice · 120 BPM. Optional click audio is synthesized locally.
+5. Follow the target skeleton. A target is judged within ±0.35 seconds of its displayed target time. Rounds with fewer than two fresh, confident camera observations are skipped rather than scored as misses. Eight beats per pose gives more time to move; four is quicker.
+6. Check Pose diagnostics if tracking drops, or Export pose test summary to share timing, scores, and confidence summaries. No raw video, images, or landmark sequences are exported.
+7. Stop camera releases camera access. To change cameras, stop the camera, choose a labeled camera, and enable it again. The selector is populated after permission is granted.
+
+### Test with your captured YouTube song
+
+1. Analyze at least 15–30 seconds of continuous music using tab capture; 1x is easiest to validate first. You can keep the camera off during analysis to save processing time.
+2. Stop audio capture. Do NOT Clear analysis or reload: timings are held only in memory.
+3. Enable camera and click Play analyzed song + poses. The player returns to the beginning at 1x. If autoplay is blocked, click Play in the video.
+4. The generator uses the estimated BPM and onset phase to create a CONSTANT-TEMPO grid, then assigns four repeating arm poses every 4 or 8 beats. It covers the analyzed portion only; it does not invent a reliable map for unheard sections.
+5. Adjust the existing Flash offset if targets lead or lag. Positive values delay the game targets. Start a new round after seeking or a large timing adjustment.
+6. When YouTube pauses/buffers, scoring pauses. A large clock jump stops the test to avoid awarding/missing multiple rounds at once.
+
+### What is deliberately simple
+
+Four poses: arms out, both arms up, your left arm up, your right arm up. Geometry uses arm directions relative to the torso, with size/position normalization. Detailed finger gestures, leg choreography, song-section detection, changing-tempo maps, multiplayer, and saved song charts are not included. The beat grid is approximate; irregular parody music can expose tempo/phase mistakes. Pose inference is capped near 12 FPS to leave resources for audio/player UI. GPU is tried first and CPU is the fallback.
+
+### Additional checks
+
+    node test-pose.mjs
+    node test-pose-camera.mjs
+
+These use synthetic landmarks and mocked camera APIs; actual webcam model inference and your real music still require browser testing.
